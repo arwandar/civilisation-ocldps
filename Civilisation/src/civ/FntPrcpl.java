@@ -1,11 +1,19 @@
 package civ;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.ScrollPane;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JToolBar;
 
 public class FntPrcpl extends JFrame {
@@ -13,15 +21,17 @@ public class FntPrcpl extends JFrame {
 	 * classe où sera défini la fenetre principale du jeu
 	 */
 
-	// **********VARIABLES
 	JPanel fenetre;
+	JScrollPane jsp;
 	PanelResrc barrehaute;
 	PanelBas barrebasse;
 	PanelPrcpl affichagejeu;
+	static int largeur, hauteur;
 
 	// **********CONSTRUCTEURS
 	protected FntPrcpl() {
-		int largeur = 700, hauteur = 500;
+		largeur = 700;
+		hauteur = 500;
 		initParDefaut(largeur, hauteur);
 
 		// this.fenetre = new JLayeredPane();
@@ -35,17 +45,11 @@ public class FntPrcpl extends JFrame {
 		this.barrebasse = new PanelBas();
 		this.barrebasse.setBounds(0, (hauteur - (30 * hauteur / 100)), largeur, (30 * hauteur / 100));
 		getContentPane().add(this.barrebasse, 1);
-		
-		this.fenetre = new JPanel();
-		this.fenetre.setBounds(0, (10 * hauteur / 100), largeur, (60*hauteur/100));
-		getContentPane().add(this.fenetre);
-		this.fenetre.setLayout(null);
 
 		this.affichagejeu = new PanelPrcpl();
-		this.affichagejeu.setBounds(-100, -100, largeur + 100, hauteur + 100);
-		this.fenetre.add(this.affichagejeu);
-
-
+		this.affichagejeu.setBounds(0, (10 * hauteur / 100), largeur, hauteur - (40 * hauteur / 100));
+		getContentPane().add(this.affichagejeu);
+		
 		this.setVisible(true);
 
 	}
