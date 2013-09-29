@@ -49,7 +49,7 @@ public class FntPrcpl extends JFrame {
 		this.affichagejeu = new PanelPrcpl();
 		this.affichagejeu.setBounds(0, (10 * hauteur / 100), largeur, hauteur - (40 * hauteur / 100));
 		getContentPane().add(this.affichagejeu);
-		
+
 		this.setVisible(true);
 
 	}

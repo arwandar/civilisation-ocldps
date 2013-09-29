@@ -10,7 +10,7 @@ import javax.swing.JTextArea;
 public class CivMain {
 
 	public static void main(String[] args) {
-		//supprimer la ligne suivante pour desactiver l'affichage
+		// supprimer la ligne suivante pour desactiver l'affichage
 		FntPrcpl tmp = new FntPrcpl();
 
 	}
