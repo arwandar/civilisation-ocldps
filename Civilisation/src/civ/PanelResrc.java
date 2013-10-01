@@ -1,6 +1,7 @@
 package civ;
 
-import javax.swing.JButton;
+import java.awt.FlowLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PanelResrc extends JPanel {
@@ -10,11 +11,17 @@ public class PanelResrc extends JPanel {
 	 */
 
 	// **********VARIABLES
+	JLabel or, nourriture, bois;
 
 	// **********CONSTRUCTEURS
 	public PanelResrc() {
-		JButton test = new JButton();
-		this.add(test);
+		this.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+		this.or = new JLabel("or: 100");
+		this.add(this.or);
+		this.nourriture = new JLabel("nourriture: 100");
+		this.add(this.nourriture);
+		this.bois = new JLabel("bois: 100");
+		this.add(this.bois);
 	}
 	// **********MUTATEURS
 

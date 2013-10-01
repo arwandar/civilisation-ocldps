@@ -1,17 +1,9 @@
 package civ;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Rectangle;
-
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JViewport;
-import javax.swing.Scrollable;
-import javax.swing.SwingConstants;
 
 public class PanelPrcpl extends JPanel {
 	/*
@@ -20,8 +12,8 @@ public class PanelPrcpl extends JPanel {
 	 */
 
 	// **********VARIABLES
-	JButton[][] morceaux;
-	int nbrCaseLarge, nbrCaseHauteur;
+	private Case[][] carte;
+	private int nbrCaseLarge, nbrCaseHauteur;
 	JScrollPane jsp;
 	JPanel conteneur;
 
@@ -29,7 +21,7 @@ public class PanelPrcpl extends JPanel {
 	public PanelPrcpl() {
 		this.nbrCaseHauteur = 10;
 		this.nbrCaseLarge = 15;
-		this.morceaux = new JButton[nbrCaseHauteur][nbrCaseLarge];
+		this.carte = new Case[nbrCaseHauteur][nbrCaseLarge];
 
 		this.conteneur = new JPanel();
 
@@ -38,19 +30,49 @@ public class PanelPrcpl extends JPanel {
 
 		for (int i = 0; i < this.nbrCaseHauteur; i++) {
 			for (int j = 0; j < this.nbrCaseLarge; j++) {
-				this.morceaux[i][j] = new JButton();
-				this.morceaux[i][j].setBackground(Color.white);
-				this.conteneur.add(this.morceaux[i][j]);
+				this.carte[i][j] = new Case();
+				this.conteneur.add(this.carte[i][j]);
 			}
 		}
 
 		this.jsp = new JScrollPane(this.conteneur);
 		this.jsp.setPreferredSize(new Dimension(FntPrcpl.largeur, FntPrcpl.hauteur - (40 * FntPrcpl.hauteur / 100)));
 		this.add(jsp);
-		System.out.println(this.conteneur.getPreferredSize().height + "/" + this.conteneur.getPreferredSize().width);
 	}
 
 	// **********MUTATEURS
+
+	public Case getCarte(int i, int j) {
+		return carte[i][j];
+	}
+
+	public void setCarte(Case bouh, int i, int j) {
+		this.carte[i][j] = bouh;
+	}
+
+	public int getNbrCaseLarge() {
+		return nbrCaseLarge;
+	}
+
+	public void setNbrCaseLarge(int nbrCaseLarge) {
+		this.nbrCaseLarge = nbrCaseLarge;
+	}
+
+	public int getNbrCaseHauteur() {
+		return nbrCaseHauteur;
+	}
+
+	public void setNbrCaseHauteur(int nbrCaseHauteur) {
+		this.nbrCaseHauteur = nbrCaseHauteur;
+	}
+
+	public JPanel getConteneur() {
+		return conteneur;
+	}
+
+	public void setConteneur(JPanel conteneur) {
+		this.conteneur = conteneur;
+	}
 
 	// **********METHODES
 }

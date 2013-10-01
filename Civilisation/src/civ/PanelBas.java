@@ -1,5 +1,8 @@
 package civ;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -10,11 +13,22 @@ public class PanelBas extends JPanel {
 	 */
 
 	// **********VARIABLES
+	JPanel map, info, panelActionsPossibles;
 
 	// **********CONSTRUCTEURS
 	public PanelBas() {
-		JButton test = new JButton();
-		this.add(test);
+		this.setLayout(null);
+		int hauteur = FntPrcpl.hauteur;
+		int largeur = FntPrcpl.largeur;
+		this.setBounds(0, (hauteur - (30 * hauteur / 100)), largeur, (30 * hauteur / 100));
+		
+		
+		JButton test1 = new JButton();
+		test1.setBounds(0, 0, this.getWidth(), this.getHeight());
+		
+		this.add(test1);
+
+
 	}
 	// **********MUTATEURS
 
