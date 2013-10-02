@@ -7,9 +7,9 @@ public class BatArcherie extends BatProdUnit
 	private int production;
 	
 	//*************** Constructeur *******************
-	public BatArcherie(String name, int p, int a, int d, int c, int prod, Vector V)
+	public BatArcherie(Vector V)
 	{
-		super(name, p, a, d, c, true, V, prod);
+		super("Archerie", 50, 15, 40, 1, true, V, 2);
 		this.typesUnits.add(typeUnite.Archer);
 		this.typesUnits.add(typeUnite.CavalierArcher);
 	}

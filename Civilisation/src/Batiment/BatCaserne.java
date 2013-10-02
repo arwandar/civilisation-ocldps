@@ -7,9 +7,9 @@ public class BatCaserne extends BatProdUnit
 	private int production;
 	
 	//*************** Constructeur *******************
-	public BatCaserne(String name, int p, int a, int d, int c, int prod, Vector V)
+	public BatCaserne(Vector V)
 	{
-		super(name, p, a, d, c, true, V, prod);
+		super("Caserne", 50, 15, 40, 1, true, V, 2);
 		this.typesUnits.add(typeUnite.Milicien);
 	}
 }

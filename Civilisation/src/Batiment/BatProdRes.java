@@ -15,9 +15,9 @@ public class BatProdRes extends Batiment
 	private typeRessource typeres;
 	
 	//*************** Constructeur *******************
-	public BatProdRes(String name, int p, int a, int d, int c,Vector V, typeRessource t)
+	public BatProdRes(String name,Vector V, typeRessource t)
 	{	
-		super(name, p, a, d, c, true, V);
+		super(name, 50, 0, 20, 0, true, V, 1);
 		this.setRESSOURCE(t);
 	}
 	

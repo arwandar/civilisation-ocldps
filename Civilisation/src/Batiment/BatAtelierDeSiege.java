@@ -7,9 +7,9 @@ public class BatAtelierDeSiege extends BatProdUnit
 	private int production;
 	
 	//*************** Constructeur *******************
-	public BatAtelierDeSiege(String name, int p, int a, int d, int c, int prod, Vector V)
+	public BatAtelierDeSiege(Vector V)
 	{
-		super(name, p, a, d, c, true, V, prod);
+		super("atelier de siège", 75, 15, 40, 1, true, V, 3);
 		this.typesUnits.add(typeUnite.Catapulte);
 	}
 }

@@ -2,14 +2,11 @@ package Batiment;
 import java.util.Vector;
 
 public class BatTourDesMages extends BatProdUnit
-{
-	//*************** Variable *******************
-	private int production;
-	
+{	
 	//*************** Constructeur *******************
-	public BatTourDesMages(String name, int p, int a, int d, int c, int prod, Vector V)
+	public BatTourDesMages(Vector V)
 	{
-		super(name, p, a, d, c, true, V, prod);
+		super("Tour des mages", 50, 15, 40, 1, true, V, 2);
 		this.typesUnits.add(typeUnite.Magicien);
 		this.typesUnits.add(typeUnite.Healer);
 	}
