@@ -15,7 +15,7 @@ public abstract class Batiment
 	private Vector position;
 	
 	//*************** Constructeur *******************
-	public Batiment(String name, int p, int a, int d, int c, boolean ioe, Vector V)
+	public Batiment(String name, int p, int a, int d, int c, boolean ioe, Vector V) //le vecteur position sera à remplacer par une case
 	{
 		/*if( ioe && Case.texture != Texture.eau && Case.texture != Texture.montagne ) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
 		{*/
