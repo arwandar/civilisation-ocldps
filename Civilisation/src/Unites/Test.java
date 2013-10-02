@@ -15,7 +15,7 @@ public class Test {
 	      System.out.println("Mon attaque est de " + tPers[i].Attaque);
 	      System.out.println("Ma défense est de " + tPers[i].Defense);
 	      System.out.println("Mes PV valent " + tPers[i].PV);
-	      System.out.println("Je mets " + tPers[i].tempsProduction + " tours et coûte " + tPers[i].coutNourriture + " " + tPers[i].coutOr + " " + tPers[i].coutBois + " " + tPers[i].coutFer);
+	      System.out.println("Je mets " + tPers[i].tempsProduction + " tours et coûte " + tPers[i].coutNourriture + " n, " + tPers[i].coutOr + " o, " + tPers[i].coutBois + " b, " + tPers[i].coutFer + " f");
 	    } 	    
 	}
 
