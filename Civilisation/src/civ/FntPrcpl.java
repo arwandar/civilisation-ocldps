@@ -18,8 +18,8 @@ public class FntPrcpl extends JFrame {
 
 	// **********CONSTRUCTEURS
 	protected FntPrcpl() {
-		largeur = 700;
-		hauteur = 500;
+		largeur = 1500;
+		hauteur = 1000;
 		initParDefaut(largeur, hauteur);
 
 		this.setLayout(null);
