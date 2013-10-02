@@ -17,7 +17,7 @@ public abstract class Batiment
 	//*************** Constructeur *******************
 	public Batiment(String name, int p, int a, int d, int c, boolean ioe, Vector V)
 	{
-		/*if( (ioe && Case.texture != Texture.eau && Case.texture != Texture.montagne) || (!ioe && Case.texture == Texture.eau && Case.texture != Texture.montagne) )
+		/*if( ioe && Case.texture != Texture.eau && Case.texture != Texture.montagne ) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
 		{*/
 			this.setNOM(name);
 			this.setPV(p);
@@ -27,6 +27,16 @@ public abstract class Batiment
 			this.setIsOnEarth(ioe);
 			this.setPOSITION(V);
 		/*}
+		else if( !ioe && Case.texture == Texture.eau ) //Si le bâtiment est constructible sur l'eau et que la case est maritime
+		{
+			this.setNOM(name);
+			this.setPV(p);
+			this.setATT(a);
+			this.setDEF(d);
+			this.setCOEFF(c);
+			this.setIsOnEarth(ioe);
+			this.setPOSITION(V);
+		}
 		else
 		{
 			System.out.println("Wrong place to build it!!");
