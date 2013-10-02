@@ -1,6 +1,8 @@
 package Batiment;
 import java.util.Vector;
 
+import civ.Texture;
+
 public abstract class Batiment
 {
 	//*************** Variables *******************
@@ -15,13 +17,20 @@ public abstract class Batiment
 	//*************** Constructeur *******************
 	public Batiment(String name, int p, int a, int d, int c, boolean ioe, Vector V)
 	{
-		this.setNOM(name);
-		this.setPV(p);
-		this.setATT(a);
-		this.setDEF(d);
-		this.setCOEFF(c);
-		this.setIsOnEarth(ioe);
-		this.setPOSITION(V);
+		/*if( (ioe && Case.texture != Texture.eau && Case.texture != Texture.montagne) || (!ioe && Case.texture == Texture.eau && Case.texture != Texture.montagne) )
+		{*/
+			this.setNOM(name);
+			this.setPV(p);
+			this.setATT(a);
+			this.setDEF(d);
+			this.setCOEFF(c);
+			this.setIsOnEarth(ioe);
+			this.setPOSITION(V);
+		/*}
+		else
+		{
+			System.out.println("Wrong place to build it!!");
+		}*/
 	}
 	
 	//*************** Accesseurs *******************
