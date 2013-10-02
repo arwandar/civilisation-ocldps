@@ -1,8 +1,5 @@
 package civ;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
