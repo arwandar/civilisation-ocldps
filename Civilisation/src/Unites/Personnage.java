@@ -3,23 +3,29 @@ import Comportement.*;
 
 
 
-public abstract class Personnage {
+public abstract class Personnage implements Caracteristiques{
 	
 	 //Nos instances de comportement
 	  protected AttitudeCombative attitudeCombative = new Pacifiste();
 	  protected Construire construire = new NonConstructeur();
 	  protected Soin soin = new NonSoigneur();
-	  protected Deplacement deplacement = new Marcher();    
+	  protected Deplacement deplacement = new Marcher(); 
+	  int Attaque=Caracteristiques.Attaque; int Defense=Caracteristiques.Defense; int PV=Caracteristiques.PV;
+	  int tempsProduction=Caracteristiques.tempsProduction;
+	  int coutNourriture = Caracteristiques.coutNourriture; int coutOr = Caracteristiques.coutOr; int coutBois = Caracteristiques.coutBois; int coutFer = Caracteristiques.coutFer;
 	     
 	  //Constructeur par défaut
 	  public Personnage(){}
 	     
 	  //Constructeur avec paramètres
-	  public Personnage(AttitudeCombative attitudeCombative, Soin soin, Deplacement deplacement, Construire construire) {
+	  public Personnage(AttitudeCombative attitudeCombative, Soin soin, Deplacement deplacement, Construire construire, int Attaque, int Defense, int PV, int tempsProduction, int coutNourriture, int coutOr, int coutBois, int coutFer) {
 	    this.attitudeCombative = attitudeCombative;
 	    this.soin = soin;
 	    this.deplacement = deplacement;
 	    this.construire = construire;
+	    this.Attaque=Attaque; this.Defense=Defense; this.PV=PV;
+	    this.tempsProduction=tempsProduction;
+	    this.coutNourriture=coutNourriture; this.coutOr=coutOr; this.coutBois=coutBois; this.coutFer=coutFer;
 	  }
 	     
 	  //Méthode de déplacement de personnage
