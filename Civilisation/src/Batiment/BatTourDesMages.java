@@ -1,5 +1,4 @@
 package Batiment;
-import java.util.ArrayList;
 import java.util.Vector;
 
 public class BatTourDesMages extends BatProdUnit

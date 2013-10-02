@@ -1,6 +1,5 @@
 package Batiment;
 import java.util.Vector;
-
 import civ.Texture;
 
 public abstract class Batiment
