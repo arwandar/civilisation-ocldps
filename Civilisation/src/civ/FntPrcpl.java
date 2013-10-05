@@ -1,20 +1,28 @@
 package civ;
 
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import joueur.Joueur;
 
 public class FntPrcpl extends JFrame {
 	/*
 	 * classe où sera défini la fenetre principale du jeu
 	 */
 
-	JPanel fenetre;
+	JPanel fenetre, barrehaute;
 	JScrollPane jsp;
-	PanelResrc barrehaute;
+	PanelResrc barrehautej1, barrehautej2;
 	PanelBas barrebasse;
 	PanelPrcpl affichagejeu;
-	static int largeur, hauteur;
+	int largeur, hauteur;
+	Joueur j1, j2;
 
 	// **********CONSTRUCTEURS
 	protected FntPrcpl() {
@@ -24,17 +32,31 @@ public class FntPrcpl extends JFrame {
 
 		this.setLayout(null);
 
-		this.barrehaute = new PanelResrc();
+		final CardLayout cl = new CardLayout();
+		final String[] listContent = { "player1", "player2" };
+
+		// init barre haute
+		this.barrehaute = new JPanel();
 		this.barrehaute.setBounds(0, 0, largeur, (10 * hauteur / 100));
+		this.barrehaute.setLayout(cl);
 		getContentPane().add(this.barrehaute);
 
-		this.barrebasse = new PanelBas();
-		this.barrebasse.setBounds(0, (hauteur - (30 * hauteur / 100)), largeur, (30 * hauteur / 100));
-		getContentPane().add(this.barrebasse);
 
-		this.affichagejeu = new PanelPrcpl();
+		this.barrehautej1 = new PanelResrc(j1);
+		this.barrehaute.add(this.barrehautej1, listContent[0]);
+		this.barrehautej2 = new PanelResrc(j1);
+		this.barrehaute.add(this.barrehautej2, listContent[1]);
+
+
+		// init big map
+		this.affichagejeu = new PanelPrcpl(this.largeur, this.hauteur);
 		this.affichagejeu.setBounds(0, (10 * hauteur / 100), largeur, hauteur - (40 * hauteur / 100));
 		getContentPane().add(this.affichagejeu);
+
+		// init barre basse
+		this.barrebasse = new PanelBas(this.hauteur, this.largeur, this);
+		getContentPane().add(this.barrebasse);
+		System.out.println("bouh");
 
 		this.setVisible(true);
 

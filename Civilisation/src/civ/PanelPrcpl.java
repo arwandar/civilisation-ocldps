@@ -21,7 +21,7 @@ public class PanelPrcpl extends JPanel {
 	JPanel conteneur;
 
 	// **********CONSTRUCTEURS
-	public PanelPrcpl() {
+	public PanelPrcpl(int largeur, int hauteur) {
 		this.nbrCaseHauteur = 30;
 		this.nbrCaseLarge = 60;
 		this.carte = new Case[nbrCaseHauteur][nbrCaseLarge];
@@ -33,14 +33,19 @@ public class PanelPrcpl extends JPanel {
 		genererCarte(1);
 
 		this.jsp = new JScrollPane(this.conteneur);
-		this.jsp.setPreferredSize(new Dimension(FntPrcpl.largeur, FntPrcpl.hauteur - (40 * FntPrcpl.hauteur / 100)));
+		this.jsp.setPreferredSize(new Dimension(largeur, hauteur - (40 * hauteur / 100)));
 		this.add(jsp);
 	}
 
 	// **********MUTATEURS
 
 	public Case getCarte(int i, int j) {
-		return carte[i][j];
+		if (i < this.nbrCaseHauteur && j < this.nbrCaseLarge) {
+			return carte[i][j];
+		} else {
+			System.out.println("erreur, tu essaies de retourner "+i+"/"+j);
+			return null;
+		}
 	}
 
 	public void setCarte(Case bouh, int i, int j) {
@@ -88,27 +93,22 @@ public class PanelPrcpl extends JPanel {
 			int a;
 			for (int i = 0; i < this.nbrCaseHauteur; i++) {
 				for (int j = 0; j < this.nbrCaseLarge; j++) {
-					a = i*this.nbrCaseLarge+j;
-					if (plan.charAt(a) == '0'){
+					a = i * this.nbrCaseLarge + j;
+					if (plan.charAt(a) == '0') {
 						this.carte[i][j] = new Case(Texture.montagne);
-					}
-					else if (plan.charAt(a) == '1'){
+					} else if (plan.charAt(a) == '1') {
 						this.carte[i][j] = new Case(Texture.sable);
-					}
-					else if (plan.charAt(a) == '2'){
+					} else if (plan.charAt(a) == '2') {
 						this.carte[i][j] = new Case(Texture.terre);
-					}
-					else if (plan.charAt(a) == '3'){
+					} else if (plan.charAt(a) == '3') {
 						this.carte[i][j] = new Case(Texture.eau);
-					}
-					else if (plan.charAt(a) == '4'){
+					} else if (plan.charAt(a) == '4') {
 						this.carte[i][j] = new Case(Texture.foret);
-					}
-					else {
+					} else {
 						this.carte[i][j] = new Case(Texture.nondefini);
 					}
 					this.carte[i][j].setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-					
+
 					this.conteneur.add(this.carte[i][j]);
 				}
 			}
