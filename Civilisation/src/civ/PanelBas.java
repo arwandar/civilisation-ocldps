@@ -13,7 +13,7 @@ public class PanelBas extends JPanel {
 	 */
 
 	// **********VARIABLES
-	private JPanel panelMap, info, panelActionsPossibles;
+	private JPanel panelMap, panelInfo, panelActionsPossibles;
 	private FntPrcpl saFenetre;
 	private JButton[][] map;
 	private int mapLargeur, mapHauteur;
@@ -24,10 +24,19 @@ public class PanelBas extends JPanel {
 		this.setLayout(null);
 		this.setBounds(0, (hauteur - (30 * hauteur / 100)), largeur, (30 * hauteur / 100));
 
-		// initmap
+		// init panelmap
 		creerMap();
-
 		this.add(this.panelMap);
+
+		// init panelinfo
+		this.panelInfo = new JPanel();
+		this.panelInfo.setBounds(0, this.getWidth() * 4 / 5, this.getWidth() / 5, this.getHeight());
+		
+		this.add(this.panelInfo);
+
+		// init panelactionpossibles
+		this.panelActionsPossibles = new JPanel();
+		this.panelActionsPossibles.setBounds(0, this.getWidth() / 5, this.getWidth() * 3 / 5, this.getHeight());
 	}
 
 	// **********MUTATEURS
@@ -96,5 +105,9 @@ public class PanelBas extends JPanel {
 				}
 			}
 		}
+	}
+
+	public void updatePanelInfo(Case bouh){
+		
 	}
 }
