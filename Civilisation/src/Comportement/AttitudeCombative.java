@@ -1,9 +1,12 @@
 package Comportement;
+
+import Unites.Personnage;
+
 /**
  * Classe mère regroupant toutes les possibilités de combat possibles, actuellement Arc, Epee, Magie, Siege, Pacifiste
  * @author isen
  *
  */
 public interface AttitudeCombative {
-	public void combat();
+	public void combat(Personnage personnage);
 }

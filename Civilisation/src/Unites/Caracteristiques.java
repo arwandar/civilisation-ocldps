@@ -1,5 +1,6 @@
 package Unites;
 
+
 public interface Caracteristiques {
 	int Attaque=0;
 	int Defense=10;
@@ -9,5 +10,7 @@ public interface Caracteristiques {
 	int coutOr = 0;
 	int coutBois = 0;
 	int coutFer = 0;
+	int positionHorizontale = 0; int positionVerticale = 0;
+	int portee = 1;
 
 }

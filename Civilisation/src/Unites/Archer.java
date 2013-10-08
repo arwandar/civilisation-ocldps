@@ -11,7 +11,7 @@ public class Archer extends Personnage {
 		this.coutOr=45;
 		this.coutBois=25;
 	}
-	public Archer(AttitudeCombative esprit, Soin soin, Deplacement dep, Construire cons, int att, int def, int pv, int tProd, int cN, int cO, int cB, int cF) {
-	    super(esprit, soin, dep, cons, att, def, pv, tProd, cN, cO, cB, cF);
+	public Archer(AttitudeCombative esprit, Soin soin, Deplacement dep, Construire cons, int att, int def, int pv, int tProd, int cN, int cO, int cB, int cF, int posH, int posV, int portee) {
+	    super(esprit, soin, dep, cons, att, def, pv, tProd, cN, cO, cB, cF, posH, posV, portee);
 	  }
 }

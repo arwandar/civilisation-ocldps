@@ -1,22 +1,35 @@
 package Unites;
 
+import Combat.Fonctions;
+
 public class Test {
 
 	public static void main(String[] args) {
 		Personnage[] tPers = {new Peon(), new Milicien(), new Magicien(), new Healer(), new Archer(), new CavalierArcher(), new Chevalier(), new Galere(), new Transporteur(), new Catapulte()};
-  
+  		
+		
 	    for(int i = 0; i < tPers.length; i++){
 	      System.out.println("\nInstance de " + tPers[i].getClass().getName());
 	      System.out.println("*****************************************");
-	      tPers[i].combattre();
-	      tPers[i].seDeplacer();
-	      tPers[i].soigner();
-	      tPers[i].batir();
-	      System.out.println("Mon attaque est de " + tPers[i].Attaque);
-	      System.out.println("Ma défense est de " + tPers[i].Defense);
-	      System.out.println("Mes PV valent " + tPers[i].PV);
-	      System.out.println("Je mets " + tPers[i].tempsProduction + " tours et coûte " + tPers[i].coutNourriture + " n, " + tPers[i].coutOr + " o, " + tPers[i].coutBois + " b, " + tPers[i].coutFer + " f");
-	    } 	    
+	      Fonctions.Creation(tPers[i]);
+	      System.out.println("Mon attaque est de " + tPers[i].getAttaque());
+	      System.out.println("Ma défense est de " + tPers[i].getDefense());
+	      System.out.println("Mes PV valent " + tPers[i].getPV());
+	      System.out.println("Je mets " + tPers[i].getTempsProduction() + " tours et coûte " + tPers[i].getCoutNourriture() + " n, " + tPers[i].getCoutOr() + " o, " + tPers[i].getCoutBois() + " b, " + tPers[i].getCoutFer() + " f");
+	      System.out.println("Je suis situé en " + tPers[i].getPositionHorizontale() + " ; " + tPers[i].getPositionVerticale() + " et ma portée est de " + tPers[i].getPortee());
+	    } 
+	    
+	    System.out.println(tPers[2].getPV());
+	    Fonctions.Attaquer(tPers[1], tPers[2]);
+	    System.out.println(tPers[2].getPV());
+	    
+	    Personnage Attaquant = new Archer();
+	    Fonctions.Creation(Attaquant);
+	    Personnage Defenseur = new Milicien();
+	    Fonctions.Creation(Defenseur);
+	    Attaquant.setPositionHorizontale(2); Attaquant.setPositionVerticale(2);
+	    Defenseur.setPositionHorizontale(3);Defenseur.setPositionVerticale(4);
+	    Fonctions.isRange(Attaquant, Defenseur, Attaquant.getPortee());
 	}
 
 }

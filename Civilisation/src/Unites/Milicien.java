@@ -13,8 +13,8 @@ public class Milicien extends Personnage{
 			this.coutNourriture=60;
 			this.coutOr=20;
 		  }
-	  public Milicien(AttitudeCombative esprit, Soin soin, Deplacement dep, Construire cons, int att, int def, int pv, int tProd, int cN, int cO, int cB, int cF) {
-		    super(esprit, soin, dep, cons, att, def, pv, tProd, cN, cO, cB, cF);
+	  public Milicien(AttitudeCombative esprit, Soin soin, Deplacement dep, Construire cons, int att, int def, int pv, int tProd, int cN, int cO, int cB, int cF, int posH, int posV, int portee) {
+		    super(esprit, soin, dep, cons, att, def, pv, tProd, cN, cO, cB, cF, posH, posV, portee);
 	  }
 
 }

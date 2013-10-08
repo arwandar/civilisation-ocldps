@@ -10,15 +10,18 @@ public abstract class Personnage implements Caracteristiques{
 	  protected Construire construire = new NonConstructeur();
 	  protected Soin soin = new NonSoigneur();
 	  protected Deplacement deplacement = new Marcher(); 
-	  int Attaque=Caracteristiques.Attaque; int Defense=Caracteristiques.Defense; int PV=Caracteristiques.PV;
+	  public int Attaque=Caracteristiques.Attaque; public int Defense=Caracteristiques.Defense; public int PV=Caracteristiques.PV;
 	  int tempsProduction=Caracteristiques.tempsProduction;
 	  int coutNourriture = Caracteristiques.coutNourriture; int coutOr = Caracteristiques.coutOr; int coutBois = Caracteristiques.coutBois; int coutFer = Caracteristiques.coutFer;
+	  int positionHorizontale = Caracteristiques.positionHorizontale;
+	  int positionVerticale = Caracteristiques.positionVerticale;
+	  private int portee = Caracteristiques.portee;
 	     
 	  //Constructeur par défaut
 	  public Personnage(){}
 	     
 	  //Constructeur avec paramètres
-	  public Personnage(AttitudeCombative attitudeCombative, Soin soin, Deplacement deplacement, Construire construire, int Attaque, int Defense, int PV, int tempsProduction, int coutNourriture, int coutOr, int coutBois, int coutFer) {
+	  public Personnage(AttitudeCombative attitudeCombative, Soin soin, Deplacement deplacement, Construire construire, int Attaque, int Defense, int PV, int tempsProduction, int coutNourriture, int coutOr, int coutBois, int coutFer, int positionHorizontale, int positionVerticale, int portee) {
 	    this.attitudeCombative = attitudeCombative;
 	    this.soin = soin;
 	    this.deplacement = deplacement;
@@ -26,6 +29,11 @@ public abstract class Personnage implements Caracteristiques{
 	    this.Attaque=Attaque; this.Defense=Defense; this.PV=PV;
 	    this.tempsProduction=tempsProduction;
 	    this.coutNourriture=coutNourriture; this.coutOr=coutOr; this.coutBois=coutBois; this.coutFer=coutFer;
+	    this.positionHorizontale=positionHorizontale;
+	    this.positionVerticale=positionVerticale;
+	    this.setPortee(portee);
+	    
+	    
 	  }
 	     
 	  //Méthode de déplacement de personnage
@@ -43,7 +51,7 @@ public abstract class Personnage implements Caracteristiques{
 	  // Méthode que les combattants utilisent
 	  public void combattre(){
 	    //On utilise les objets de déplacement de façon polymorphe
-		  attitudeCombative.combat();
+		  attitudeCombative.combat(this);
 	  }
 	     
 	  //Méthode de soin
@@ -51,6 +59,19 @@ public abstract class Personnage implements Caracteristiques{
 	    //On utilise les objets de déplacement de façon polymorphe
 	    soin.soigner();
 	  }
+	  
+	  
+	  
+	  public int getPositionHorizontale(){
+		  return this.positionHorizontale;
+	  }
+	  public int getPositionVerticale(){
+		  return this.positionVerticale;
+	  }
+	  
+	  
+		  
+	  
 	  
 	  
 	 
@@ -72,5 +93,86 @@ public abstract class Personnage implements Caracteristiques{
 	  //Redéfinit le comportement de déplacement
 	  public void setDeplacement(Deplacement deplacement) {
 	    this.deplacement = deplacement;
-	  } 
+	  }
+	  
+
+	public int getPortee() {
+		return portee;
+	}
+
+	public void setPortee(int portee) {
+		this.portee = portee;
+	}
+
+	public int getAttaque() {
+		return Attaque;
+	}
+
+	public void setAttaque(int attaque) {
+		Attaque = attaque;
+	}
+
+	public int getDefense() {
+		return Defense;
+	}
+
+	public void setDefense(int defense) {
+		Defense = defense;
+	}
+
+	public int getPV() {
+		return PV;
+	}
+
+	public void setPV(int pV) {
+		PV = pV;
+	}
+
+	public int getTempsProduction() {
+		return tempsProduction;
+	}
+
+	public void setTempsProduction(int tempsProduction) {
+		this.tempsProduction = tempsProduction;
+	}
+
+	public int getCoutNourriture() {
+		return coutNourriture;
+	}
+
+	public void setCoutNourriture(int coutNourriture) {
+		this.coutNourriture = coutNourriture;
+	}
+
+	public int getCoutOr() {
+		return coutOr;
+	}
+
+	public void setCoutOr(int coutOr) {
+		this.coutOr = coutOr;
+	}
+
+	public int getCoutBois() {
+		return coutBois;
+	}
+
+	public void setCoutBois(int coutBois) {
+		this.coutBois = coutBois;
+	}
+
+	public int getCoutFer() {
+		return coutFer;
+	}
+
+	public void setCoutFer(int coutFer) {
+		this.coutFer = coutFer;
+	}
+
+	public void setPositionHorizontale(int positionHorizontale) {
+		this.positionHorizontale = positionHorizontale;
+	}
+
+	public void setPositionVerticale(int positionVerticale) {
+		this.positionVerticale = positionVerticale;
+	} 
 }

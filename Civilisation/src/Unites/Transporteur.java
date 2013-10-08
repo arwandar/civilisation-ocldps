@@ -10,7 +10,7 @@ public class Transporteur extends Personnage {
 		this.tempsProduction=3;
 		this.coutBois=125;
 	}
-	public Transporteur(AttitudeCombative esprit, Soin soin, Deplacement dep, Construire cons, int att, int def, int pv, int tProd, int cN, int cO, int cB, int cF) {
-	    super(esprit, soin, dep, cons, att, def, pv, tProd, cN, cO, cB, cF);
+	public Transporteur(AttitudeCombative esprit, Soin soin, Deplacement dep, Construire cons, int att, int def, int pv, int tProd, int cN, int cO, int cB, int cF, int posH, int posV, int portee) {
+	    super(esprit, soin, dep, cons, att, def, pv, tProd, cN, cO, cB, cF, posH, posV, portee);
 	  }
 }
