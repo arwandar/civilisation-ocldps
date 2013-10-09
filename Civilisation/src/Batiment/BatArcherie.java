@@ -12,4 +12,16 @@ public class BatArcherie extends BatProdUnit
 		this.typesUnits.add(typeUnite.Archer);
 		this.typesUnits.add(typeUnite.CavalierArcher);
 	}
+	
+	//*************** Accesseurs *******************
+	public int getPRODUCTION()
+	{
+		return this.production;
+	}
+	
+	//*************** Mutateurs *******************
+	public void setPRODUCTION(int p)
+	{
+		this.production = p;
+	}
 }
