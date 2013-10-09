@@ -1,9 +1,4 @@
 package Batiment;
-import java.util.ArrayList;
-import java.util.Vector;
-
-import Batiment.BatProdUnit.typeUnite;
-import civ.Texture;
 
 public abstract class Batiment
 {
@@ -15,10 +10,10 @@ public abstract class Batiment
 	protected int coeffDefBonus;
 	protected int production;
 	protected boolean isOnEarth;
-	protected Vector position;
+	protected int[] position = {0,0};
 	
 	//*************** Constructeur *******************
-	public Batiment(String name, int p, int a, int d, int c, boolean ioe, Vector V, int prod) //le vecteur position sera à remplacer par une case
+	public Batiment(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod) //le vecteur position sera à remplacer par une case
 	{
 		/*if( ioe && Case.texture != Texture.eau && Case.texture != Texture.montagne ) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
 		{*/
@@ -83,7 +78,7 @@ public abstract class Batiment
 		return this.isOnEarth;
 	}
 	
-	public Vector getPOSITION()
+	public int[] getPOSITION()
 	{
 		return this.position;
 	}
@@ -125,7 +120,7 @@ public abstract class Batiment
 	}
 
 	
-	public void setPOSITION(Vector P)
+	public void setPOSITION(int P[])
 	{
 		this.position = P;
 	}

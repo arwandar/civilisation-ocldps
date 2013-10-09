@@ -1,5 +1,4 @@
 package Batiment;
-import java.util.Vector;
 
 public class BatCaserne extends BatProdUnit
 {
@@ -7,7 +6,7 @@ public class BatCaserne extends BatProdUnit
 	private int production;
 	
 	//*************** Constructeur *******************
-	public BatCaserne(Vector V)
+	public BatCaserne(int V[])
 	{
 		super("Caserne", 50, 15, 40, 1, true, V, 2);
 		this.typesUnits.add(typeUnite.Milicien);

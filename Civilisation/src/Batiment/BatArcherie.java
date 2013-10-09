@@ -1,5 +1,4 @@
 package Batiment;
-import java.util.Vector;
 
 public class BatArcherie extends BatProdUnit
 {
@@ -7,7 +6,7 @@ public class BatArcherie extends BatProdUnit
 	private int production;
 	
 	//*************** Constructeur *******************
-	public BatArcherie(Vector V)
+	public BatArcherie(int V[])
 	{
 		super("Archerie", 50, 15, 40, 1, true, V, 2);
 		this.typesUnits.add(typeUnite.Archer);

@@ -1,6 +1,4 @@
 package Batiment;
-import java.util.Vector;
-
 import joueur.Joueur;
 
 public class BatProdRes extends Batiment
@@ -18,7 +16,7 @@ public class BatProdRes extends Batiment
 	private int prodRessources[] = {10,15,20,30};
 	
 	//*************** Constructeur *******************
-	public BatProdRes(String name,Vector V, typeRessource t)
+	public BatProdRes(String name,int V[], typeRessource t)
 	{	
 		super(name, 50, 0, 20, 0, true, V, 1);
 		this.setRESSOURCE(t);

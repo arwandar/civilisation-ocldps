@@ -1,6 +1,5 @@
 package Batiment;
 import java.util.ArrayList;
-import java.util.Vector;
 
 public abstract class BatProdUnit extends Batiment
 {
@@ -27,7 +26,7 @@ public abstract class BatProdUnit extends Batiment
 	protected ArrayList<typeUnite> typesUnits = new ArrayList<typeUnite>();
 	
 	//*************** Constructeur *******************
-	public BatProdUnit(String name, int p, int a, int d, int c, boolean ioe, Vector V, int prod)
+	public BatProdUnit(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod)
 	{
 		super(name, p, a, d, c, ioe, V, prod);
 	}
