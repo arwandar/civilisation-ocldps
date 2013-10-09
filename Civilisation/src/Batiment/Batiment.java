@@ -83,6 +83,11 @@ public abstract class Batiment
 		return this.position;
 	}
 	
+	public int getPOSITION(int i)
+	{
+		return this.position[i];
+	}
+	
 	//*************** Mutateurs *******************
 	public void setNOM(String n)
 	{
@@ -123,6 +128,11 @@ public abstract class Batiment
 	public void setPOSITION(int P[])
 	{
 		this.position = P;
+	}
+	
+	public void setPOSITION(int P, int i)
+	{
+		this.position[i] = P;
 	}
 }
 
