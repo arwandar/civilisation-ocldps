@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 import Batiment.BatHotelDeVille;
 import Batiment.Batiment;
+import Unites.Personnage;
 
 public class Joueur {
 	private String nom;
 	private int or, nourriture, bois, pierre, fer, os;
 	private ArrayList<Batiment> batiments;
+	private ArrayList<Personnage> personnages;
 	
 	//*******Constructeur
 	
@@ -76,6 +78,14 @@ public class Joueur {
 
 	public void setBatiments(ArrayList<Batiment> b) {
 		this.batiments = b;
+	}
+	
+	public ArrayList<Personnage> getPersonnages() {
+		return this.personnages;
+	}
+
+	public void setPersonnages(ArrayList<Personnage> p) {
+		this.personnages = p;
 	}
 
 	public String getNom() {
