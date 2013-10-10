@@ -6,7 +6,8 @@ import Comportement.CombatArc;
 public class CavalierArcher extends Personnage {
 	public CavalierArcher(Joueur J){
 		
-		super(J);
+		J.getPersonnages().add(this);
+		this.joueur = J;
 		
 		this.attitudeCombative= new CombatArc();
 		this.deplacer = new Cheval();

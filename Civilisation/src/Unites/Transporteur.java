@@ -5,7 +5,8 @@ import Comportement.Bateau;
 public class Transporteur extends Personnage {
 	public Transporteur(Joueur J){
 		
-		super(J);
+		J.getPersonnages().add(this);
+		this.joueur = J;
 		
 		this.deplacer = new Bateau();
 		this.Defense=15;

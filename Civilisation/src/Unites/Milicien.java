@@ -7,7 +7,8 @@ import Comportement.CombatEpee;
 public class Milicien extends Personnage{
 	 public Milicien(Joueur J){
 		 
-		 	super(J);
+		 J.getPersonnages().add(this);
+			this.joueur = J;
 		 
 		    this.attitudeCombative = new CombatEpee();
 		    this.Attaque=8;

@@ -5,7 +5,8 @@ import Comportement.Constructeur;
 public class Peon extends Personnage {
 	public Peon(Joueur J){
 		
-		super(J);
+		J.getPersonnages().add(this);
+		this.joueur = J;
 		
 		this.construire = new Constructeur();
 		this.PV=25;

@@ -6,7 +6,8 @@ import Comportement.CombatArc;
 public class Galere extends Personnage {
 	public Galere(Joueur J){
 		
-		super(J);
+		J.getPersonnages().add(this);
+		this.joueur = J;
 		
 		this.attitudeCombative= new CombatArc();
 		this.deplacer = new Bateau();

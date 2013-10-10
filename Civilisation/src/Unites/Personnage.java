@@ -30,9 +30,8 @@ public abstract class Personnage implements Caracteristiques{
 	  protected Joueur joueur;
 	     
 	  //Constructeur par défaut
-	  public Personnage(Joueur J){
-		  J.getPersonnages().add(this);
-		  this.joueur = J;
+	  public Personnage(){
+		  
 	  }
 	     
 	  //Méthode de déplacement de personnage

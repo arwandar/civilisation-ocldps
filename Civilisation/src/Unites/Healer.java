@@ -6,7 +6,8 @@ import Comportement.Soigneur;
 public class Healer extends Personnage {
 	public Healer(Joueur J){
 		
-		super(J);
+		J.getPersonnages().add(this);
+		this.joueur = J;
 		
 		this.soin= new Soigneur();
 		this.PV=30;

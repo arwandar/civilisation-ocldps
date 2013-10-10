@@ -6,7 +6,8 @@ import Comportement.CombatMagie;
 public class Magicien extends Personnage {
 	public Magicien(Joueur J){
 		
-		super(J);
+		J.getPersonnages().add(this);
+		this.joueur = J;
 		
 		this.attitudeCombative= new CombatMagie();
 		this.Attaque=14;

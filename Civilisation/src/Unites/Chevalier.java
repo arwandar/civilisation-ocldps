@@ -6,7 +6,8 @@ import Comportement.CombatEpee;
 public class Chevalier extends Personnage {
 	public Chevalier(Joueur J){
 		
-		super(J);
+		J.getPersonnages().add(this);
+		this.joueur = J;
 		
 		this.attitudeCombative= new CombatEpee();
 		this.deplacer = new Cheval();

@@ -6,7 +6,8 @@ import Comportement.Roue;
 public class Catapulte extends Personnage {
 	public Catapulte(Joueur J){
 		
-		super(J);
+		J.getPersonnages().add(this);
+		this.joueur = J;
 		
 		this.attitudeCombative= new CombatSiege();
 		this.deplacer = new Roue();
