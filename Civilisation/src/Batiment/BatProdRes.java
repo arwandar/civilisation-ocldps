@@ -10,7 +10,8 @@ public class BatProdRes extends Batiment
 		fer,
 		pierre,
 		bois,
-		nourriture;
+		nourriture,
+		os;
 	}
 	
 	//*************** Variables *******************
@@ -18,10 +19,18 @@ public class BatProdRes extends Batiment
 	private int prodRessources[] = {10,15,20,25,40};
 	
 	//*************** Constructeur *******************
-	public BatProdRes(String name,int V[], typeRessource t, Case M)
+	public BatProdRes(String name,int V[], typeRessource t, Case M, Joueur J)
 	{	
 		super(name, 50, 0, 20, 0, true, V, 1, M);
 		this.setRESSOURCE(t);
+		this.coutOr = 20;
+		this.coutFer = 5;
+		this.coutBois = 10;
+		this.coutPierre = 30;
+		J.setOr(J.getOr() - this.coutOr);
+		J.setFer(J.getFer() - this.coutFer);
+		J.setBois(J.getBois() - this.coutBois);
+		J.setPierre(J.getPierre() - this.coutPierre);
 	}
 	
 	//*************** Accesseurs *******************

@@ -14,6 +14,10 @@ public abstract class Batiment
 	protected int production;
 	protected boolean isOnEarth;
 	protected int[] position = {0,0};
+	protected int coutOr;
+	protected int coutFer;
+	protected int coutPierre;
+	protected int coutBois;
 	
 	//*************** Constructeur *******************
 	public Batiment(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod, Case M) //le vecteur position sera à remplacer par une case
