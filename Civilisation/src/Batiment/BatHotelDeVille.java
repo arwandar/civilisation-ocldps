@@ -1,26 +1,13 @@
 package Batiment;
 
+import civ.Case;
+
 public class BatHotelDeVille extends BatProdUnit
 {
-	//*************** Variable *******************
-	private int production;
-	
 	//*************** Constructeur *******************
-	public BatHotelDeVille(int V[])
+	public BatHotelDeVille(int V[], Case M[][])
 	{
-		super("Hotel de ville", 100, 10, 50, 1, true, V, 5);
+		super("Hotel de ville", 100, 10, 50, 1, true, V, 5, M);
 		this.typesUnits.add(typeUnite.Peon);
-	}
-	
-	//*************** Accesseurs *******************
-	public int getPRODUCTION()
-	{
-		return this.production;
-	}
-	
-	//*************** Mutateurs *******************
-	public void setPRODUCTION(int p)
-	{
-		this.production = p;
 	}
 }

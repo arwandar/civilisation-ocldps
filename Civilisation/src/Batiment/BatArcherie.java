@@ -1,27 +1,14 @@
 package Batiment;
 
+import civ.Case;
+
 public class BatArcherie extends BatProdUnit
 {
-	//*************** Variable *******************
-	private int production;
-	
 	//*************** Constructeur *******************
-	public BatArcherie(int V[])
+	public BatArcherie(int V[], Case M[][])
 	{
-		super("Archerie", 50, 15, 40, 1, true, V, 2);
+		super("Archerie", 50, 15, 40, 1, true, V, 2, M);
 		this.typesUnits.add(typeUnite.Archer);
 		this.typesUnits.add(typeUnite.CavalierArcher);
-	}
-	
-	//*************** Accesseurs *******************
-	public int getPRODUCTION()
-	{
-		return this.production;
-	}
-	
-	//*************** Mutateurs *******************
-	public void setPRODUCTION(int p)
-	{
-		this.production = p;
 	}
 }

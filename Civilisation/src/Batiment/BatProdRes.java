@@ -1,5 +1,6 @@
 package Batiment;
 import joueur.Joueur;
+import civ.Case;
 
 public class BatProdRes extends Batiment
 {
@@ -7,18 +8,19 @@ public class BatProdRes extends Batiment
 	{
 		or,
 		fer,
+		pierre,
 		bois,
 		nourriture;
 	}
 	
 	//*************** Variables *******************
 	private typeRessource typeres;
-	private int prodRessources[] = {10,15,20,30};
+	private int prodRessources[] = {10,15,20,25,40};
 	
 	//*************** Constructeur *******************
-	public BatProdRes(String name,int V[], typeRessource t)
+	public BatProdRes(String name,int V[], typeRessource t, Case M[][])
 	{	
-		super(name, 50, 0, 20, 0, true, V, 1);
+		super(name, 50, 0, 20, 0, true, V, 1, M);
 		this.setRESSOURCE(t);
 	}
 	

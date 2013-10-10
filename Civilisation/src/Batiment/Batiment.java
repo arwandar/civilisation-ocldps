@@ -1,5 +1,7 @@
 package Batiment;
 
+import civ.Case;
+
 public abstract class Batiment
 {
 	//*************** Variables *******************
@@ -13,7 +15,7 @@ public abstract class Batiment
 	protected int[] position = {0,0};
 	
 	//*************** Constructeur *******************
-	public Batiment(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod) //le vecteur position sera à remplacer par une case
+	public Batiment(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod, Case M[][]) //le vecteur position sera à remplacer par une case
 	{
 		/*if( ioe && Case.texture != Texture.eau && Case.texture != Texture.montagne ) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
 		{*/
@@ -25,6 +27,7 @@ public abstract class Batiment
 			this.setIsOnEarth(ioe);
 			this.production = prod;
 			this.setPOSITION(V);
+			M[V[0]][V[1]].setBatimentsurcase(true);
 		/*}
 		else if( !ioe && Case.texture == Texture.eau ) //Si le bâtiment est constructible sur l'eau et que la case est maritime
 		{
@@ -35,6 +38,7 @@ public abstract class Batiment
 			this.setCOEFF(c);
 			this.setIsOnEarth(ioe);
 			this.setPOSITION(V);
+			t[V[0]][V[1]].setBatimentsurcase(true);
 		}
 		else
 		{

@@ -1,26 +1,14 @@
 package Batiment;
 
+import civ.Case;
+
 public class BatAtelierDeSiege extends BatProdUnit
 {
-	//*************** Variable *******************
-	private int production;
 	
 	//*************** Constructeur *******************
-	public BatAtelierDeSiege(int V[])
+	public BatAtelierDeSiege(int V[], Case M[][])
 	{
-		super("atelier de siège", 75, 15, 40, 1, true, V, 3);
+		super("atelier de siège", 75, 15, 40, 1, true, V, 3, M);
 		this.typesUnits.add(typeUnite.Catapulte);
-	}
-	
-	//*************** Accesseurs *******************
-	public int getPRODUCTION()
-	{
-		return this.production;
-	}
-	
-	//*************** Mutateurs *******************
-	public void setPRODUCTION(int p)
-	{
-		this.production = p;
 	}
 }
