@@ -39,8 +39,6 @@ public class PanelPrcpl extends JPanel {
 		
 		int[] v={10,10};
 		
-		BatMur test1 = new BatMur(v);
-		
 		
 		
 		this.add(jsp);
