@@ -1,6 +1,7 @@
 package Batiment;
 
 import civ.Case;
+import civ.Texture;
 
 public abstract class Batiment
 {
@@ -17,8 +18,8 @@ public abstract class Batiment
 	//*************** Constructeur *******************
 	public Batiment(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod, Case M) //le vecteur position sera à remplacer par une case
 	{
-		/*if( ioe && Case.texture != Texture.eau && Case.texture != Texture.montagne ) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
-		{*/
+		if( ioe && M.getTexture() != Texture.eau && M.getTexture() != Texture.montagne ) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
+		{
 			this.setNOM(name);
 			this.setPV(p);
 			this.setATT(a);
@@ -28,8 +29,8 @@ public abstract class Batiment
 			this.production = prod;
 			this.setPOSITION(V);
 			M.setBatimentsurcase(true);
-		/*}
-		else if( !ioe && Case.texture == Texture.eau ) //Si le bâtiment est constructible sur l'eau et que la case est maritime
+		}
+		else if( !ioe && M.getTexture() == Texture.eau ) //Si le bâtiment est constructible sur l'eau et que la case est maritime
 		{
 			this.setNOM(name);
 			this.setPV(p);
@@ -38,12 +39,12 @@ public abstract class Batiment
 			this.setCOEFF(c);
 			this.setIsOnEarth(ioe);
 			this.setPOSITION(V);
-			t[V[0]][V[1]].setBatimentsurcase(true);
+			M.setBatimentsurcase(true);
 		}
 		else
 		{
 			System.out.println("Wrong place to build it!!");
-		}*/
+		}
 	}
 	
 	//*************** Accesseurs *******************
