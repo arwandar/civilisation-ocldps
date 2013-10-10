@@ -10,8 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
 
-import Batiment.BatMur;
-
 public class PanelPrcpl extends JPanel implements ActionListener {
 	/*
 	 * Panel où et affiché la map interactive, les unités... Il contient un gros

@@ -1,9 +1,6 @@
 package civ;
 
-import java.awt.CardLayout;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import joueur.Joueur;
@@ -13,15 +10,13 @@ public class FntPrcpl extends JFrame {
 	 * classe où sera défini la fenetre principale du jeu
 	 */
 
-	JPanel fenetre, barrehaute;
-	JScrollPane jsp;
 	PanelBas barrebasse;
 	PanelPrcpl affichagejeu;
+	PanelResrc barrehaute;
 	int largeur, hauteur;
-	Joueur j1, j2;
 
 	// **********CONSTRUCTEURS
-	protected FntPrcpl() {
+	protected FntPrcpl(Joueur[] lesJoueurs) {
 		largeur = 1500;
 		hauteur = 1000;
 		initParDefaut(largeur, hauteur);
@@ -29,7 +24,7 @@ public class FntPrcpl extends JFrame {
 		this.setLayout(null);
 
 		// init barre haute
-		this.barrehaute = new JPanel();
+		this.barrehaute = new PanelResrc(lesJoueurs);
 		this.barrehaute.setBounds(0, 0, largeur, (10 * hauteur / 100));
 		getContentPane().add(this.barrehaute);
 

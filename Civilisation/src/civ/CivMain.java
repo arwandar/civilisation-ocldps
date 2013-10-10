@@ -12,9 +12,7 @@ public class CivMain {
 		for (int i=0; i<lesJoueurs.length; i++){
 			lesJoueurs[i] = new Joueur();
 		}
-		FntPrcpl tmp = new FntPrcpl();
-
-
+		FntPrcpl tmp = new FntPrcpl(lesJoueurs);
 	}
 
 }
