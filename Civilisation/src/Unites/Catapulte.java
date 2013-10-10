@@ -4,6 +4,7 @@ import Comportement.*;
 public class Catapulte extends Personnage {
 	public Catapulte(){
 		this.attitudeCombative= new CombatSiege();
+		this.deplacer = new Roue();
 		this.Attaque=80;
 		this.Defense=20;
 		this.PV=50;
