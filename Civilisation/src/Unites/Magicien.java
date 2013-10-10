@@ -1,9 +1,13 @@
 package Unites;
-import Comportement.*;
+import joueur.Joueur;
+import Comportement.CombatMagie;
 
 
 public class Magicien extends Personnage {
-	public Magicien(){
+	public Magicien(Joueur J){
+		
+		super(J);
+		
 		this.attitudeCombative= new CombatMagie();
 		this.Attaque=14;
 		this.PV=30;

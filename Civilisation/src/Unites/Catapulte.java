@@ -1,8 +1,13 @@
 package Unites;
-import Comportement.*;
+import joueur.Joueur;
+import Comportement.CombatSiege;
+import Comportement.Roue;
 
 public class Catapulte extends Personnage {
-	public Catapulte(){
+	public Catapulte(Joueur J){
+		
+		super(J);
+		
 		this.attitudeCombative= new CombatSiege();
 		this.deplacer = new Roue();
 		this.Attaque=80;

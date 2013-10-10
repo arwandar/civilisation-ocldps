@@ -1,10 +1,14 @@
 package Unites;
-import Comportement.*;
+import joueur.Joueur;
+import Comportement.CombatEpee;
 
 
 
 public class Milicien extends Personnage{
-	 public Milicien(){
+	 public Milicien(Joueur J){
+		 
+		 	super(J);
+		 
 		    this.attitudeCombative = new CombatEpee();
 		    this.Attaque=8;
 			this.PV=40;

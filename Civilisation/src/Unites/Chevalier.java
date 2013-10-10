@@ -1,8 +1,13 @@
 package Unites;
-import Comportement.*;
+import joueur.Joueur;
+import Comportement.Cheval;
+import Comportement.CombatEpee;
 
 public class Chevalier extends Personnage {
-	public Chevalier(){
+	public Chevalier(Joueur J){
+		
+		super(J);
+		
 		this.attitudeCombative= new CombatEpee();
 		this.deplacer = new Cheval();
 		this.Attaque=14;

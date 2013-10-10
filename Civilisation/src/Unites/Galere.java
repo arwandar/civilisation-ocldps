@@ -1,8 +1,13 @@
 package Unites;
-import Comportement.*;
+import joueur.Joueur;
+import Comportement.Bateau;
+import Comportement.CombatArc;
 
 public class Galere extends Personnage {
-	public Galere(){
+	public Galere(Joueur J){
+		
+		super(J);
+		
 		this.attitudeCombative= new CombatArc();
 		this.deplacer = new Bateau();
 		this.Attaque=12;

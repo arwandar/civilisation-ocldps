@@ -1,5 +1,13 @@
 package Unites;
-import Comportement.*;
+import joueur.Joueur;
+import Comportement.AttitudeCombative;
+import Comportement.Construire;
+import Comportement.Deplacer;
+import Comportement.Marcher;
+import Comportement.NonConstructeur;
+import Comportement.NonSoigneur;
+import Comportement.Pacifiste;
+import Comportement.Soin;
 
 
 
@@ -18,24 +26,13 @@ public abstract class Personnage implements Caracteristiques{
 	  int positionVerticale = Caracteristiques.positionVerticale;
 	  int portee = Caracteristiques.portee;
 	  int mouvement = Caracteristiques.mouvement;
+	  
+	  protected Joueur joueur;
 	     
 	  //Constructeur par défaut
-	  public Personnage(){}
-	     
-	  //Constructeur avec paramètres
-	  public Personnage(AttitudeCombative attitudeCombative, Soin soin, Deplacer deplacer, Construire construire, int Attaque, int Defense, int PV, int tempsProduction, int coutNourriture, int coutOr, int coutBois, int coutFer, int positionHorizontale, int positionVerticale, int portee, int mouvement) {
-	    this.attitudeCombative = attitudeCombative;
-	    this.soin = soin;
-	    this.deplacer = deplacer;
-	    this.construire = construire;
-	    this.setAttaque(Attaque); this.setDefense(Defense); this.setPV(PV);
-	    this.setTempsProduction(tempsProduction);
-	    this.setCoutNourriture(coutNourriture); this.setCoutOr(coutOr); this.setCoutBois(coutBois); this.setCoutFer(coutFer);
-	    this.setPositionHorizontale(positionHorizontale); this.setPositionVerticale(positionVerticale);
-	    this.setPortee(portee);
-	    this.setMouvement(mouvement);
-	    
-	    
+	  public Personnage(Joueur J){
+		  J.getPersonnages().add(this);
+		  this.joueur = J;
 	  }
 	     
 	  //Méthode de déplacement de personnage

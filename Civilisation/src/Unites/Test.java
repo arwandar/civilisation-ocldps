@@ -1,11 +1,15 @@
 package Unites;
 
+import joueur.Joueur;
 import Combat.Fonctions;
 
 public class Test {
 
 	public static void main(String[] args) {
-		Personnage[] tPers = {new Peon(), new Milicien(), new Magicien(), new Healer(), new Archer(), new CavalierArcher(), new Chevalier(), new Galere(), new Transporteur(), new Catapulte()};
+		
+		final Joueur j = new Joueur();
+		
+		Personnage[] tPers = {new Peon(j), new Milicien(j), new Magicien(j), new Healer(j), new Archer(j), new CavalierArcher(j), new Chevalier(j), new Galere(j), new Transporteur(j), new Catapulte(j)};
   		
 		
 	    for(int i = 0; i < tPers.length; i++){
@@ -22,9 +26,9 @@ public class Test {
 	    
 
 	    
-	    Personnage Attaquant = new Archer();
+	    Personnage Attaquant = new Archer(j);
 	    Fonctions.Creation(Attaquant);
-	    Personnage Defenseur = new Milicien();
+	    Personnage Defenseur = new Milicien(j);
 	    Fonctions.Creation(Defenseur);
 	    
 	    Attaquant.setPositionHorizontale(2); Attaquant.setPositionVerticale(2);

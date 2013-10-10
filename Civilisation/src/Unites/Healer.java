@@ -1,9 +1,13 @@
 package Unites;
-import Comportement.*;
+import joueur.Joueur;
+import Comportement.Soigneur;
 
 
 public class Healer extends Personnage {
-	public Healer(){
+	public Healer(Joueur J){
+		
+		super(J);
+		
 		this.soin= new Soigneur();
 		this.PV=30;
 		

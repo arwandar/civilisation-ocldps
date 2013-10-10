@@ -1,8 +1,12 @@
 package Unites;
-import Comportement.*;
+import joueur.Joueur;
+import Comportement.Constructeur;
 
 public class Peon extends Personnage {
-	public Peon(){
+	public Peon(Joueur J){
+		
+		super(J);
+		
 		this.construire = new Constructeur();
 		this.PV=25;
 		
