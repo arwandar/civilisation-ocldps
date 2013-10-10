@@ -9,6 +9,6 @@ import Unites.Personnage;
  */
 public class Pacifiste implements AttitudeCombative{
 	public void combat(Personnage personnage) {
-	    System.out.println("Je ne combats pas !");
+	   // System.out.println("Je ne combats pas !");
 	  }
 }

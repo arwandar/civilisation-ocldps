@@ -8,10 +8,6 @@ public class Fonctions {
 		int decalageHorizontal = Math.abs(Attaquant.getPositionHorizontale() - Defenseur.getPositionHorizontale());
 		int decalageVertical = Math.abs(Attaquant.getPositionVerticale() - Defenseur.getPositionVerticale());
 		
-		System.out.println(decalageHorizontal);
-		System.out.println(decalageVertical);
-		System.out.println(portee);
-		
 		if (decalageHorizontal <= portee && decalageVertical <= portee){			
 			System.out.println("True");
 			return true;
@@ -19,17 +15,12 @@ public class Fonctions {
 		else{			
 			System.out.println("False");
 			return false;
-		}
-			
-		
+		}		
 	}
 	
-	public static void Attaquer(Personnage Attaquant, Personnage Defenseur){
-		System.out.println(Attaquant.Attaque);
-		System.out.println(Defenseur.Defense);
-		int degatsInfliges= Math.round(Attaquant.Attaque * Defenseur.Defense/100)+1;
-		System.out.println(degatsInfliges);
-		Defenseur.PV-= degatsInfliges;
+	public static void Attaquer(Personnage attaquant, Personnage defenseur){
+	
+		defenseur.PV-= attaquant.getAttaque() -  Math.round(attaquant.getAttaque() * defenseur.getDefense());;
 	}
 	
 	public static void Creation(Personnage personnage){

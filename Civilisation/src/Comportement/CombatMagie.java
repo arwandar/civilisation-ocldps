@@ -9,7 +9,7 @@ import Unites.Personnage;
  */
 public class CombatMagie implements AttitudeCombative {
 	public void combat(Personnage personnage) {
-	    System.out.println("Je combats avec des sorts !");
+	    //System.out.println("Je combats avec des sorts !");
 	    personnage.setPortee(3);
 	  }
 

@@ -9,7 +9,7 @@ import Unites.Personnage;
  */
 public class CombatArc implements AttitudeCombative {
 	public void combat(Personnage personnage) {
-	    System.out.println("Je combats à l'arc !");
+	 //   System.out.println("Je combats à l'arc !");
 	    personnage.setPortee(4);
 	  }
 

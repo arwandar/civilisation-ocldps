@@ -3,7 +3,7 @@ package Unites;
 
 public interface Caracteristiques {
 	int Attaque=0;
-	int Defense=10;
+	double Defense=0.1;
 	int PV=10;
 	int tempsProduction=0;
 	int coutNourriture = 0;

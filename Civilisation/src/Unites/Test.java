@@ -19,17 +19,21 @@ public class Test {
 	      System.out.println("Je suis situé en " + tPers[i].getPositionHorizontale() + " ; " + tPers[i].getPositionVerticale() + " et ma portée est de " + tPers[i].getPortee());
 	    } 
 	    
-	    System.out.println(tPers[2].getPV());
-	    Fonctions.Attaquer(tPers[1], tPers[2]);
-	    System.out.println(tPers[2].getPV());
+
 	    
 	    Personnage Attaquant = new Archer();
 	    Fonctions.Creation(Attaquant);
 	    Personnage Defenseur = new Milicien();
 	    Fonctions.Creation(Defenseur);
+	    
 	    Attaquant.setPositionHorizontale(2); Attaquant.setPositionVerticale(2);
 	    Defenseur.setPositionHorizontale(3);Defenseur.setPositionVerticale(4);
+	    
 	    Fonctions.isRange(Attaquant, Defenseur, Attaquant.getPortee());
+	    System.out.println("Les pv du déf avant attaque sont : " + Defenseur.getPV());
+	    Fonctions.Attaquer(Attaquant, Defenseur);
+	    System.out.println("Les pv du déf après attaque sont : " + Defenseur.getPV());
+	    
 	}
 
 }

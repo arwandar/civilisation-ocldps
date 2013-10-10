@@ -9,7 +9,7 @@ import Unites.Personnage;
  */
 public class CombatSiege implements AttitudeCombative {
 	public void combat(Personnage personnage) {
-	    System.out.println("Je combats tel une machine de siège !");
+	  //  System.out.println("Je combats tel une machine de siège !");
 	    personnage.setPortee(6);
 	  }
 
