@@ -10,6 +10,10 @@ public class Case extends JButton {
 	boolean unitesurcase;
 	
 	//GETTERS
+	
+	public Texture getTexture() {
+		return texture;
+	}
 
 	public boolean isBatimentsurcase() {
 		return batimentsurcase;
