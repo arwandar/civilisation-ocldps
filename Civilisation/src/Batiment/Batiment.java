@@ -1,5 +1,6 @@
 package Batiment;
 
+import joueur.Joueur;
 import civ.Case;
 import civ.Texture;
 
@@ -18,9 +19,10 @@ public abstract class Batiment
 	protected int coutFer;
 	protected int coutPierre;
 	protected int coutBois;
+	protected Joueur joueur;
 	
 	//*************** Constructeur *******************
-	public Batiment(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod, Case M) //le vecteur position sera à remplacer par une case
+	public Batiment(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod, Case M, Joueur J) //le vecteur position sera à remplacer par une case
 	{
 		if( ioe && M.getTexture() != Texture.eau && M.getTexture() != Texture.montagne ) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
 		{
@@ -33,6 +35,8 @@ public abstract class Batiment
 			this.production = prod;
 			this.setPOSITION(V);
 			M.setBatimentsurcase(true);
+			J.getBatiments().add(this);
+			this.joueur = J;
 		}
 		else if( !ioe && M.getTexture() == Texture.eau ) //Si le bâtiment est constructible sur l'eau et que la case est maritime
 		{
@@ -44,6 +48,8 @@ public abstract class Batiment
 			this.setIsOnEarth(ioe);
 			this.setPOSITION(V);
 			M.setBatimentsurcase(true);
+			J.getBatiments().add(this);
+			this.joueur = J;
 		}
 		else
 		{

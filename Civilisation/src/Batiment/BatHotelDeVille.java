@@ -8,7 +8,7 @@ public class BatHotelDeVille extends BatProdUnit
 	//*************** Constructeur *******************
 	public BatHotelDeVille(int V[], Case M, Joueur J)
 	{
-		super("Hotel de ville", 100, 10, 50, 1, true, V, 5, M);
+		super("Hotel de ville", 100, 10, 50, 1, true, V, 5, M, J);
 		this.typesUnits.add(typeUnite.Peon);
 		this.coutOr = 200;
 		this.coutFer = 150;

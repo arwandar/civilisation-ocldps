@@ -21,7 +21,7 @@ public class BatProdRes extends Batiment
 	//*************** Constructeur *******************
 	public BatProdRes(String name,int V[], typeRessource t, Case M, Joueur J)
 	{	
-		super(name, 50, 0, 20, 0, true, V, 1, M);
+		super(name, 50, 0, 20, 0, true, V, 1, M, J);
 		this.setRESSOURCE(t);
 		this.coutOr = 20;
 		this.coutFer = 5;
