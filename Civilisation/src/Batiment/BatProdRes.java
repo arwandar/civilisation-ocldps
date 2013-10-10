@@ -18,7 +18,7 @@ public class BatProdRes extends Batiment
 	private int prodRessources[] = {10,15,20,25,40};
 	
 	//*************** Constructeur *******************
-	public BatProdRes(String name,int V[], typeRessource t, Case M[][])
+	public BatProdRes(String name,int V[], typeRessource t, Case M)
 	{	
 		super(name, 50, 0, 20, 0, true, V, 1, M);
 		this.setRESSOURCE(t);
@@ -63,6 +63,8 @@ public class BatProdRes extends Batiment
 		case bois: j.setBois(j.getBois() + this.prodRessources[2]);
 			break;
 		case nourriture: j.setNourriture(j.getNourriture() + this.prodRessources[3]);
+			break;
+		default:
 			break;
 		}
 	}
