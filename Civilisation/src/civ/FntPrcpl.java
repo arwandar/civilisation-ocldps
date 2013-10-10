@@ -53,7 +53,6 @@ public class FntPrcpl extends JFrame {
 		// init barre basse
 		this.barrebasse = new PanelBas(this.hauteur, this.largeur, this);
 		getContentPane().add(this.barrebasse);
-		System.out.println("bouh");
 
 		this.setVisible(true);
 

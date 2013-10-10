@@ -7,7 +7,7 @@ public class CivMain {
 		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
 		// supprimer la ligne suivante pour desactiver l'affichage
 		FntPrcpl tmp = new FntPrcpl();
-		
+
 	}
 
 }

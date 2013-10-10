@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
 
+import Batiment.BatMur;
+
 public class PanelPrcpl extends JPanel {
 	/*
 	 * Panel où et affiché la map interactive, les unités... Il contient un gros
@@ -34,6 +36,13 @@ public class PanelPrcpl extends JPanel {
 
 		this.jsp = new JScrollPane(this.conteneur);
 		this.jsp.setPreferredSize(new Dimension(largeur, hauteur - (40 * hauteur / 100)));
+		
+		int[] v={10,10};
+		
+		BatMur test1 = new BatMur(v);
+		
+		
+		
 		this.add(jsp);
 	}
 
