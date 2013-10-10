@@ -36,11 +36,7 @@ public class PanelPrcpl extends JPanel {
 
 		this.jsp = new JScrollPane(this.conteneur);
 		this.jsp.setPreferredSize(new Dimension(largeur, hauteur - (40 * hauteur / 100)));
-		
-		int[] v={10,10};
-		
-		
-		
+				
 		this.add(jsp);
 	}
 

@@ -44,7 +44,7 @@ public class FntPrcpl extends JFrame {
 		this.barrehaute.add(this.barrehautej2, listContent[1]);
 
 		// init big map
-		this.affichagejeu = new PanelPrcpl(this.largeur, this.hauteur, this);
+		this.affichagejeu = new PanelPrcpl(this.largeur, this.hauteur);
 		this.affichagejeu.setBounds(0, (10 * hauteur / 100), largeur, hauteur - (40 * hauteur / 100));
 		getContentPane().add(this.affichagejeu);
 

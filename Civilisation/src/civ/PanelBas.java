@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class PanelBas extends JPanel {
 	/*
@@ -17,6 +18,7 @@ public class PanelBas extends JPanel {
 	private FntPrcpl saFenetre;
 	private JButton[][] map;
 	private int mapLargeur, mapHauteur;
+	JTextArea infoText;
 
 	// **********CONSTRUCTEURS
 	public PanelBas(int hauteur, int largeur, FntPrcpl bouh) {
@@ -31,7 +33,8 @@ public class PanelBas extends JPanel {
 		// init panelinfo
 		this.panelInfo = new JPanel();
 		this.panelInfo.setBounds(0, this.getWidth() * 4 / 5, this.getWidth() / 5, this.getHeight());
-		
+		this.infoText = new JTextArea();
+		this.panelInfo.add(this.infoText);
 		this.add(this.panelInfo);
 
 		// init panelactionpossibles
@@ -106,8 +109,14 @@ public class PanelBas extends JPanel {
 			}
 		}
 	}
-
+	
 	public void updatePanelInfo(Case bouh){
-		
+		this.infoText.append("case "+bouh.texture.toString());
+		if (bouh.batimentsurcase){
+			this.infoText.append("il y a un batiment à Batman sur la case");
+		}
+		else if (bouh.unitesurcase){
+			this.infoText.append("il y a une unité sur la case");
+		}
 	}
 }
