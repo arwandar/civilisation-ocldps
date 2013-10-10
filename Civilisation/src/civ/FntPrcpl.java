@@ -15,7 +15,6 @@ public class FntPrcpl extends JFrame {
 
 	JPanel fenetre, barrehaute;
 	JScrollPane jsp;
-	PanelResrc barrehautej1, barrehautej2;
 	PanelBas barrebasse;
 	PanelPrcpl affichagejeu;
 	int largeur, hauteur;
@@ -29,19 +28,10 @@ public class FntPrcpl extends JFrame {
 
 		this.setLayout(null);
 
-		final CardLayout cl = new CardLayout();
-		final String[] listContent = { "player1", "player2" };
-
 		// init barre haute
 		this.barrehaute = new JPanel();
 		this.barrehaute.setBounds(0, 0, largeur, (10 * hauteur / 100));
-		this.barrehaute.setLayout(cl);
 		getContentPane().add(this.barrehaute);
-
-		this.barrehautej1 = new PanelResrc(j1);
-		this.barrehaute.add(this.barrehautej1, listContent[0]);
-		this.barrehautej2 = new PanelResrc(j1);
-		this.barrehaute.add(this.barrehautej2, listContent[1]);
 
 		// init big map
 		this.affichagejeu = new PanelPrcpl(this.largeur, this.hauteur, this);

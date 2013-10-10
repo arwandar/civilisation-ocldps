@@ -44,11 +44,6 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 		this.jsp = new JScrollPane(this.conteneur);
 		this.jsp.setPreferredSize(new Dimension(largeur, hauteur - (40 * hauteur / 100)));
 
-		int[] v = { 10, 10 };
-
-		BatMur test1 = new BatMur(v, this.carte[10][10]);
-		updateCarte();
-
 		this.add(jsp);
 	}
 
@@ -132,8 +127,10 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 		boolean caseTrouvee = false;
 		for (int i = 0; i < this.nbrCaseHauteur && caseTrouvee == false; i++) {
 			for (int j = 0; j < this.nbrCaseLarge && caseTrouvee == false; j++) {
-				caseTrouvee = true;
-				this.saFenetre.barrebasse.updatePanelInfo(this.carte[i][j]);
+				if (this.carte[i][j] == e.getSource()) {
+					caseTrouvee = true;
+					this.saFenetre.barrebasse.updatePanelInfo(this.carte[i][j]);
+				}
 			}
 		}
 	}
