@@ -1,7 +1,6 @@
 package civ;
 
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 
 import joueur.Joueur;
 
@@ -37,7 +36,6 @@ public class FntPrcpl extends JFrame {
 		this.barrebasse = new PanelBas(this.hauteur, this.largeur, this);
 		getContentPane().add(this.barrebasse);
 
-		
 		this.setVisible(true);
 
 	}
