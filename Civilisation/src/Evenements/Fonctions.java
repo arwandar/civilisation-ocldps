@@ -1,4 +1,4 @@
-package Combat;
+package Evenements;
 
 import Unites.Personnage;
 
@@ -30,6 +30,15 @@ public class Fonctions {
 		 personnage.seDeplacer();
 		 personnage.soigner();
 		 personnage.batir();
+	}
+	
+	public static void Itineraire (Personnage personnage){
+		int deplacementRestant = personnage.getMouvement();
+		boolean deplacementFini = false;
+		
+		while (deplacementRestant > 0 && !deplacementFini){
+			
+		}
 	}
 	
 }

@@ -1,7 +1,7 @@
 package Unites;
 
 import joueur.Joueur;
-import Combat.Fonctions;
+import Evenements.Fonctions;
 
 public class Test {
 
