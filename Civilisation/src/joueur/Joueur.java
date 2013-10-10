@@ -4,7 +4,7 @@ import Batiment.BatHotelDeVille;
 
 public class Joueur {
 	private String nom;
-	private int or, nourriture, bois;
+	private int or, nourriture, bois, pierre, fer, os;
 	
 	//*******Constructeur
 	
@@ -13,6 +13,9 @@ public class Joueur {
 		this.or = 100;
 		this.nourriture = 100;
 		this.bois = 100;
+		this.pierre = 100;
+		this.fer = 100;
+		this.os = 0;
 	}
 	 //******Mutateur
 	public int getOr() {
