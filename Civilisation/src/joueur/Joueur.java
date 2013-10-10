@@ -1,10 +1,14 @@
 package joueur;
 
+import java.util.ArrayList;
+
 import Batiment.BatHotelDeVille;
+import Batiment.Batiment;
 
 public class Joueur {
 	private String nom;
 	private int or, nourriture, bois, pierre, fer, os;
+	private ArrayList<Batiment> batiments;
 	
 	//*******Constructeur
 	
@@ -64,6 +68,14 @@ public class Joueur {
 
 	public void setOs(int os) {
 		this.os = os;
+	}
+	
+	public ArrayList<Batiment> getBatiments() {
+		return this.batiments;
+	}
+
+	public void setBatiments(ArrayList<Batiment> b) {
+		this.batiments = b;
 	}
 
 	public String getNom() {
