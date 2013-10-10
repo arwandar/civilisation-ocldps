@@ -14,7 +14,7 @@ public class PanelBas extends JPanel {
 	 */
 
 	// **********VARIABLES
-	private JPanel panelMap, panelInfo, panelActionsPossibles;
+	private JPanel panelMap, panelActionsPossibles;
 	private FntPrcpl saFenetre;
 	private JButton[][] map;
 	private int mapLargeur, mapHauteur;
@@ -30,12 +30,10 @@ public class PanelBas extends JPanel {
 		creerMap();
 		this.add(this.panelMap);
 
-		// init panelinfo
-		this.panelInfo = new JPanel();
-		this.panelInfo.setBounds(0, this.getWidth() * 4 / 5, this.getWidth() / 5, this.getHeight());
+		// init la jtext d'info
 		this.infoText = new JTextArea();
-		this.panelInfo.add(this.infoText);
-		this.add(this.panelInfo);
+		this.infoText.setBounds(this.getWidth() * 4 / 5, 0, this.getWidth() / 5, this.getHeight());
+		this.add(this.infoText);
 
 		// init panelactionpossibles
 		this.panelActionsPossibles = new JPanel();
@@ -109,13 +107,12 @@ public class PanelBas extends JPanel {
 			}
 		}
 	}
-	
-	public void updatePanelInfo(Case bouh){
-		this.infoText.append("case "+bouh.texture.toString());
-		if (bouh.batimentsurcase){
+
+	public void updatePanelInfo(Case bouh) {
+		this.infoText.setText("case " + bouh.texture.toString());
+		if (bouh.batimentsurcase) {
 			this.infoText.append("il y a un batiment à Batman sur la case");
-		}
-		else if (bouh.unitesurcase){
+		} else if (bouh.unitesurcase) {
 			this.infoText.append("il y a une unité sur la case");
 		}
 	}

@@ -44,7 +44,7 @@ public class FntPrcpl extends JFrame {
 		this.barrehaute.add(this.barrehautej2, listContent[1]);
 
 		// init big map
-		this.affichagejeu = new PanelPrcpl(this.largeur, this.hauteur);
+		this.affichagejeu = new PanelPrcpl(this.largeur, this.hauteur, this);
 		this.affichagejeu.setBounds(0, (10 * hauteur / 100), largeur, hauteur - (40 * hauteur / 100));
 		getContentPane().add(this.affichagejeu);
 
@@ -52,9 +52,6 @@ public class FntPrcpl extends JFrame {
 		this.barrebasse = new PanelBas(this.hauteur, this.largeur, this);
 		getContentPane().add(this.barrebasse);
 
-		int[] v={10,10};
-		
-		//BatMur test1 = new BatMur(v);
 		
 		this.setVisible(true);
 

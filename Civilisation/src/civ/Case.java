@@ -79,6 +79,33 @@ public class Case extends JButton {
 			this.setBackground(Color.pink);
 		}
 	}
+	
+	public void setBackground(){
+		switch (this.texture) {
+			// eau, sable, montagne, foret, terre, nondefini
+				case eau:
+					this.setBackground(Color.blue);
+					break;
+				case sable:
+					this.setBackground(Color.yellow);
+					break;
+				case montagne:
+					this.setBackground(Color.gray);
+					break;
+				case foret:
+					this.setBackground(Color.green);
+					break;
+				case terre:
+					this.setBackground(new Color(121, 64, 0));
+					break;
+				case nondefini:
+					this.setBackground(Color.white);
+					break;
+			}
+			if (this.batimentsurcase || this.unitesurcase){
+				this.setBackground(Color.pink);
+			}
+	}
 
 	private void caseAleatoire() {
 		java.util.Random rand = new java.util.Random();
