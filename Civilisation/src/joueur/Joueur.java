@@ -41,6 +41,30 @@ public class Joueur {
 	public void setBois(int bois) {
 		this.bois = bois;
 	}
+	
+	public int getPierre() {
+		return pierre;
+	}
+
+	public void setPierre(int pierre) {
+		this.pierre = pierre;
+	}
+	
+	public int getFer() {
+		return fer;
+	}
+
+	public void setFer(int fer) {
+		this.fer = fer;
+	}
+	
+	public int getOs() {
+		return os;
+	}
+
+	public void setOs(int os) {
+		this.os = os;
+	}
 
 	public String getNom() {
 		return nom;
