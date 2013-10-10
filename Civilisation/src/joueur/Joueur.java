@@ -22,6 +22,7 @@ public class Joueur {
 		this.pierre = 100;
 		this.fer = 100;
 		this.os = 0;
+		this.personnages = new ArrayList<Personnage>();
 	}
 	 //******Mutateur
 	public int getOr() {
