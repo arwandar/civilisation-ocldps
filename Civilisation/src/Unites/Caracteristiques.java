@@ -12,5 +12,6 @@ public interface Caracteristiques {
 	int coutFer = 0;
 	int positionHorizontale = 0; int positionVerticale = 0;
 	int portee = 1;
+	int mouvement = 0 ;
 
 }

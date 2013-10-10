@@ -19,8 +19,10 @@ public class Fonctions {
 	}
 	
 	public static void Attaquer(Personnage attaquant, Personnage defenseur){
-	
-		defenseur.PV-= attaquant.getAttaque() -  Math.round(attaquant.getAttaque() * defenseur.getDefense());;
+		defenseur.PV-= attaquant.getAttaque() -  Math.round(attaquant.getAttaque() * defenseur.getDefense());
+	}
+	public static void AttaquerMagie(Personnage attaquant, Personnage defenseur){
+		defenseur.PV-= attaquant.getAttaque() ;
 	}
 	
 	public static void Creation(Personnage personnage){

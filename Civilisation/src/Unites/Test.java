@@ -17,6 +17,7 @@ public class Test {
 	      System.out.println("Mes PV valent " + tPers[i].getPV());
 	      System.out.println("Je mets " + tPers[i].getTempsProduction() + " tours et coûte " + tPers[i].getCoutNourriture() + " n, " + tPers[i].getCoutOr() + " o, " + tPers[i].getCoutBois() + " b, " + tPers[i].getCoutFer() + " f");
 	      System.out.println("Je suis situé en " + tPers[i].getPositionHorizontale() + " ; " + tPers[i].getPositionVerticale() + " et ma portée est de " + tPers[i].getPortee());
+	      System.out.println("Je me déplace de " + tPers[i].getMouvement());
 	    } 
 	    
 

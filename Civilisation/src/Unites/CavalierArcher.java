@@ -4,7 +4,7 @@ import Comportement.*;
 public class CavalierArcher extends Personnage {
 	public CavalierArcher(){
 		this.attitudeCombative= new CombatArc();
-		this.deplacement = new Cheval();
+		this.deplacer = new Cheval();
 		this.Attaque=12;
 		this.Defense=20;
 		this.PV=50;

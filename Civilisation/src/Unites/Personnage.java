@@ -9,30 +9,31 @@ public abstract class Personnage implements Caracteristiques{
 	  protected AttitudeCombative attitudeCombative = new Pacifiste();
 	  protected Construire construire = new NonConstructeur();
 	  protected Soin soin = new NonSoigneur();
-	  protected Deplacement deplacement = new Marcher(); 
+	  protected Deplacer deplacer = new Marcher(); 
 	  
 	  public int Attaque=Caracteristiques.Attaque; public double Defense=Caracteristiques.Defense; public int PV=Caracteristiques.PV;
 	  int tempsProduction=Caracteristiques.tempsProduction;
 	  int coutNourriture = Caracteristiques.coutNourriture; int coutOr = Caracteristiques.coutOr; int coutBois = Caracteristiques.coutBois; int coutFer = Caracteristiques.coutFer;
 	  int positionHorizontale = Caracteristiques.positionHorizontale;
 	  int positionVerticale = Caracteristiques.positionVerticale;
-	  private int portee = Caracteristiques.portee;
+	  int portee = Caracteristiques.portee;
+	  int mouvement = Caracteristiques.mouvement;
 	     
 	  //Constructeur par défaut
 	  public Personnage(){}
 	     
 	  //Constructeur avec paramètres
-	  public Personnage(AttitudeCombative attitudeCombative, Soin soin, Deplacement deplacement, Construire construire, int Attaque, int Defense, int PV, int tempsProduction, int coutNourriture, int coutOr, int coutBois, int coutFer, int positionHorizontale, int positionVerticale, int portee) {
+	  public Personnage(AttitudeCombative attitudeCombative, Soin soin, Deplacer deplacer, Construire construire, int Attaque, int Defense, int PV, int tempsProduction, int coutNourriture, int coutOr, int coutBois, int coutFer, int positionHorizontale, int positionVerticale, int portee, int mouvement) {
 	    this.attitudeCombative = attitudeCombative;
 	    this.soin = soin;
-	    this.deplacement = deplacement;
+	    this.deplacer = deplacer;
 	    this.construire = construire;
-	    this.Attaque=Attaque; this.Defense=Defense; this.PV=PV;
-	    this.tempsProduction=tempsProduction;
-	    this.coutNourriture=coutNourriture; this.coutOr=coutOr; this.coutBois=coutBois; this.coutFer=coutFer;
-	    this.positionHorizontale=positionHorizontale;
-	    this.positionVerticale=positionVerticale;
+	    this.setAttaque(Attaque); this.setDefense(Defense); this.setPV(PV);
+	    this.setTempsProduction(tempsProduction);
+	    this.setCoutNourriture(coutNourriture); this.setCoutOr(coutOr); this.setCoutBois(coutBois); this.setCoutFer(coutFer);
+	    this.setPositionHorizontale(positionHorizontale); this.setPositionVerticale(positionVerticale);
 	    this.setPortee(portee);
+	    this.setMouvement(mouvement);
 	    
 	    
 	  }
@@ -40,7 +41,7 @@ public abstract class Personnage implements Caracteristiques{
 	  //Méthode de déplacement de personnage
 	  public void seDeplacer(){
 	    //On utilise les objets de déplacement de façon polymorphe
-	    deplacement.deplacer();
+	    deplacer.deplacer(this);
 	  }
 	  
 	//Méthode de construction de personnage
@@ -92,8 +93,8 @@ public abstract class Personnage implements Caracteristiques{
 	  }
 	 
 	  //Redéfinit le comportement de déplacement
-	  public void setDeplacement(Deplacement deplacement) {
-	    this.deplacement = deplacement;
+	  public void setDeplacement(Deplacer deplacer) {
+	    this.deplacer = deplacer;
 	  }
 	  
 
@@ -175,5 +176,13 @@ public abstract class Personnage implements Caracteristiques{
 
 	public void setPositionVerticale(int positionVerticale) {
 		this.positionVerticale = positionVerticale;
+	}
+
+	public int getMouvement() {
+		return mouvement;
+	}
+
+	public void setMouvement(int mouvement) {
+		this.mouvement = mouvement;
 	} 
 }
