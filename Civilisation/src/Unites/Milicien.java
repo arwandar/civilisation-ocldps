@@ -1,5 +1,6 @@
 package Unites;
 import joueur.Joueur;
+import Batiment.BatProdUnit.typeUnite;
 import Comportement.CombatEpee;
 
 
@@ -17,6 +18,10 @@ public class Milicien extends Personnage{
 			this.tempsProduction=1;
 			this.coutNourriture=60;
 			this.coutOr=20;
+			J.setOr(J.getOr() - this.coutOr);
+			J.setOr(J.getOr() - this.coutNourriture);
+			
+			this.t = typeUnite.Milicien;
 		  }
 
 

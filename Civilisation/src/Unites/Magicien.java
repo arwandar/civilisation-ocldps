@@ -1,5 +1,6 @@
 package Unites;
 import joueur.Joueur;
+import Batiment.BatProdUnit.typeUnite;
 import Comportement.CombatMagie;
 
 
@@ -16,5 +17,9 @@ public class Magicien extends Personnage {
 		this.tempsProduction=2;
 		this.coutNourriture=50;
 		this.coutOr=40;
+		J.setOr(J.getOr() - this.coutOr);
+		J.setOr(J.getOr() - this.coutNourriture);
+		
+		this.t = typeUnite.Magicien;
 	}
 }

@@ -1,5 +1,6 @@
 package Unites;
 import joueur.Joueur;
+import Batiment.BatProdUnit.typeUnite;
 import Comportement.Bateau;
 import Comportement.CombatArc;
 
@@ -18,5 +19,9 @@ public class Galere extends Personnage {
 		this.tempsProduction=3;
 		this.coutOr=30;
 		this.coutBois=90;
+		J.setOr(J.getOr() - this.coutOr);
+		J.setOr(J.getOr() - this.coutBois);
+		
+		this.t = typeUnite.Galere;
 	}
 }

@@ -1,5 +1,6 @@
 package Unites;
 import joueur.Joueur;
+import Batiment.BatProdUnit.typeUnite;
 import Comportement.Constructeur;
 
 public class Peon extends Personnage {
@@ -13,5 +14,8 @@ public class Peon extends Personnage {
 		
 		this.tempsProduction=1;
 		this.coutNourriture=50;
+		J.setOr(J.getOr() - this.coutNourriture);
+		
+		this.t = typeUnite.Peon;
 	}
 }

@@ -1,5 +1,6 @@
 package Unites;
 import joueur.Joueur;
+import Batiment.BatProdUnit.typeUnite;
 import Comportement.Cheval;
 import Comportement.CombatArc;
 
@@ -18,6 +19,9 @@ public class CavalierArcher extends Personnage {
 		this.tempsProduction=2;
 		this.coutOr=70;
 		this.coutBois=40;
+		J.setOr(J.getOr() - this.coutOr);
+		J.setOr(J.getOr() - this.coutBois);
 		
+		this.t = typeUnite.CavalierArcher;
 	}
 }

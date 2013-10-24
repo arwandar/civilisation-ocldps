@@ -1,5 +1,6 @@
 package Unites;
 import joueur.Joueur;
+import Batiment.BatProdUnit.typeUnite;
 import Comportement.CombatSiege;
 import Comportement.Roue;
 
@@ -18,6 +19,10 @@ public class Catapulte extends Personnage {
 		this.tempsProduction=3;
 		this.coutOr=135;
 		this.coutBois=160;
+		J.setOr(J.getOr() - this.coutOr);
+		J.setOr(J.getOr() - this.coutBois);
+		
+		this.t = typeUnite.Catapulte;
 	}
 	/*public Catapulte(AttitudeCombative esprit, Soin soin, Deplacement dep, Construire cons, int att, int def, int pv, int tProd, int cN, int cO, int cB, int cF, int posH, int posV, int portee) {
 	    super(esprit, soin, dep, cons, att, def, pv, tProd, cN, cO, cB, cF, posH, posV, portee);

@@ -1,5 +1,6 @@
 package Unites;
 import joueur.Joueur;
+import Batiment.BatProdUnit.typeUnite;
 import Comportement.Bateau;
 
 public class Transporteur extends Personnage {
@@ -14,5 +15,8 @@ public class Transporteur extends Personnage {
 		
 		this.tempsProduction=3;
 		this.coutBois=125;
+		J.setOr(J.getOr() - this.coutBois);
+		
+		this.t = typeUnite.Transporteur;
 	}
 }
