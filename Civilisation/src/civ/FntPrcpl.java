@@ -22,11 +22,8 @@ public class FntPrcpl extends JFrame {
 		initParDefaut(largeur, hauteur);
 
 		this.setLayout(null);
-		
-		this.lesJoueurs = new Joueur[lesJoueurs.length];
-		for (int i =0; i< lesJoueurs.length; i++){
-			this.lesJoueurs[i]= lesJoueurs[i];
-		}
+
+		this.lesJoueurs = lesJoueurs;
 
 		// init barre haute
 		this.barrehaute = new PanelResrc(lesJoueurs, this);
@@ -43,7 +40,6 @@ public class FntPrcpl extends JFrame {
 		getContentPane().add(this.barrebasse);
 
 		this.setVisible(true);
-
 	}
 
 	// **********MUTATEURS
@@ -56,8 +52,8 @@ public class FntPrcpl extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 	}
-	
-	protected void updateAffichage(){
+
+	protected void updateAffichage() {
 		this.affichagejeu.updateCarte();
 		this.barrebasse.updateMap();
 		this.barrehaute.updateAffichageRessource();

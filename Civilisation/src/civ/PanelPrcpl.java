@@ -1,12 +1,9 @@
 package civ;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
-
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -43,13 +40,26 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 		this.conteneur.setPreferredSize(new Dimension(nbrCaseLarge * 30, nbrCaseHauteur * 30));
 
 		genererCarte();
-		
+		updateCarte();
+
 		this.setBounds(0, 50, largeur, hauteur - 50 - (30 * hauteur / 100));
 
 		this.jsp = new JScrollPane(this.conteneur);
 		this.jsp.setPreferredSize(new Dimension(this.getWidth(), getHeight()));
 
 		this.add(jsp);
+	}
+	
+	public PanelPrcpl(){
+		//instanciation simplifiée pour utilisation du getCarte
+		this.nbrCaseHauteur = 30;
+		this.nbrCaseLarge = 60;
+		this.numPlan = 1; 
+		this.carte = new Case[nbrCaseHauteur][nbrCaseLarge];
+		
+		this.conteneur = new JPanel();
+		genererCarte();
+		updateCarte();
 	}
 
 	// **********MUTATEURS
@@ -126,11 +136,11 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 				this.carte[i][j].setBackground();
 			}
 		}
-		for (int k=0; k<this.saFenetre.lesJoueurs.length; k++){
-			for (Batiment bat : this.saFenetre.lesJoueurs[k].getBatiments()){
+		for (int k = 0; k < this.saFenetre.lesJoueurs.length; k++) {
+			for (Batiment bat : this.saFenetre.lesJoueurs[k].getBatiments()) {
 				this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
 			}
-			for (Personnage perso : this.saFenetre.lesJoueurs[k].getPersonnages()){
+			for (Personnage perso : this.saFenetre.lesJoueurs[k].getPersonnages()) {
 				this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
 			}
 		}

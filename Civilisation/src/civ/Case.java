@@ -5,9 +5,9 @@ import java.awt.Color;
 import javax.swing.JButton;
 
 public class Case extends JButton {
-	Texture texture;
-	boolean batimentsurcase;
-	boolean unitesurcase;
+	private Texture texture;
+	private boolean batimentsurcase;
+	private boolean unitesurcase;
 
 	// GETTERS
 
@@ -75,9 +75,6 @@ public class Case extends JButton {
 				this.setBackground(Color.white);
 				break;
 		}
-		if (this.batimentsurcase || this.unitesurcase) {
-			this.setBackground(Color.pink);
-		}
 	}
 
 	public void setBackground() {
@@ -102,9 +99,6 @@ public class Case extends JButton {
 				this.setBackground(Color.white);
 				break;
 		}
-		if (this.batimentsurcase || this.unitesurcase) {
-			this.setBackground(Color.pink);
-		}
 	}
 
 	private void caseAleatoire() {
@@ -112,6 +106,4 @@ public class Case extends JButton {
 		Texture[] enumText = Texture.values();
 		this.texture = enumText[rand.nextInt(enumText.length)];
 	}
-
-
 }

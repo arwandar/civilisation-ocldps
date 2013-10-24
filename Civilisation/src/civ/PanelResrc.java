@@ -48,7 +48,7 @@ public class PanelResrc extends JPanel implements ActionListener {
 		this.finDeTour = new JButton("fin de tour");
 		this.finDeTour.addActionListener(this);
 		this.add(this.finDeTour);
-		
+
 		updateAffichageRessource();
 	}
 
@@ -72,6 +72,6 @@ public class PanelResrc extends JPanel implements ActionListener {
 			this.indice = 0;
 		}
 		this.saFenetre.updateAffichage();
-		
+
 	}
 }
