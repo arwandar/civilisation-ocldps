@@ -1,7 +1,6 @@
 package Batiment;
 import java.util.ArrayList;
 
-import joueur.Joueur;
 import civ.Case;
 
 public abstract class BatProdUnit extends Batiment
