@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -49,14 +52,14 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 
 		this.add(jsp);
 	}
-	
-	public PanelPrcpl(){
-		//instanciation simplifiée pour utilisation du getCarte
+
+	public PanelPrcpl() {
+		// instanciation simplifiée pour utilisation du getCarte
 		this.nbrCaseHauteur = 30;
 		this.nbrCaseLarge = 60;
-		this.numPlan = 1; 
+		this.numPlan = 1;
 		this.carte = new Case[nbrCaseHauteur][nbrCaseLarge];
-		
+
 		this.conteneur = new JPanel();
 		genererCarte();
 		updateCarte();
@@ -136,15 +139,27 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 				this.carte[i][j].setBackground();
 			}
 		}
-	/*	for (int k = 0; k < this.saFenetre.lesJoueurs.length; k++) {
+		for (int k = 0; k < this.saFenetre.lesJoueurs.length; k++) {
 			System.out.println(k);
-			for (Batiment bat : this.saFenetre.lesJoueurs[k].getBatiments()) {
-				this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
+			ArrayList<Batiment> batiments = this.saFenetre.lesJoueurs[k].getBatiments();
+			ArrayList<Personnage> personnages = this.saFenetre.lesJoueurs[k].getPersonnages();
+			System.out.println("je passe ici sans bugué");
+			if (!batiments.isEmpty()) {
+				Iterator<Batiment> itbat = batiments.iterator();
+				while (itbat.hasNext()) {
+					Batiment bat = itbat.next();
+					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
+				}
 			}
-			for (Personnage perso : this.saFenetre.lesJoueurs[k].getPersonnages()) {
-				this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
+			if (!personnages.isEmpty()) {
+				Iterator<Personnage> itperso = personnages.iterator();
+				while (itperso.hasNext()) {
+					Personnage perso = itperso.next();
+					this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setBackground(this.saFenetre.lesJoueurs[k]
+							.getSaCouleur());
+				}
 			}
-		}*/
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {

@@ -24,6 +24,7 @@ public class Joueur {
 		this.pierre = 100;
 		this.fer = 100;
 		this.os = 0;
+		this.batiments = new ArrayList<Batiment>();
 		this.personnages = new ArrayList<Personnage>();
 		this.saCouleur = couleur;
 	}
