@@ -1,4 +1,5 @@
 package Unites;
+import civ.Case;
 import joueur.Joueur;
 import Batiment.BatProdUnit.typeUnite;
 import Comportement.Bateau;
@@ -23,5 +24,15 @@ public class Galere extends Personnage {
 		J.setOr(J.getOr() - this.coutBois);
 		
 		this.t = typeUnite.Galere;
+	}
+	
+	//*************** Méthodes *******************
+	public void destructionUnite(Case M, Joueur J)
+	{
+		if(this.PV <= 0)
+		{
+			J.getPersonnages().remove(this);
+			M.setUnitesurcase(false);// à remplacer par libérer case
+		}
 	}
 }

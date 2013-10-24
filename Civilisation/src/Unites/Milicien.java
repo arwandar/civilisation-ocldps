@@ -1,4 +1,5 @@
 package Unites;
+import civ.Case;
 import joueur.Joueur;
 import Batiment.BatProdUnit.typeUnite;
 import Comportement.CombatEpee;
@@ -24,5 +25,14 @@ public class Milicien extends Personnage{
 			this.t = typeUnite.Milicien;
 		  }
 
-
+	//*************** Méthodes *******************
+	public void destructionUnite(Case M, Joueur J)
+	{
+		if(this.PV <= 0)
+		{
+			J.getPersonnages().remove(this);
+			M.setUnitesurcase(false);// à remplacer par libérer case
+			J.setOs(30);
+		}
+	}
 }

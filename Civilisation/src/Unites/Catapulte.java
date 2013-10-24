@@ -1,4 +1,5 @@
 package Unites;
+import civ.Case;
 import joueur.Joueur;
 import Batiment.BatProdUnit.typeUnite;
 import Comportement.CombatSiege;
@@ -27,4 +28,14 @@ public class Catapulte extends Personnage {
 	/*public Catapulte(AttitudeCombative esprit, Soin soin, Deplacement dep, Construire cons, int att, int def, int pv, int tProd, int cN, int cO, int cB, int cF, int posH, int posV, int portee) {
 	    super(esprit, soin, dep, cons, att, def, pv, tProd, cN, cO, cB, cF, posH, posV, portee);
 	}*/
+	
+	//*************** Méthodes *******************
+	public void destructionUnite(Case M, Joueur J)
+	{
+		if(this.PV <= 0)
+		{
+			J.getPersonnages().remove(this);
+			M.setUnitesurcase(false);// à remplacer par libérer case
+		}
+	}
 }
