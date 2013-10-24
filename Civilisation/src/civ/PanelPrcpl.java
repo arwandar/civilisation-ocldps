@@ -53,18 +53,6 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 		this.add(jsp);
 	}
 
-	public PanelPrcpl() {
-		// instanciation simplifiée pour utilisation du getCarte
-		this.nbrCaseHauteur = 30;
-		this.nbrCaseLarge = 60;
-		this.numPlan = 1;
-		this.carte = new Case[nbrCaseHauteur][nbrCaseLarge];
-
-		this.conteneur = new JPanel();
-		genererCarte();
-		updateCarte();
-	}
-
 	// **********MUTATEURS
 
 	public Case getCarte(int i, int j) {

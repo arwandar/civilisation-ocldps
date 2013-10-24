@@ -23,7 +23,10 @@ public class FntPrcpl extends JFrame {
 
 		this.setLayout(null);
 
-		this.lesJoueurs = lesJoueurs;
+		this.lesJoueurs = new Joueur[lesJoueurs.length];
+		for(int i=0; i<lesJoueurs.length; i++){
+			this.lesJoueurs[i] = lesJoueurs[i];
+		}
 
 		// init barre haute
 		this.barrehaute = new PanelResrc(lesJoueurs, this);
