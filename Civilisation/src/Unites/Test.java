@@ -1,5 +1,7 @@
 package Unites;
 
+import java.awt.Color;
+
 import joueur.Joueur;
 import Evenements.Fonctions;
 
@@ -7,7 +9,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		
-		final Joueur j = new Joueur();
+		final Joueur j = new Joueur(Color.pink);
 		
 		Personnage[] tPers = {new Peon(j), new Milicien(j), new Magicien(j), new Healer(j), new Archer(j), new CavalierArcher(j), new Chevalier(j), new Galere(j), new Transporteur(j), new Catapulte(j)};
   		

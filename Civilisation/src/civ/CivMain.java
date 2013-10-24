@@ -2,6 +2,7 @@ package civ;
 
 import java.awt.Color;
 
+import Evenements.Fonctions;
 import joueur.Joueur;
 
 public class CivMain {
@@ -15,6 +16,7 @@ public class CivMain {
 			lesJoueurs[i] = new Joueur(couleursPossibles[i]);
 		}
 		FntPrcpl tmp = new FntPrcpl(lesJoueurs);
+		Fonctions fonctions = new Fonctions(tmp.affichagejeu);
 	}
 
 }

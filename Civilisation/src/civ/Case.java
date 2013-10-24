@@ -6,7 +6,7 @@ import javax.swing.JButton;
 
 public class Case extends JButton {
 	private Texture texture;
-	boolean batimentsurcase;
+	private boolean batimentsurcase;
 	private boolean unitesurcase;
 
 	// GETTERS
