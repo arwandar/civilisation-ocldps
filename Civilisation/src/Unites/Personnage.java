@@ -1,5 +1,6 @@
 package Unites;
 import joueur.Joueur;
+import Batiment.BatProdUnit.typeUnite;
 import Comportement.AttitudeCombative;
 import Comportement.Construire;
 import Comportement.Deplacer;
@@ -28,6 +29,8 @@ public abstract class Personnage implements Caracteristiques{
 	  int mouvement = Caracteristiques.mouvement;
 	  
 	  protected Joueur joueur;
+	  
+	  protected typeUnite t;
 	     
 	  //Constructeur par défaut
 	  public Personnage(){
