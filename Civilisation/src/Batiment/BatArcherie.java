@@ -31,4 +31,14 @@ public class BatArcherie extends BatProdUnit
 	{
 		
 	}
+	
+	public void destructionBatiment(Case M, Joueur J)
+	{
+		// Si on veut faire sortir les unités à la destruction du bâtiment, il faut le faire avant le remove(this)
+		if(this.pv <= 0)
+		{
+			J.getBatiments().remove(this);
+			M.setBatimentsurcase(false);// à remplacer par libérer case
+		}
+	}
 }

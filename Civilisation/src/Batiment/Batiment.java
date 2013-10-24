@@ -34,7 +34,7 @@ public abstract class Batiment
 			this.setIsOnEarth(ioe);
 			this.production = prod;
 			this.setPOSITION(V);
-			M.setBatimentsurcase(true);
+			M.setBatimentsurcase(true);//remplacer par occuper case
 		}
 		else if( !ioe && M.getTexture() == Texture.eau ) //Si le bâtiment est constructible sur l'eau et que la case est maritime
 		{
@@ -44,6 +44,7 @@ public abstract class Batiment
 			this.setDEF(d);
 			this.setCOEFF(c);
 			this.setIsOnEarth(ioe);
+			this.production = prod;
 			this.setPOSITION(V);
 			M.setBatimentsurcase(true);
 		}
