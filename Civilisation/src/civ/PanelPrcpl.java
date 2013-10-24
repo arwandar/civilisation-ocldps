@@ -140,10 +140,8 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 			}
 		}
 		for (int k = 0; k < this.saFenetre.lesJoueurs.length; k++) {
-			System.out.println(k);
 			ArrayList<Batiment> batiments = this.saFenetre.lesJoueurs[k].getBatiments();
 			ArrayList<Personnage> personnages = this.saFenetre.lesJoueurs[k].getPersonnages();
-			System.out.println("je passe ici sans bugué");
 			if (!batiments.isEmpty()) {
 				Iterator<Batiment> itbat = batiments.iterator();
 				while (itbat.hasNext()) {

@@ -9,7 +9,7 @@ import Evenements.Fonctions;
 public class Test {
 
 	public static void main(String[] args) {
-		
+		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
 		Joueur[] lesJoueurs = new Joueur[2];
 		Color[] couleursPossibles = { Color.black, Color.pink, Color.red };
 		for (int i = 0; i < lesJoueurs.length; i++) {
