@@ -109,10 +109,10 @@ public class PanelBas extends JPanel {
 	}
 
 	public void updatePanelInfo(Case bouh) {
-		this.infoText.setText("case " + bouh.texture.toString());
-		if (bouh.batimentsurcase) {
+		this.infoText.setText("case " + bouh.getTexture().toString());
+		if (bouh.isBatimentsurcase()) {
 			this.infoText.append("\nil y a un batiment à Batman sur la case");
-		} else if (bouh.unitesurcase) {
+		} else if (bouh.isUnitesurcase()) {
 			this.infoText.append("\nil y a une unité sur la case");
 		}
 	}
