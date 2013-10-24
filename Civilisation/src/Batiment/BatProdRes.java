@@ -68,20 +68,23 @@ public class BatProdRes extends Batiment
 	//*************** Méthodes *******************
 	public void productionDeRessources(Joueur j)
 	{
-		switch(this.typeres)
+		if(j.CanPlayerProduce() == true)
 		{
-		case or: j.setOr(j.getOr() + this.prodRessources[0]);
-			break;
-		case fer: j.setFer(j.getFer() + this.prodRessources[1]);
-			break;
-		case pierre: j.setFer(j.getFer() + this.prodRessources[2]);
-			break;
-		case bois: j.setBois(j.getBois() + this.prodRessources[3]);
-			break;
-		case nourriture: j.setNourriture(j.getNourriture() + this.prodRessources[4]);
-			break;
-		default:System.out.println("Aucune ressource de ce type n'existe");
-			break;
+			switch(this.typeres)
+			{
+			case or: j.setOr(j.getOr() + this.prodRessources[0]);
+				break;
+			case fer: j.setFer(j.getFer() + this.prodRessources[1]);
+				break;
+			case pierre: j.setFer(j.getFer() + this.prodRessources[2]);
+				break;
+			case bois: j.setBois(j.getBois() + this.prodRessources[3]);
+				break;
+			case nourriture: j.setNourriture(j.getNourriture() + this.prodRessources[4]);
+				break;
+			default:System.out.println("Aucune ressource de ce type n'existe");
+				break;
+			}
 		}
 	}
 	

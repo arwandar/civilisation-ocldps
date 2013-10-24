@@ -105,7 +105,17 @@ public class Joueur {
 
 	BatHotelDeVille sonHotelDeVille;
 	
-
-	
-	
+	//*************** Méthodes *******************
+	public boolean CanPlayerProduce()
+	{
+		boolean cpp = true;
+		
+		if((this.os/(this.or + this.nourriture + this.bois + this.pierre + this.fer + this.os)) >= 0.75)
+		{
+			cpp = false;
+			//le joueur peut utiliser tous ses os pour lancer le truc un peu cheat
+		}
+		
+		return cpp;
+	}
 }
