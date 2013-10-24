@@ -10,13 +10,13 @@ public class FntPrcpl extends JFrame {
 	 */
 
 	PanelBas barrebasse;
-	PanelPrcpl affichagejeu;
+	public PanelPrcpl affichagejeu;
 	PanelResrc barrehaute;
 	int largeur, hauteur;
 	Joueur[] lesJoueurs;
 
 	// **********CONSTRUCTEURS
-	protected FntPrcpl(Joueur[] lesJoueurs) {
+	public FntPrcpl(Joueur[] lesJoueurs) {
 		largeur = 1500;
 		hauteur = 1000;
 		initParDefaut(largeur, hauteur);

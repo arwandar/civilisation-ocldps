@@ -2,6 +2,7 @@ package Unites;
 
 import java.awt.Color;
 
+import civ.FntPrcpl;
 import joueur.Joueur;
 import Evenements.Fonctions;
 
@@ -9,9 +10,16 @@ public class Test {
 
 	public static void main(String[] args) {
 		
-		final Joueur j = new Joueur(Color.pink);
+		Joueur[] lesJoueurs = new Joueur[2];
+		Color[] couleursPossibles = { Color.black, Color.pink, Color.red };
+		for (int i = 0; i < lesJoueurs.length; i++) {
+			lesJoueurs[i] = new Joueur(couleursPossibles[i]);
+		}
+		FntPrcpl tmp = new FntPrcpl(lesJoueurs);
+		Fonctions fonctions = new Fonctions(tmp.affichagejeu);
 		
-		Personnage[] tPers = {new Peon(j), new Milicien(j), new Magicien(j), new Healer(j), new Archer(j), new CavalierArcher(j), new Chevalier(j), new Galere(j), new Transporteur(j), new Catapulte(j)};
+		
+		Personnage[] tPers = {new Peon(lesJoueurs[0]), new Milicien(lesJoueurs[0]), new Magicien(lesJoueurs[0]), new Healer(lesJoueurs[0]), new Archer(lesJoueurs[0]), new CavalierArcher(lesJoueurs[0]), new Chevalier(lesJoueurs[0]), new Galere(lesJoueurs[0]), new Transporteur(lesJoueurs[0]), new Catapulte(lesJoueurs[0])};
   		
 		
 	    for(int i = 0; i < tPers.length; i++){
@@ -28,9 +36,9 @@ public class Test {
 	    
 
 	    
-	    Personnage Attaquant = new Archer(j);
+	    Personnage Attaquant = new Archer(lesJoueurs[0]);
 	    Fonctions.Creation(Attaquant);
-	    Personnage Defenseur = new Milicien(j);
+	    Personnage Defenseur = new Milicien(lesJoueurs[0]);
 	    Fonctions.Creation(Defenseur);
 	    
 	    Attaquant.setPositionHorizontale(2); Attaquant.setPositionVerticale(2);

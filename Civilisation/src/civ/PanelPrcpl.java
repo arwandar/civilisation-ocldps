@@ -136,14 +136,15 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 				this.carte[i][j].setBackground();
 			}
 		}
-		for (int k = 0; k < this.saFenetre.lesJoueurs.length; k++) {
+	/*	for (int k = 0; k < this.saFenetre.lesJoueurs.length; k++) {
+			System.out.println(k);
 			for (Batiment bat : this.saFenetre.lesJoueurs[k].getBatiments()) {
 				this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
 			}
 			for (Personnage perso : this.saFenetre.lesJoueurs[k].getPersonnages()) {
 				this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
 			}
-		}
+		}*/
 	}
 
 	public void actionPerformed(ActionEvent e) {
