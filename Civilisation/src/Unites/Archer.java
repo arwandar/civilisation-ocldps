@@ -1,5 +1,6 @@
 package Unites;
 import joueur.Joueur;
+import Batiment.BatProdUnit.typeUnite;
 import Comportement.CombatArc;
 
 public class Archer extends Personnage {
@@ -15,5 +16,7 @@ public class Archer extends Personnage {
 		this.tempsProduction=1;
 		this.coutOr=45;
 		this.coutBois=25;
+		
+		this.t = typeUnite.Archer;
 	}
 }
