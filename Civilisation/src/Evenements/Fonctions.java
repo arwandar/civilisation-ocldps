@@ -111,7 +111,9 @@ public class Fonctions {
 	}
 	
 	public static int TestTerrain (int valeurHorizontale, int valeurVerticale){
-		if ( plateau.getCarte(valeurHorizontale,valeurVerticale).getTexture() == Texture.foret)
+		if ( plateau.getCarte(valeurHorizontale,valeurVerticale).isBatimentsurcase() || plateau.getCarte(valeurHorizontale,valeurVerticale).isUnitesurcase())
+			return 0;
+		else if ( plateau.getCarte(valeurHorizontale,valeurVerticale).getTexture() == Texture.foret)
 			return 2;
 		else if (plateau.getCarte(valeurHorizontale,valeurVerticale).getTexture() == Texture.montagne)
 			return 3;
