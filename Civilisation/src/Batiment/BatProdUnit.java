@@ -75,7 +75,7 @@ public abstract class BatProdUnit extends Batiment
 			break;
 		case Transporteur: new Transporteur(J);
 			break;
-		default: System.out.println("ce type d'unité ou ce joueur n'existe pas");
+		default: System.out.println("ce type d'unité ou ce joueur n'existe pas (newUnit)");
 			break;
 		}
 	}
