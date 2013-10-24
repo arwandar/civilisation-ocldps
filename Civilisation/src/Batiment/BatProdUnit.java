@@ -29,9 +29,9 @@ public abstract class BatProdUnit extends Batiment
 	protected ArrayList<typeUnite> typesUnits = new ArrayList<typeUnite>();
 	
 	//*************** Constructeur *******************
-	public BatProdUnit(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod, Case M, Joueur J)
+	public BatProdUnit(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod, Case M)
 	{
-		super(name, p, a, d, c, ioe, V, prod, M, J);
+		super(name, p, a, d, c, ioe, V, prod, M);
 	}
 	
 	//*************** Accesseur *******************

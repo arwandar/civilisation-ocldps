@@ -21,8 +21,10 @@ public class BatProdRes extends Batiment
 	//*************** Constructeur *******************
 	public BatProdRes(String name,int V[], typeRessource t, Case M, Joueur J)
 	{	
-		super(name, 50, 0, 20, 0, true, V, 1, M, J);
+		super(name, 50, 0, 20, 0, true, V, 1, M);
+		
 		this.setRESSOURCE(t);
+		
 		this.coutOr = 20;
 		this.coutFer = 5;
 		this.coutBois = 10;
@@ -31,6 +33,9 @@ public class BatProdRes extends Batiment
 		J.setFer(J.getFer() - this.coutFer);
 		J.setBois(J.getBois() - this.coutBois);
 		J.setPierre(J.getPierre() - this.coutPierre);
+		
+		J.getBatiments().add(this);
+		this.joueur = J;
 	}
 	
 	//*************** Accesseurs *******************
@@ -67,13 +72,15 @@ public class BatProdRes extends Batiment
 		{
 		case or: j.setOr(j.getOr() + this.prodRessources[0]);
 			break;
-		case fer: //
+		case fer: j.setFer(j.getFer() + this.prodRessources[1]);
 			break;
-		case bois: j.setBois(j.getBois() + this.prodRessources[2]);
+		case pierre: j.setFer(j.getFer() + this.prodRessources[2]);
 			break;
-		case nourriture: j.setNourriture(j.getNourriture() + this.prodRessources[3]);
+		case bois: j.setBois(j.getBois() + this.prodRessources[3]);
 			break;
-		default:
+		case nourriture: j.setNourriture(j.getNourriture() + this.prodRessources[4]);
+			break;
+		default:System.out.println("Aucune ressource de ce type n'existe");
 			break;
 		}
 	}

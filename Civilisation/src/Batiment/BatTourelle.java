@@ -9,7 +9,8 @@ public class BatTourelle extends Batiment
 	//*************** Constructeur *******************
 	public BatTourelle(int V[], Case M, Joueur J)
 	{
-		super("Tourelle", 200, 30, 75, 2, true, V, 3, M, J);
+		super("Tourelle", 200, 30, 75, 2, true, V, 3, M);
+		
 		this.coutOr = 100;
 		this.coutFer = 50;
 		this.coutBois = 300;
@@ -18,5 +19,8 @@ public class BatTourelle extends Batiment
 		J.setFer(J.getFer() - this.coutFer);
 		J.setBois(J.getBois() - this.coutBois);
 		J.setPierre(J.getPierre() - this.coutPierre);
+		
+		J.getBatiments().add(this);
+		this.joueur = J;
 	}
 }

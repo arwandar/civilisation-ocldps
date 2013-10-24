@@ -8,8 +8,10 @@ public class BatEcurie extends BatProdUnit
 	//*************** Constructeur *******************
 	public BatEcurie(int V[], Case M, Joueur J)
 	{
-		super("Ecurie", 50, 15, 45, 1, true, V, 3, M, J);
+		super("Ecurie", 50, 15, 45, 1, true, V, 3, M);
+		
 		this.typesUnits.add(typeUnite.Chevalier);
+		
 		this.coutOr = 150;
 		this.coutFer = 100;
 		this.coutBois = 200;
@@ -18,5 +20,8 @@ public class BatEcurie extends BatProdUnit
 		J.setFer(J.getFer() - this.coutFer);
 		J.setBois(J.getBois() - this.coutBois);
 		J.setPierre(J.getPierre() - this.coutPierre);
+		
+		J.getBatiments().add(this);
+		this.joueur = J;
 	}
 }
