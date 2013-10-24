@@ -10,7 +10,7 @@ import Unites.Personnage;
 
 public class Fonctions {
 	
-	static PanelPrcpl plateau = new PanelPrcpl();
+	static PanelPrcpl plateau;
 	
 	public Fonctions(PanelPrcpl plateau){
 		this.plateau=plateau;
@@ -57,33 +57,77 @@ public class Fonctions {
 		boolean deplacementFini = false;
 		decalageHorizontal = 0;
 		decalageVertical = 0;
+		boolean direction = true;
+		int coeff=0;
 		
 		CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
 		
-		while (!deplacementFini && decalageHorizontal != 0){
-			if(decalageHorizontal > 0){ //il doit aller à droite
-				DeplacementDroite(personnage);
-				DeplacementFini(deplacementRestant,deplacementFini);
+		while (direction && !deplacementFini && decalageHorizontal != 0){
+			
+			if(decalageHorizontal > 0){ //il doit aller à droite				
+				// on regarde si la case visée est traversable et combien de mouvement on doit utiliser			
+				coeff=TestTerrain((personnage.getPositionHorizontale()+1), personnage.getPositionVerticale());				
+				if (coeff==0)
+					direction = false; // si on peut pas traverser on change d'axe
+				else {
+					// on regarde si le joueur dispose d'assez de mouvement pour aller jusqu'à la case
+					if(!PossibiliteDepla(coeff, deplacementRestant))
+						direction = false; // on ne peut pas y aller
+					else{
+						// on se déplace
+						DeplacementDroite(personnage);
+						// retire le nombre de mvts nécessaire pour se déplacer et indique si le mvt est terminé ou non
+						DeplacementFini(deplacementRestant,deplacementFini, coeff);
+					}					
+				}
+				// on actualise le décalage nécessaire
 				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
 			}
-			else { // il doit aller à gauche
-				DeplacementGauche(personnage);		
-				DeplacementFini(deplacementRestant,deplacementFini);
+			else { // il doit aller à gauche				
+				coeff=TestTerrain((personnage.getPositionHorizontale()-1), personnage.getPositionVerticale());				
+				if (coeff==0)
+					direction = false;
+				else {
+					if(!PossibiliteDepla(coeff, deplacementRestant))
+						direction = false;
+					else{
+						DeplacementGauche(personnage);
+						DeplacementFini(deplacementRestant,deplacementFini, coeff);
+					}					
+				}
 				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
 			}			
 		}
 		
-		while (!deplacementFini && decalageVertical != 0){
+		while (!direction && !deplacementFini && decalageVertical != 0){
 			if(decalageVertical > 0){ //il doit aller en bas
-				DeplacementBas(personnage);
-				DeplacementFini(deplacementRestant,deplacementFini);
-				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
+				coeff=TestTerrain((personnage.getPositionHorizontale()), personnage.getPositionVerticale()+1);				
+				if (coeff==0)
+					direction = true;
+				else {
+					if(!PossibiliteDepla(coeff, deplacementRestant))
+						direction = true;
+					else{
+						DeplacementBas(personnage);
+						DeplacementFini(deplacementRestant,deplacementFini, coeff);
+					}					
+				}
+				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);		
 			}
 			else { // il doit aller en haut
-				DeplacementHaut(personnage);	
-				DeplacementFini(deplacementRestant,deplacementFini);
+				coeff=TestTerrain((personnage.getPositionHorizontale()), personnage.getPositionVerticale()-1);				
+				if (coeff==0)
+					direction = true;
+				else {
+					if(!PossibiliteDepla(coeff, deplacementRestant))
+						direction = true;
+					else{
+						DeplacementHaut(personnage);
+						DeplacementFini(deplacementRestant,deplacementFini, coeff);
+					}					
+				}
 				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
-			}			
+			}
 		}
 		
 	}
@@ -100,8 +144,8 @@ public class Fonctions {
 	public static void DeplacementDroite (Personnage personnage){
 		personnage.setPositionHorizontale(personnage.getPositionHorizontale()+1);
 	}
-	public static void DeplacementFini(int deplacementRestant ,	boolean deplacementFini ){ //soustrait au déplacement du perso une certaine valeur et regarde s'il peut encore bouger (modifiable plus tard en fct du terrain (rajouter un entier coeff))
-		deplacementRestant--;
+	public static void DeplacementFini(int deplacementRestant ,	boolean deplacementFini, int coeff ){ //soustrait au déplacement du perso une certaine valeur et regarde s'il peut encore bouger (modifiable plus tard en fct du terrain (rajouter un entier coeff))
+		deplacementRestant-=coeff;
 		if (deplacementRestant==0)
 			deplacementFini=true;		
 	}
@@ -119,6 +163,12 @@ public class Fonctions {
 			return 3;
 		else
 			return 1;
+	}
+	public static boolean PossibiliteDepla(int coeff, int deplacementRestant){
+		if (deplacementRestant - coeff >=0)
+			return true;
+		else
+			return false;
 	}
 	
 }
