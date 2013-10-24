@@ -21,14 +21,16 @@ public class PanelResrc extends JPanel implements ActionListener {
 	JButton finDeTour;
 	int indice;
 	Joueur[] lesJoueurs;
+	FntPrcpl saFenetre;
 
 	// **********CONSTRUCTEURS
-	public PanelResrc(Joueur[] lesJoueurs) {
+	public PanelResrc(Joueur[] lesJoueurs, FntPrcpl fenetre) {
 		indice = 0;
 
 		this.lesJoueurs = lesJoueurs;
+		this.saFenetre = fenetre;
 
-		this.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+		this.setLayout(new FlowLayout(FlowLayout.CENTER));
 
 		this.or = new JLabel();
 		this.add(this.or);
@@ -69,5 +71,7 @@ public class PanelResrc extends JPanel implements ActionListener {
 		if (this.indice == this.lesJoueurs.length) {
 			this.indice = 0;
 		}
+		this.saFenetre.updateAffichage();
+		
 	}
 }

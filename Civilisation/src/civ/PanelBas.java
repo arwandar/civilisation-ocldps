@@ -75,7 +75,7 @@ public class PanelBas extends JPanel {
 		updateMap();
 	}
 
-	public void updateMap() {
+	protected void updateMap() {
 		int i, j, test, test2;
 
 		this.mapLargeur = this.saFenetre.affichagejeu.getNbrCaseLarge();

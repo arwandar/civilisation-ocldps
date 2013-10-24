@@ -1,5 +1,6 @@
 package joueur;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import Batiment.BatHotelDeVille;
@@ -11,10 +12,11 @@ public class Joueur {
 	private int or, nourriture, bois, pierre, fer, os;
 	private ArrayList<Batiment> batiments;
 	private ArrayList<Personnage> personnages;
+	private Color saCouleur;
 	
 	//*******Constructeur
 	
-	public Joueur(){
+	public Joueur(Color couleur){
 		this.nom = "inconnu";
 		this.or = 100;
 		this.nourriture = 100;
@@ -23,6 +25,7 @@ public class Joueur {
 		this.fer = 100;
 		this.os = 0;
 		this.personnages = new ArrayList<Personnage>();
+		this.saCouleur = couleur;
 	}
 	 //******Mutateur
 	public int getOr() {
@@ -89,6 +92,9 @@ public class Joueur {
 		this.personnages = p;
 	}
 
+	public Color getSaCouleur() {
+		return saCouleur;
+	}
 	public String getNom() {
 		return nom;
 	}

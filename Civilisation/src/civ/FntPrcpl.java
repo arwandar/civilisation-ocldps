@@ -13,6 +13,7 @@ public class FntPrcpl extends JFrame {
 	PanelPrcpl affichagejeu;
 	PanelResrc barrehaute;
 	int largeur, hauteur;
+	Joueur[] lesJoueurs;
 
 	// **********CONSTRUCTEURS
 	protected FntPrcpl(Joueur[] lesJoueurs) {
@@ -21,15 +22,20 @@ public class FntPrcpl extends JFrame {
 		initParDefaut(largeur, hauteur);
 
 		this.setLayout(null);
+		
+		this.lesJoueurs = new Joueur[lesJoueurs.length];
+		for (int i =0; i< lesJoueurs.length; i++){
+			this.lesJoueurs[i]= lesJoueurs[i];
+		}
 
 		// init barre haute
-		this.barrehaute = new PanelResrc(lesJoueurs);
-		this.barrehaute.setBounds(0, 0, largeur, (10 * hauteur / 100));
+		this.barrehaute = new PanelResrc(lesJoueurs, this);
+		this.barrehaute.setBounds(0, 0, largeur, 50);
 		getContentPane().add(this.barrehaute);
 
 		// init big map
 		this.affichagejeu = new PanelPrcpl(this.largeur, this.hauteur, this);
-		this.affichagejeu.setBounds(0, (10 * hauteur / 100), largeur, hauteur - (40 * hauteur / 100));
+		this.affichagejeu.setBounds(0, 50, largeur, hauteur - 50 - (30 * hauteur / 100));
 		getContentPane().add(this.affichagejeu);
 
 		// init barre basse
@@ -49,6 +55,12 @@ public class FntPrcpl extends JFrame {
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
+	}
+	
+	protected void updateAffichage(){
+		this.affichagejeu.updateCarte();
+		this.barrebasse.updateMap();
+		this.barrehaute.updateAffichageRessource();
 	}
 
 }

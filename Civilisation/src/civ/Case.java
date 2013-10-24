@@ -113,4 +113,5 @@ public class Case extends JButton {
 		this.texture = enumText[rand.nextInt(enumText.length)];
 	}
 
+
 }

@@ -1,14 +1,19 @@
 package civ;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
+
+import Unites.Personnage;
+import Batiment.Batiment;
 
 public class PanelPrcpl extends JPanel implements ActionListener {
 	/*
@@ -38,9 +43,11 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 		this.conteneur.setPreferredSize(new Dimension(nbrCaseLarge * 30, nbrCaseHauteur * 30));
 
 		genererCarte();
+		
+		this.setBounds(0, 50, largeur, hauteur - 50 - (30 * hauteur / 100));
 
 		this.jsp = new JScrollPane(this.conteneur);
-		this.jsp.setPreferredSize(new Dimension(largeur, hauteur - (40 * hauteur / 100)));
+		this.jsp.setPreferredSize(new Dimension(this.getWidth(), getHeight()));
 
 		this.add(jsp);
 	}
@@ -113,10 +120,18 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 		}
 	}
 
-	private void updateCarte() {
+	protected void updateCarte() {
 		for (int i = 0; i < this.nbrCaseHauteur; i++) {
 			for (int j = 0; j < this.nbrCaseLarge; j++) {
 				this.carte[i][j].setBackground();
+			}
+		}
+		for (int k=0; k<this.saFenetre.lesJoueurs.length; k++){
+			for (Batiment bat : this.saFenetre.lesJoueurs[k].getBatiments()){
+				this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
+			}
+			for (Personnage perso : this.saFenetre.lesJoueurs[k].getPersonnages()){
+				this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
 			}
 		}
 	}
