@@ -110,11 +110,13 @@ public class Joueur {
 	{
 		boolean cpp = true;
 		
-		if((this.os/(this.or + this.nourriture + this.bois + this.pierre + this.fer + this.os)) >= 0.75)
+		/*
+		 // si les os représentent 75% des ressources du joueur, il ne peut plus produire
+		 if((this.os/(this.or + this.nourriture + this.bois + this.pierre + this.fer + this.os)) >= 0.75)
 		{
 			cpp = false;
 			//le joueur peut utiliser tous ses os pour lancer le truc un peu cheat
-		}
+		}*/
 		
 		return cpp;
 	}
