@@ -21,10 +21,10 @@ public class Test {
 		FntPrcpl tmp = new FntPrcpl(lesJoueurs);
 		Fonctions fonctions = new Fonctions(tmp.affichagejeu);
 		
-		
-		/*Personnage[] tPers = {new Peon(lesJoueurs[0]), new Milicien(lesJoueurs[0]), new Magicien(lesJoueurs[0]), new Healer(lesJoueurs[0]), new Archer(lesJoueurs[0]), new CavalierArcher(lesJoueurs[0]), new Chevalier(lesJoueurs[0]), new Galere(lesJoueurs[0]), new Transporteur(lesJoueurs[0]), new Catapulte(lesJoueurs[0])};
-  		
-		
+		// Test d'instanciation de toutes les unités avec leur description
+		/*
+		Personnage[] tPers = {new Peon(lesJoueurs[0]), new Milicien(lesJoueurs[0]), new Magicien(lesJoueurs[0]), new Healer(lesJoueurs[0]), new Archer(lesJoueurs[0]), new CavalierArcher(lesJoueurs[0]), new Chevalier(lesJoueurs[0]), new Galere(lesJoueurs[0]), new Transporteur(lesJoueurs[0]), new Catapulte(lesJoueurs[0])};
+  				
 	    for(int i = 0; i < tPers.length; i++){
 	      System.out.println("\nInstance de " + tPers[i].getClass().getName());
 	      System.out.println("*****************************************");
@@ -35,10 +35,12 @@ public class Test {
 	      System.out.println("Je mets " + tPers[i].getTempsProduction() + " tours et coûte " + tPers[i].getCoutNourriture() + " n, " + tPers[i].getCoutOr() + " o, " + tPers[i].getCoutBois() + " b, " + tPers[i].getCoutFer() + " f");
 	      System.out.println("Je suis situé en " + tPers[i].getPositionHorizontale() + " ; " + tPers[i].getPositionVerticale() + " et ma portée est de " + tPers[i].getPortee());
 	      System.out.println("Je me déplace de " + tPers[i].getMouvement());
-	    } */
+	    } 
+	    */
 	    
 
-	    
+	    // test d'attaque entre deux personnages
+		
 	    Personnage Attaquant = new Archer(lesJoueurs[0]);
 	    Fonctions.Creation(Attaquant);
 	    Personnage Defenseur = new Milicien(lesJoueurs[0]);
@@ -46,18 +48,15 @@ public class Test {
 	    
 	    Attaquant.setPositionHorizontale(2); Attaquant.setPositionVerticale(2);
 	    Defenseur.setPositionHorizontale(3);Defenseur.setPositionVerticale(4);
-	    
+	    /*
 	    Fonctions.isRange(Attaquant, Defenseur, Attaquant.getPortee());
 	    System.out.println("Les pv du déf avant attaque sont : " + Defenseur.getPV());
 	    Fonctions.Attaquer(Attaquant, Defenseur);
 	    System.out.println("Les pv du déf après attaque sont : " + Defenseur.getPV());
+	    */
 	    
-	    
-	    
-	    
-	    
-	    
-	    
+	    // test d'attaque d'un magicien sur un autre personnage
+	    /*
 	    Personnage Attaquant1 = new Magicien(lesJoueurs[0]);
 	    Fonctions.Creation(Attaquant1);
 	    Personnage Defenseur1 = new Milicien(lesJoueurs[0]);
@@ -71,10 +70,11 @@ public class Test {
 	    System.out.println("Les pv du déf avant attaque sont : " + Defenseur1.getPV());
 	    Fonctions.Attaquer(Attaquant1, Defenseur1);
 	    System.out.println("Les pv du déf après attaque sont : " + Defenseur1.getPV());
+	    */
 	    
 	    
-	    
-	    
+	    // test d'attaque d'un milicien sur un batiment
+	    /*
 	    Personnage Attaquant2 = new Milicien(lesJoueurs[0]);
 	    Fonctions.Creation(Attaquant2);
 	    int[] pos = {2,1};
@@ -84,11 +84,13 @@ public class Test {
 	    System.out.println("Les pv du déf avant attaque sont : " + Defenseur2.getPV());
 	    Fonctions.Attaquer(Attaquant2, Defenseur2);
 	    System.out.println("Les pv du déf après attaque sont : " + Defenseur2.getPV());
+	    */
 	    
-	    System.out.println("il est là : " + Attaquant.getPositionHorizontale() + " et là : " + Attaquant.getPositionVerticale());
+	    // test de déplacement d'un personnage
+	    System.out.println("il est là : " + Attaquant.getPositionHorizontale() + " / " + Attaquant.getPositionVerticale());
 	    Fonctions.Itineraire(Attaquant,4,4);
-	    System.out.println("il est là : " + Attaquant.getPositionHorizontale() + " et là : " + Attaquant.getPositionVerticale());
-	    
+	    System.out.println("il est là : " + Attaquant.getPositionHorizontale() + " / " + Attaquant.getPositionVerticale());
+	    //Fonctions.getPlateau 
 	    
 	}
 

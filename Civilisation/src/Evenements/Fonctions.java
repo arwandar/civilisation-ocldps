@@ -12,14 +12,14 @@ import Unites.Personnage;
 
 public class Fonctions {
 	
-	static PanelPrcpl plateau;
+	private static PanelPrcpl plateau;
 	static int deplacementRestant = 0;
 	static int decalageHorizontal = 0;
 	static int decalageVertical = 0;
 	static boolean deplacementFini = false;
 	
 	public Fonctions(PanelPrcpl plateau){
-		this.plateau=plateau;
+		this.setPlateau(plateau);
 		
 		
 	}
@@ -93,8 +93,14 @@ public class Fonctions {
 		setDecalageVertical(0);
 		boolean direction = true;
 		int coeff=0;
+		boolean total = false;
+		int compteur = 0;
 		
 		CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);  //calcule le nombre de cases dont il faudrait se décaler pour arriver à la case voulue, dans les deux axes
+		
+		
+		
+		while (!total){
 		
 		while (direction && !deplacementFini && decalageHorizontal != 0){
 			
@@ -102,19 +108,24 @@ public class Fonctions {
 				// on regarde si la case visée est traversable et combien de mouvement on doit utiliser			
 				coeff=TestTerrain((personnage.getPositionHorizontale()+1), personnage.getPositionVerticale());	//renvoie la difficulté de franchissement du terrain
 				System.out.println("le coeff est : " + coeff);
-				if (coeff==0)
+				if (coeff==0){
 					direction = false; // si on peut pas traverser on change d'axe
+					compteur++;
+				}
 				else {
 					// on regarde si le joueur dispose d'assez de mouvement pour aller jusqu'à la case
-					if(!PossibiliteDepla(coeff, getDeplacementRestant()))
+					if(!PossibiliteDepla(coeff, getDeplacementRestant())){
 						direction = false; // on ne peut pas y aller
+						compteur++;
+					}
 					else{
+						compteur=0;
 						// on se déplace
 						DeplacementDroite(personnage);
 						System.out.println("Le personnage se déplace d'un cran vers la droite");
 						// retire le nombre de mvts nécessaire pour se déplacer et indique si le mvt est terminé ou non
 						DeplacementFini(getDeplacementRestant(),deplacementFini, coeff);
-						System.out.println("dépla restant après la fonction depla fini : " + getDeplacementRestant());
+																	//System.out.println("dépla restant après la fonction depla fini : " + getDeplacementRestant());
 					}					
 				}
 				// on actualise le décalage nécessaire
@@ -122,12 +133,17 @@ public class Fonctions {
 			}
 			else { // il doit aller à gauche				
 				coeff=TestTerrain((personnage.getPositionHorizontale()-1), personnage.getPositionVerticale());				
-				if (coeff==0)
+				if (coeff==0){
 					direction = false;
+					compteur++;
+				}
 				else {
-					if(!PossibiliteDepla(coeff, getDeplacementRestant()))
+					if(!PossibiliteDepla(coeff, getDeplacementRestant())){
 						direction = false;
+						compteur++;
+					}
 					else{
+						compteur=0;
 						DeplacementGauche(personnage);
 						System.out.println("Le personnage se déplace d'un cran vers la gauche");
 						DeplacementFini(getDeplacementRestant(),deplacementFini, coeff);
@@ -136,16 +152,26 @@ public class Fonctions {
 				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
 			}			
 		}
+		if (compteur == 2)
+			total = true;
+		if(decalageHorizontal==0)
+			direction=false;
 		
 		while (!direction && !deplacementFini && decalageVertical != 0){
+			System.out.println("il passe en vertical");
 			if(decalageVertical > 0){ //il doit aller en bas
 				coeff=TestTerrain((personnage.getPositionHorizontale()), personnage.getPositionVerticale()+1);				
-				if (coeff==0)
+				if (coeff==0){
 					direction = true;
+					compteur++;
+				}
 				else {
-					if(!PossibiliteDepla(coeff, getDeplacementRestant()))
+					if(!PossibiliteDepla(coeff, getDeplacementRestant())){
 						direction = true;
+						compteur++;
+					}
 					else{
+						compteur=0;
 						DeplacementBas(personnage);
 						System.out.println("Le personnage se déplace d'un cran vers le bas");
 						DeplacementFini(getDeplacementRestant(),deplacementFini, coeff);
@@ -155,12 +181,17 @@ public class Fonctions {
 			}
 			else { // il doit aller en haut
 				coeff=TestTerrain((personnage.getPositionHorizontale()), personnage.getPositionVerticale()-1);				
-				if (coeff==0)
+				if (coeff==0){
 					direction = true;
+					compteur++;
+				}
 				else {
-					if(!PossibiliteDepla(coeff, getDeplacementRestant()))
+					if(!PossibiliteDepla(coeff, getDeplacementRestant())){
 						direction = true;
+						compteur++;
+					}
 					else{
+						compteur=0;
 						DeplacementHaut(personnage);
 						System.out.println("Le personnage se déplace d'un cran vers le haut");
 						DeplacementFini(getDeplacementRestant(),deplacementFini, coeff);
@@ -168,6 +199,12 @@ public class Fonctions {
 				}
 				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
 			}
+		}
+		
+		if(getDeplacementRestant()<= 0 || (decalageHorizontal == 0  && decalageVertical == 0) || compteur == 2)
+			total=true;
+		else
+			total = false;
 		}
 		
 	}
@@ -186,7 +223,7 @@ public class Fonctions {
 	}
 	public static void DeplacementFini(int deplacementRestant ,	boolean deplacementFini, int coeff ){ //soustrait au déplacement du perso une certaine valeur et regarde s'il peut encore bouger (modifiable plus tard en fct du terrain (rajouter un entier coeff))
 		setDeplacementRestant(getDeplacementRestant()-coeff);
-		System.out.println("dépla restant dans la fonction depla fini : " + getDeplacementRestant());
+															//System.out.println("dépla restant dans la fonction depla fini : " + getDeplacementRestant());
 		if (getDeplacementRestant()==0)
 			setDeplacementFini(true);		
 	}
@@ -196,11 +233,11 @@ public class Fonctions {
 	}
 	
 	public static int TestTerrain (int valeurHorizontale, int valeurVerticale){ //renvoie la difficulté de franchissement du terrain
-		if ( plateau.getCarte(valeurHorizontale,valeurVerticale).isBatimentsurcase() || plateau.getCarte(valeurHorizontale,valeurVerticale).isUnitesurcase())
+		if ( getPlateau().getCarte(valeurHorizontale,valeurVerticale).isBatimentsurcase() || getPlateau().getCarte(valeurHorizontale,valeurVerticale).isUnitesurcase())
 			return 0;
-		else if ( plateau.getCarte(valeurHorizontale,valeurVerticale).getTexture() == Texture.foret)
+		else if ( getPlateau().getCarte(valeurHorizontale,valeurVerticale).getTexture() == Texture.foret)
 			return 2;
-		else if (plateau.getCarte(valeurHorizontale,valeurVerticale).getTexture() == Texture.montagne)
+		else if (getPlateau().getCarte(valeurHorizontale,valeurVerticale).getTexture() == Texture.montagne)
 			return 3;
 		else
 			return 1;
@@ -258,6 +295,24 @@ public class Fonctions {
 
 	public static void setDeplacementFini(boolean deplacementFini) {
 		Fonctions.deplacementFini = deplacementFini;
+	}
+
+
+
+
+	public static PanelPrcpl getPlateau() {
+		return plateau;
+	}
+	
+	/*public static PanelPrcpl getPlateau(int i, int j) {
+		return plateau[i][j];
+	}*/
+
+
+
+
+	public static void setPlateau(PanelPrcpl plateau) {
+		Fonctions.plateau = plateau;
 	}
 	
 }
