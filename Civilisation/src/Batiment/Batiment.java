@@ -9,7 +9,7 @@ public abstract class Batiment
 	//*************** Variables *******************
 	protected String nom;
 	protected int pv;
-	protected int def;
+	protected double def;
 	protected int att;
 	protected int coeffDefBonus;
 	protected int production;
@@ -22,7 +22,7 @@ public abstract class Batiment
 	protected Joueur joueur;
 	
 	//*************** Constructeur *******************
-	public Batiment(String name, int p, int a, int d, int c, boolean ioe, int V[], int prod, Case M) //le vecteur position sera à remplacer par une case
+	public Batiment(String name, int p, int a, double d, int c, boolean ioe, int V[], int prod, Case M) //le vecteur position sera à remplacer par une case
 	{
 		if( ioe && M.getTexture() != Texture.eau && M.getTexture() != Texture.montagne ) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
 		{
@@ -65,7 +65,7 @@ public abstract class Batiment
 		return this.pv;
 	}
 	
-	public int getDEF()
+	public double getDEF()
 	{
 		return this.def;
 	}
@@ -111,7 +111,7 @@ public abstract class Batiment
 		this.pv = p;
 	}
 	
-	public void setDEF(int d)
+	public void setDEF(double d)
 	{
 		this.def = d;
 	}

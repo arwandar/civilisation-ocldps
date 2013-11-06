@@ -8,7 +8,7 @@ public class BatPort extends BatProdUnit
 	//*************** Constructeur *******************
 	public BatPort(int V[], Case M, Joueur J)// il faudrait pouvoir construire le port QUE si une des 4 cases adjacente est maritime.
 	{
-		super("Port", 50, 15, 40, 1, true, V, 3, M);
+		super("Port", 50, 15, 0.40, 1, true, V, 3, M);
 		
 		this.typesUnits.add(typeUnite.Galere);
 		this.typesUnits.add(typeUnite.Transporteur);

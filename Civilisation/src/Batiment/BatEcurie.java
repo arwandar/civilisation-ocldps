@@ -8,7 +8,7 @@ public class BatEcurie extends BatProdUnit
 	//*************** Constructeur *******************
 	public BatEcurie(int V[], Case M, Joueur J)
 	{
-		super("Ecurie", 50, 15, 45, 1, true, V, 3, M);
+		super("Ecurie", 50, 15, 0.45, 1, true, V, 3, M);
 		
 		this.typesUnits.add(typeUnite.Chevalier);
 		
