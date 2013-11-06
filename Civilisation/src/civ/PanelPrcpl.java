@@ -135,6 +135,7 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 				while (itbat.hasNext()) {
 					Batiment bat = itbat.next();
 					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
+					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setText(bat.getNOM());
 				}
 			}
 			if (!personnages.isEmpty()) {
@@ -143,6 +144,7 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 					Personnage perso = itperso.next();
 					this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setBackground(this.saFenetre.lesJoueurs[k]
 							.getSaCouleur());
+					this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setText(perso.getT().toString());
 				}
 			}
 		}
