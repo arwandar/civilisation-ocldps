@@ -18,7 +18,7 @@ public class Transporteur extends Personnage {
 		this.coutBois=125;
 		J.setOr(J.getOr() - this.coutBois);
 		
-		this.t = typeUnite.Transporteur;
+		this.setT(typeUnite.Transporteur);
 	}
 	
 	//*************** Méthodes *******************

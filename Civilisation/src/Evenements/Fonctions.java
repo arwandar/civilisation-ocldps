@@ -4,6 +4,8 @@ import joueur.Joueur;
 import civ.FntPrcpl;
 import civ.PanelPrcpl;
 import civ.Texture;
+import Batiment.BatProdUnit.typeUnite;
+import Batiment.Batiment;
 import Unites.Personnage;
 
 
@@ -37,13 +39,36 @@ public class Fonctions {
 			return false;
 		}		
 	}
+	public static boolean isRange(Personnage Attaquant, Batiment Defenseur, int portee){
+		int decalageHorizontal = Math.abs(Attaquant.getPositionHorizontale() - Defenseur.getPOSITION(0));
+		int decalageVertical = Math.abs(Attaquant.getPositionVerticale() - Defenseur.getPOSITION(1));
+		
+		if (decalageHorizontal <= portee && decalageVertical <= portee){			
+			System.out.println("True");
+			return true;
+		}			
+		else{			
+			System.out.println("False");
+			return false;
+		}		
+	}
 	
-	public static void Attaquer(Personnage attaquant, Personnage defenseur){
-		defenseur.PV-= attaquant.getAttaque() -  Math.round(attaquant.getAttaque() * defenseur.getDefense());
+	public static void Attaquer(Personnage attaquant, Personnage defenseur){ //attaque entre deux unités
+		
+		if (defenseur.getT()==typeUnite.Magicien)
+			defenseur.setPV(defenseur.getPV() - attaquant.getAttaque()) ; // les magiciens ignorent l'armure
+		else
+			defenseur.setPV(defenseur.getPV() - (attaquant.getAttaque() -  Math.round(attaquant.getAttaque() * defenseur.getDefense())));
 	}
-	public static void AttaquerMagie(Personnage attaquant, Personnage defenseur){
-		defenseur.PV-= attaquant.getAttaque() ;
+	public static void Attaquer(Personnage attaquant, Batiment defenseur){ //attaque entre une unité et un bâtiment
+		defenseur.setPV(defenseur.getPV()- (attaquant.getAttaque() -  Math.round(attaquant.getAttaque() * defenseur.getDEF())) );
 	}
+	public static void Attaquer(Batiment attaquant, Personnage defenseur){ //attaque entre une unité et un bâtiment
+		defenseur.setPV(defenseur.getPV()- (attaquant.getATT() -  Math.round(attaquant.getATT() * defenseur.getDefense())) );
+	}
+	
+	
+	
 	
 	public static void Creation(Personnage personnage){
 		 personnage.combattre();
@@ -51,6 +76,8 @@ public class Fonctions {
 		 personnage.soigner();
 		 personnage.batir();
 	}
+	
+	
 	
 	public static void Itineraire (Personnage personnage, int valeurHorizontale, int valeurVerticale){
 		int deplacementRestant = personnage.getMouvement();
@@ -60,13 +87,13 @@ public class Fonctions {
 		boolean direction = true;
 		int coeff=0;
 		
-		CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
+		CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);  //calcule le nombre de cases dont il faudrait se décaler pour arriver à la case voulue, dans les deux axes
 		
 		while (direction && !deplacementFini && decalageHorizontal != 0){
 			
 			if(decalageHorizontal > 0){ //il doit aller à droite				
 				// on regarde si la case visée est traversable et combien de mouvement on doit utiliser			
-				coeff=TestTerrain((personnage.getPositionHorizontale()+1), personnage.getPositionVerticale());				
+				coeff=TestTerrain((personnage.getPositionHorizontale()+1), personnage.getPositionVerticale());	//renvoie la difficulté de franchissement du terrain			
 				if (coeff==0)
 					direction = false; // si on peut pas traverser on change d'axe
 				else {
@@ -154,7 +181,7 @@ public class Fonctions {
 		decalageVertical = valeurVerticale - personnage.getPositionVerticale();
 	}
 	
-	public static int TestTerrain (int valeurHorizontale, int valeurVerticale){
+	public static int TestTerrain (int valeurHorizontale, int valeurVerticale){ //renvoie la difficulté de franchissement du terrain
 		if ( plateau.getCarte(valeurHorizontale,valeurVerticale).isBatimentsurcase() || plateau.getCarte(valeurHorizontale,valeurVerticale).isUnitesurcase())
 			return 0;
 		else if ( plateau.getCarte(valeurHorizontale,valeurVerticale).getTexture() == Texture.foret)

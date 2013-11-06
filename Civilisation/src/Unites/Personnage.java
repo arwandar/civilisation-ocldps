@@ -30,7 +30,7 @@ public abstract class Personnage implements Caracteristiques{
 	  
 	  protected Joueur joueur;
 	  
-	  protected typeUnite t;
+	  private typeUnite t;
 	     
 	  //Constructeur par défaut
 	  public Personnage(){
@@ -125,8 +125,8 @@ public abstract class Personnage implements Caracteristiques{
 		return PV;
 	}
 
-	public void setPV(int pV) {
-		PV = pV;
+	public void setPV(int l) {
+		PV = l;
 	}
 
 	public int getTempsProduction() {
@@ -183,5 +183,18 @@ public abstract class Personnage implements Caracteristiques{
 
 	public void setMouvement(int mouvement) {
 		this.mouvement = mouvement;
+	}
+
+	public typeUnite getT() {
+		return t;
+	}
+
+	public void setT(typeUnite t) {
+		this.t = t;
+	}
+
+	public void setPV(long l) {
+		this.PV=(int) l;// TODO Auto-generated method stub
+		
 	} 
 }

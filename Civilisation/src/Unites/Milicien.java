@@ -22,7 +22,7 @@ public class Milicien extends Personnage{
 			J.setOr(J.getOr() - this.coutOr);
 			J.setOr(J.getOr() - this.coutNourriture);
 			
-			this.t = typeUnite.Milicien;
+			this.setT(typeUnite.Milicien);
 		  }
 
 	//*************** Méthodes *******************

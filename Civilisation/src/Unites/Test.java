@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import civ.FntPrcpl;
 import joueur.Joueur;
+import Batiment.BatCaserne;
+import Batiment.Batiment;
 import Evenements.Fonctions;
 
 public class Test {
@@ -48,6 +50,32 @@ public class Test {
 	    System.out.println("Les pv du déf avant attaque sont : " + Defenseur.getPV());
 	    Fonctions.Attaquer(Attaquant, Defenseur);
 	    System.out.println("Les pv du déf après attaque sont : " + Defenseur.getPV());
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    Personnage Attaquant1 = new Magicien(lesJoueurs[0]);
+	    Fonctions.Creation(Attaquant1);
+	    Personnage Defenseur1 = new Milicien(lesJoueurs[0]);
+	    Fonctions.Creation(Defenseur1);
+	 
+	    System.out.println("Les pv du déf avant attaque sont : " + Defenseur1.getPV());
+	    Fonctions.Attaquer(Attaquant1, Defenseur1);
+	    System.out.println("Les pv du déf après attaque sont : " + Defenseur1.getPV());
+	    
+	    
+	    
+	    
+	  /*  Personnage Attaquant2 = new Milicien(lesJoueurs[0]);
+	    Fonctions.Creation(Attaquant2);
+	    Batiment Defenseur2= new BatCaserne(null, null, lesJoueurs[0]);
+	 
+	    System.out.println("Les pv du déf avant attaque sont : " + Defenseur2.getPV());
+	    Fonctions.Attaquer(Attaquant2, Defenseur2);
+	    System.out.println("Les pv du déf après attaque sont : " + Defenseur2.getPV());*/
 	    
 	}
 

@@ -17,7 +17,7 @@ public class Peon extends Personnage {
 		this.coutNourriture=50;
 		J.setOr(J.getOr() - this.coutNourriture);
 		
-		this.t = typeUnite.Peon;
+		this.setT(typeUnite.Peon);
 	}
 	
 	//*************** Méthodes *******************

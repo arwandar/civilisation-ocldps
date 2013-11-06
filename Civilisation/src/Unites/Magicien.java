@@ -21,7 +21,7 @@ public class Magicien extends Personnage {
 		J.setOr(J.getOr() - this.coutOr);
 		J.setOr(J.getOr() - this.coutNourriture);
 		
-		this.t = typeUnite.Magicien;
+		this.setT(typeUnite.Magicien);
 	}
 	
 	//*************** Méthodes *******************

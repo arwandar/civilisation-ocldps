@@ -23,7 +23,7 @@ public class Chevalier extends Personnage {
 		J.setOr(J.getOr() - this.coutOr);
 		J.setOr(J.getOr() - this.coutNourriture);
 		
-		this.t = typeUnite.Chevalier;
+		this.setT(typeUnite.Chevalier);
 	}
 	
 	//*************** Méthodes *******************
