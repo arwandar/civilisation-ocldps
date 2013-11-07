@@ -18,13 +18,45 @@ public class Fonctions {
 	static int decalageVertical = 0;
 	static boolean deplacementFini = false;
 	
+	public static String[][] matriceDeJeu = new String[getPlateau().getWidth()/50][getPlateau().getHeight()/50];
+	
 	public Fonctions(PanelPrcpl plateau){
-		this.setPlateau(plateau);
+		Fonctions.setPlateau(plateau);
 		
 		
 	}
 
 	
+	
+	
+	public static void creationDeLaMatrice ( ){
+		
+		System.out.println(getPlateau().getWidth() + " " + getPlateau().getHeight());
+		for (int i=0;i<getPlateau().getWidth()/50;i++){
+			System.out.println("a");
+			for (int j=0;j<getPlateau().getHeight()/50;j++){
+				System.out.println("b");
+				if ( getPlateau().getCarte(i,j).isBatimentsurcase() || getPlateau().getCarte(i,j).isUnitesurcase() || getPlateau().getCarte(i,j).getTexture() == Texture.eau )
+					matriceDeJeu[i][j]= "|";
+				else if ( getPlateau().getCarte(i,j).getTexture() == Texture.foret)
+					matriceDeJeu[i][j]= "F";
+				else if (getPlateau().getCarte(i,j).getTexture() == Texture.montagne)
+					matriceDeJeu[i][j]= "M";
+				else
+					matriceDeJeu[i][j]= "";
+			}
+		}
+	}
+	
+	public static void displayMatrix(final String[][] matrix) {
+		  
+        for (int col = 0; col < matrix.length; ++col) {  
+            for (int line = 0; line < matrix[col].length; ++line) {  
+                System.out.print(matrix[col][line]+" "); 
+            } 
+            System.out.println("");
+        }
+    } 
 	
 	
 	//public static int decalageHorizontal = 0;
@@ -314,5 +346,8 @@ public class Fonctions {
 	public static void setPlateau(PanelPrcpl plateau) {
 		Fonctions.plateau = plateau;
 	}
+	
+	
+	
 	
 }

@@ -22,7 +22,7 @@ public class Test {
 		Fonctions fonctions = new Fonctions(tmp.affichagejeu);
 		
 		// Test d'instanciation de toutes les unités avec leur description
-		
+		/*
 		Personnage[] tPers = {new Peon(lesJoueurs[0]), new Milicien(lesJoueurs[0]), new Magicien(lesJoueurs[0]), new Healer(lesJoueurs[0]), new Archer(lesJoueurs[0]), new CavalierArcher(lesJoueurs[0]), new Chevalier(lesJoueurs[0]), new Galere(lesJoueurs[0]), new Transporteur(lesJoueurs[0]), new Catapulte(lesJoueurs[0])};
   				
 	    for(int i = 0; i < tPers.length; i++){
@@ -36,11 +36,11 @@ public class Test {
 	      System.out.println("Je suis situé en " + tPers[i].getPositionHorizontale() + " ; " + tPers[i].getPositionVerticale() + " et ma portée est de " + tPers[i].getPortee());
 	      System.out.println("Je me déplace de " + tPers[i].getMouvement());
 	    } 
-	    
+	    */
 	    System.out.println("");
 
 	    // test d'attaque entre deux personnages
-		
+		/*
 	    Personnage Attaquant = new Archer(lesJoueurs[0]);
 	    Fonctions.Creation(Attaquant);
 	    Personnage Defenseur = new Milicien(lesJoueurs[0]);
@@ -70,11 +70,11 @@ public class Test {
 	    System.out.println("Les pv du déf avant attaque sont : " + Defenseur1.getPV());
 	    Fonctions.Attaquer(Attaquant1, Defenseur1);
 	    System.out.println("Les pv du déf après attaque sont : " + Defenseur1.getPV());
-	    
+	    */
 	    System.out.println("");
 	    
 	    // test d'attaque d'un milicien sur un batiment
-	    
+	    /*
 	    Personnage Attaquant2 = new Milicien(lesJoueurs[0]);
 	    Fonctions.Creation(Attaquant2);
 	    int[] pos = {2,1};
@@ -85,12 +85,16 @@ public class Test {
 	    Fonctions.Attaquer(Attaquant2, Defenseur2);
 	    System.out.println("Les pv du déf après attaque sont : " + Defenseur2.getPV());
 	    System.out.println("");
-	    
+	    */
 	    // test de déplacement d'un personnage
+	    /*
 	    System.out.println("il est là : " + Attaquant.getPositionHorizontale() + " / " + Attaquant.getPositionVerticale());
 	    Fonctions.Itineraire(Attaquant,4,4);
 	    System.out.println("il est là : " + Attaquant.getPositionHorizontale() + " / " + Attaquant.getPositionVerticale());
-	    //Fonctions.getPlateau 
+	    */
+	    
+	    Fonctions.creationDeLaMatrice();
+	    Fonctions.displayMatrix(Fonctions.matriceDeJeu);
 	    
 	}
 
