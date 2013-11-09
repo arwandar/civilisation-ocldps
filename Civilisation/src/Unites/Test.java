@@ -86,16 +86,22 @@ public class Test {
 	    System.out.println("Les pv du déf après attaque sont : " + Defenseur2.getPV());
 	    System.out.println("");
 	    */
-	    // test de déplacement d'un personnage
-	    /*
-	    System.out.println("il est là : " + Attaquant.getPositionHorizontale() + " / " + Attaquant.getPositionVerticale());
-	    Fonctions.Itineraire(Attaquant,4,4);
-	    System.out.println("il est là : " + Attaquant.getPositionHorizontale() + " / " + Attaquant.getPositionVerticale());
-	    */
 	    
 	    Fonctions.creationDeLaMatrice();
 	    Fonctions.displayMatrix(Fonctions.matriceDeJeu);
+	    System.out.println(" ");
+	    Personnage Test = new Milicien(lesJoueurs[0]);
+	    Test.setPositionHorizontale(2); Test.setPositionVerticale(2);
+	    Fonctions.Creation(Test);
+	    Fonctions.testGps(Test,12,15);
 	    
+	    
+	    while(Test.getPositionHorizontale()!=12 || Test.getPositionVerticale()!=15){
+	    	Fonctions.deplacementReel(Test);
+	    	Fonctions.displayMatrix(Fonctions.matriceDeJeu);
+	        System.out.println(" ");
+	    }
+	    System.out.println("Fini !");
 	}
 
 }

@@ -72,7 +72,7 @@ public abstract class NodeFactory<T> {
     protected abstract double computeReel(T parentIndex, T index);  
   
     /** 
-     * Renvoit le cout theorique (distance) entre l'index et le goal Une bonne 
+     * Renvoie le cout theorique (distance) entre l'index et le goal Une bonne 
      * fonction theorique doit toujours etre inférieur au reel 
      * 
      * @param index 

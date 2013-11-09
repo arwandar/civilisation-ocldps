@@ -1,24 +1,28 @@
 package Evenements;
 
-import joueur.Joueur;
-import civ.FntPrcpl;
-import civ.PanelPrcpl;
-import civ.Texture;
+import gps.Astar;
+import gps.Node;
+import gps.NodeFactory;
+import gps.SuccessorComputer;
+
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import Batiment.BatProdUnit.typeUnite;
 import Batiment.Batiment;
 import Unites.Personnage;
+import civ.PanelPrcpl;
+import civ.Texture;
 
 
 
 public class Fonctions {
 	
 	private static PanelPrcpl plateau;
-	static int deplacementRestant = 0;
-	static int decalageHorizontal = 0;
-	static int decalageVertical = 0;
-	static boolean deplacementFini = false;
-	
-	public static String[][] matriceDeJeu = new String[getPlateau().getWidth()/50][getPlateau().getHeight()/50];
+
+	public static String[][] matriceDeJeu=new String[30][60]; /*= new String[getPlateau().getWidth()/50][getPlateau().getHeight()/50];*/
 	
 	public Fonctions(PanelPrcpl plateau){
 		Fonctions.setPlateau(plateau);
@@ -31,11 +35,12 @@ public class Fonctions {
 	
 	public static void creationDeLaMatrice ( ){
 		
-		System.out.println(getPlateau().getWidth() + " " + getPlateau().getHeight());
-		for (int i=0;i<getPlateau().getWidth()/50;i++){
-			System.out.println("a");
-			for (int j=0;j<getPlateau().getHeight()/50;j++){
-				System.out.println("b");
+		//System.out.println(getPlateau().getWidth() + " " + getPlateau().getHeight()); //50.13
+		//for (int i=0;i<getPlateau().getWidth()/50;i++){
+		for (int i=0;i<30;i++){
+			//for (int j=0;j<getPlateau().getHeight()/50;j++){
+			for (int j=0;j<60;j++){
+				//System.out.println(getPlateau().getCarte(i, j).getTexture());
 				if ( getPlateau().getCarte(i,j).isBatimentsurcase() || getPlateau().getCarte(i,j).isUnitesurcase() || getPlateau().getCarte(i,j).getTexture() == Texture.eau )
 					matriceDeJeu[i][j]= "|";
 				else if ( getPlateau().getCarte(i,j).getTexture() == Texture.foret)
@@ -43,7 +48,7 @@ public class Fonctions {
 				else if (getPlateau().getCarte(i,j).getTexture() == Texture.montagne)
 					matriceDeJeu[i][j]= "M";
 				else
-					matriceDeJeu[i][j]= "";
+					matriceDeJeu[i][j]= " ";
 			}
 		}
 	}
@@ -54,14 +59,123 @@ public class Fonctions {
             for (int line = 0; line < matrix[col].length; ++line) {  
                 System.out.print(matrix[col][line]+" "); 
             } 
-            System.out.println("");
+            System.out.println(" ");
         }
     } 
 	
 	
-	//public static int decalageHorizontal = 0;
-	//public static int decalageVertical = 0;
-	//private static int deplacementRestant = 0;
+	public static void testGps(Personnage perso, int arriveeX, int arriveeY){
+           
+            final int width = matriceDeJeu[0].length - 1;  
+            final int height = matriceDeJeu.length - 1;  
+              
+            final SuccessorComputer<Point> successorComputer = new SuccessorComputer<Point>() {  
+                /** 
+                 * Doit renvoyer les points a gauche, a droite, en haut en bas du noeud passé en paramètre 
+                 * en supprimant la position du noeud parent de ce noeud 
+                 *  
+                 * @param node le noeud dont on cherche les voisins 
+                 * @return la liste des voisins du noeud diminué de la position du parent 
+                 */  
+                @Override  
+                public Collection<Point> computeSuccessor(final Node<Point> node) {  
+                    final Point index = node.getIndex();  
+                    final int x = (int) index.getX();  
+                    final int y = (int) index.getY();  
+      
+                    final List<Point> resultat = new ArrayList<Point>();  
+                    if (x > 0) {  
+                        resultat.add(new Point(x - 1, y));  
+                    }  
+                    if (x < width ) {  
+                        resultat.add(new Point(x + 1, y));  
+                    }  
+      
+                    if (y > 0) {  
+                        resultat.add(new Point(x, y - 1));  
+                    }  
+                    if (y < height ) {  
+                        resultat.add(new Point(x, y + 1));  
+                    }  
+                    if(node.getParent() != null) {  
+                        resultat.remove(node.getParent().getIndex());  
+                    }  
+                    return resultat;  
+                }  
+            };  
+              
+            final NodeFactory<Point> nodeFactory = new NodeFactory<Point>() {  
+                @Override  
+                protected double computeReel(final Point parentIndex, final Point index) {  
+                    if(parentIndex != null && parentIndex.equals(index)) {  
+                        return 0;  
+                    }  
+                      
+                    if(" ".equals(matriceDeJeu[(int) index.getY()][(int) index.getX()])) {  
+                        return 1;  
+                    }
+                    if("F".equals(matriceDeJeu[(int) index.getY()][(int) index.getX()])) {  
+                        return 2;  
+                    }
+                    if("M".equals(matriceDeJeu[(int) index.getY()][(int) index.getX()])) {  
+                        return 3;  
+                    }
+                    return Double.MAX_VALUE;  
+                }  
+                  
+                @Override  
+                protected double computeTheorique(final Point index, final Point goal) {  
+                    // Distance de manhattan  
+                    return Math.abs(index.getX()-goal.getX()) + Math.abs(index.getY()-goal.getY());  
+                }  
+            };  
+      
+            final Astar<Point> astart = new Astar<Point>(successorComputer,  
+                    nodeFactory);  
+              
+            final List<Point> result = astart.compute(new Point(perso.getPositionHorizontale(),perso.getPositionVerticale()), new Point(arriveeY,arriveeX));  //new Point(width,height) //c'est là qu'on modifie le départ et l'arrivée
+            //On intégre le résultat dans la matrice de base, et on l'affiche  
+            for(final Point point : result) {  
+            	matriceDeJeu[(int) point.getY()][(int) point.getX()] = "X";  
+            }  
+            displayMatrix(matriceDeJeu); 
+	}
+	
+	public static void deplacementReel (Personnage perso){
+		
+		int mouvementRestant=perso.getMouvement();
+		int[] x = {-1,0,1,0};
+		int[] y = {0,-1,0,1};
+		matriceDeJeu[ perso.getPositionHorizontale() ][ perso.getPositionVerticale() ]="O";
+		//System.out.println("Je suis en " + perso.getPositionHorizontale() + " " +  perso.getPositionVerticale() + " et je peux bouger de " + mouvementRestant );
+		
+		while (mouvementRestant>0){
+			for (int i=0; i<4; i++){
+				int nvX = perso.getPositionHorizontale() + x[i];
+				int nvY = perso.getPositionVerticale() + y[i];
+				if(matriceDeJeu[ nvX ][ nvY ]=="X"){
+					//System.out.println("Trouvé ! : " + nvX + " " + nvY);
+					
+					
+					
+					int coeff = TestTerrain(nvX,nvY);
+					if ((mouvementRestant - coeff) >= 0){
+						matriceDeJeu[ nvX ][ nvY ]="O";
+						perso.setPositionHorizontale(nvX);
+						perso.setPositionVerticale(nvY);
+						mouvementRestant -= coeff;
+						//System.out.println("Je suis en " + perso.getPositionHorizontale() + " " +  perso.getPositionVerticale() + " et je peux bouger de " + mouvementRestant );
+					}
+					else{
+						mouvementRestant--;
+					}
+				}
+			}	
+		}
+	}
+	
+	
+
 	
 	
 	public static boolean isRange(Personnage Attaquant, Personnage Defenseur, int portee){
@@ -115,154 +229,8 @@ public class Fonctions {
 		 personnage.batir();
 	}
 	
-	
-	
-	public static void Itineraire (Personnage personnage, int valeurHorizontale, int valeurVerticale){
-		setDeplacementRestant(personnage.getMouvement());
-		System.out.println("On peut se déplacer de " + getDeplacementRestant());
-		setDeplacementFini(false);
-		setDecalageHorizontal(0);
-		setDecalageVertical(0);
-		boolean direction = true;
-		int coeff=0;
-		boolean total = false;
-		int compteur = 0;
-		
-		CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);  //calcule le nombre de cases dont il faudrait se décaler pour arriver à la case voulue, dans les deux axes
-		
-		
-		
-		while (!total){
-		
-		while (direction && !deplacementFini && decalageHorizontal != 0){
-			
-			if(decalageHorizontal > 0){ //il doit aller à droite				
-				// on regarde si la case visée est traversable et combien de mouvement on doit utiliser			
-				coeff=TestTerrain((personnage.getPositionHorizontale()+1), personnage.getPositionVerticale());	//renvoie la difficulté de franchissement du terrain
-				System.out.println("le coeff est : " + coeff);
-				if (coeff==0){
-					direction = false; // si on peut pas traverser on change d'axe
-					compteur++;
-				}
-				else {
-					// on regarde si le joueur dispose d'assez de mouvement pour aller jusqu'à la case
-					if(!PossibiliteDepla(coeff, getDeplacementRestant())){
-						direction = false; // on ne peut pas y aller
-						compteur++;
-					}
-					else{
-						compteur=0;
-						// on se déplace
-						DeplacementDroite(personnage);
-						System.out.println("Le personnage se déplace d'un cran vers la droite");
-						// retire le nombre de mvts nécessaire pour se déplacer et indique si le mvt est terminé ou non
-						DeplacementFini(getDeplacementRestant(),deplacementFini, coeff);
-																	//System.out.println("dépla restant après la fonction depla fini : " + getDeplacementRestant());
-					}					
-				}
-				// on actualise le décalage nécessaire
-				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
-			}
-			else { // il doit aller à gauche				
-				coeff=TestTerrain((personnage.getPositionHorizontale()-1), personnage.getPositionVerticale());				
-				if (coeff==0){
-					direction = false;
-					compteur++;
-				}
-				else {
-					if(!PossibiliteDepla(coeff, getDeplacementRestant())){
-						direction = false;
-						compteur++;
-					}
-					else{
-						compteur=0;
-						DeplacementGauche(personnage);
-						System.out.println("Le personnage se déplace d'un cran vers la gauche");
-						DeplacementFini(getDeplacementRestant(),deplacementFini, coeff);
-					}					
-				}
-				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
-			}			
-		}
-		if (compteur == 2)
-			total = true;
-		if(decalageHorizontal==0)
-			direction=false;
-		
-		while (!direction && !deplacementFini && decalageVertical != 0){
-			System.out.println("il passe en vertical");
-			if(decalageVertical > 0){ //il doit aller en bas
-				coeff=TestTerrain((personnage.getPositionHorizontale()), personnage.getPositionVerticale()+1);				
-				if (coeff==0){
-					direction = true;
-					compteur++;
-				}
-				else {
-					if(!PossibiliteDepla(coeff, getDeplacementRestant())){
-						direction = true;
-						compteur++;
-					}
-					else{
-						compteur=0;
-						DeplacementBas(personnage);
-						System.out.println("Le personnage se déplace d'un cran vers le bas");
-						DeplacementFini(getDeplacementRestant(),deplacementFini, coeff);
-					}					
-				}
-				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);		
-			}
-			else { // il doit aller en haut
-				coeff=TestTerrain((personnage.getPositionHorizontale()), personnage.getPositionVerticale()-1);				
-				if (coeff==0){
-					direction = true;
-					compteur++;
-				}
-				else {
-					if(!PossibiliteDepla(coeff, getDeplacementRestant())){
-						direction = true;
-						compteur++;
-					}
-					else{
-						compteur=0;
-						DeplacementHaut(personnage);
-						System.out.println("Le personnage se déplace d'un cran vers le haut");
-						DeplacementFini(getDeplacementRestant(),deplacementFini, coeff);
-					}					
-				}
-				CheckDecalages( personnage,  valeurHorizontale,  valeurVerticale);
-			}
-		}
-		
-		if(getDeplacementRestant()<= 0 || (decalageHorizontal == 0  && decalageVertical == 0) || compteur == 2)
-			total=true;
-		else
-			total = false;
-		}
-		
-	}
-		
-	public static void DeplacementHaut (Personnage personnage){
-		personnage.setPositionVerticale(personnage.getPositionVerticale()-1);
-	}
-	public static void DeplacementBas (Personnage personnage){
-		personnage.setPositionVerticale(personnage.getPositionVerticale()+1);
-	}
-	public static void DeplacementGauche (Personnage personnage){
-		personnage.setPositionHorizontale(personnage.getPositionHorizontale()-1);
-	}
-	public static void DeplacementDroite (Personnage personnage){
-		personnage.setPositionHorizontale(personnage.getPositionHorizontale()+1);
-	}
-	public static void DeplacementFini(int deplacementRestant ,	boolean deplacementFini, int coeff ){ //soustrait au déplacement du perso une certaine valeur et regarde s'il peut encore bouger (modifiable plus tard en fct du terrain (rajouter un entier coeff))
-		setDeplacementRestant(getDeplacementRestant()-coeff);
-															//System.out.println("dépla restant dans la fonction depla fini : " + getDeplacementRestant());
-		if (getDeplacementRestant()==0)
-			setDeplacementFini(true);		
-	}
-	public static void CheckDecalages(Personnage personnage, int valeurHorizontale, int valeurVerticale){ //calcule le nombre de cases dont il faudrait se décaler pour arriver à la case voulue
-		setDecalageHorizontal(valeurHorizontale - personnage.getPositionHorizontale()); //case arrivée - case du perso
-		setDecalageVertical(valeurVerticale - personnage.getPositionVerticale());
-	}
+
+
 	
 	public static int TestTerrain (int valeurHorizontale, int valeurVerticale){ //renvoie la difficulté de franchissement du terrain
 		if ( getPlateau().getCarte(valeurHorizontale,valeurVerticale).isBatimentsurcase() || getPlateau().getCarte(valeurHorizontale,valeurVerticale).isUnitesurcase())
@@ -274,80 +242,14 @@ public class Fonctions {
 		else
 			return 1;
 	}
-	public static boolean PossibiliteDepla(int coeff, int deplacementRestant){
-		if (getDeplacementRestant() - coeff >=0)
-			return true;
-		else
-			return false;
-	}
-	public static int getDeplacementRestant() {
-		return deplacementRestant;
-	}
-	public static void setDeplacementRestant(int deplacementRestant1) {
-		deplacementRestant = deplacementRestant1;
-	}
-
-
-
-
-	public static int getDecalageHorizontal() {
-		return decalageHorizontal;
-	}
-
-
-
-
-	public static void setDecalageHorizontal(int decalageHorizontal) {
-		Fonctions.decalageHorizontal = decalageHorizontal;
-	}
-
-
-
-
-	public static int getDecalageVertical() {
-		return decalageVertical;
-	}
-
-
-
-
-	public static void setDecalageVertical(int decalageVertical) {
-		Fonctions.decalageVertical = decalageVertical;
-	}
-
-
-
-
-	public static boolean isDeplacementFini() {
-		return deplacementFini;
-	}
-
-
-
-
-	public static void setDeplacementFini(boolean deplacementFini) {
-		Fonctions.deplacementFini = deplacementFini;
-	}
-
-
 
 
 	public static PanelPrcpl getPlateau() {
 		return plateau;
 	}
-	
-	/*public static PanelPrcpl getPlateau(int i, int j) {
-		return plateau[i][j];
-	}*/
-
-
-
 
 	public static void setPlateau(PanelPrcpl plateau) {
 		Fonctions.plateau = plateau;
 	}
-	
-	
-	
-	
+
 }
