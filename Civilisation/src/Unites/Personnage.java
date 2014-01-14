@@ -198,5 +198,13 @@ public abstract class Personnage implements Caracteristiques{
 	public void setPV(long l) {
 		this.PV=(int) l;// TODO Auto-generated method stub
 		
+	}
+
+	public boolean isUsed() {
+		return isUsed;
+	}
+
+	public void setUsed(boolean isUsed) {
+		this.isUsed = isUsed;
 	} 
 }

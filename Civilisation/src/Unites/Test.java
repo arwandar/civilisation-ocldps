@@ -7,6 +7,7 @@ import civ.Case;
 import civ.FntPrcpl;
 import joueur.Joueur;
 import Batiment.BatCaserne;
+import Batiment.BatProdRes;
 import Batiment.Batiment;
 import Evenements.Fonctions;
 
@@ -18,19 +19,30 @@ public class Test {
 	
 	void debutDeTour(Joueur J){ //initialise un tour en rendant les unités dispo et en augmentant les ressource + en avançant les constructions et les technologies
 		//parcourt la liste des bâtiments de prod et ajoute les ressources
-		//parcourt la liste des unités et les passe en notUsed
 		ArrayList<Batiment> batimentPossible = J.getBatiments();
 		for (Batiment celuiLa : batimentPossible){ 
-			if (celuiLa.getType == BatProdRes){
-				batimentSurLaCase = celuiLa;
-				test = true;
-				break;
+			if (celuiLa.getNOM().indexOf("mine") != -1){ //A VERIFIER
+				//on a trouvé un bâtiment de production de ressources
+				((BatProdRes) celuiLa).productionDeRessources(J);
 			}
 		}
 		
-		
-	}
+		//parcourt la liste des unités et les passe en notUsed
+		ArrayList<Personnage> perso = J.getPersonnages();
+		for (Personnage celuiCi : perso){ 
+			celuiCi.setUsed(false);
+			}
+		}
 	
+	static boolean isFini (Joueur J){
+		ArrayList<Batiment> batimentPossible = J.getBatiments();
+		for (Batiment celuiLa : batimentPossible){ 
+			if (celuiLa.getNOM() == "Hotel de ville"){
+				return false;
+			}
+		return true;
+		}
+	}
 	
 	
 	
@@ -146,8 +158,29 @@ public class Test {
 	     * 
 	     */
 	    
-	    
-	    
+	    boolean partieEnCours= true;
+	    Joueur joueurActif=lesJoueurs[0];
+	    while(partieEnCours){
+	    	boolean tour = true;
+	    	while (tour){
+	    		//
+	    		//
+	    		//
+	    		
+	    		
+	    		if (isFini(lesJoueurs[0])||isFini(lesJoueurs[1])) //check si la partie est finie par destruction d'hotel de vide
+	    			partieEnCours=false;
+	    		if (finTourIsOn/*on clique sur fin de tour*/){
+	    			tour=false;
+	    			if(joueurActif == lesJoueurs[0]){
+	    				joueurActif=lesJoueurs[1];
+	    			}
+	    			else{
+	    				joueurActif=lesJoueurs[0];
+	    			}
+	    		}
+	    	}
+	    }
 	    
 	    
 	    
