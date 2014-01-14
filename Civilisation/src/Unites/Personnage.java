@@ -28,6 +28,8 @@ public abstract class Personnage implements Caracteristiques{
 	  int portee = Caracteristiques.portee;
 	  int mouvement = Caracteristiques.mouvement;
 	  
+	  boolean isUsed = false;
+	  
 	  protected Joueur joueur;
 	  
 	  private typeUnite t;

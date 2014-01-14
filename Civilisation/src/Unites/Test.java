@@ -1,6 +1,7 @@
 package Unites;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import civ.Case;
 import civ.FntPrcpl;
@@ -11,6 +12,32 @@ import Evenements.Fonctions;
 
 public class Test {
 
+	
+	
+	
+	
+	void debutDeTour(Joueur J){ //initialise un tour en rendant les unités dispo et en augmentant les ressource + en avançant les constructions et les technologies
+		//parcourt la liste des bâtiments de prod et ajoute les ressources
+		//parcourt la liste des unités et les passe en notUsed
+		ArrayList<Batiment> batimentPossible = J.getBatiments();
+		for (Batiment celuiLa : batimentPossible){ 
+			if (celuiLa.getType == BatProdRes){
+				batimentSurLaCase = celuiLa;
+				test = true;
+				break;
+			}
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public static void main(String[] args) {
 		System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
 		Joueur[] lesJoueurs = new Joueur[2];
@@ -87,6 +114,9 @@ public class Test {
 	    System.out.println("");
 	    */
 	    
+	    
+	    
+	    /*Test de déplacement
 	    Fonctions.creationDeLaMatrice();
 	    Fonctions.displayMatrix(Fonctions.matriceDeJeu);
 	    System.out.println(" ");
@@ -101,7 +131,52 @@ public class Test {
 	    	Fonctions.displayMatrix(Fonctions.matriceDeJeu);
 	        System.out.println(" ");
 	    }
-	    System.out.println("Fini !");
+	    System.out.println("Fini !");*/
+	    
+	    /* Choses à faire dans le main
+	     * 
+	     * - instancier la carte et créer les joueurs avec leurs ressources
+	     * - faire les tours
+	     * 
+	     * tours :
+	     * - ajouter les ressources
+	     * - gérer les deux actions des unités et la passer en used
+	     * - gérer les actions des bâtiments : créer une unité directement used
+	     * 
+	     * 
+	     */
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 	}
 
 }

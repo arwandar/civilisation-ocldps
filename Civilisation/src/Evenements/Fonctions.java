@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import joueur.Joueur;
 import Batiment.BatProdUnit.typeUnite;
 import Batiment.Batiment;
 import Unites.Personnage;
@@ -229,6 +230,23 @@ public class Fonctions {
 		 personnage.batir();
 	}
 	
+	public static void Chercher (Joueur J){ //recherche des ressources
+				
+		double x;
+		x=Math.random();
+		
+		if (x<0.2)
+			J.setNourriture(J.getNourriture() + 10);
+		if(x>=0.2 && x<0.4)
+			J.setBois(J.getBois() + 10);
+		if(x>=0.4 && x<0.6)
+			J.setPierre(J.getPierre() + 10);
+		if(x>=0.6 && x<0.8)
+			J.setOr(J.getOr() + 10);
+		if(x>=0.8)
+			J.setFer(J.getFer() + 10);
+		}
+
 
 
 	
