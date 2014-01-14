@@ -11,9 +11,21 @@ import java.util.Collection;
 import java.util.List;
 
 import joueur.Joueur;
+import Batiment.BatArcherie;
+import Batiment.BatAtelierDeSiege;
+import Batiment.BatCaserne;
+import Batiment.BatEcurie;
+import Batiment.BatHotelDeVille;
+import Batiment.BatMur;
+import Batiment.BatPort;
+import Batiment.BatProdRes;
+import Batiment.BatProdRes.typeRessource;
 import Batiment.BatProdUnit.typeUnite;
+import Batiment.BatTourDesMages;
+import Batiment.BatTourelle;
 import Batiment.Batiment;
 import Unites.Personnage;
+import civ.Case;
 import civ.PanelPrcpl;
 import civ.Texture;
 
@@ -269,5 +281,55 @@ public class Fonctions {
 	public static void setPlateau(PanelPrcpl plateau) {
 		Fonctions.plateau = plateau;
 	}
-
+	
+	public static void construire(Joueur J,String name, int V[], Case M)
+	{
+		switch(name)
+		{
+			case "Archerie": new BatArcherie(V, M, J);
+				break;
+			case "atelier de siège": new BatAtelierDeSiege(V, M, J);
+				break;
+			case "Caserne": new BatCaserne(V, M, J);
+				break;
+			case "Ecurie": new BatEcurie(V, M, J);
+				break;
+			case "Hotel de ville" : new BatHotelDeVille(V, M, J);
+				break;
+			case "Mur": new BatMur(V, M, J);
+				break;
+			case "Port": new BatPort(V, M, J);
+				break;
+			case "Tour des mages": new BatTourDesMages(V, M, J);
+				break;
+			case "Tourelle": new BatTourelle(V, M, J);
+				break;
+			default: System.out.println("\nCe type de bâtiment n'éxiste pas");
+		}
+	}
+	
+	public static void construire(Joueur J,String name, int V[], Case M, typeRessource t)
+	{
+		if(name.indexOf("mine") != -1)
+		{
+			switch(t)
+			{
+				case or: new BatProdRes(name, V, t, M, J);
+					break;
+				case fer: new BatProdRes(name, V, t, M, J);
+					break;
+				case pierre: new BatProdRes(name, V, t, M, J);
+					break;
+				case bois: new BatProdRes(name, V, t, M, J);
+					break;
+				case nourriture: new BatProdRes(name, V, t, M, J);
+					break;
+				default: System.out.println("\nCe type de bâtiment n'éxiste pas");
+			}
+		}
+		else
+		{
+			System.out.println("\nCe type de bâtiment n'éxiste pas, ou ce bâtiment ne peut pas produire de ressource");
+		}
+	}
 }
