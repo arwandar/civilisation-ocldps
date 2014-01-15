@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import civ.Case;
 import civ.FntPrcpl;
+import civ.PanelResrc;
 import joueur.Joueur;
 import Batiment.BatCaserne;
 import Batiment.BatProdRes;
@@ -17,7 +18,7 @@ public class Test {
 	
 	
 	
-	void debutDeTour(Joueur J){ //initialise un tour en rendant les unités dispo et en augmentant les ressource + en avançant les constructions et les technologies
+	static void debutDeTour(Joueur J){ //initialise un tour en rendant les unités dispo et en augmentant les ressource + en avançant les constructions et les technologies
 		//parcourt la liste des bâtiments de prod et ajoute les ressources
 		ArrayList<Batiment> batimentPossible = J.getBatiments();
 		for (Batiment celuiLa : batimentPossible){ 
@@ -40,8 +41,8 @@ public class Test {
 			if (celuiLa.getNOM() == "Hotel de ville"){
 				return false;
 			}
-		return true;
 		}
+		return true;
 	}
 	
 	
@@ -163,6 +164,9 @@ public class Test {
 	    while(partieEnCours){
 	    	boolean tour = true;
 	    	while (tour){
+	    		
+	    		
+	    		debutDeTour(joueurActif);
 	    		//
 	    		//
 	    		//
@@ -170,7 +174,8 @@ public class Test {
 	    		
 	    		if (isFini(lesJoueurs[0])||isFini(lesJoueurs[1])) //check si la partie est finie par destruction d'hotel de vide
 	    			partieEnCours=false;
-	    		if (finTourIsOn/*on clique sur fin de tour*/){
+	    		if (PanelResrc.findetour/*on clique sur fin de tour*/){
+	    			PanelResrc.findetour=false;
 	    			tour=false;
 	    			if(joueurActif == lesJoueurs[0]){
 	    				joueurActif=lesJoueurs[1];
