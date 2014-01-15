@@ -308,28 +308,21 @@ public class Fonctions {
 		}
 	}
 	
-	public static void construire(Joueur J,String name, int V[], Case M, typeRessource t)
+	public static void construire(Joueur J, int V[], Case M, typeRessource t)
 	{
-		if(name.indexOf("mine") != -1)
+		switch(t)
 		{
-			switch(t)
-			{
-				case or: new BatProdRes(name, V, t, M, J);
-					break;
-				case fer: new BatProdRes(name, V, t, M, J);
-					break;
-				case pierre: new BatProdRes(name, V, t, M, J);
-					break;
-				case bois: new BatProdRes(name, V, t, M, J);
-					break;
-				case nourriture: new BatProdRes(name, V, t, M, J);
-					break;
-				default: System.out.println("\nCe type de bâtiment n'éxiste pas");
-			}
-		}
-		else
-		{
-			System.out.println("\nCe type de bâtiment n'éxiste pas, ou ce bâtiment ne peut pas produire de ressource");
+			case or: new BatProdRes("mine", V, t, M, J);
+				break;
+			case fer: new BatProdRes("mine", V, t, M, J);
+				break;
+			case pierre: new BatProdRes("mine", V, t, M, J);
+				break;
+			case bois: new BatProdRes("mine", V, t, M, J);
+				break;
+			case nourriture: new BatProdRes("mine", V, t, M, J);
+				break;
+			default: System.out.println("\nCe type de bâtiment n'éxiste pas");
 		}
 	}
 }
