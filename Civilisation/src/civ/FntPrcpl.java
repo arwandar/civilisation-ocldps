@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import joueur.Joueur;
 
-public class FntPrcpl extends JFrame {
+public class FntPrcpl extends JFrame implements ActionListener {
 	/*
 	 * classe où sera défini la fenetre principale du jeu
 	 */
@@ -89,11 +89,7 @@ public class FntPrcpl extends JFrame {
 		this.menu = new JPanel();
 
 		this.demarrerB = new JButton("demarrer une partie");
-		this.demarrerB.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cl.next(fenetre);
-			}
-		});
+		this.demarrerB.addActionListener(this);
 		this.menu.add(this.demarrerB);
 
 		this.editMapB = new JButton("editer une nouvelle map");
@@ -144,5 +140,13 @@ public class FntPrcpl extends JFrame {
 //
 //		this.editeurMap.add(bouh);
 		this.fenetre.add(this.editeurMap, listContent[3]);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == this.demarrerB){
+			cl.next(fenetre);
+		}
+		
 	}
 }
