@@ -20,10 +20,13 @@ public abstract class Batiment
 	protected int coutPierre;
 	protected int coutBois;
 	protected Joueur joueur;
+	protected boolean isConstructible = true;
 	
 	//*************** Constructeur *******************
 	public Batiment(String name, int p, int a, double d, int c, boolean ioe, int V[], int prod, Case M) //le vecteur position sera à remplacer par une case
 	{
+		this.isConstructible = true;
+		
 		if(ioe && M.getTexture() != Texture.eau && M.getTexture() != Texture.montagne) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
 		{
 			this.setNOM(name);
@@ -51,6 +54,7 @@ public abstract class Batiment
 		else
 		{
 			System.out.println("Wrong place to build it!!");
+			this.isConstructible = false;
 		}
 	}
 	
