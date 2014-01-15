@@ -24,7 +24,7 @@ public abstract class Batiment
 	//*************** Constructeur *******************
 	public Batiment(String name, int p, int a, double d, int c, boolean ioe, int V[], int prod, Case M) //le vecteur position sera à remplacer par une case
 	{
-		if( /*ioe && */M.getTexture() != Texture.eau && M.getTexture() != Texture.montagne) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
+		if( /*ioe && M.getTexture() != Texture.eau && M.getTexture() != Texture.montagne*/ 1 == 1) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
 		{
 			this.setNOM(name);
 			this.setPV(p);
