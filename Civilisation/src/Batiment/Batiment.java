@@ -39,7 +39,7 @@ public abstract class Batiment
 			this.setPOSITION(V);
 			M.setBatimentsurcase(true);//remplacer par occuper case
 		}
-		/*else if( !ioe && M.getTexture() == Texture.eau ) //Si le bâtiment est constructible sur l'eau et que la case est maritime
+		else if( !ioe && M.getTexture() == Texture.eau ) //Si le bâtiment est constructible sur l'eau et que la case est maritime
 		{
 			this.setNOM(name);
 			this.setPV(p);
@@ -50,7 +50,7 @@ public abstract class Batiment
 			this.production = prod;
 			this.setPOSITION(V);
 			M.setBatimentsurcase(true);
-		}*/
+		}
 		else
 		{
 			System.out.println("Wrong place to build it!!");
