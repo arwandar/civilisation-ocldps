@@ -18,11 +18,11 @@ public class Joueur {
 	
 	public Joueur(Color couleur){
 		this.nom = "inconnu";
-		this.or = 100;
+		this.or = 500;
 		this.nourriture = 100;
-		this.bois = 100;
-		this.pierre = 100;
-		this.fer = 100;
+		this.bois = 400;
+		this.pierre = 300;
+		this.fer = 250;
 		this.os = 0;
 		this.batiments = new ArrayList<Batiment>();
 		this.personnages = new ArrayList<Personnage>();
