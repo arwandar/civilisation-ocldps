@@ -10,6 +10,8 @@ public class Peon extends Personnage {
 		J.getPersonnages().add(this);
 		this.joueur = J;
 		
+		this.setNOM("Peon");
+		
 		this.construire = new Constructeur();
 		this.PV=25;
 		

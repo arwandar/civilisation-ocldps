@@ -28,11 +28,23 @@ public abstract class Personnage implements Caracteristiques{
 	  int portee = Caracteristiques.portee;
 	  int mouvement = Caracteristiques.mouvement;
 	  
+	  private String nom;
+	  
 	  boolean isUsed = false;
 	  
 	  protected Joueur joueur;
 	  
 	  private typeUnite t;
+	  
+	  public String getNOM()
+	{
+		return this.nom;
+	}
+	  
+	  public void setNOM(String n)
+	{
+		this.nom = n;
+	}
 	     
 	  //Constructeur par défaut
 	  public Personnage(){

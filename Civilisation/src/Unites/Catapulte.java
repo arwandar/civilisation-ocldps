@@ -11,6 +11,8 @@ public class Catapulte extends Personnage {
 		J.getPersonnages().add(this);
 		this.joueur = J;
 		
+		this.setNOM("Catapulte");
+		
 		this.attitudeCombative= new CombatSiege();
 		this.deplacer = new Roue();
 		this.Attaque=80;

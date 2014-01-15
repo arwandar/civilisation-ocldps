@@ -11,6 +11,8 @@ public class Galere extends Personnage {
 		J.getPersonnages().add(this);
 		this.joueur = J;
 		
+		this.setNOM("Galere");
+		
 		this.attitudeCombative= new CombatArc();
 		this.deplacer = new Bateau();
 		this.Attaque=12;

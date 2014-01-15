@@ -11,6 +11,8 @@ public class Magicien extends Personnage {
 		J.getPersonnages().add(this);
 		this.joueur = J;
 		
+		this.setNOM("Magicien");
+		
 		this.attitudeCombative= new CombatMagie();
 		this.Attaque=14;
 		this.PV=30;

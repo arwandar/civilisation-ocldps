@@ -11,6 +11,8 @@ public class Milicien extends Personnage{
 		 
 		 J.getPersonnages().add(this);
 			this.joueur = J;
+			
+			this.setNOM("Milicien");
 		 
 		    this.attitudeCombative = new CombatEpee();
 		    this.Attaque=8;

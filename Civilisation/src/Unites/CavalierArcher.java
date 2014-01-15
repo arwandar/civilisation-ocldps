@@ -11,6 +11,8 @@ public class CavalierArcher extends Personnage {
 		J.getPersonnages().add(this);
 		this.joueur = J;
 		
+		this.setNOM("Cavalier archer");
+		
 		this.attitudeCombative= new CombatArc();
 		this.deplacer = new Cheval();
 		this.Attaque=12;

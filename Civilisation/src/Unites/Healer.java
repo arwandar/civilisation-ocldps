@@ -11,6 +11,8 @@ public class Healer extends Personnage {
 		J.getPersonnages().add(this);
 		this.joueur = J;
 		
+		this.setNOM("Healer");
+		
 		this.soin= new Soigneur();
 		this.PV=30;
 		

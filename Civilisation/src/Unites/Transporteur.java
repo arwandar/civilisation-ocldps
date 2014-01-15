@@ -10,6 +10,8 @@ public class Transporteur extends Personnage {
 		J.getPersonnages().add(this);
 		this.joueur = J;
 		
+		this.setNOM("Transporteur");
+		
 		this.deplacer = new Bateau();
 		this.Defense=15;
 		this.PV=100;

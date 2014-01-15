@@ -11,6 +11,8 @@ public class Chevalier extends Personnage {
 		J.getPersonnages().add(this);
 		this.joueur = J;
 		
+		this.setNOM("Chevalier");
+		
 		this.attitudeCombative= new CombatEpee();
 		this.deplacer = new Cheval();
 		this.Attaque=14;

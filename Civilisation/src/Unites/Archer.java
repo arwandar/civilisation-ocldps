@@ -10,6 +10,8 @@ public class Archer extends Personnage {
 		J.getPersonnages().add(this);
 		this.joueur = J;
 		
+		this.setNOM("Archer");
+		
 		this.attitudeCombative= new CombatArc();
 		this.Attaque=8;
 		this.PV=30;
