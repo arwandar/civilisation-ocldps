@@ -8,6 +8,7 @@ import civ.FntPrcpl;
 import civ.PanelResrc;
 import joueur.Joueur;
 import Batiment.BatCaserne;
+import Batiment.BatHotelDeVille;
 import Batiment.BatProdRes;
 import Batiment.Batiment;
 import Evenements.Fonctions;
@@ -17,8 +18,15 @@ public class Test {
 	
 	
 	
+	public static boolean partieEnCours = true;
+
+
+
+
 	
-	static void debutDeTour(Joueur J){ //initialise un tour en rendant les unités dispo et en augmentant les ressource + en avançant les constructions et les technologies
+
+
+	public static void debutDeTour(Joueur J){ //initialise un tour en rendant les unités dispo et en augmentant les ressource + en avançant les constructions et les technologies
 		//parcourt la liste des bâtiments de prod et ajoute les ressources
 		ArrayList<Batiment> batimentPossible = J.getBatiments();
 		for (Batiment celuiLa : batimentPossible){ 
@@ -35,7 +43,9 @@ public class Test {
 			}
 		}
 	
-	static boolean isFini (Joueur J){
+	
+	
+	public static boolean isFini (Joueur J){
 		ArrayList<Batiment> batimentPossible = J.getBatiments();
 		for (Batiment celuiLa : batimentPossible){ 
 			if (celuiLa.getNOM() == "Hotel de ville"){
@@ -43,6 +53,33 @@ public class Test {
 			}
 		}
 		return true;
+	}
+	
+	public static void unitesDuDebut (Joueur J, int x, int y){
+		int[] pos = {x,y};
+	    Case cas = new Case();
+	    Batiment BatHotelDeVille= new BatHotelDeVille(pos, cas, J);
+	    
+	    
+	    J.getPersonnages().add(new Peon(J));
+	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
+	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionHorizontale(x-1);
+	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionVerticale(y);
+	      
+	    J.getPersonnages().add(new Peon(J));
+	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
+	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionHorizontale(x+1);
+	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionVerticale(y);
+	    
+	    J.getPersonnages().add(new Peon(J));
+	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
+	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionHorizontale(x);
+	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionVerticale(y-1);
+	    
+	    J.getPersonnages().add(new Peon(J));
+	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
+	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionHorizontale(x);
+	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionVerticale(y+1);
 	}
 	
 	
@@ -159,61 +196,15 @@ public class Test {
 	     * 
 	     */
 	    
-	    boolean partieEnCours= true;
+	    
+	    
 	    Joueur joueurActif=lesJoueurs[0];
+	    unitesDuDebut(joueurActif, 10, 10);
 	    while(partieEnCours){
-	    	boolean tour = true;
-	    	while (tour){
-	    		
-	    		
-	    		debutDeTour(joueurActif);
-	    		//
-	    		//
-	    		//
-	    		
-	    		
-	    		if (isFini(lesJoueurs[0])||isFini(lesJoueurs[1])) //check si la partie est finie par destruction d'hotel de vide
-	    			partieEnCours=false;
-	    		if (PanelResrc.findetour/*on clique sur fin de tour*/){
-	    			PanelResrc.findetour=false;
-	    			tour=false;
-	    			if(joueurActif == lesJoueurs[0]){
-	    				joueurActif=lesJoueurs[1];
-	    			}
-	    			else{
-	    				joueurActif=lesJoueurs[0];
-	    			}
-	    		}
-	    	}
+	    	
 	    }
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
+
+	    	
 	    
 	}
 

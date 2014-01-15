@@ -70,11 +70,22 @@ public class PanelResrc extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		
+		
+		for (int i=0; i < lesJoueurs.length;i++){ //test sur tous les joueurs pour voir si la partie est finie
+			if(Unites.Test.isFini(lesJoueurs[i]))
+				Unites.Test.partieEnCours=false;
+		}
+		
+		
+		
 		this.joueurencours++;
 		if (this.joueurencours == this.lesJoueurs.length) {
 			this.joueurencours = 0;
 		}
 		this.saFenetre.updateAffichage();
 		this.findetour = true;
+		
+		Unites.Test.debutDeTour(lesJoueurs[joueurencours]); //lance la raz du joueur suivant
+		
 	}
 }
