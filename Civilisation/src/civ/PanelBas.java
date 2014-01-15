@@ -28,7 +28,7 @@ public class PanelBas extends JPanel {
 	JTextArea infoText;
 	CardLayout cl;
 	String[] enumCl = { "Archerie", "atelier de siège", "Caserne", "Ecurie", "Hotel de ville", "Mur", "Port", "mine", "Tour des mages", "Tourelle",
-	"casevide" };
+			"Archer", "Catapulte", "Cavalier archer", "Chevalier", "Galere", "Healer", "Magicien", "Milicien", "Peon", "Transporteur", "casevide" };
 	JPanel[] jcard;
 	JButton[] actionPossible;
 
@@ -104,7 +104,11 @@ public class PanelBas extends JPanel {
 		if (peutmodifier) {
 			String[] boutonpossible = { "archer", "cavalier archer", "détruire", "catapultes", "détruire", "milicien", "détruire", "chevalier",
 					"détruire", "peon", "détruire", "détruire", "galère", "tranporteur", "détruire", "détruire", "magicien", "healers", "détruire",
-			"détruire" };
+					"détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire",
+					"déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "soigner", "détruire", "déplacer",
+					"attaquer", "détruire", "déplacer", "attaquer", "détruire", "Archerie", "atelier de siège", "Caserne", "Ecurie",
+					"Hotel de ville", "Mur", "Port", "mine or", "mine nourriture", "mine bois", "mine fer", "mine pierre", "Tour des mages",
+					"Tourelle", "détruire", "déplacer", "attaquer", "détruire", };
 			this.actionPossible = new JButton[boutonpossible.length];
 			int j = 0;
 
@@ -173,12 +177,14 @@ public class PanelBas extends JPanel {
 			} else {
 				initCl(batimentSurLaCase.getNOM(), false);
 			}
-		} else if (bouh.isUnitesurcase()) {
+		} else {
 			Personnage personneSurLaCase = (Personnage) recuperer(hauteur, largeur, false);
-			if (trouverJoueur(hauteur, largeur, false)) {
-				initCl(personneSurLaCase.getNOM(), true);
-			} else {
-				initCl(personneSurLaCase.getNOM(), false);
+			if (personneSurLaCase !=null){
+				if (trouverJoueur(hauteur, largeur, false)) {
+					initCl(personneSurLaCase.getNOM(), true);
+				} else {
+					initCl(personneSurLaCase.getNOM(), false);
+				}
 			}
 		}
 
@@ -229,6 +235,7 @@ public class PanelBas extends JPanel {
 				ArrayList<Personnage> personnagePossible = ceJoueur.getPersonnages();
 				for (Personnage celuiLa : personnagePossible) {
 					if (celuiLa.getPositionHorizontale() == largeur && celuiLa.getPositionVerticale() == hauteur) {
+						System.out.println("yeeha");
 						if (i == PanelResrc.joueurencours) {
 							return true;
 						} else {
