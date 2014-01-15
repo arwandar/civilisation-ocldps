@@ -55,37 +55,7 @@ public class Test {
 		return true;
 	}
 	
-	public static void unitesDuDebut (Joueur J, int x, int y){
-		int[] pos = {x,y};
-	    Case cas = new Case();
-	    Batiment BatHotelDeVille= new BatHotelDeVille(pos, cas, J);
-	    
-	    
-	    J.getPersonnages().add(new Peon(J));
-	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
-	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionHorizontale(x-1);
-	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionVerticale(y);
-	      
-	    J.getPersonnages().add(new Peon(J));
-	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
-	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionHorizontale(x+1);
-	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionVerticale(y);
-	    
-	    J.getPersonnages().add(new Peon(J));
-	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
-	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionHorizontale(x);
-	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionVerticale(y-1);
-	    
-	    J.getPersonnages().add(new Peon(J));
-	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
-	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionHorizontale(x);
-	    J.getPersonnages().get(J.getPersonnages().size()-1).setPositionVerticale(y+1);
-	}
-	
-	
-	
-	
-	
+		
 	
 	
 	public static void main(String[] args) {
