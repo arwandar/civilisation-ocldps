@@ -1,5 +1,6 @@
 package civ;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import Unites.Personnage;
 import joueur.Joueur;
 import Batiment.Batiment;
 
@@ -23,6 +25,9 @@ public class PanelBas extends JPanel {
 	private JButton[][] map;
 	private int mapLargeur, mapHauteur;
 	JTextArea infoText;
+	CardLayout cl;
+	String[] enumCl = { "Archerie", "atelier de siège", "Caserne", "Ecurie", "Hotel de ville", "Mur", "Port", "mine", "Tour des mages", "Tourelle" };
+	JPanel[] jcard;
 
 	// **********CONSTRUCTEURS
 	public PanelBas(int hauteur, int largeur, FntPrcpl bouh) {
@@ -33,7 +38,6 @@ public class PanelBas extends JPanel {
 		// init panelmap
 		creerMap();
 		this.add(this.panelMap);
-
 		// init la jtext d'info
 		this.infoText = new JTextArea();
 		this.infoText.setBounds(this.getWidth() * 4 / 5, 0, this.getWidth() / 5, this.getHeight());
@@ -81,6 +85,14 @@ public class PanelBas extends JPanel {
 		updateMap();
 	}
 
+	public void initCl() {
+		this.jcard = new JPanel[this.enumCl.length];
+		for (int i = 0; i < this.jcard.length; i++) {
+			this.jcard[i] = new JPanel();
+			//this.
+		}
+	}
+
 	protected void updateMap() {
 		int i, j, test, test2;
 
@@ -120,40 +132,40 @@ public class PanelBas extends JPanel {
 			this.infoText.append("\nil y a un batiment à Batman sur la case");
 		} else if (bouh.isUnitesurcase()) {
 			this.infoText.append("\nil y a une unité sur la case");
-			
 		}
 	}
 
-	public void updateActionPossible(Case bouh, int hauteur, int largeur){
+	public void updateActionPossible(Case bouh, int hauteur, int largeur) {
 		this.panelInterne.removeAll();
-		boolean test=false;
-		if (bouh.isBatimentsurcase()){
-			Batiment batimentSurLaCase= null;
-			for (Joueur ceJoueur : this.saFenetre.lesJoueurs){
+		if (bouh.isBatimentsurcase()) {
+			Batiment batimentSurLaCase = (Batiment) recuperer(hauteur, largeur, true);
+		}
+
+	}
+
+	private Object recuperer(int hauteur, int largeur, boolean wantBatiment) {
+		if (wantBatiment) {
+			for (Joueur ceJoueur : this.saFenetre.lesJoueurs) {
 				ArrayList<Batiment> batimentPossible = ceJoueur.getBatiments();
-				for (Batiment celuiLa : batimentPossible){
-					if (celuiLa.getPOSITION(0)==largeur && celuiLa.getPOSITION(1)==hauteur){
-						batimentSurLaCase = celuiLa;
-						test = true;
-						break;
+				for (Batiment celuiLa : batimentPossible) {
+					if (celuiLa.getPOSITION(0) == largeur && celuiLa.getPOSITION(1) == hauteur) {
+						this.infoText.append("il y a sur cette case : " + celuiLa.getNOM());
+						return celuiLa;
 					}
 				}
-				if (test){
-					break;
-				}
-				this.infoText.setText("il y a sur cette case : "+batimentSurLaCase.getNOM());
-				
 			}
-			
+		} else {
+			for (Joueur ceJoueur : this.saFenetre.lesJoueurs) {
+				ArrayList<Personnage> personnagePossible = ceJoueur.getPersonnages();
+				for (Personnage celuiLa : personnagePossible) {
+					if (celuiLa.getPositionHorizontale() == largeur && celuiLa.getPositionVerticale() == hauteur) {
+						this.infoText.append("il y a sur cette case : " + celuiLa.getNOM());
+						return celuiLa;
+					}
+				}
+			}
 		}
-		else if(bouh.isUnitesurcase()){
-
-		}
-
-	}
-	
-	private String recupererNom(Case bouh, int hauteur, int largeur){
 		return null;
-		
 	}
+
 }
