@@ -197,7 +197,7 @@ public class Test {
 	     */
 	    
 	    
-	    
+	    // initialise les bâtiments de départ dans FntPrcpl
 	    Joueur joueurActif=lesJoueurs[0];
 	    //unitesDuDebut(joueurActif, 10, 10);
 	    while(partieEnCours){
