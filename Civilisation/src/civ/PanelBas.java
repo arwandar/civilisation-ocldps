@@ -27,7 +27,8 @@ public class PanelBas extends JPanel {
 	private int mapLargeur, mapHauteur;
 	JTextArea infoText;
 	CardLayout cl;
-	String[] enumCl = {"Archerie", "atelier de siège", "Caserne", "Ecurie", "Hotel de ville", "Mur", "Port", "mine", "Tour des mages", "Tourelle","casevide" };
+	String[] enumCl = { "Archerie", "atelier de siège", "Caserne", "Ecurie", "Hotel de ville", "Mur", "Port", "mine", "Tour des mages", "Tourelle",
+	"casevide" };
 	JPanel[] jcard;
 	JButton[] actionPossible;
 
@@ -40,7 +41,7 @@ public class PanelBas extends JPanel {
 		// init panelmap
 		creerMap();
 		this.add(this.panelMap);
-		
+
 		// init la jtext d'info
 		this.infoText = new JTextArea();
 		this.infoText.setBounds(this.getWidth() * 4 / 5, 0, this.getWidth() / 5, this.getHeight());
@@ -48,12 +49,12 @@ public class PanelBas extends JPanel {
 
 		// init panelactionpossibles
 		this.panelActionsPossibles = new JPanel();
-		this.panelActionsPossibles.setBounds(this.getWidth()*1/5, 0, this.getWidth() * 3 / 5, this.getHeight());
+		this.panelActionsPossibles.setBounds(this.getWidth() * 1 / 5, 0, this.getWidth() * 3 / 5, this.getHeight());
 		this.panelInterne = new JPanel();
-		this.initCl(this.enumCl[this.enumCl.length-1]);
+		this.initCl(this.enumCl[this.enumCl.length - 1], false);
 		this.panelActionsPossibles.add(this.panelInterne);
 		this.add(this.panelActionsPossibles);
-		
+
 	}
 
 	// **********MUTATEURS
@@ -91,7 +92,7 @@ public class PanelBas extends JPanel {
 		updateMap();
 	}
 
-	public void initCl(String aAfficher) {
+	public void initCl(String aAfficher, boolean peutmodifier) {
 		this.cl = new CardLayout();
 		this.panelInterne.setLayout(cl);
 		this.jcard = new JPanel[this.enumCl.length];
@@ -100,32 +101,25 @@ public class PanelBas extends JPanel {
 			this.jcard[i].setLayout(new FlowLayout());
 			this.panelInterne.add(this.jcard[i], this.enumCl[i]);
 		}
-		
-		String[] boutonpossible = {"archer","cavalier archer", "détruire", 
-				"catapultes", "détruire", 
-				"milicien", "détruire", 
-				"chevalier", "détruire",
-				"peon", "détruire",
-				"détruire",
-				"galère","tranporteur", "détruire",
-				"détruire",
-				"magicien", "healers", "détruire",
-				"détruire"};
-		this.actionPossible = new JButton[boutonpossible.length];  //valeur à changer pour rajouter des actions possibles
-		int j=0;
-		for (int i= 0; i< boutonpossible.length; i++){
-			this.actionPossible[i] = new JButton(boutonpossible[i]);
-			this.jcard[j].add(this.actionPossible[i]);
-			if (boutonpossible[i] == "détruire"){
-				//System.out.println("je passe ici");
-				j++;
-				if (j>=this.jcard.length){
-					System.out.println("problème lors de l'initialisation du card layout du panel bas");
+		if (peutmodifier) {
+			String[] boutonpossible = { "archer", "cavalier archer", "détruire", "catapultes", "détruire", "milicien", "détruire", "chevalier",
+					"détruire", "peon", "détruire", "détruire", "galère", "tranporteur", "détruire", "détruire", "magicien", "healers", "détruire",
+			"détruire" };
+			this.actionPossible = new JButton[boutonpossible.length];
+			int j = 0;
+
+			for (int i = 0; i < boutonpossible.length; i++) {
+				this.actionPossible[i] = new JButton(boutonpossible[i]);
+				this.jcard[j].add(this.actionPossible[i]);
+				if (boutonpossible[i] == "détruire") {
+					j++;
+					if (j >= this.jcard.length) {
+						System.out.println("problème lors de l'initialisation du card layout du panel bas");
+					}
 				}
 			}
 		}
-		
-		this.cl.show(this.panelInterne,aAfficher);
+		this.cl.show(this.panelInterne, aAfficher);
 	}
 
 	protected void updateMap() {
@@ -174,19 +168,28 @@ public class PanelBas extends JPanel {
 		this.panelInterne.removeAll();
 		if (bouh.isBatimentsurcase()) {
 			Batiment batimentSurLaCase = (Batiment) recuperer(hauteur, largeur, true);
-			System.out.println(batimentSurLaCase.getNOM());
-			initCl(batimentSurLaCase.getNOM());			
+			if (trouverJoueur(hauteur, largeur, true)) {
+				initCl(batimentSurLaCase.getNOM(), true);
+			} else {
+				initCl(batimentSurLaCase.getNOM(), false);
+			}
+		} else if (bouh.isUnitesurcase()) {
+			Personnage personneSurLaCase = (Personnage) recuperer(hauteur, largeur, false);
+			if (trouverJoueur(hauteur, largeur, false)) {
+				initCl(personneSurLaCase.getNOM(), true);
+			} else {
+				initCl(personneSurLaCase.getNOM(), false);
+			}
 		}
 
 	}
-//"Archerie", "atelier de siège", "Caserne", "Ecurie", "Hotel de ville", "Mur", "Port", "mine", "Tour des mages", "Tourelle","casevide"
+
 	private Object recuperer(int hauteur, int largeur, boolean wantBatiment) {
 		if (wantBatiment) {
 			for (Joueur ceJoueur : this.saFenetre.lesJoueurs) {
 				ArrayList<Batiment> batimentPossible = ceJoueur.getBatiments();
 				for (Batiment celuiLa : batimentPossible) {
 					if (celuiLa.getPOSITION(0) == largeur && celuiLa.getPOSITION(1) == hauteur) {
-						this.infoText.append("il y a sur cette case : " + celuiLa.getNOM());
 						return celuiLa;
 					}
 				}
@@ -196,7 +199,6 @@ public class PanelBas extends JPanel {
 				ArrayList<Personnage> personnagePossible = ceJoueur.getPersonnages();
 				for (Personnage celuiLa : personnagePossible) {
 					if (celuiLa.getPositionHorizontale() == largeur && celuiLa.getPositionVerticale() == hauteur) {
-						this.infoText.append("il y a sur cette case : " + celuiLa.getNOM());
 						return celuiLa;
 					}
 				}
@@ -205,5 +207,38 @@ public class PanelBas extends JPanel {
 		return null;
 	}
 
-	
+	private boolean trouverJoueur(int hauteur, int largeur, boolean wantBatiment) {
+		if (wantBatiment) {
+			int i = 0;
+			for (Joueur ceJoueur : this.saFenetre.lesJoueurs) {
+				ArrayList<Batiment> batimentPossible = ceJoueur.getBatiments();
+				for (Batiment celuiLa : batimentPossible) {
+					if (celuiLa.getPOSITION(0) == largeur && celuiLa.getPOSITION(1) == hauteur) {
+						if (i == PanelResrc.joueurencours) {
+							return true;
+						} else {
+							return false;
+						}
+					}
+				}
+				i++;
+			}
+		} else {
+			int i = 0;
+			for (Joueur ceJoueur : this.saFenetre.lesJoueurs) {
+				ArrayList<Personnage> personnagePossible = ceJoueur.getPersonnages();
+				for (Personnage celuiLa : personnagePossible) {
+					if (celuiLa.getPositionHorizontale() == largeur && celuiLa.getPositionVerticale() == hauteur) {
+						if (i == PanelResrc.joueurencours) {
+							return true;
+						} else {
+							return false;
+						}
+					}
+				}
+				i++;
+			}
+		}
+		return false;
+	}
 }
