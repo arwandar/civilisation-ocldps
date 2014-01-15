@@ -2,6 +2,7 @@ package civ;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -26,8 +27,9 @@ public class PanelBas extends JPanel {
 	private int mapLargeur, mapHauteur;
 	JTextArea infoText;
 	CardLayout cl;
-	String[] enumCl = { "Archerie", "atelier de siège", "Caserne", "Ecurie", "Hotel de ville", "Mur", "Port", "mine", "Tour des mages", "Tourelle" };
+	String[] enumCl = {"Archerie", "atelier de siège", "Caserne", "Ecurie", "Hotel de ville", "Mur", "Port", "mine", "Tour des mages", "Tourelle","casevide" };
 	JPanel[] jcard;
+	JButton[] actionPossible;
 
 	// **********CONSTRUCTEURS
 	public PanelBas(int hauteur, int largeur, FntPrcpl bouh) {
@@ -38,6 +40,7 @@ public class PanelBas extends JPanel {
 		// init panelmap
 		creerMap();
 		this.add(this.panelMap);
+		
 		// init la jtext d'info
 		this.infoText = new JTextArea();
 		this.infoText.setBounds(this.getWidth() * 4 / 5, 0, this.getWidth() / 5, this.getHeight());
@@ -45,9 +48,12 @@ public class PanelBas extends JPanel {
 
 		// init panelactionpossibles
 		this.panelActionsPossibles = new JPanel();
-		this.panelActionsPossibles.setBounds(0, this.getWidth() / 5, this.getWidth() * 3 / 5, this.getHeight());
+		this.panelActionsPossibles.setBounds(this.getWidth()*1/5, 0, this.getWidth() * 3 / 5, this.getHeight());
 		this.panelInterne = new JPanel();
+		this.initCl(this.enumCl[this.enumCl.length-1]);
 		this.panelActionsPossibles.add(this.panelInterne);
+		this.add(this.panelActionsPossibles);
+		
 	}
 
 	// **********MUTATEURS
@@ -85,12 +91,41 @@ public class PanelBas extends JPanel {
 		updateMap();
 	}
 
-	public void initCl() {
+	public void initCl(String aAfficher) {
+		this.cl = new CardLayout();
+		this.panelInterne.setLayout(cl);
 		this.jcard = new JPanel[this.enumCl.length];
 		for (int i = 0; i < this.jcard.length; i++) {
 			this.jcard[i] = new JPanel();
-			//this.
+			this.jcard[i].setLayout(new FlowLayout());
+			this.panelInterne.add(this.jcard[i], this.enumCl[i]);
 		}
+		
+		String[] boutonpossible = {"archer","cavalier archer", "détruire", 
+				"catapultes", "détruire", 
+				"milicien", "détruire", 
+				"chevalier", "détruire",
+				"peon", "détruire",
+				"détruire",
+				"galère","tranporteur", "détruire",
+				"détruire",
+				"magicien", "healers", "détruire",
+				"détruire"};
+		this.actionPossible = new JButton[boutonpossible.length];  //valeur à changer pour rajouter des actions possibles
+		int j=0;
+		for (int i= 0; i< boutonpossible.length; i++){
+			this.actionPossible[i] = new JButton(boutonpossible[i]);
+			this.jcard[j].add(this.actionPossible[i]);
+			if (boutonpossible[i] == "détruire"){
+				//System.out.println("je passe ici");
+				j++;
+				if (j>=this.jcard.length){
+					System.out.println("problème lors de l'initialisation du card layout du panel bas");
+				}
+			}
+		}
+		
+		this.cl.show(this.panelInterne,aAfficher);
 	}
 
 	protected void updateMap() {
@@ -139,10 +174,12 @@ public class PanelBas extends JPanel {
 		this.panelInterne.removeAll();
 		if (bouh.isBatimentsurcase()) {
 			Batiment batimentSurLaCase = (Batiment) recuperer(hauteur, largeur, true);
+			System.out.println(batimentSurLaCase.getNOM());
+			initCl(batimentSurLaCase.getNOM());			
 		}
 
 	}
-
+//"Archerie", "atelier de siège", "Caserne", "Ecurie", "Hotel de ville", "Mur", "Port", "mine", "Tour des mages", "Tourelle","casevide"
 	private Object recuperer(int hauteur, int largeur, boolean wantBatiment) {
 		if (wantBatiment) {
 			for (Joueur ceJoueur : this.saFenetre.lesJoueurs) {
@@ -168,4 +205,5 @@ public class PanelBas extends JPanel {
 		return null;
 	}
 
+	
 }
