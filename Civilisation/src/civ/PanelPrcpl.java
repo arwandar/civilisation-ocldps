@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
 
 import Unites.Personnage;
+import Batiment.BatEcurie;
 import Batiment.Batiment;
 
 public class PanelPrcpl extends JPanel implements ActionListener {
@@ -51,7 +52,7 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 		this.jsp.setPreferredSize(new Dimension(this.getWidth(), getHeight()));
 
 		this.add(jsp);
-		
+
 	}
 
 	// **********MUTATEURS
@@ -120,6 +121,7 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 				}
 			}
 		}
+
 	}
 
 	protected void updateCarte() {
@@ -157,7 +159,10 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 			for (int j = 0; j < this.nbrCaseLarge && caseTrouvee == false; j++) {
 				if (this.carte[i][j] == e.getSource()) {
 					caseTrouvee = true;
+
 					this.saFenetre.barrebasse.updatePanelInfo(this.carte[i][j]);
+					this.saFenetre.barrebasse.updateActionPossible(this.carte[i][j], i, j);
+
 				}
 			}
 		}

@@ -22,6 +22,8 @@ public class PanelResrc extends JPanel implements ActionListener {
 	int indice;
 	Joueur[] lesJoueurs;
 	FntPrcpl saFenetre;
+	public static boolean findetour = false;
+	public static int joueurencours = 0;
 
 	// **********CONSTRUCTEURS
 	public PanelResrc(Joueur[] lesJoueurs, FntPrcpl fenetre) {
@@ -67,11 +69,12 @@ public class PanelResrc extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		this.indice++;
-		if (this.indice == this.lesJoueurs.length) {
-			this.indice = 0;
+		
+		this.joueurencours++;
+		if (this.joueurencours == this.lesJoueurs.length) {
+			this.joueurencours = 0;
 		}
 		this.saFenetre.updateAffichage();
-
+		this.findetour = true;
 	}
 }

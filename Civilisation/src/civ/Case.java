@@ -16,6 +16,7 @@ public class Case extends JButton {
 	}
 
 	public boolean isBatimentsurcase() {
+		System.out.println(new Boolean(batimentsurcase).toString());
 		return batimentsurcase;
 	}
 

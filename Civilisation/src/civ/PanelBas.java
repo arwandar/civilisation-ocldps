@@ -2,10 +2,14 @@ package civ;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import joueur.Joueur;
+import Batiment.Batiment;
 
 public class PanelBas extends JPanel {
 	/*
@@ -14,7 +18,7 @@ public class PanelBas extends JPanel {
 	 */
 
 	// **********VARIABLES
-	private JPanel panelMap, panelActionsPossibles;
+	private JPanel panelMap, panelActionsPossibles, panelInterne;
 	private FntPrcpl saFenetre;
 	private JButton[][] map;
 	private int mapLargeur, mapHauteur;
@@ -38,6 +42,8 @@ public class PanelBas extends JPanel {
 		// init panelactionpossibles
 		this.panelActionsPossibles = new JPanel();
 		this.panelActionsPossibles.setBounds(0, this.getWidth() / 5, this.getWidth() * 3 / 5, this.getHeight());
+		this.panelInterne = new JPanel();
+		this.panelActionsPossibles.add(this.panelInterne);
 	}
 
 	// **********MUTATEURS
@@ -114,6 +120,40 @@ public class PanelBas extends JPanel {
 			this.infoText.append("\nil y a un batiment à Batman sur la case");
 		} else if (bouh.isUnitesurcase()) {
 			this.infoText.append("\nil y a une unité sur la case");
+			
 		}
+	}
+
+	public void updateActionPossible(Case bouh, int hauteur, int largeur){
+		this.panelInterne.removeAll();
+		boolean test=false;
+		if (bouh.isBatimentsurcase()){
+			Batiment batimentSurLaCase= null;
+			for (Joueur ceJoueur : this.saFenetre.lesJoueurs){
+				ArrayList<Batiment> batimentPossible = ceJoueur.getBatiments();
+				for (Batiment celuiLa : batimentPossible){
+					if (celuiLa.getPOSITION(0)==largeur && celuiLa.getPOSITION(1)==hauteur){
+						batimentSurLaCase = celuiLa;
+						test = true;
+						break;
+					}
+				}
+				if (test){
+					break;
+				}
+				this.infoText.setText("il y a sur cette case : "+batimentSurLaCase.getNOM());
+				
+			}
+			
+		}
+		else if(bouh.isUnitesurcase()){
+
+		}
+
+	}
+	
+	private String recupererNom(Case bouh, int hauteur, int largeur){
+		return null;
+		
 	}
 }
