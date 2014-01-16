@@ -136,22 +136,25 @@ public class Test {
 	    
 	    
 	    
-	    /*Test de déplacement
-	    Fonctions.creationDeLaMatrice();
+	  //  Test de déplacement
+	 /*   Fonctions.creationDeLaMatrice();
 	    Fonctions.displayMatrix(Fonctions.matriceDeJeu);
 	    System.out.println(" ");
 	    Personnage Test = new Milicien(lesJoueurs[0]);
-	    Test.setPositionHorizontale(2); Test.setPositionVerticale(2);
+	    Test.setPositionHorizontale(15); Test.setPositionVerticale(12);
 	    Fonctions.Creation(Test);
-	    Fonctions.testGps(Test,12,15);
+	    Evenements.Boutons.deplacement(Test, 16, 12);
+	    Fonctions.displayMatrix(Fonctions.matriceDeJeu);
+	  //  Fonctions.testGps(Test,14,15);
+	   // System.out.println(Fonctions.distanceTest);
 	    
 	    
-	    while(Test.getPositionHorizontale()!=12 || Test.getPositionVerticale()!=15){
+	/*    while(Test.getPositionHorizontale()!=12 || Test.getPositionVerticale()!=15){
 	    	Fonctions.deplacementReel(Test);
 	    	Fonctions.displayMatrix(Fonctions.matriceDeJeu);
 	        System.out.println(" ");
-	    }
-	    System.out.println("Fini !");*/
+	    }*/
+	    System.out.println("Fini !");
 	    
 	    /* Choses à faire dans le main
 	     * 

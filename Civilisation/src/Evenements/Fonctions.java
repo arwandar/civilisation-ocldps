@@ -34,6 +34,7 @@ import civ.Texture;
 public class Fonctions {
 	
 	private static PanelPrcpl plateau;
+	public static int distanceTest=100;
 
 	public static String[][] matriceDeJeu=new String[30][60]; /*= new String[getPlateau().getWidth()/50][getPlateau().getHeight()/50];*/
 	
@@ -147,10 +148,28 @@ public class Fonctions {
                     nodeFactory);  
               
             final List<Point> result = astart.compute(new Point(perso.getPositionHorizontale(),perso.getPositionVerticale()), new Point(arriveeY,arriveeX));  //new Point(width,height) //c'est là qu'on modifie le départ et l'arrivée
-            //On intégre le résultat dans la matrice de base, et on l'affiche  
+            //On intégre le résultat dans la matrice de base, et on l'affiche
+            distanceTest=0;//donne la distance la plus courte au point
+            
+        
+            
+            
+            
             for(final Point point : result) {  
-            	matriceDeJeu[(int) point.getY()][(int) point.getX()] = "X";  
-            }  
+            	//System.out.println(distanceTest);
+            	if(" ".equals(matriceDeJeu[(int) point.getY()][(int) point.getX()]) && result.get(0)!=point) {  
+            		distanceTest+= 1;  
+                }
+                if("F".equals(matriceDeJeu[(int) point.getY()][(int) point.getX()])&& result.get(0)!=point) {  
+                	distanceTest+= 2;  
+                }
+                if("M".equals(matriceDeJeu[(int) point.getY()][(int) point.getX()])&& result.get(0)!=point) {  
+                	distanceTest+= 3;  
+                }
+            	matriceDeJeu[(int) point.getY()][(int) point.getX()] = "X";
+            	//System.out.println(distanceTest);
+            }
+         
             displayMatrix(matriceDeJeu); 
 	}
 	
