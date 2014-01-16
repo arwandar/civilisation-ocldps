@@ -1,4 +1,5 @@
 package Unites;
+import civ.Case;
 import joueur.Joueur;
 import Batiment.BatProdUnit.typeUnite;
 import Comportement.AttitudeCombative;
@@ -218,5 +219,10 @@ public abstract class Personnage implements Caracteristiques{
 
 	public void setUsed(boolean isUsed) {
 		this.isUsed = isUsed;
+	}
+
+	public void destructionUnite(Case M, Joueur J)
+	{
+		
 	} 
 }

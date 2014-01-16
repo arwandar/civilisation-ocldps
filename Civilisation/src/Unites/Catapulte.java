@@ -32,7 +32,7 @@ public class Catapulte extends Personnage {
 	}*/
 	
 	//*************** Méthodes *******************
-	public void destructionUnite(Case M, Joueur J)
+	@Override public void destructionUnite(Case M, Joueur J)
 	{
 		if(this.PV <= 0)
 		{
