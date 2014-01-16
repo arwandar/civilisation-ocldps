@@ -150,6 +150,17 @@ public abstract class Batiment
 	{
 		this.position[i] = P;
 	}
+	
+	//*************** Méthodes *******************
+	public void destructionBatiment()
+	{
+		
+	}
+
+	public void destructionBatiment(Case M, Joueur J)
+	{
+		
+	}
 }
 
 
