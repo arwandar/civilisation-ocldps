@@ -270,11 +270,14 @@ public class PanelBas extends JPanel implements ActionListener {
 	}
 
 	public void executerActionComplexe(int positionHauteur, int positionLargeur) {
-		this.actionEnCours = false;
+		this.positionDeLaCaseActuellementSelectionnee[0] = positionHauteur;
+		this.positionDeLaCaseActuellementSelectionnee[1] = positionLargeur;
+		System.out.println(this.positionDeLaCaseActuellementSelectionnee[0] +"/"+this.positionDeLaCaseActuellementSelectionnee[1]);
 		switch (quelleActionEnCours) {
 			case "attaquer":
 				break;
 			case "déplacer":
+				System.out.println("hello");
 				Evenements.Boutons.deplace((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
 						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
 								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
@@ -285,6 +288,7 @@ public class PanelBas extends JPanel implements ActionListener {
 			default:
 				System.out.println("problème lors de la recuperation de l'action complexe à effectuer");
 		}
+		this.actionEnCours = false;
 		this.saFenetre.updateAffichage();
 	}
 
