@@ -42,11 +42,11 @@ public class Joueur {
 	public Joueur(Color couleur, Joueur[] lesJoueur){
 		this.lesJoueur = lesJoueur;
 		this.nom = "inconnu";
-		this.or = 300;
-		this.nourriture = 300;
-		this.bois = 400;
-		this.pierre = 300;
-		this.fer = 250;
+		this.or = 300*10;
+		this.nourriture = 300*10;
+		this.bois = 400*10;
+		this.pierre = 300*10;
+		this.fer = 250*10;
 		this.os = 0;
 		this.batiments = new ArrayList<Batiment>();
 		this.personnages = new ArrayList<Personnage>();
