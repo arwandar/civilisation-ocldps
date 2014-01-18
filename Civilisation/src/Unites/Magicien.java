@@ -22,7 +22,7 @@ public class Magicien extends Personnage {
 		this.coutNourriture=50;
 		this.coutOr=40;
 		J.setOr(J.getOr() - this.coutOr);
-		J.setOr(J.getOr() - this.coutNourriture);
+		J.setNourriture(J.getNourriture() - this.coutNourriture);
 		
 		this.setT(typeUnite.Magicien);
 	}
