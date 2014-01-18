@@ -45,7 +45,7 @@ public class Test {
 		//parcourt la liste des batiments et les passe en notUsed
 		ArrayList<Batiment> batimentPossible2 = J.getBatiments();
 		for (Batiment celuiLa : batimentPossible2){
-			celuiLa.setUsed(false);
+			celuiLa.setIsUsed(false);
 		}
 	}
 	

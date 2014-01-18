@@ -136,7 +136,7 @@ public class Boutons {
 					System.out.println("trop loin !");
 				else{					
 					Evenements.Fonctions.Attaquer(batiment, trouveBatiment(x, y, lesJoueurs));
-					batiment.setUsed(true);
+					batiment.setIsUsed(true);
 				}
 			
 				break;
@@ -146,7 +146,7 @@ public class Boutons {
 					System.out.println("trop loin !");
 				else{
 					Evenements.Fonctions.Attaquer(batiment, trouveUnite( x,  y,  lesJoueurs));
-					batiment.setUsed(true);
+					batiment.setIsUsed(true);
 					}
 				break;
 				
