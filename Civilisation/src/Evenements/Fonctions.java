@@ -170,7 +170,7 @@ public class Fonctions {
             	//System.out.println(distanceTest);
             }
          
-            displayMatrix(matriceDeJeu); 
+            //displayMatrix(matriceDeJeu); 
 	}
 	
 	public static void deplacementReel (Personnage perso){
