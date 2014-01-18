@@ -168,4 +168,10 @@ public class Boutons {
 			}
 		}
 	
+	public static void cherche (Personnage personnage){
+		Evenements.Fonctions.Chercher(personnage.getJoueur());
+		personnage.setUsed(true);
+		
+	}
+	
 }
