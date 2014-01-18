@@ -21,7 +21,7 @@ public class Archer extends Personnage {
 		this.coutOr=45;
 		this.coutBois=25;
 		J.setOr(J.getOr() - this.coutOr);
-		J.setOr(J.getOr() - this.coutBois);
+		J.setBois(J.getBois() - this.coutBois);
 		
 		this.setT(typeUnite.Archer);
 	}
