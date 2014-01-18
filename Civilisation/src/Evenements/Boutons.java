@@ -59,8 +59,10 @@ public class Boutons {
 			Evenements.Fonctions.testGps(personnage, y, x);
 			if(Evenements.Fonctions.distanceTest>personnage.getMouvement())
 				System.out.println("Trop loin !"); //rajouter un pop de bouton disant que c'est trop loin et mettant la distance max / pas par relief / distance dépassée
-			else
+			else{
 				Evenements.Fonctions.deplacementReel(personnage);
+				personnage.setUsed(true);
+			}
 		}
 		
 
@@ -88,18 +90,62 @@ public class Boutons {
 			case "batiment" :
 				if(!Evenements.Fonctions.isRange(personnage,x,y))
 					System.out.println("trop loin !");
-				else
-					
+				else{					
 					Evenements.Fonctions.Attaquer(personnage, trouveBatiment(x, y, lesJoueurs));
+					personnage.setUsed(true);
+				}
 			
 				break;
 				
 			case "unite" :
 				if(!Evenements.Fonctions.isRange(personnage,x,y))
 					System.out.println("trop loin !");
-				else
+				else{
 					Evenements.Fonctions.Attaquer(personnage, trouveUnite( x,  y,  lesJoueurs));
+					personnage.setUsed(true);
+					}
+				break;
+				
+			default :
+				System.out.println("personne à attaquer !");
+		}
 			
+	}
+	
+	public static void attaqueTourelle (Batiment batiment, int x, int y, Case cas, Joueur lesJoueurs[]){
+		//tester ce qu'il y a sur la case visée
+		//tester que la case est à portée
+		//attaquer
+		
+		
+		String str = new String ();
+		
+		if(cas.isBatimentsurcase())
+			str="batiment";
+		else if(isUniteOnCase(x, y, lesJoueurs))
+			str="unite";
+		else
+			str="rien";
+			
+		
+		
+		switch(str){
+		
+			case "batiment" :
+				if(!Evenements.Fonctions.isRangeBat(batiment,x,y))
+					System.out.println("trop loin !");
+				else{					
+					Evenements.Fonctions.Attaquer(batiment, trouveBatiment(x, y, lesJoueurs));
+				}
+			
+				break;
+				
+			case "unite" :
+				if(!Evenements.Fonctions.isRangeBat(batiment,x,y))
+					System.out.println("trop loin !");
+				else{
+					Evenements.Fonctions.Attaquer(batiment, trouveUnite( x,  y,  lesJoueurs));
+					}
 				break;
 				
 			default :
@@ -114,8 +160,10 @@ public class Boutons {
 			System.out.println("la case est  vide");
 		else if(!Evenements.Fonctions.isRange(personnage,x,y))
 					System.out.println("trop loin !");
-		else
+		else{
 			Evenements.Fonctions.Soigner(trouveUnite(x, y, lesJoueurs));
+			personnage.setUsed(true);
+			}
 		}
 	
 }

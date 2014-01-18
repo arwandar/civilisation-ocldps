@@ -222,6 +222,21 @@ public class Fonctions {
 		}		
 	}
 	
+	public static boolean isRangeBat(Batiment Attaquant, int x, int y){
+		int portee=Attaquant.getPortee();
+		int decalageHorizontal = Math.abs(Attaquant.getPOSITION(0) - x);
+		int decalageVertical = Math.abs(Attaquant.getPOSITION(1) - y);
+		
+		if (decalageHorizontal <= portee && decalageVertical <= portee){			
+			System.out.println("True");
+			return true;
+		}			
+		else{			
+			System.out.println("False");
+			return false;
+		}		
+	}
+	
 	
 	public static boolean isRange(Personnage Attaquant, Personnage Defenseur){
 		int portee=Attaquant.getPortee();
@@ -264,6 +279,9 @@ public class Fonctions {
 	}
 	public static void Attaquer(Batiment attaquant, Personnage defenseur){ //attaque entre une unité et un bâtiment
 		defenseur.setPV(defenseur.getPV()- (attaquant.getATT() -  Math.round(attaquant.getATT() * defenseur.getDefense())) );
+	}
+	public static void Attaquer(Batiment attaquant, Batiment defenseur){ //attaque entre une unité et un bâtiment
+		defenseur.setPV((int)(defenseur.getPV()- (attaquant.getATT() -  Math.round(attaquant.getATT() * defenseur.getDEF()))) );
 	}
 	public static void Soigner(Personnage pers){
 		if (pers.getPV()+10>pers.getPVMax())
