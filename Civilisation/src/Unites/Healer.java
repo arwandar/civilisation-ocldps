@@ -2,6 +2,7 @@ package Unites;
 import civ.Case;
 import joueur.Joueur;
 import Batiment.BatProdUnit.typeUnite;
+import Comportement.CombatArc;
 import Comportement.Soigneur;
 
 
@@ -14,6 +15,7 @@ public class Healer extends Personnage {
 		this.setNOM("Healer");
 		
 		this.soin= new Soigneur();
+		this.attitudeCombative= new CombatArc();
 		this.PVMax=30;
 		this.PV=PVMax;
 		
