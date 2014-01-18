@@ -19,7 +19,7 @@ public class Transporteur extends Personnage {
 		
 		this.tempsProduction=3;
 		this.coutBois=125;
-		J.setOr(J.getOr() - this.coutBois);
+		J.setBois(J.getBois() - this.coutBois);
 		
 		this.setT(typeUnite.Transporteur);
 	}
