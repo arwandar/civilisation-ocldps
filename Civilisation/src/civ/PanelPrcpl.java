@@ -15,7 +15,6 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 
 import Unites.Personnage;
-import Batiment.BatEcurie;
 import Batiment.Batiment;
 
 public class PanelPrcpl extends JPanel implements ActionListener {
@@ -140,7 +139,7 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 				Iterator<Batiment> itbat = batiments.iterator();
 				while (itbat.hasNext()) {
 					Batiment bat = itbat.next();
-					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBorder(border);
+					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
 					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setText(bat.getNOM());
 					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setToolTipText(bat.getNOM());
 				}
