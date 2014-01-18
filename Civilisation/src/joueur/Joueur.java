@@ -155,6 +155,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=300 && this.getOr()>=200 && this.getFer()>=150 && this.getPierre()>=200 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatHotelDeVille(V, M, this);
 			return true;
 		}
@@ -168,6 +179,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=100 && this.getOr()>=50 && this.getFer()>=50 && this.getPierre()>=150 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatArcherie(V, M, this);
 			return true;
 		}
@@ -181,6 +203,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=300 && this.getOr()>=200 && this.getFer()>=150 && this.getPierre()>=450 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatAtelierDeSiege(V, M, this);
 			return true;
 		}
@@ -194,6 +227,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=75 && this.getOr()>=50 && this.getFer()>=35 && this.getPierre()>=110 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatCaserne(V, M, this);
 			return true;
 		}
@@ -207,6 +251,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=200 && this.getOr()>=150 && this.getFer()>=100 && this.getPierre()>=300 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatEcurie(V, M, this);
 			return true;
 		}
@@ -220,16 +275,18 @@ public class Joueur {
 	{
 		if(this.getBois()>=30 && this.getOr()>=10 && this.getFer()>=5 && this.getPierre()>=50 && Joueur.isPeonUsed(this, V)==false)
 		{			
-			for (int i=this.personnages.size()-1; i>=0; i--){
-				if (this.personnages.get(i).getNOM() == "Peon"){
-					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1]){
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
 						this.personnages.get(i).destructionUnite(M, this);
 					}
 				}
 			}
 			
 			new BatMur(V, M, this);
-			System.out.println(V.hashCode()+" V dans ismurconstructed");
 			return true;
 		}
 		else
@@ -242,6 +299,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=300 && this.getOr()>=75 && this.getFer()>=50 && this.getPierre()>=100 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatPort(V, M, this);
 			return true;
 		}
@@ -255,6 +323,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatProdRes("mine", V, typeRessource.or, M, this);
 			return true;
 		}
@@ -268,6 +347,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatProdRes("mine", V, typeRessource.fer, M, this);
 			return true;
 		}
@@ -281,6 +371,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatProdRes("mine", V, typeRessource.pierre, M, this);
 			return true;
 		}
@@ -294,6 +395,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatProdRes("mine", V, typeRessource.bois, M, this);
 			return true;
 		}
@@ -307,6 +419,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatProdRes("mine", V, typeRessource.nourriture, M, this);
 			return true;
 		}
@@ -320,6 +443,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=150 && this.getOr()>=75 && this.getFer()>=50 && this.getPierre()>=150 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatTourDesMages(V, M, this);
 			return true;
 		}
@@ -333,6 +467,17 @@ public class Joueur {
 	{
 		if(this.getBois()>=300 && this.getOr()>=100 && this.getFer()>=50 && this.getPierre()>=500 && Joueur.isPeonUsed(this, V)==false)
 		{
+			for (int i=this.personnages.size()-1; i>=0; i--)
+			{
+				if (this.personnages.get(i).getNOM() == "Peon")
+				{
+					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
+					{
+						this.personnages.get(i).destructionUnite(M, this);
+					}
+				}
+			}
+			
 			new BatTourelle(V, M, this);
 			return true;
 		}
