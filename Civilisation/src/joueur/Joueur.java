@@ -216,36 +216,20 @@ public class Joueur {
 		}
 	}
 
-	public boolean isMurConstructed(int V[], Case M)
+	public boolean isMurConstructed(int V[], Case M)	
 	{
 		if(this.getBois()>=30 && this.getOr()>=10 && this.getFer()>=5 && this.getPierre()>=50 && Joueur.isPeonUsed(this, V)==false)
-		{
-			
-			int i = 0;
-			for (Personnage celuici : this.personnages){
-				System.out.println(i+" "+celuici.getNOM() + "/"+celuici.getPositionHorizontale()+"/"+celuici.getPositionVerticale());
-				i++;
-			}
-			
-			System.out.println("Miaw"+ this.personnages.size());
-			//for (Personnage celuici : this.personnages){
-			for (i=this.personnages.size()-1; i>=0; i--){
+		{			
+			for (int i=this.personnages.size()-1; i>=0; i--){
 				if (this.personnages.get(i).getNOM() == "Peon"){
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1]){
 						this.personnages.get(i).destructionUnite(M, this);
-
 					}
 				}
 			}
-			i=0;
-			for (Personnage celuici : this.personnages){
-				System.out.println(i+" "+celuici.getNOM() + "/"+celuici.getPositionHorizontale()+"/"+celuici.getPositionVerticale());
-				i++;
-			}
+			
 			new BatMur(V, M, this);
-			for (Batiment celuila : this.batiments){
-				System.out.println(celuila.getNOM());
-			}
+			System.out.println(V.hashCode()+" V dans ismurconstructed");
 			return true;
 		}
 		else

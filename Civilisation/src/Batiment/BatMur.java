@@ -11,6 +11,8 @@ public class BatMur extends Batiment
 	{
 		super("Mur", 200, 0, 0.75, 0, true, V, 2, M);
 		
+		
+		
 		this.coutOr = 10;
 		this.coutFer = 5;
 		this.coutBois = 30;

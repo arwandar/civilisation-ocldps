@@ -28,9 +28,12 @@ public abstract class Batiment
 	public Batiment(String name, int p, int a, double d, int c, boolean ioe, int V[], int prod, Case M) //le vecteur position sera à remplacer par une case
 	{
 		this.isConstructible = true;
+		System.out.println(V.hashCode() + " V dans Batiment");
+		System.out.println(this.position.hashCode() + " position dans batiment");
 		
 		if(ioe && M.getTexture() != Texture.eau && M.getTexture() != Texture.montagne) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
 		{
+			int[] bouh = {V[0], V[1]};
 			this.setNOM(name);
 			this.setPV(p);
 			this.setATT(a);
@@ -38,7 +41,7 @@ public abstract class Batiment
 			this.setCOEFF(c);
 			this.setIsOnEarth(ioe);
 			this.production = prod;
-			this.setPOSITION(V);
+			this.position = bouh;
 			M.setBatimentsurcase(true);//remplacer par occuper case
 		}
 		else if( !ioe && M.getTexture() == Texture.eau ) //Si le bâtiment est constructible sur l'eau et que la case est maritime

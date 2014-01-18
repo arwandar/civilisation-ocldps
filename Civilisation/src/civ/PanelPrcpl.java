@@ -129,6 +129,9 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 		for (int i = 0; i < this.nbrCaseHauteur; i++) {
 			for (int j = 0; j < this.nbrCaseLarge; j++) {
 				this.carte[i][j].setBackground();
+				this.carte[i][j].setText(null);
+				this.carte[i][j].setToolTipText(null);
+				this.carte[i][j].setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 			}
 		}
 		for (int k = 0; k < this.saFenetre.lesJoueurs.length; k++) {

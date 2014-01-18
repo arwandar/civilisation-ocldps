@@ -289,7 +289,12 @@ public class PanelBas extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton boutonAppuye = (JButton) e.getSource();
+		System.out.println();
+		System.out.println("entrée dans l'actionperformed");
 
+		System.out.println(this.positionDeLaCaseActuellementSelectionnee.hashCode()+ " dans actionperformed");
+		
+		System.out.println(this.positionDeLaCaseActuellementSelectionnee[0]+"/"+this.positionDeLaCaseActuellementSelectionnee[1]);
 		switch (boutonAppuye.getText()) {
 			case "détruire":
 				System.out.println("tu tentes de détruire");
