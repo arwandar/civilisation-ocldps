@@ -35,10 +35,7 @@ public class Catapulte extends Personnage {
 	//*************** Méthodes *******************
 	@Override public void destructionUnite(Case M, Joueur J)
 	{
-		if(this.PV <= 0)
-		{
-			J.getPersonnages().remove(this);
-			M.setUnitesurcase(false);// à remplacer par libérer case
-		}
+		J.getPersonnages().remove(this);
+		M.setUnitesurcase(false);// à remplacer par libérer case
 	}
 }

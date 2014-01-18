@@ -31,11 +31,8 @@ public class Milicien extends Personnage{
 	//*************** Méthodes *******************
 	 @Override public void destructionUnite(Case M, Joueur J)
 	{
-		if(this.PV <= 0)
-		{
-			J.getPersonnages().remove(this);
-			M.setUnitesurcase(false);// à remplacer par libérer case
-			J.setOs(30);
-		}
+		J.getPersonnages().remove(this);
+		M.setUnitesurcase(false);// à remplacer par libérer case
+		J.setOs(30);
 	}
 }
