@@ -58,14 +58,13 @@ public class PanelResrc extends JPanel implements ActionListener {
 
 	// **********METHODES
 	public void updateAffichageRessource() {
-		if (indice < lesJoueurs.length) {
-			this.or.setText("or " + lesJoueurs[indice].getOr());
-			this.nourriture.setText("nourriture " + lesJoueurs[indice].getNourriture());
-			this.bois.setText("bois " + lesJoueurs[indice].getBois());
-			this.pierre.setText("pierre " + lesJoueurs[indice].getPierre());
-			this.fer.setText("fer " + lesJoueurs[indice].getFer());
-			this.os.setText("os " + lesJoueurs[indice].getOs());
-		}
+			this.or.setText("or " + lesJoueurs[joueurencours].getOr());
+			this.nourriture.setText("nourriture " + lesJoueurs[joueurencours].getNourriture());
+			this.bois.setText("bois " + lesJoueurs[joueurencours].getBois());
+			this.pierre.setText("pierre " + lesJoueurs[joueurencours].getPierre());
+			this.fer.setText("fer " + lesJoueurs[joueurencours].getFer());
+			this.os.setText("os " + lesJoueurs[joueurencours].getOs());
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
