@@ -180,8 +180,8 @@ public class PanelBas extends JPanel implements ActionListener {
 	}
 
 	public void updateActionPossible(Case bouh, int hauteur, int largeur) {
-		this.positionDeLaCaseActuellementSelectionnee[0] = hauteur;
-		this.positionDeLaCaseActuellementSelectionnee[1] = largeur;
+		this.positionDeLaCaseActuellementSelectionnee[0] = largeur;
+		this.positionDeLaCaseActuellementSelectionnee[1] = hauteur;
 		this.panelActionsPossibles.removeAll();
 		if (!actionEnCours) {
 			if (bouh.isBatimentsurcase()) {
