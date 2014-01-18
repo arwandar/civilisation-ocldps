@@ -236,11 +236,11 @@ public class Joueur {
 		}
 	}
 	
-	public boolean isMineOrConstructed(int V[], Case M, String name)
+	public boolean isMineOrConstructed(int V[], Case M)
 	{
 		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
 		{
-			new BatProdRes(name, V, typeRessource.or, M, this);
+			new BatProdRes("mine", V, typeRessource.or, M, this);
 			return true;
 		}
 		else
@@ -249,11 +249,11 @@ public class Joueur {
 		}
 	}
 	
-	public boolean isMineFerConstructed(int V[], Case M, String name)
+	public boolean isMineFerConstructed(int V[], Case M)
 	{
 		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
 		{
-			new BatProdRes(name, V, typeRessource.fer, M, this);
+			new BatProdRes("mine", V, typeRessource.fer, M, this);
 			return true;
 		}
 		else
@@ -262,11 +262,11 @@ public class Joueur {
 		}
 	}
 	
-	public boolean isMinePierreConstructed(int V[], Case M, String name)
+	public boolean isMinePierreConstructed(int V[], Case M)
 	{
 		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
 		{
-			new BatProdRes(name, V, typeRessource.pierre, M, this);
+			new BatProdRes("mine", V, typeRessource.pierre, M, this);
 			return true;
 		}
 		else
@@ -275,11 +275,11 @@ public class Joueur {
 		}
 	}
 	
-	public boolean isMineBoisConstructed(int V[], Case M, String name)
+	public boolean isMineBoisConstructed(int V[], Case M)
 	{
 		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
 		{
-			new BatProdRes(name, V, typeRessource.bois, M, this);
+			new BatProdRes("mine", V, typeRessource.bois, M, this);
 			return true;
 		}
 		else
@@ -288,11 +288,11 @@ public class Joueur {
 		}
 	}
 	
-	public boolean isMineNourritureConstructed(int V[], Case M, String name)
+	public boolean isMineNourritureConstructed(int V[], Case M)
 	{
 		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
 		{
-			new BatProdRes(name, V, typeRessource.nourriture, M, this);
+			new BatProdRes("mine", V, typeRessource.nourriture, M, this);
 			return true;
 		}
 		else
