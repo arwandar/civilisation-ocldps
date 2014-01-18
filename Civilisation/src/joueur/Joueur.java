@@ -3,6 +3,7 @@ package joueur;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import civ.Case;
 import Batiment.BatHotelDeVille;
 import Batiment.Batiment;
 import Unites.Personnage;
@@ -120,5 +121,30 @@ public class Joueur {
 		}*/
 		
 		return cpp;
+	}
+	
+	public static boolean isPeonUsed (Joueur J)
+	{
+		ArrayList<Personnage> PersonnagePossible = J.getPersonnages();
+		for (Personnage celuiLa : PersonnagePossible){ 
+			if (celuiLa.getNOM() == "Peon" && celuiLa.isUsed()==false)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean isHotelDeVilleConstructed(int V[], Case M)
+	{
+		if(this.getBois()>=300 && this.getOr()>=200 && this.getFer()>=150 && this.getPierre()>=200 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatHotelDeVille(V, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
