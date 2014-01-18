@@ -21,6 +21,7 @@ public abstract class Batiment
 	protected int coutBois;
 	protected Joueur joueur;
 	protected boolean isConstructible = true;
+	protected int portee;
 	
 	//*************** Constructeur *******************
 	public Batiment(String name, int p, int a, double d, int c, boolean ioe, int V[], int prod, Case M) //le vecteur position sera à remplacer par une case
@@ -69,6 +70,11 @@ public abstract class Batiment
 		return this.pv;
 	}
 	
+	public int getPortee()
+	{
+		return this.portee;
+	}
+	
 	public double getDEF()
 	{
 		return this.def;
@@ -113,6 +119,11 @@ public abstract class Batiment
 	public void setPV(int p)
 	{
 		this.pv = p;
+	}
+	
+	public void setPortee(int por)
+	{
+		this.portee = por;
 	}
 	
 	public void setDEF(double d)

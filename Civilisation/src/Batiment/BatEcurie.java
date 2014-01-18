@@ -21,6 +21,8 @@ public class BatEcurie extends BatProdUnit
 		J.setBois(J.getBois() - this.coutBois);
 		J.setPierre(J.getPierre() - this.coutPierre);
 		
+		this.setPortee(1);
+		
 		J.getBatiments().add(this);
 		this.joueur = J;
 	}
