@@ -37,7 +37,7 @@ public class PanelBas extends JPanel implements ActionListener {
 	public boolean actionEnCours = false;
 	String quelleActionEnCours;
 	Object trucActuellementSelectionne = null;
-	int[] positionDeLaCaseActuellementSelectionnee;
+	int[] positionDeLaCaseActuellementSelectionnee = new int[2];
 
 	// **********CONSTRUCTEURS
 	public PanelBas(int hauteur, int largeur, FntPrcpl bouh) {
@@ -258,7 +258,6 @@ public class PanelBas extends JPanel implements ActionListener {
 				ArrayList<Personnage> personnagePossible = ceJoueur.getPersonnages();
 				for (Personnage celuiLa : personnagePossible) {
 					if (celuiLa.getPositionHorizontale() == largeur && celuiLa.getPositionVerticale() == hauteur) {
-						System.out.println("yeeha");
 						if (i == PanelResrc.joueurencours) {
 							return true;
 						} else {

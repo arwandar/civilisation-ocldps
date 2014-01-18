@@ -119,7 +119,6 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 					}
 					this.carte[i][j].setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 					this.carte[i][j].addActionListener(this);
-					//this.carte[i][j].set
 					this.conteneur.add(this.carte[i][j]);
 				}
 			}
@@ -143,6 +142,7 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 					Batiment bat = itbat.next();
 					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBorder(border);
 					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setText(bat.getNOM());
+					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setToolTipText(bat.getNOM());
 				}
 			}
 			if (!personnages.isEmpty()) {
@@ -151,6 +151,7 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 					Personnage perso = itperso.next();
 					this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setBorder(border);
 					this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setText(perso.getT().toString());
+					this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setToolTipText(perso.getT().toString());
 				}
 			}
 		}
