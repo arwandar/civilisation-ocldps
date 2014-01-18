@@ -10,7 +10,9 @@ import java.util.Iterator;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 
 import Unites.Personnage;
 import Batiment.BatEcurie;
@@ -117,6 +119,7 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 					}
 					this.carte[i][j].setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 					this.carte[i][j].addActionListener(this);
+					//this.carte[i][j].set
 					this.conteneur.add(this.carte[i][j]);
 				}
 			}
@@ -133,11 +136,12 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 		for (int k = 0; k < this.saFenetre.lesJoueurs.length; k++) {
 			ArrayList<Batiment> batiments = this.saFenetre.lesJoueurs[k].getBatiments();
 			ArrayList<Personnage> personnages = this.saFenetre.lesJoueurs[k].getPersonnages();
+			Border border = new LineBorder(this.saFenetre.lesJoueurs[k].getSaCouleur(), 3);
 			if (!batiments.isEmpty()) {
 				Iterator<Batiment> itbat = batiments.iterator();
 				while (itbat.hasNext()) {
 					Batiment bat = itbat.next();
-					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
+					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBorder(border);
 					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setText(bat.getNOM());
 				}
 			}
@@ -145,8 +149,7 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 				Iterator<Personnage> itperso = personnages.iterator();
 				while (itperso.hasNext()) {
 					Personnage perso = itperso.next();
-					this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setBackground(this.saFenetre.lesJoueurs[k]
-							.getSaCouleur());
+					this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setBorder(border);
 					this.carte[perso.getPositionVerticale()][perso.getPositionHorizontale()].setText(perso.getT().toString());
 				}
 			}

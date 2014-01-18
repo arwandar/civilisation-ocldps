@@ -63,7 +63,7 @@ public class Test {
 		Joueur[] lesJoueurs = new Joueur[2];
 		Color[] couleursPossibles = { Color.magenta, Color.pink, Color.red };
 		for (int i = 0; i < lesJoueurs.length; i++) {
-			lesJoueurs[i] = new Joueur(couleursPossibles[i], lesJoueurs);
+			lesJoueurs[i] = new Joueur(couleursPossibles[i]);
 		}
 		FntPrcpl tmp = new FntPrcpl(lesJoueurs);
 		Fonctions fonctions = new Fonctions(tmp.affichagejeu);

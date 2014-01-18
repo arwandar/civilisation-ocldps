@@ -15,7 +15,6 @@ import javax.swing.JTextArea;
 
 import Unites.Personnage;
 import joueur.Joueur;
-import Batiment.BatHotelDeVille;
 import Batiment.Batiment;
 
 public class PanelBas extends JPanel implements ActionListener {
@@ -284,8 +283,8 @@ public class PanelBas extends JPanel implements ActionListener {
 				break;
 			default:
 				System.out.println("problème lors de la recuperation de l'action complexe à effectuer");
-
 		}
+		this.saFenetre.updateAffichage();
 	}
 
 	@Override
@@ -426,8 +425,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				break;
 			default:
 				System.out.println("problème lors de la recuperation de l'action à affectuer");
-
 		}
-
+		this.saFenetre.updateAffichage();
 	}
 }
