@@ -24,7 +24,7 @@ public class CavalierArcher extends Personnage {
 		this.coutOr=70;
 		this.coutBois=40;
 		J.setOr(J.getOr() - this.coutOr);
-		J.setOr(J.getOr() - this.coutBois);
+		J.setBois(J.getBois() - this.coutBois);
 		
 		this.setT(typeUnite.CavalierArcher);
 	}
