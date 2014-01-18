@@ -23,7 +23,7 @@ public class Healer extends Personnage {
 		this.coutNourriture=40;
 		this.coutOr=50;
 		J.setOr(J.getOr() - this.coutOr);
-		J.setOr(J.getOr() - this.coutNourriture);
+		J.setNourriture(J.getNourriture() - this.coutNourriture);
 		
 		this.setT(typeUnite.Healer);
 	}
