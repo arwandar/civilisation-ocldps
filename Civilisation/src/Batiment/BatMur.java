@@ -21,6 +21,7 @@ public class BatMur extends Batiment
 		J.setPierre(J.getPierre() - this.coutPierre);
 		
 		this.setPortee(0);
+		this.setIsUsed(false);
 		
 		J.getBatiments().add(this);
 		this.joueur = J;

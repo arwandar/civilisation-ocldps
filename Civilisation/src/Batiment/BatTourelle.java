@@ -21,6 +21,7 @@ public class BatTourelle extends Batiment
 		J.setPierre(J.getPierre() - this.coutPierre);
 		
 		this.setPortee(5);
+		this.setIsUsed(false);
 		
 		J.getBatiments().add(this);
 		this.joueur = J;

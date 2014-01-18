@@ -35,6 +35,7 @@ public class BatProdRes extends Batiment
 		J.setPierre(J.getPierre() - this.coutPierre);
 		
 		this.setPortee(1);
+		this.setIsUsed(false);
 		
 		J.getBatiments().add(this);
 		this.joueur = J;

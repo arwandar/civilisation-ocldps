@@ -23,6 +23,7 @@ public class BatArcherie extends BatProdUnit
 		J.setPierre(J.getPierre() - this.coutPierre);
 		
 		this.setPortee(4);
+		this.setIsUsed(false);
 		
 		J.getBatiments().add(this);
 		this.joueur = J;
