@@ -301,6 +301,9 @@ public class PanelBas extends JPanel implements ActionListener {
 				System.out.println("tu tentes de détruire");
 				break;
 			case "déplacer":
+				System.out.println("on clique là");
+				System.out.println(this.positionDeLaCaseActuellementSelectionnee[0]);
+				System.out.println(this.positionDeLaCaseActuellementSelectionnee[1]);
 				this.actionEnCours = true;
 				this.quelleActionEnCours = "déplacer";
 				updateActionPossible(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],

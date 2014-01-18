@@ -52,18 +52,22 @@ public class Boutons {
 	
 	
 	public static void deplace(Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
-		
-		if ( isUniteOnCase(x, y, lesJoueurs) || cas.isBatimentsurcase())
+		System.out.println("On cherche là");
+		System.out.println(x);
+		System.out.println(y);
+		/*if ( isUniteOnCase(x, y, lesJoueurs) || cas.isBatimentsurcase())
 			System.out.println("la case est pas vide");
-		else{
+		else{*/
+			Evenements.Fonctions.creationDeLaMatrice();
 			Evenements.Fonctions.testGps(personnage, y, x);
-			if(Evenements.Fonctions.distanceTest>personnage.getMouvement())
+			/*if(Evenements.Fonctions.distanceTest>personnage.getMouvement())
 				System.out.println("Trop loin !"); //rajouter un pop de bouton disant que c'est trop loin et mettant la distance max / pas par relief / distance dépassée
-			else{
+			else{*/
 				Evenements.Fonctions.deplacementReel(personnage);
+				System.out.println("après le dépla réel");
 				personnage.setUsed(true);
-			}
-		}
+			/*}
+		}*/
 		
 
 	}

@@ -79,7 +79,6 @@ public class Fonctions {
 	
 	
 	public static void testGps(Personnage perso, int arriveeX, int arriveeY){
-           
             final int width = matriceDeJeu[0].length - 1;  
             final int height = matriceDeJeu.length - 1;  
               
@@ -134,14 +133,15 @@ public class Fonctions {
                     if("M".equals(matriceDeJeu[(int) index.getY()][(int) index.getX()])) {  
                         return 3;  
                     }
-                    return Double.MAX_VALUE;  
+                    return Double.MAX_VALUE; 
+                    
                 }  
                   
                 @Override  
                 protected double computeTheorique(final Point index, final Point goal) {  
                     // Distance de manhattan  
                     return Math.abs(index.getX()-goal.getX()) + Math.abs(index.getY()-goal.getY());  
-                }  
+                } 
             };  
       
             final Astar<Point> astart = new Astar<Point>(successorComputer,  
@@ -170,24 +170,26 @@ public class Fonctions {
             	//System.out.println(distanceTest);
             }
          
-            //displayMatrix(matriceDeJeu); 
+            displayMatrix(matriceDeJeu); 
 	}
 	
 	public static void deplacementReel (Personnage perso){
-		
 		int mouvementRestant=perso.getMouvement();
+		System.out.println(perso.getMouvement());
 		int[] x = {-1,0,1,0};
 		int[] y = {0,-1,0,1};
 		matriceDeJeu[ perso.getPositionHorizontale() ][ perso.getPositionVerticale() ]="O";
 		//System.out.println("Je suis en " + perso.getPositionHorizontale() + " " +  perso.getPositionVerticale() + " et je peux bouger de " + mouvementRestant );
-		
+		System.out.println("test2");
 		while (mouvementRestant>0){
 			for (int i=0; i<4; i++){
+			//	System.out.println("for" + i);
+			//	System.out.println(perso.getMouvement());
 				int nvX = perso.getPositionHorizontale() + x[i];
 				int nvY = perso.getPositionVerticale() + y[i];
 				if(matriceDeJeu[ nvX ][ nvY ]=="X"){
 					//System.out.println("Trouvé ! : " + nvX + " " + nvY);
-					
+					System.out.println("test3 : trouvé");
 					
 					
 					int coeff = TestTerrain(nvX,nvY);
@@ -200,10 +202,14 @@ public class Fonctions {
 					}
 					else{
 						mouvementRestant--;
+						System.out.println("test5 pas trouvé");
 					}
 				}
+				else{
+			//		System.out.println("la case est pas X");
+				}
 			}	
-		}
+		}System.out.println("while fini");
 	}
 	
 	
