@@ -31,7 +31,7 @@ public abstract class Personnage implements Caracteristiques{
 	  
 	  private String nom;
 	  
-	  boolean isUsed = false;
+	  boolean isUsed = true;
 	  
 	  protected Joueur joueur;
 	  
