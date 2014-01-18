@@ -145,8 +145,11 @@ public class FntPrcpl extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.demarrerB){
+			System.out.println("On va instancier le 1er joueur");
 			Evenements.Initialisation.unitesDuDebut(lesJoueurs[0], 5, 5, this);
+			System.out.println("On va instancier le 2e joueur");
 			Evenements.Initialisation.unitesDuDebut(lesJoueurs[1], 8, 8, this);
+			System.out.println("On a fini d'instancier");
 			/*for (int i=0;i<60;i++){
 				for (int j=0;j<30;j++)
 					Evenements.Initialisation.unitesDuDebut(lesJoueurs[0], i, j, this);
