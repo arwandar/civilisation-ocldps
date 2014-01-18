@@ -14,22 +14,26 @@ public class Initialisation {
 	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
 	    hellopeon.setPositionHorizontale(x-1);
 	    hellopeon.setPositionVerticale(y);
+	    hellopeon.setUsed(false);
 
 	    
 	    Peon hellopeon1 = new Peon(J);
 	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
 	    hellopeon1.setPositionHorizontale(x+1);
 	    hellopeon1.setPositionVerticale(y);
+	    hellopeon1.setUsed(false);
 
 	    Peon hellopeon2 = new Peon(J);
 	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
 	    hellopeon2.setPositionHorizontale(x);
 	    hellopeon2.setPositionVerticale(y-1);
+	    hellopeon2.setUsed(false);
 	    
 	    Peon hellopeon3 = new Peon(J);
 	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
 	    hellopeon3.setPositionHorizontale(x);
 	    hellopeon3.setPositionVerticale(y+1);
+	    hellopeon3.setUsed(false);
 	    
 	}
 }
