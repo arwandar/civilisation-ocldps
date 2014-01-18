@@ -115,6 +115,16 @@ public abstract class Personnage implements Caracteristiques{
 	public int getPortee() {
 		return portee;
 	}
+	
+	public Joueur getJoueur()
+	{
+		return this.joueur;
+	}
+	
+	public void setJoueur(Joueur j)
+	{
+		this.joueur = j;
+	}
 
 	public void setPortee(int portee) {
 		this.portee = portee;
