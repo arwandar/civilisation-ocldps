@@ -38,6 +38,7 @@ public class PanelBas extends JPanel implements ActionListener {
 	public boolean actionEnCours = false;
 	String quelleActionEnCours;
 	Object trucActuellementSelectionne = null;
+	int[] positionDeLaCaseActuellementSelectionnee;
 
 	// **********CONSTRUCTEURS
 	public PanelBas(int hauteur, int largeur, FntPrcpl bouh) {
@@ -129,7 +130,7 @@ public class PanelBas extends JPanel implements ActionListener {
 						System.out.println("problème lors de l'initialisation du card layout du panel bas");
 					}
 				}
-			}		
+			}
 			if (actionEnCours) {
 				JLabel quoifaire = new JLabel("selectionner une case où executer l'action en cours");
 				this.jcard[j].add(quoifaire);
@@ -182,8 +183,10 @@ public class PanelBas extends JPanel implements ActionListener {
 	}
 
 	public void updateActionPossible(Case bouh, int hauteur, int largeur) {
+		this.positionDeLaCaseActuellementSelectionnee[0] = largeur;
+		this.positionDeLaCaseActuellementSelectionnee[1] = hauteur;
 		this.panelInterne.removeAll();
-		if (!actionEnCours){
+		if (!actionEnCours) {
 			if (bouh.isBatimentsurcase()) {
 				Batiment batimentSurLaCase = (Batiment) recuperer(hauteur, largeur, true);
 				trucActuellementSelectionne = batimentSurLaCase;
@@ -206,9 +209,7 @@ public class PanelBas extends JPanel implements ActionListener {
 					trucActuellementSelectionne = null;
 				}
 			}
-		}
-		else
-		{
+		} else {
 			initCl("casevide", true);
 		}
 	}
@@ -272,21 +273,21 @@ public class PanelBas extends JPanel implements ActionListener {
 		return false;
 	}
 
-	public void executerActionComplexe(int positionHauteur, int positionLargeur){
+	public void executerActionComplexe(int positionHauteur, int positionLargeur) {
 		this.actionEnCours = false;
-		switch (quelleActionEnCours){
+		switch (quelleActionEnCours) {
 			case "attaquer":
 				break;
 			case "deplacer":
 				break;
 			case "soigner":
 				break;
-			default :
+			default:
 				System.out.println("problème lors de la recuperation de l'action complexe à effectuer");
-					
+
 		}
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton boutonAppuye = (JButton) e.getSource();
@@ -296,7 +297,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				System.out.println("tu tentes de détruire");
 				break;
 			case "déplacer":
-				this.actionEnCours = true;	
+				this.actionEnCours = true;
 				this.quelleActionEnCours = "déplacer";
 				break;
 			case "attaquer":
@@ -319,41 +320,112 @@ public class PanelBas extends JPanel implements ActionListener {
 				break;
 			case "magicien":
 				break;
-			case "healers":	
+			case "healers":
 				break;
 			case "soigner":
 				this.actionEnCours = true;
 				this.quelleActionEnCours = "soigner";
 				break;
 			case "Archerie":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherieConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "atelier de siège":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isAtelierDeSiegeConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "Caserne":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCaserneConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "Ecurie":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isEcurieConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "Hotel de ville":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHotelDeVilleConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "Mur":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMurConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "Port":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPortConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "mine or":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineOrConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))){
+				System.out.println("Batiement construit!");
+			}
 				break;
 			case "mine nourriture":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineNourritureConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "mine bois":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineBoisConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "mine fer":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineFerConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "mine pierre":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMinePierreConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "Tour des mages":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourDesMagesConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
 			case "Tourelle":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourelleConstructed(this.positionDeLaCaseActuellementSelectionnee,
+						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+								this.positionDeLaCaseActuellementSelectionnee[0]))){
+					System.out.println("Batiement construit!");
+				}
 				break;
-				default : System.out.println("problème lors de la recuperation de l'action à affectuer");
+			default:
+				System.out.println("problème lors de la recuperation de l'action à affectuer");
 
 		}
 
