@@ -138,11 +138,12 @@ public class Joueur {
 		return cpp;
 	}
 
-	public static boolean isPeonUsed (Joueur J)
+	public static boolean isPeonUsed (Joueur J, int V[])
 	{
 		ArrayList<Personnage> PersonnagePossible = J.getPersonnages();
-		for (Personnage celuiLa : PersonnagePossible){ 
-			if (celuiLa.getNOM() == "Peon" && celuiLa.isUsed()==false)
+		for (Personnage celuiLa : PersonnagePossible)
+		{ 
+			if (celuiLa.getNOM() == "Peon" && celuiLa.getPositionHorizontale()==V[0] && celuiLa.getPositionVerticale()==V[1] && celuiLa.isUsed()==false)
 			{
 				return false;
 			}
@@ -152,7 +153,7 @@ public class Joueur {
 
 	public boolean isHotelDeVilleConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=300 && this.getOr()>=200 && this.getFer()>=150 && this.getPierre()>=200 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=300 && this.getOr()>=200 && this.getFer()>=150 && this.getPierre()>=200 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatHotelDeVille(V, M, this);
 			return true;
@@ -165,7 +166,7 @@ public class Joueur {
 
 	public boolean isArcherieConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=100 && this.getOr()>=50 && this.getFer()>=50 && this.getPierre()>=150 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=100 && this.getOr()>=50 && this.getFer()>=50 && this.getPierre()>=150 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatArcherie(V, M, this);
 			return true;
@@ -178,7 +179,7 @@ public class Joueur {
 
 	public boolean isAtelierDeSiegeConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=300 && this.getOr()>=200 && this.getFer()>=150 && this.getPierre()>=450 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=300 && this.getOr()>=200 && this.getFer()>=150 && this.getPierre()>=450 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatAtelierDeSiege(V, M, this);
 			return true;
@@ -191,7 +192,7 @@ public class Joueur {
 
 	public boolean isCaserneConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=75 && this.getOr()>=50 && this.getFer()>=35 && this.getPierre()>=110 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=75 && this.getOr()>=50 && this.getFer()>=35 && this.getPierre()>=110 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatCaserne(V, M, this);
 			return true;
@@ -204,7 +205,7 @@ public class Joueur {
 
 	public boolean isEcurieConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=200 && this.getOr()>=150 && this.getFer()>=100 && this.getPierre()>=300 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=200 && this.getOr()>=150 && this.getFer()>=100 && this.getPierre()>=300 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatEcurie(V, M, this);
 			return true;
@@ -217,10 +218,9 @@ public class Joueur {
 
 	public boolean isMurConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=30 && this.getOr()>=10 && this.getFer()>=5 && this.getPierre()>=50 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=30 && this.getOr()>=10 && this.getFer()>=5 && this.getPierre()>=50 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatMur(V, M, this);
-			
 			return true;
 		}
 		else
@@ -231,7 +231,7 @@ public class Joueur {
 
 	public boolean isPortConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=300 && this.getOr()>=75 && this.getFer()>=50 && this.getPierre()>=100 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=300 && this.getOr()>=75 && this.getFer()>=50 && this.getPierre()>=100 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatPort(V, M, this);
 			return true;
@@ -244,7 +244,7 @@ public class Joueur {
 
 	public boolean isMineOrConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatProdRes("mine", V, typeRessource.or, M, this);
 			return true;
@@ -257,7 +257,7 @@ public class Joueur {
 
 	public boolean isMineFerConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatProdRes("mine", V, typeRessource.fer, M, this);
 			return true;
@@ -270,7 +270,7 @@ public class Joueur {
 
 	public boolean isMinePierreConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatProdRes("mine", V, typeRessource.pierre, M, this);
 			return true;
@@ -283,7 +283,7 @@ public class Joueur {
 
 	public boolean isMineBoisConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatProdRes("mine", V, typeRessource.bois, M, this);
 			return true;
@@ -296,7 +296,7 @@ public class Joueur {
 
 	public boolean isMineNourritureConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatProdRes("mine", V, typeRessource.nourriture, M, this);
 			return true;
@@ -309,7 +309,7 @@ public class Joueur {
 
 	public boolean isTourDesMagesConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=150 && this.getOr()>=75 && this.getFer()>=50 && this.getPierre()>=150 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=150 && this.getOr()>=75 && this.getFer()>=50 && this.getPierre()>=150 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatTourDesMages(V, M, this);
 			return true;
@@ -322,7 +322,7 @@ public class Joueur {
 
 	public boolean isTourelleConstructed(int V[], Case M)
 	{
-		if(this.getBois()>=300 && this.getOr()>=100 && this.getFer()>=50 && this.getPierre()>=500 && Joueur.isPeonUsed(this)==false)
+		if(this.getBois()>=300 && this.getOr()>=100 && this.getFer()>=50 && this.getPierre()>=500 && Joueur.isPeonUsed(this, V)==false)
 		{
 			new BatTourelle(V, M, this);
 			return true;
