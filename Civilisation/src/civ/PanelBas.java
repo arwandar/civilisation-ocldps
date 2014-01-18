@@ -273,7 +273,7 @@ public class PanelBas extends JPanel implements ActionListener {
 	public void executerActionComplexe(int positionHauteur, int positionLargeur) {
 		this.positionDeLaCaseActuellementSelectionnee[0] = positionHauteur;
 		this.positionDeLaCaseActuellementSelectionnee[1] = positionLargeur;
-		System.out.println(this.positionDeLaCaseActuellementSelectionnee[0] +"/"+this.positionDeLaCaseActuellementSelectionnee[1]);
+		System.out.println(this.positionDeLaCaseActuellementSelectionnee[0] + "/" + this.positionDeLaCaseActuellementSelectionnee[1]);
 		switch (quelleActionEnCours) {
 			case "attaquer":
 				break;
@@ -316,27 +316,67 @@ public class PanelBas extends JPanel implements ActionListener {
 				this.quelleActionEnCours = "attaquer";
 				break;
 			case "cavalier archer":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCavalierArcherCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+					actionEffectue = 1;
+				} else {
+					actionEffectue = 0;
+				}
 				break;
 			case "catapultes":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCatapulteCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+					actionEffectue = 1;
+				} else {
+					actionEffectue = 0;
+				}
 				break;
 			case "milicien":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMilicienCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+					actionEffectue = 1;
+				} else {
+					actionEffectue = 0;
+				}
 				break;
 			case "chevalier":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isChevalierCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+					actionEffectue = 1;
+				} else {
+					actionEffectue = 0;
+				}
 				break;
 			case "peon":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPeonCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "galère":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isGalereCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+					actionEffectue = 1;
+				} else {
+					actionEffectue = 0;
+				}
 				break;
 			case "tranporteur":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTransporteurCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+					actionEffectue = 1;
+				} else {
+					actionEffectue = 0;
+				}
 				break;
 			case "magicien":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMagicirnrCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+					actionEffectue = 1;
+				} else {
+					actionEffectue = 0;
+				}
 				break;
 			case "healers":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHealerCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+					actionEffectue = 1;
+				} else {
+					actionEffectue = 0;
+				}
 				break;
 			case "soigner":
 				this.actionEnCours = true;
@@ -346,141 +386,141 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherieConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
-				};
+					actionEffectue = 0;
+				}
+				;
 			case "atelier de siège":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isAtelierDeSiegeConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "Caserne":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCaserneConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "Ecurie":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isEcurieConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "Hotel de ville":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHotelDeVilleConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "Mur":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMurConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "Port":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPortConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "mine or":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineOrConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "mine nourriture":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineNourritureConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "mine bois":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineBoisConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "mine fer":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineFerConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "mine pierre":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMinePierreConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "Tour des mages":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourDesMagesConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			case "Tourelle":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourelleConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					actionEffectue=1;
+					actionEffectue = 1;
 				} else {
-					actionEffectue=0;
+					actionEffectue = 0;
 				}
 				break;
 			default:
 				System.out.println("problème lors de la recuperation de l'action à affectuer");
 		}
 		this.saFenetre.updateAffichage();
-		JOptionPane jpop = new JOptionPane();
-		switch(actionEffectue){			
-			case 1:				
-				jpop.showMessageDialog(null, "Unité ou Batiment bien créé", "Information", JOptionPane.INFORMATION_MESSAGE);
+		switch (actionEffectue) {
+			case 1:
+				JOptionPane.showMessageDialog(null, "Unité ou Batiment bien créé", "Information", JOptionPane.INFORMATION_MESSAGE);
 				break;
 			case 0:
-				jpop.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action","Problème", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action", "Problème",
+						JOptionPane.ERROR_MESSAGE);
 				break;
 		}
-		
-		
+
 	}
 }
