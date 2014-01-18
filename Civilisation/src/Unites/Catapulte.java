@@ -24,7 +24,7 @@ public class Catapulte extends Personnage {
 		this.coutOr=135;
 		this.coutBois=160;
 		J.setOr(J.getOr() - this.coutOr);
-		J.setOr(J.getOr() - this.coutBois);
+		J.setBois(J.getBois() - this.coutBois);
 		
 		this.setT(typeUnite.Catapulte);
 	}
