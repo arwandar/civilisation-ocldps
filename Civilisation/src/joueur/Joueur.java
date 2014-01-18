@@ -4,7 +4,17 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import civ.Case;
+import Batiment.BatArcherie;
+import Batiment.BatAtelierDeSiege;
+import Batiment.BatCaserne;
+import Batiment.BatEcurie;
 import Batiment.BatHotelDeVille;
+import Batiment.BatMur;
+import Batiment.BatPort;
+import Batiment.BatProdRes;
+import Batiment.BatProdRes.typeRessource;
+import Batiment.BatTourDesMages;
+import Batiment.BatTourelle;
 import Batiment.Batiment;
 import Unites.Personnage;
 
@@ -140,6 +150,175 @@ public class Joueur {
 		if(this.getBois()>=300 && this.getOr()>=200 && this.getFer()>=150 && this.getPierre()>=200 && Joueur.isPeonUsed(this)==false)
 		{
 			new BatHotelDeVille(V, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isArcherieConstructed(int V[], Case M)
+	{
+		if(this.getBois()>=100 && this.getOr()>=50 && this.getFer()>=50 && this.getPierre()>=150 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatArcherie(V, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isAtelierDeSiegeConstructed(int V[], Case M)
+	{
+		if(this.getBois()>=300 && this.getOr()>=200 && this.getFer()>=150 && this.getPierre()>=450 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatAtelierDeSiege(V, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isCaserneConstructed(int V[], Case M)
+	{
+		if(this.getBois()>=75 && this.getOr()>=50 && this.getFer()>=35 && this.getPierre()>=110 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatCaserne(V, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isEcurieConstructed(int V[], Case M)
+	{
+		if(this.getBois()>=200 && this.getOr()>=150 && this.getFer()>=100 && this.getPierre()>=300 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatEcurie(V, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isMurConstructed(int V[], Case M)
+	{
+		if(this.getBois()>=30 && this.getOr()>=10 && this.getFer()>=5 && this.getPierre()>=50 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatMur(V, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isPortConstructed(int V[], Case M)
+	{
+		if(this.getBois()>=300 && this.getOr()>=75 && this.getFer()>=50 && this.getPierre()>=100 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatPort(V, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isMineOrConstructed(int V[], Case M, String name)
+	{
+		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatProdRes(name, V, typeRessource.or, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isMineFerConstructed(int V[], Case M, String name)
+	{
+		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatProdRes(name, V, typeRessource.fer, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isMinePierreConstructed(int V[], Case M, String name)
+	{
+		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatProdRes(name, V, typeRessource.pierre, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isMineBoisConstructed(int V[], Case M, String name)
+	{
+		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatProdRes(name, V, typeRessource.bois, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isMineNourritureConstructed(int V[], Case M, String name)
+	{
+		if(this.getBois()>=10 && this.getOr()>=20 && this.getFer()>=5 && this.getPierre()>=30 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatProdRes(name, V, typeRessource.nourriture, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isTourDesMagesConstructed(int V[], Case M)
+	{
+		if(this.getBois()>=150 && this.getOr()>=75 && this.getFer()>=50 && this.getPierre()>=150 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatTourDesMages(V, M, this);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public boolean isTourelleConstructed(int V[], Case M)
+	{
+		if(this.getBois()>=300 && this.getOr()>=100 && this.getFer()>=50 && this.getPierre()>=500 && Joueur.isPeonUsed(this)==false)
+		{
+			new BatTourelle(V, M, this);
 			return true;
 		}
 		else
