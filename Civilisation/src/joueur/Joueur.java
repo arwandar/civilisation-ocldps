@@ -21,8 +21,13 @@ import Unites.Archer;
 import Unites.Catapulte;
 import Unites.CavalierArcher;
 import Unites.Chevalier;
+import Unites.Galere;
+import Unites.Healer;
+import Unites.Magicien;
+import Unites.Milicien;
 import Unites.Peon;
 import Unites.Personnage;
+import Unites.Transporteur;
 
 public class Joueur {
 	private String nom;
@@ -897,7 +902,7 @@ public class Joueur {
 	
 	public boolean isGalereCreated(int v[])
 	{
-		if(this.getOr()>=70 && this.getBois()>=40)
+		if(this.getOr()>=30 && this.getBois()>=90)
 		{
 			int i = v[0];
 			int j = v[1];
@@ -906,7 +911,7 @@ public class Joueur {
 			
 			if (!caseOccupee(i-1, j-1) && (i-1)>=0 && (j-1)>0)
 			{
-				this.getPersonnages().add(new CavalierArcher(this));
+				this.getPersonnages().add(new Galere(this));
 				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
@@ -914,7 +919,7 @@ public class Joueur {
 			}
 			else if(!caseOccupee(i-1, j) && (i-1)>=0)
 			{
-				this.getPersonnages().add(new CavalierArcher(this));
+				this.getPersonnages().add(new Galere(this));
 				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
@@ -922,7 +927,7 @@ public class Joueur {
 			}
 			else if (!caseOccupee(i-1, j+1) && (i-1)>=0 && (j+1)<=nbrCaseHauteur)
 			{
-				this.getPersonnages().add(new CavalierArcher(this));
+				this.getPersonnages().add(new Galere(this));
 				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
@@ -930,7 +935,7 @@ public class Joueur {
 			}
 			else if (!caseOccupee(i, j-1) && (j-1)>=0)
 			{
-				this.getPersonnages().add(new CavalierArcher(this));
+				this.getPersonnages().add(new Galere(this));
 				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
@@ -938,7 +943,7 @@ public class Joueur {
 			}
 			else if (!caseOccupee(i+1, j-1) && (i+1)<=nbrCaseLarge && (j-1)>=0)
 			{
-				this.getPersonnages().add(new CavalierArcher(this));
+				this.getPersonnages().add(new Galere(this));
 				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
@@ -946,7 +951,7 @@ public class Joueur {
 			}
 			else if (!caseOccupee(i+1, j) && (i+1)<=nbrCaseLarge)
 			{
-				this.getPersonnages().add(new CavalierArcher(this));
+				this.getPersonnages().add(new Galere(this));
 				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
@@ -954,7 +959,7 @@ public class Joueur {
 			}
 			else if (!caseOccupee(i+1, j+1) && (i+1)<=nbrCaseLarge && (j+1)<=nbrCaseHauteur)
 			{
-				this.getPersonnages().add(new CavalierArcher(this));
+				this.getPersonnages().add(new Galere(this));
 				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
@@ -962,7 +967,315 @@ public class Joueur {
 			}
 			else if (!caseOccupee(i, j+1) && (j+1)<=nbrCaseHauteur)
 			{
-				this.getPersonnages().add(new CavalierArcher(this));
+				this.getPersonnages().add(new Galere(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isHealerCreated(int v[])
+	{
+		if(this.getOr()>=50 && this.getNourriture()>=40)
+		{
+			int i = v[0];
+			int j = v[1];
+			int nbrCaseHauteur = 30;
+			int nbrCaseLarge = 60;
+			
+			if (!caseOccupee(i-1, j-1) && (i-1)>=0 && (j-1)>0)
+			{
+				this.getPersonnages().add(new Healer(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if(!caseOccupee(i-1, j) && (i-1)>=0)
+			{
+				this.getPersonnages().add(new Healer(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i-1, j+1) && (i-1)>=0 && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Healer(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j-1) && (j-1)>=0)
+			{
+				this.getPersonnages().add(new Healer(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j-1) && (i+1)<=nbrCaseLarge && (j-1)>=0)
+			{
+				this.getPersonnages().add(new Healer(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j) && (i+1)<=nbrCaseLarge)
+			{
+				this.getPersonnages().add(new Healer(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j+1) && (i+1)<=nbrCaseLarge && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Healer(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j+1) && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Healer(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isMagicirnrCreated(int v[])
+	{
+		if(this.getOr()>=40 && this.getNourriture()>=50)
+		{
+			int i = v[0];
+			int j = v[1];
+			int nbrCaseHauteur = 30;
+			int nbrCaseLarge = 60;
+			
+			if (!caseOccupee(i-1, j-1) && (i-1)>=0 && (j-1)>0)
+			{
+				this.getPersonnages().add(new Magicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if(!caseOccupee(i-1, j) && (i-1)>=0)
+			{
+				this.getPersonnages().add(new Magicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i-1, j+1) && (i-1)>=0 && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Magicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j-1) && (j-1)>=0)
+			{
+				this.getPersonnages().add(new Magicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j-1) && (i+1)<=nbrCaseLarge && (j-1)>=0)
+			{
+				this.getPersonnages().add(new Magicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j) && (i+1)<=nbrCaseLarge)
+			{
+				this.getPersonnages().add(new Magicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j+1) && (i+1)<=nbrCaseLarge && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Magicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j+1) && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Magicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isMilicienCreated(int v[])
+	{
+		if(this.getOr()>=20 && this.getNourriture()>=60)
+		{
+			int i = v[0];
+			int j = v[1];
+			int nbrCaseHauteur = 30;
+			int nbrCaseLarge = 60;
+			
+			if (!caseOccupee(i-1, j-1) && (i-1)>=0 && (j-1)>0)
+			{
+				this.getPersonnages().add(new Milicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if(!caseOccupee(i-1, j) && (i-1)>=0)
+			{
+				this.getPersonnages().add(new Milicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i-1, j+1) && (i-1)>=0 && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Milicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j-1) && (j-1)>=0)
+			{
+				this.getPersonnages().add(new Milicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j-1) && (i+1)<=nbrCaseLarge && (j-1)>=0)
+			{
+				this.getPersonnages().add(new Milicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j) && (i+1)<=nbrCaseLarge)
+			{
+				this.getPersonnages().add(new Milicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j+1) && (i+1)<=nbrCaseLarge && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Milicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j+1) && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Milicien(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isTransporteurCreated(int v[])
+	{
+		if(this.getBois()>=125)
+		{
+			int i = v[0];
+			int j = v[1];
+			int nbrCaseHauteur = 30;
+			int nbrCaseLarge = 60;
+			
+			if (!caseOccupee(i-1, j-1) && (i-1)>=0 && (j-1)>0)
+			{
+				this.getPersonnages().add(new Transporteur(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if(!caseOccupee(i-1, j) && (i-1)>=0)
+			{
+				this.getPersonnages().add(new Transporteur(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i-1, j+1) && (i-1)>=0 && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Transporteur(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j-1) && (j-1)>=0)
+			{
+				this.getPersonnages().add(new Transporteur(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j-1) && (i+1)<=nbrCaseLarge && (j-1)>=0)
+			{
+				this.getPersonnages().add(new Transporteur(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j) && (i+1)<=nbrCaseLarge)
+			{
+				this.getPersonnages().add(new Transporteur(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j+1) && (i+1)<=nbrCaseLarge && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Transporteur(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j+1) && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Transporteur(this));
 				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
