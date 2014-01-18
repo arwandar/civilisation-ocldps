@@ -37,8 +37,8 @@ public class Joueur {
 	public Joueur(Color couleur, Joueur[] lesJoueur){
 		this.lesJoueur = lesJoueur;
 		this.nom = "inconnu";
-		this.or = 500;
-		this.nourriture = 100;
+		this.or = 300;
+		this.nourriture = 300;
 		this.bois = 400;
 		this.pierre = 300;
 		this.fer = 250;
@@ -886,6 +886,83 @@ public class Joueur {
 			else if (!caseOccupee(i, j+1) && (j+1)<=nbrCaseHauteur)
 			{
 				this.getPersonnages().add(new Chevalier(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isGalereCreated(int v[])
+	{
+		if(this.getOr()>=70 && this.getBois()>=40)
+		{
+			int i = v[0];
+			int j = v[1];
+			int nbrCaseHauteur = 30;
+			int nbrCaseLarge = 60;
+			
+			if (!caseOccupee(i-1, j-1) && (i-1)>=0 && (j-1)>0)
+			{
+				this.getPersonnages().add(new CavalierArcher(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if(!caseOccupee(i-1, j) && (i-1)>=0)
+			{
+				this.getPersonnages().add(new CavalierArcher(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i-1, j+1) && (i-1)>=0 && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new CavalierArcher(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j-1) && (j-1)>=0)
+			{
+				this.getPersonnages().add(new CavalierArcher(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j-1) && (i+1)<=nbrCaseLarge && (j-1)>=0)
+			{
+				this.getPersonnages().add(new CavalierArcher(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j) && (i+1)<=nbrCaseLarge)
+			{
+				this.getPersonnages().add(new CavalierArcher(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j+1) && (i+1)<=nbrCaseLarge && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new CavalierArcher(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j+1) && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new CavalierArcher(this));
 				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
