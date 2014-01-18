@@ -41,8 +41,13 @@ public class Test {
 		for (Personnage celuiCi : perso){ 
 			celuiCi.setUsed(false);
 			}
-		}
 	
+		//parcourt la liste des batiments et les passe en notUsed
+		ArrayList<Batiment> batimentPossible2 = J.getBatiments();
+		for (Batiment celuiLa : batimentPossible2){
+			celuiLa.setUsed(false);
+		}
+	}
 	
 	
 	public static boolean isFini (Joueur J){
