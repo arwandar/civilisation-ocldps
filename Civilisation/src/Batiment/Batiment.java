@@ -33,7 +33,7 @@ public abstract class Batiment
 		
 		if(ioe && M.getTexture() != Texture.eau && M.getTexture() != Texture.montagne) //Si le bâtiment est constructible sur terre et que la case n'est pas de l'eau ni de la montagne
 		{
-			int[] bouh = {V[0], V[1]};
+			int[] tmp = {V[0], V[1]};
 			this.setNOM(name);
 			this.setPV(p);
 			this.setATT(a);
@@ -41,7 +41,7 @@ public abstract class Batiment
 			this.setCOEFF(c);
 			this.setIsOnEarth(ioe);
 			this.production = prod;
-			this.position = bouh;
+			this.position = tmp;
 			M.setBatimentsurcase(true);//remplacer par occuper case
 		}
 		else if( !ioe && M.getTexture() == Texture.eau ) //Si le bâtiment est constructible sur l'eau et que la case est maritime
