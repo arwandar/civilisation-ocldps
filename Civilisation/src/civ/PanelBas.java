@@ -24,7 +24,7 @@ public class PanelBas extends JPanel implements ActionListener {
 	 */
 
 	// **********VARIABLES
-	private JPanel panelMap, panelActionsPossibles, panelInterne;
+	private JPanel panelMap, panelActionsPossibles;
 	private FntPrcpl saFenetre;
 	private JButton[][] map;
 	private int mapLargeur, mapHauteur;
@@ -57,9 +57,7 @@ public class PanelBas extends JPanel implements ActionListener {
 		// init panelactionpossibles
 		this.panelActionsPossibles = new JPanel();
 		this.panelActionsPossibles.setBounds(this.getWidth() * 1 / 5, 0, this.getWidth() * 3 / 5, this.getHeight());
-		this.panelInterne = new JPanel();
 		this.initCl(this.enumCl[this.enumCl.length - 1], false);
-		this.panelActionsPossibles.add(this.panelInterne);
 		this.add(this.panelActionsPossibles);
 
 	}
@@ -101,12 +99,12 @@ public class PanelBas extends JPanel implements ActionListener {
 
 	public void initCl(String aAfficher, boolean peutmodifier) {
 		this.cl = new CardLayout();
-		this.panelInterne.setLayout(cl);
+		this.panelActionsPossibles.setLayout(cl);
 		this.jcard = new JPanel[this.enumCl.length];
 		for (int i = 0; i < this.jcard.length; i++) {
 			this.jcard[i] = new JPanel();
 			this.jcard[i].setLayout(new FlowLayout());
-			this.panelInterne.add(this.jcard[i], this.enumCl[i]);
+			this.panelActionsPossibles.add(this.jcard[i], this.enumCl[i]);
 		}
 		if (peutmodifier) {
 			String[] boutonpossible = { "archer", "cavalier archer", "détruire", "catapultes", "détruire", "milicien", "détruire", "chevalier",
@@ -115,7 +113,7 @@ public class PanelBas extends JPanel implements ActionListener {
 					"déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "soigner", "détruire", "déplacer",
 					"attaquer", "détruire", "déplacer", "attaquer", "détruire", "Archerie", "atelier de siège", "Caserne", "Ecurie",
 					"Hotel de ville", "Mur", "Port", "mine or", "mine nourriture", "mine bois", "mine fer", "mine pierre", "Tour des mages",
-					"Tourelle", "détruire", "déplacer", "attaquer", "détruire" };
+					"Tourelle", "déplacer", "rechercher", "détruire", "déplacer", "attaquer", "détruire" };
 			this.actionPossible = new JButton[boutonpossible.length];
 			int j = 0;
 
@@ -136,7 +134,7 @@ public class PanelBas extends JPanel implements ActionListener {
 			}
 		}
 
-		this.cl.show(this.panelInterne, aAfficher);
+		this.cl.show(this.panelActionsPossibles, aAfficher);
 	}
 
 	protected void updateMap() {
@@ -184,7 +182,7 @@ public class PanelBas extends JPanel implements ActionListener {
 	public void updateActionPossible(Case bouh, int hauteur, int largeur) {
 		this.positionDeLaCaseActuellementSelectionnee[0] = largeur;
 		this.positionDeLaCaseActuellementSelectionnee[1] = hauteur;
-		this.panelInterne.removeAll();
+		this.panelActionsPossibles.removeAll();
 		if (!actionEnCours) {
 			if (bouh.isBatimentsurcase()) {
 				Batiment batimentSurLaCase = (Batiment) recuperer(hauteur, largeur, true);
