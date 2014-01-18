@@ -162,7 +162,11 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 
 					this.saFenetre.barrebasse.updatePanelInfo(this.carte[i][j]);
 					this.saFenetre.barrebasse.updateActionPossible(this.carte[i][j], i, j);
-
+					
+					if (this.saFenetre.barrebasse.actionEnCours){
+						this.saFenetre.barrebasse.executerActionComplexe(i, j);
+					}
+						
 				}
 			}
 		}

@@ -4,17 +4,21 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import Unites.Personnage;
 import joueur.Joueur;
+import Batiment.BatHotelDeVille;
 import Batiment.Batiment;
 
-public class PanelBas extends JPanel {
+public class PanelBas extends JPanel implements ActionListener {
 	/*
 	 * Panel qui servira à afficher la panelMap, les stats du trucs
 	 * selectionnés, les actions réalisbles
@@ -31,6 +35,9 @@ public class PanelBas extends JPanel {
 			"Archer", "Catapulte", "Cavalier archer", "Chevalier", "Galere", "Healer", "Magicien", "Milicien", "Peon", "Transporteur", "casevide" };
 	JPanel[] jcard;
 	JButton[] actionPossible;
+	public boolean actionEnCours = false;
+	String quelleActionEnCours;
+	Object trucActuellementSelectionne = null;
 
 	// **********CONSTRUCTEURS
 	public PanelBas(int hauteur, int largeur, FntPrcpl bouh) {
@@ -108,21 +115,27 @@ public class PanelBas extends JPanel {
 					"déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "soigner", "détruire", "déplacer",
 					"attaquer", "détruire", "déplacer", "attaquer", "détruire", "Archerie", "atelier de siège", "Caserne", "Ecurie",
 					"Hotel de ville", "Mur", "Port", "mine or", "mine nourriture", "mine bois", "mine fer", "mine pierre", "Tour des mages",
-					"Tourelle", "détruire", "déplacer", "attaquer", "détruire", };
+					"Tourelle", "détruire", "déplacer", "attaquer", "détruire" };
 			this.actionPossible = new JButton[boutonpossible.length];
 			int j = 0;
 
 			for (int i = 0; i < boutonpossible.length; i++) {
 				this.actionPossible[i] = new JButton(boutonpossible[i]);
 				this.jcard[j].add(this.actionPossible[i]);
+				this.actionPossible[i].addActionListener(this);
 				if (boutonpossible[i] == "détruire") {
 					j++;
 					if (j >= this.jcard.length) {
 						System.out.println("problème lors de l'initialisation du card layout du panel bas");
 					}
 				}
+			}		
+			if (actionEnCours) {
+				JLabel quoifaire = new JLabel("selectionner une case où executer l'action en cours");
+				this.jcard[j].add(quoifaire);
 			}
 		}
+
 		this.cl.show(this.panelInterne, aAfficher);
 	}
 
@@ -170,24 +183,34 @@ public class PanelBas extends JPanel {
 
 	public void updateActionPossible(Case bouh, int hauteur, int largeur) {
 		this.panelInterne.removeAll();
-		if (bouh.isBatimentsurcase()) {
-			Batiment batimentSurLaCase = (Batiment) recuperer(hauteur, largeur, true);
-			if (trouverJoueur(hauteur, largeur, true)) {
-				initCl(batimentSurLaCase.getNOM(), true);
-			} else {
-				initCl(batimentSurLaCase.getNOM(), false);
-			}
-		} else {
-			Personnage personneSurLaCase = (Personnage) recuperer(hauteur, largeur, false);
-			if (personneSurLaCase !=null){
-				if (trouverJoueur(hauteur, largeur, false)) {
-					initCl(personneSurLaCase.getNOM(), true);
+		if (!actionEnCours){
+			if (bouh.isBatimentsurcase()) {
+				Batiment batimentSurLaCase = (Batiment) recuperer(hauteur, largeur, true);
+				trucActuellementSelectionne = batimentSurLaCase;
+				if (trouverJoueur(hauteur, largeur, true)) {
+					initCl(batimentSurLaCase.getNOM(), true);
 				} else {
-					initCl(personneSurLaCase.getNOM(), false);
+					initCl(batimentSurLaCase.getNOM(), false);
+				}
+			} else {
+				Personnage personneSurLaCase = (Personnage) recuperer(hauteur, largeur, false);
+				if (personneSurLaCase != null) {
+					trucActuellementSelectionne = personneSurLaCase;
+					if (trouverJoueur(hauteur, largeur, false)) {
+						initCl(personneSurLaCase.getNOM(), true);
+					} else {
+						initCl(personneSurLaCase.getNOM(), false);
+					}
+				} else {
+					initCl("casevide", true);
+					trucActuellementSelectionne = null;
 				}
 			}
 		}
-
+		else
+		{
+			initCl("casevide", true);
+		}
 	}
 
 	private Object recuperer(int hauteur, int largeur, boolean wantBatiment) {
@@ -247,5 +270,92 @@ public class PanelBas extends JPanel {
 			}
 		}
 		return false;
+	}
+
+	public void executerActionComplexe(int positionHauteur, int positionLargeur){
+		this.actionEnCours = false;
+		switch (quelleActionEnCours){
+			case "attaquer":
+				break;
+			case "deplacer":
+				break;
+			case "soigner":
+				break;
+			default :
+				System.out.println("problème lors de la recuperation de l'action complexe à effectuer");
+					
+		}
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton boutonAppuye = (JButton) e.getSource();
+
+		switch (boutonAppuye.getText()) {
+			case "détruire":
+				System.out.println("tu tentes de détruire");
+				break;
+			case "déplacer":
+				this.actionEnCours = true;	
+				this.quelleActionEnCours = "déplacer";
+				break;
+			case "attaquer":
+				this.actionEnCours = true;
+				this.quelleActionEnCours = "attaquer";
+				break;
+			case "cavalier archer":
+				break;
+			case "catapultes":
+				break;
+			case "milicien":
+				break;
+			case "chevalier":
+				break;
+			case "peon":
+				break;
+			case "galère":
+				break;
+			case "tranporteur":
+				break;
+			case "magicien":
+				break;
+			case "healers":	
+				break;
+			case "soigner":
+				this.actionEnCours = true;
+				this.quelleActionEnCours = "soigner";
+				break;
+			case "Archerie":
+				break;
+			case "atelier de siège":
+				break;
+			case "Caserne":
+				break;
+			case "Ecurie":
+				break;
+			case "Hotel de ville":
+				break;
+			case "Mur":
+				break;
+			case "Port":
+				break;
+			case "mine or":
+				break;
+			case "mine nourriture":
+				break;
+			case "mine bois":
+				break;
+			case "mine fer":
+				break;
+			case "mine pierre":
+				break;
+			case "Tour des mages":
+				break;
+			case "Tourelle":
+				break;
+				default : System.out.println("problème lors de la recuperation de l'action à affectuer");
+
+		}
+
 	}
 }
