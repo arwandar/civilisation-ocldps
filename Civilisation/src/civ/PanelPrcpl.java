@@ -15,6 +15,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 
 import Unites.Personnage;
+import Batiment.BatProdRes;
 import Batiment.Batiment;
 
 public class PanelPrcpl extends JPanel implements ActionListener {
@@ -122,7 +123,6 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 				}
 			}
 		}
-
 	}
 
 	protected void updateCarte() {
@@ -144,7 +144,12 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 					Batiment bat = itbat.next();
 					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setBackground(this.saFenetre.lesJoueurs[k].getSaCouleur());
 					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setText(bat.getNOM());
-					this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setToolTipText(bat.getNOM());
+					if (bat.getNOM() != "mine") {
+						this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setToolTipText(bat.getNOM());
+					} else {
+						BatProdRes hello = (BatProdRes) bat;
+						this.carte[bat.getPOSITION(1)][bat.getPOSITION(0)].setToolTipText(bat.getNOM() + " " + hello.getRESSOURCE().toString());
+					}
 				}
 			}
 			if (!personnages.isEmpty()) {
@@ -168,11 +173,10 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 
 					this.saFenetre.barrebasse.updatePanelInfo(this.carte[i][j]);
 					this.saFenetre.barrebasse.updateActionPossible(this.carte[i][j], i, j);
-					
-					if (this.saFenetre.barrebasse.actionEnCours){
+
+					if (this.saFenetre.barrebasse.actionEnCours) {
 						this.saFenetre.barrebasse.executerActionComplexe(i, j);
 					}
-						
 				}
 			}
 		}
