@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -295,7 +296,7 @@ public class PanelBas extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton boutonAppuye = (JButton) e.getSource();
-
+		int actionEffectue = -1;
 		switch (boutonAppuye.getText()) {
 			case "détruire":
 				System.out.println("tu tentes de détruire");
@@ -324,9 +325,9 @@ public class PanelBas extends JPanel implements ActionListener {
 				break;
 			case "peon":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPeonCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					System.out.println("Unité construite");
+					actionEffectue=1;
 				} else {
-					System.out.println("Pas assez de ressources ou plus de place autour du batiment");
+					actionEffectue=0;
 				}
 				break;
 			case "galère":
@@ -345,118 +346,141 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherieConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
+					actionEffectue=1;
 				} else {
-					System.out.println("Pas assez de ressources");
-				}
-				break;
+					actionEffectue=0;
+				};
 			case "atelier de siège":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isAtelierDeSiegeConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "Caserne":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCaserneConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "Ecurie":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isEcurieConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "Hotel de ville":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHotelDeVilleConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "Mur":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMurConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "Port":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPortConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "mine or":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineOrConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "mine nourriture":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineNourritureConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "mine bois":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineBoisConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "mine fer":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineFerConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "mine pierre":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMinePierreConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "Tour des mages":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourDesMagesConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			case "Tourelle":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourelleConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					System.out.println("Batiement construit!");
-				} else
-					System.out.println("Pas assez de ressources");
+					actionEffectue=1;
+				} else {
+					actionEffectue=0;
+				}
 				break;
 			default:
 				System.out.println("problème lors de la recuperation de l'action à affectuer");
 		}
 		this.saFenetre.updateAffichage();
+		JOptionPane jpop = new JOptionPane();
+		switch(actionEffectue){			
+			case 1:				
+				jpop.showMessageDialog(null, "Unité ou Batiment bien créé", "Information", JOptionPane.INFORMATION_MESSAGE);
+				break;
+			case 0:
+				jpop.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action","Problème", JOptionPane.ERROR_MESSAGE);
+				break;
+		}
+		
+		
 	}
 }
