@@ -109,10 +109,13 @@ public class Boutons {
 	}
 	
 	
-	public static void soigne(int x, int y, Case cas, Joueur lesJoueurs[]){
+	public static void soigne(Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
 		if ( !isUniteOnCase(x, y, lesJoueurs))
 			System.out.println("la case est  vide");
-		else{}
-	}
+		else if(!Evenements.Fonctions.isRange(personnage,x,y))
+					System.out.println("trop loin !");
+		else
+			Evenements.Fonctions.Soigner(trouveUnite(x, y, lesJoueurs));
+		}
 	
 }
