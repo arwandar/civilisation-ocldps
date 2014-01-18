@@ -16,7 +16,8 @@ public class Milicien extends Personnage{
 		 
 		    this.attitudeCombative = new CombatEpee();
 		    this.Attaque=8;
-			this.PV=40;
+			this.PVMax=40;
+			this.PV=PVMax;
 			
 			this.tempsProduction=1;
 			this.coutNourriture=60;

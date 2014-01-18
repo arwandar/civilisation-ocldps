@@ -15,7 +15,8 @@ public class Magicien extends Personnage {
 		
 		this.attitudeCombative= new CombatMagie();
 		this.Attaque=14;
-		this.PV=30;
+		this.PVMax=30;
+		this.PV=PVMax;
 		
 		this.tempsProduction=2;
 		this.coutNourriture=50;

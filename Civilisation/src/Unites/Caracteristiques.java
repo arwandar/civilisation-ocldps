@@ -4,7 +4,8 @@ package Unites;
 public interface Caracteristiques {
 	int Attaque=0;
 	double Defense=0.1;
-	int PV=10;
+	int PVMax=10;
+	int PV=PVMax;
 	int tempsProduction=0;
 	int coutNourriture = 0;
 	int coutOr = 0;

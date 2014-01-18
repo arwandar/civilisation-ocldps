@@ -17,7 +17,8 @@ public class Galere extends Personnage {
 		this.deplacer = new Bateau();
 		this.Attaque=12;
 		this.Defense=20;
-		this.PV=120;
+		this.PVMax=120;
+		this.PV=PVMax;
 		
 		this.tempsProduction=3;
 		this.coutOr=30;

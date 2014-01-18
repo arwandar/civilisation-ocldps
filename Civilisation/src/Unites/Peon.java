@@ -13,7 +13,8 @@ public class Peon extends Personnage {
 		this.setNOM("Peon");
 		
 		this.construire = new Constructeur();
-		this.PV=25;
+		this.PVMax=25;
+		this.PV=PVMax;
 		
 		this.tempsProduction=1;
 		this.coutNourriture=50;

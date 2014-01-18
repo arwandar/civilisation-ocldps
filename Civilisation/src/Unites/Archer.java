@@ -14,7 +14,8 @@ public class Archer extends Personnage {
 		
 		this.attitudeCombative= new CombatArc();
 		this.Attaque=8;
-		this.PV=30;
+		this.PVMax=30;
+		this.PV=PVMax;
 		
 		this.tempsProduction=1;
 		this.coutOr=45;

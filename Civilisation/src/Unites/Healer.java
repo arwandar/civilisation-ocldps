@@ -14,7 +14,8 @@ public class Healer extends Personnage {
 		this.setNOM("Healer");
 		
 		this.soin= new Soigneur();
-		this.PV=30;
+		this.PVMax=30;
+		this.PV=PVMax;
 		
 		this.tempsProduction=2;
 		this.coutNourriture=40;

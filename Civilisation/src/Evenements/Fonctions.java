@@ -207,10 +207,24 @@ public class Fonctions {
 	}
 	
 	
-
+	public static boolean isRange(Personnage Attaquant, int x, int y){
+		int portee=Attaquant.getPortee();
+		int decalageHorizontal = Math.abs(Attaquant.getPositionHorizontale() - x);
+		int decalageVertical = Math.abs(Attaquant.getPositionVerticale() - y);
+		
+		if (decalageHorizontal <= portee && decalageVertical <= portee){			
+			System.out.println("True");
+			return true;
+		}			
+		else{			
+			System.out.println("False");
+			return false;
+		}		
+	}
 	
 	
-	public static boolean isRange(Personnage Attaquant, Personnage Defenseur, int portee){
+	public static boolean isRange(Personnage Attaquant, Personnage Defenseur){
+		int portee=Attaquant.getPortee();
 		int decalageHorizontal = Math.abs(Attaquant.getPositionHorizontale() - Defenseur.getPositionHorizontale());
 		int decalageVertical = Math.abs(Attaquant.getPositionVerticale() - Defenseur.getPositionVerticale());
 		
@@ -223,7 +237,8 @@ public class Fonctions {
 			return false;
 		}		
 	}
-	public static boolean isRange(Personnage Attaquant, Batiment Defenseur, int portee){
+	public static boolean isRange(Personnage Attaquant, Batiment Defenseur){
+		int portee=Attaquant.getPortee();
 		int decalageHorizontal = Math.abs(Attaquant.getPositionHorizontale() - Defenseur.getPOSITION(0));
 		int decalageVertical = Math.abs(Attaquant.getPositionVerticale() - Defenseur.getPOSITION(1));
 		
@@ -249,6 +264,12 @@ public class Fonctions {
 	}
 	public static void Attaquer(Batiment attaquant, Personnage defenseur){ //attaque entre une unité et un bâtiment
 		defenseur.setPV(defenseur.getPV()- (attaquant.getATT() -  Math.round(attaquant.getATT() * defenseur.getDefense())) );
+	}
+	public static void Soigner(Personnage pers){
+		if (pers.getPV()+10>pers.getPVMax())
+			pers.setPV(pers.getPVMax());
+		else
+			pers.setPV(pers.getPV()+10);
 	}
 	
 	

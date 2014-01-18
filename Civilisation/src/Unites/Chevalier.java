@@ -17,7 +17,8 @@ public class Chevalier extends Personnage {
 		this.deplacer = new Cheval();
 		this.Attaque=14;
 		this.Defense=25;
-		this.PV=60;
+		this.PVMax=60;
+		this.PV=PVMax;
 		
 		this.tempsProduction=2;
 		this.coutNourriture=60;

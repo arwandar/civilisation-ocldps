@@ -14,7 +14,8 @@ public class Transporteur extends Personnage {
 		
 		this.deplacer = new Bateau();
 		this.Defense=15;
-		this.PV=100;
+		this.PVMax=100;
+		this.PV=PVMax;
 		
 		this.tempsProduction=3;
 		this.coutBois=125;

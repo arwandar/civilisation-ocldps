@@ -21,7 +21,7 @@ public abstract class Personnage implements Caracteristiques{
 	  protected Soin soin = new NonSoigneur();
 	  protected Deplacer deplacer = new Marcher(); 
 	  
-	  public int Attaque=Caracteristiques.Attaque; public double Defense=Caracteristiques.Defense; public int PV=Caracteristiques.PV;
+	  public int Attaque=Caracteristiques.Attaque; public double Defense=Caracteristiques.Defense; public int PVMax= Caracteristiques.PVMax; public int PV=PVMax;
 	  int tempsProduction=Caracteristiques.tempsProduction;
 	  int coutNourriture = Caracteristiques.coutNourriture; int coutOr = Caracteristiques.coutOr; int coutBois = Caracteristiques.coutBois; int coutFer = Caracteristiques.coutFer;
 	  int positionHorizontale = Caracteristiques.positionHorizontale;
@@ -134,6 +134,10 @@ public abstract class Personnage implements Caracteristiques{
 
 	public void setDefense(double defense) {
 		Defense = defense;
+	}
+	
+	public int getPVMax() {
+		return PVMax;
 	}
 
 	public int getPV() {

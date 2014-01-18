@@ -112,7 +112,7 @@ public class Test {
 	    Attaquant1.setPositionHorizontale(2); Attaquant1.setPositionVerticale(2);
 	    Defenseur1.setPositionHorizontale(3);Defenseur1.setPositionVerticale(4);
 	    
-	    Fonctions.isRange(Attaquant1, Defenseur1, Attaquant1.getPortee());
+	    Fonctions.isRange(Attaquant1, Defenseur1);
 	 
 	    System.out.println("Les pv du déf avant attaque sont : " + Defenseur1.getPV());
 	    Fonctions.Attaquer(Attaquant1, Defenseur1);
