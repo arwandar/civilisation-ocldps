@@ -147,14 +147,8 @@ public class FntPrcpl extends JFrame implements ActionListener {
 		if (e.getSource() == this.demarrerB){
 			Evenements.Initialisation.unitesDuDebut(lesJoueurs[0], 5, 5, this);
 			Evenements.Initialisation.unitesDuDebut(lesJoueurs[1], 10, 15, this);
-			/*for (int i=0;i<60;i++){
-				for (int j=0;j<30;j++)
-					Evenements.Initialisation.unitesDuDebut(lesJoueurs[0], i, j, this);
-			
-			}*/
-			
-			
-			
+			this.updateAffichage();
+	
 			cl.next(fenetre);
 		}
 		

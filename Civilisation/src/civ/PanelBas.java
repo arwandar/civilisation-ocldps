@@ -292,9 +292,9 @@ public class PanelBas extends JPanel implements ActionListener {
 		System.out.println();
 		System.out.println("entrée dans l'actionperformed");
 
-		System.out.println(this.positionDeLaCaseActuellementSelectionnee.hashCode()+ " dans actionperformed");
-		
-		System.out.println(this.positionDeLaCaseActuellementSelectionnee[0]+"/"+this.positionDeLaCaseActuellementSelectionnee[1]);
+		System.out.println(this.positionDeLaCaseActuellementSelectionnee.hashCode() + " dans actionperformed");
+
+		System.out.println(this.positionDeLaCaseActuellementSelectionnee[0] + "/" + this.positionDeLaCaseActuellementSelectionnee[1]);
 		switch (boutonAppuye.getText()) {
 			case "détruire":
 				System.out.println("tu tentes de détruire");
@@ -316,6 +316,11 @@ public class PanelBas extends JPanel implements ActionListener {
 			case "chevalier":
 				break;
 			case "peon":
+				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPeonCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+					System.out.println("Unité construite");
+				} else {
+					System.out.println("Pas assez de ressources ou plus de place autour du batiment");
+				}
 				break;
 			case "galère":
 				break;
