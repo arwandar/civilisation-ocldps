@@ -24,7 +24,7 @@ public class Galere extends Personnage {
 		this.coutOr=30;
 		this.coutBois=90;
 		J.setOr(J.getOr() - this.coutOr);
-		J.setOr(J.getOr() - this.coutBois);
+		J.setBois(J.getBois() - this.coutBois);
 		
 		this.setT(typeUnite.Galere);
 	}
