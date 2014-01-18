@@ -1,13 +1,59 @@
 package Evenements;
 
+import java.util.ArrayList;
+
+import joueur.Joueur;
+import Batiment.BatHotelDeVille;
+import Batiment.Batiment;
 import Unites.Personnage;
 import civ.Case;
 
 public class Boutons {
 
+	public static boolean isUniteOnCase(int x, int y, Joueur lesJoueurs[]){
+		for(int i=0;i<lesJoueurs.length;i++){
+			Joueur J = lesJoueurs[i];
+			ArrayList<Personnage> perso = J.getPersonnages();
+			for (Personnage celuiCi : perso){ 
+				if (celuiCi.getPositionHorizontale()==x && celuiCi.getPositionVerticale()==y)
+					return true;
+			}
+		}
+		return false;
+	}
 	
-	public static void deplacement(Personnage personnage, int x, int y, Case cas){
-		if(cas.isBatimentsurcase() || cas.isUnitesurcase())
+	public static Personnage trouveUnite(int x, int y, Joueur lesJoueurs[]){
+		Personnage celuiTROUVEOMG = new Personnage(){};
+		for(int i=0;i<lesJoueurs.length;i++){
+			Joueur J = lesJoueurs[i];
+			ArrayList<Personnage> perso = J.getPersonnages();
+			for (Personnage celuiCi : perso){ 
+				if (celuiCi.getPositionHorizontale()==x && celuiCi.getPositionVerticale()==y)
+					celuiTROUVEOMG=celuiCi;
+					break;
+			}
+		}
+		return celuiTROUVEOMG;
+	}
+	
+	public static Batiment trouveBatiment(int x, int y, Joueur lesJoueurs[]){
+		Batiment celuiTROUVEOMG = new BatHotelDeVille(null, null, null){};
+		for(int i=0;i<lesJoueurs.length;i++){
+			Joueur J = lesJoueurs[i];
+			ArrayList<Batiment> bat = J.getBatiments();
+			for (Batiment celuiCi : bat){ 
+				if (celuiCi.getPOSITION(0)==x && celuiCi.getPOSITION(1)==y)
+					celuiTROUVEOMG=celuiCi;
+					break;
+			}
+		}
+		return celuiTROUVEOMG;
+	}
+	
+	
+	public static void deplace(Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
+		
+		if ( isUniteOnCase(x, y, lesJoueurs) || cas.isBatimentsurcase())
 			System.out.println("la case est pas vide");
 		else{
 			Evenements.Fonctions.testGps(personnage, y, x);
@@ -20,7 +66,7 @@ public class Boutons {
 
 	}
 	
-	public static void attaque (Personnage personnage, int x, int y, Case cas){
+	public static void attaque (Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
 		//tester ce qu'il y a sur la case visée
 		//tester que la case est à portée
 		//attaquer
@@ -30,7 +76,7 @@ public class Boutons {
 		
 		if(cas.isBatimentsurcase())
 			str="batiment";
-		else if(cas.isUnitesurcase())
+		else if(isUniteOnCase(x, y, lesJoueurs))
 			str="unite";
 		else
 			str="rien";
@@ -43,8 +89,8 @@ public class Boutons {
 				if(!Evenements.Fonctions.isRange(personnage,x,y))
 					System.out.println("trop loin !");
 				else
-					cas.
-					Evenements.Fonctions.Attaquer(personnage, defenseur);
+					
+					Evenements.Fonctions.Attaquer(personnage, trouveBatiment(x, y, lesJoueurs));
 			
 				break;
 				
@@ -52,7 +98,7 @@ public class Boutons {
 				if(!Evenements.Fonctions.isRange(personnage,x,y))
 					System.out.println("trop loin !");
 				else
-					Evenements.Fonctions.Attaquer(personnage, defenseur);
+					Evenements.Fonctions.Attaquer(personnage, trouveUnite( x,  y,  lesJoueurs));
 			
 				break;
 				
@@ -60,6 +106,13 @@ public class Boutons {
 				System.out.println("personne à attaquer !");
 		}
 			
+	}
+	
+	
+	public static void soigne(int x, int y, Case cas, Joueur lesJoueurs[]){
+		if ( !isUniteOnCase(x, y, lesJoueurs))
+			System.out.println("la case est  vide");
+		else{}
 	}
 	
 }
