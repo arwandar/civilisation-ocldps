@@ -509,7 +509,7 @@ public class Joueur {
 
 	public boolean isArcherCreated(int v[])
 	{
-		if(this.getBois()>=150 && this.getOr()>=75 && this.getFer()>=50 && this.getPierre()>=150)
+		if(this.getOr()>=45 && this.getBois()>=25)
 		{
 			int i = v[0];
 			int j = v[1];
@@ -575,6 +575,83 @@ public class Joueur {
 			else if (!caseOccupee(i, j+1) && (j+1)<=nbrCaseHauteur)
 			{
 				this.getPersonnages().add(new Archer(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isPeonCreated(int v[])
+	{
+		if(this.getNourriture()>=50)
+		{
+			int i = v[0];
+			int j = v[1];
+			int nbrCaseHauteur = 30;
+			int nbrCaseLarge = 60;
+			
+			if (!caseOccupee(i-1, j-1) && (i-1)>=0 && (j-1)>0)
+			{
+				this.getPersonnages().add(new Peon(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if(!caseOccupee(i-1, j) && (i-1)>=0)
+			{
+				this.getPersonnages().add(new Peon(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i-1, j+1) && (i-1)>=0 && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Peon(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i-1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j-1) && (j-1)>=0)
+			{
+				this.getPersonnages().add(new Peon(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j-1) && (i+1)<=nbrCaseLarge && (j-1)>=0)
+			{
+				this.getPersonnages().add(new Peon(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j-1);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j) && (i+1)<=nbrCaseLarge)
+			{
+				this.getPersonnages().add(new Peon(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j);
+				return true;
+			}
+			else if (!caseOccupee(i+1, j+1) && (i+1)<=nbrCaseLarge && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Peon(this));
+				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i+1);
+				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
+				return true;
+			}
+			else if (!caseOccupee(i, j+1) && (j+1)<=nbrCaseHauteur)
+			{
+				this.getPersonnages().add(new Peon(this));
 				Fonctions.Creation(this.getPersonnages().get(this.getPersonnages().size()-1));
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionHorizontale(i);
 				this.getPersonnages().get(this.getPersonnages().size()-1).setPositionVerticale(j+1);
