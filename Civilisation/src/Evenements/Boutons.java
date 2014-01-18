@@ -51,20 +51,25 @@ public class Boutons {
 	}
 	
 	
-	public static void deplace(Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
+	public static boolean deplace(Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
 
-		/*if ( isUniteOnCase(x, y, lesJoueurs) || cas.isBatimentsurcase())
-			System.out.println("la case est pas vide");
-		else{*/
+		if ( isUniteOnCase(x, y, lesJoueurs) || cas.isBatimentsurcase()){
+			//System.out.println("la case est pas vide");
+			return false;
+		}
+		else{
 			Evenements.Fonctions.creationDeLaMatrice();
 			Evenements.Fonctions.testGps(personnage, y, x);
-			/*if(Evenements.Fonctions.distanceTest>personnage.getMouvement())
-				System.out.println("Trop loin !"); //rajouter un pop de bouton disant que c'est trop loin et mettant la distance max / pas par relief / distance dépassée
-			else{*/
+			if(Evenements.Fonctions.distanceTest>personnage.getMouvement()){
+				//System.out.println("Trop loin !"); //rajouter un pop de bouton disant que c'est trop loin et mettant la distance max / pas par relief / distance dépassée
+				return false;
+			}
+			else{
 				Evenements.Fonctions.deplacementReel(personnage, x, y);
 				personnage.setUsed(true);
-			/*}
-		}*/
+				return true;
+			}
+		}
 		
 
 	}
