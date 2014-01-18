@@ -170,46 +170,35 @@ public class Fonctions {
             	//System.out.println(distanceTest);
             }
          
-            displayMatrix(matriceDeJeu); 
+           // displayMatrix(matriceDeJeu); 
 	}
 	
-	public static void deplacementReel (Personnage perso){
+	public static void deplacementReel (Personnage perso, int x0, int y0){
 		int mouvementRestant=perso.getMouvement();
-		System.out.println(perso.getMouvement());
+		
 		int[] x = {-1,0,1,0};
 		int[] y = {0,-1,0,1};
-		matriceDeJeu[ perso.getPositionHorizontale() ][ perso.getPositionVerticale() ]="O";
-		//System.out.println("Je suis en " + perso.getPositionHorizontale() + " " +  perso.getPositionVerticale() + " et je peux bouger de " + mouvementRestant );
-		System.out.println("test2");
-		while (mouvementRestant>0){
+		matriceDeJeu[ perso.getPositionVerticale() ][ perso.getPositionHorizontale() ]="O";
+		while (mouvementRestant>0 && (perso.getPositionHorizontale()!=x0 || perso.getPositionVerticale()!=y0)){
 			for (int i=0; i<4; i++){
-			//	System.out.println("for" + i);
-			//	System.out.println(perso.getMouvement());
-				int nvX = perso.getPositionHorizontale() + x[i];
-				int nvY = perso.getPositionVerticale() + y[i];
-				if(matriceDeJeu[ nvX ][ nvY ]=="X"){
-					//System.out.println("Trouvé ! : " + nvX + " " + nvY);
-					System.out.println("test3 : trouvé");
-					
-					
+				int nvX = perso.getPositionVerticale() + x[i];
+				int nvY = perso.getPositionHorizontale() + y[i];
+				if(matriceDeJeu[ nvX ][ nvY ]=="X"){			
 					int coeff = TestTerrain(nvX,nvY);
 					if ((mouvementRestant - coeff) >= 0){
 						matriceDeJeu[ nvX ][ nvY ]="O";
-						perso.setPositionHorizontale(nvX);
-						perso.setPositionVerticale(nvY);
+						perso.setPositionHorizontale(nvY);
+						perso.setPositionVerticale(nvX);
 						mouvementRestant -= coeff;
-						//System.out.println("Je suis en " + perso.getPositionHorizontale() + " " +  perso.getPositionVerticale() + " et je peux bouger de " + mouvementRestant );
 					}
 					else{
 						mouvementRestant--;
-						System.out.println("test5 pas trouvé");
 					}
 				}
 				else{
-			//		System.out.println("la case est pas X");
 				}
 			}	
-		}System.out.println("while fini");
+		}
 	}
 	
 	
