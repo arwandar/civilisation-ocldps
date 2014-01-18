@@ -35,7 +35,7 @@ public class MapEditeur extends JPanel {
 			this.option.add(this.dimensions);
 		}
 		catch (ParseException e){
-			System.out.println("tu fais de la merde");
+			System.out.println("problème dans l'éditeur de la map");
 		}
 		this.validationDimensions = new JButton();
 		this.validationDimensions.addActionListener(new ActionListener() {
