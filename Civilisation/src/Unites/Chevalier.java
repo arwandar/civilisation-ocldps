@@ -24,7 +24,7 @@ public class Chevalier extends Personnage {
 		this.coutNourriture=60;
 		this.coutOr=50;
 		J.setOr(J.getOr() - this.coutOr);
-		J.setOr(J.getOr() - this.coutNourriture);
+		J.setNourriture(J.getNourriture() - this.coutNourriture);
 		
 		this.setT(typeUnite.Chevalier);
 	}
