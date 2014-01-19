@@ -279,7 +279,9 @@ public class PanelBas extends JPanel implements ActionListener {
 				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 		if (option == JOptionPane.OK_OPTION) {
 			if (unBatimentOuUneUnité == 0) {
-
+				Batiment bouh1 = (Batiment) this.trucActuellementSelectionne;
+				bouh1.destructionBatiment(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
+						this.positionDeLaCaseActuellementSelectionnee[1]), this.saFenetre.lesJoueurs[PanelResrc.joueurencours]);
 			} else {
 				Personnage bouh = (Personnage) this.trucActuellementSelectionne;
 				bouh.destructionUnite(this.saFenetre.lesJoueurs[PanelResrc.joueurencours]);
