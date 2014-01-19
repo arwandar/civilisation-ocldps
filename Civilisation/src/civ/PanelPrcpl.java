@@ -171,7 +171,6 @@ public class PanelPrcpl extends JPanel implements ActionListener {
 				if (this.carte[i][j] == e.getSource()) {
 					caseTrouvee = true;
 
-					this.saFenetre.barrebasse.updatePanelInfo(this.carte[i][j]);
 					this.saFenetre.barrebasse.updateActionPossible(this.carte[i][j], i, j);
 
 					if (this.saFenetre.barrebasse.actionEnCours) {
