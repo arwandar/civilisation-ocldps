@@ -40,6 +40,7 @@ public class PanelBas extends JPanel implements ActionListener {
 	public boolean actionEnCours = false;
 	String quelleActionEnCours;
 	Object trucActuellementSelectionne = null;
+	boolean utilisable = false;
 	int[] positionDeLaCaseActuellementSelectionnee = new int[2];
 	int unBatimentOuUneUnité = -1, ancienBatiment = -1; // unité 1 batiment 0
 
@@ -124,7 +125,13 @@ public class PanelBas extends JPanel implements ActionListener {
 			for (int i = 0; i < boutonpossible.length; i++) {
 				this.actionPossible[i] = new JButton(boutonpossible[i]);
 				this.jcard[j].add(this.actionPossible[i]);
-				this.actionPossible[i].addActionListener(this);
+				
+				if (!this.utilisable){
+					this.actionPossible[i].setEnabled(false);
+				}
+				else{
+					this.actionPossible[i].addActionListener(this);
+				}
 				if (boutonpossible[i] == "détruire") {
 					j++;
 					if (j >= this.jcard.length) {
@@ -192,6 +199,12 @@ public class PanelBas extends JPanel implements ActionListener {
 			trucActuellementSelectionne = batimentSurLaCase;
 			if (batimentSurLaCase != null){
 				this.unBatimentOuUneUnité = 0;
+				if (batimentSurLaCase.getIsUsed()){
+					this.utilisable = false;
+				}
+				else {
+					this.utilisable= true;
+				}
 				this.infoText.append("\n"+batimentSurLaCase.getNOM()+"\n"+batimentSurLaCase.getPV()+" PV\nBatiment utlisé? "+batimentSurLaCase.getIsUsed());
 				if (trouverJoueur(hauteur, largeur, true)) {
 					initCl(batimentSurLaCase.getNOM(), true);
@@ -205,6 +218,12 @@ public class PanelBas extends JPanel implements ActionListener {
 					trucActuellementSelectionne = personneSurLaCase;
 					this.infoText.append("\n"+personneSurLaCase.getNOM()+"\n"+personneSurLaCase.getPV()+" PV/"+ personneSurLaCase.PVMax+"\nUnité utilisée? "+personneSurLaCase.isUsed());
 					this.unBatimentOuUneUnité = 1;
+					if(personneSurLaCase.isUsed()){
+						this.utilisable= false;
+					}
+					else {
+						this.utilisable= true;
+					}
 					if (trouverJoueur(hauteur, largeur, false)) {
 						initCl(personneSurLaCase.getNOM(), true);
 					} else {
