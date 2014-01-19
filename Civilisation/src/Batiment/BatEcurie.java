@@ -31,11 +31,15 @@ public class BatEcurie extends BatProdUnit
 	//*************** Méthodes *******************
 	@Override public void destructionBatiment(Case M, Joueur J)
 	{
-		// Si on veut faire sortir les unités à la destruction du bâtiment, il faut le faire avant le remove(this)
-		if(this.pv <= 0)
+		if(this.getPV() > 0)
 		{
-			J.getBatiments().remove(this);
-			M.setBatimentsurcase(false);// à remplacer par libérer case
+			J.setOr(J.getOr() + this.coutOr/2);
+			J.setFer(J.getFer() + this.coutFer/2);
+			J.setBois(J.getBois() + this.coutBois/2);
+			J.setPierre(J.getPierre() + this.coutPierre/2);
 		}
+		
+		J.getBatiments().remove(this);
+		M.setBatimentsurcase(false);// à remplacer par libérer case
 	}
 }
