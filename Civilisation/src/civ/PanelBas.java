@@ -8,11 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.border.EtchedBorder;
 
 import Unites.Personnage;
 import joueur.Joueur;
@@ -111,9 +113,9 @@ public class PanelBas extends JPanel implements ActionListener {
 		if (peutmodifier) {
 			String[] boutonpossible = { "archer", "cavalier archer", "détruire", "catapultes", "détruire", "milicien", "détruire", "chevalier",
 					"détruire", "peon", "détruire", "détruire", "galère", "tranporteur", "détruire", "détruire", "magicien", "healers", "détruire",
-					"détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire",
-					"déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "soigner", "détruire", "déplacer",
-					"attaquer", "détruire", "déplacer", "attaquer", "détruire", "Archerie", "atelier de siège", "Caserne", "Ecurie",
+					"attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer",
+					"détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "soigner", "détruire",
+					"déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "Archerie", "atelier de siège", "Caserne", "Ecurie",
 					"Hotel de ville", "Mur", "Port", "mine or", "mine nourriture", "mine bois", "mine fer", "mine pierre", "Tour des mages",
 					"Tourelle", "déplacer", "rechercher", "détruire", "déplacer", "attaquer", "détruire" };
 			this.actionPossible = new JButton[boutonpossible.length];
@@ -154,6 +156,12 @@ public class PanelBas extends JPanel implements ActionListener {
 						this.map[i][j].setBackground(Color.black);
 					} else {
 						this.map[i][j].setBackground(this.saFenetre.affichagejeu.getCarte(i - test2, j).getBackground());
+						if (this.map[i][j].getBorder()!=null){
+							this.map[i][j].setBorder(null);
+						}
+						if (this.saFenetre.affichagejeu.getCarte(i - test2, j).getBorder() != BorderFactory.createEtchedBorder(EtchedBorder.LOWERED)){
+							this.map[i][j].setBorder(this.saFenetre.affichagejeu.getCarte(i - test2, j).getBorder());
+						}
 					}
 				}
 			}
