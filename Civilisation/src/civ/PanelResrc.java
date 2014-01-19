@@ -97,7 +97,7 @@ public class PanelResrc extends JPanel implements ActionListener {
 			if(Test.isFini(this.lesJoueurs[i]))
 			{
 				JOptionPane jpop = new JOptionPane();
-				JOptionPane.showMessageDialog(null, this.lesJoueurs[i].getNom() + " a gagné!",
+				JOptionPane.showMessageDialog(null, this.lesJoueurs[i].getNom() + " a perdu!",
 						"Fin de partie", JOptionPane.PLAIN_MESSAGE);
 				this.saFenetre.dispose();
 			}
