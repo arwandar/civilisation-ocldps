@@ -521,6 +521,12 @@ public class PanelBas extends JPanel implements ActionListener {
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
+				
+				
+			case "rechercher":
+				Evenements.Boutons.cherche((Personnage) this.trucActuellementSelectionne);
+				break;
+				
 			case "Tour des mages":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourDesMagesConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
