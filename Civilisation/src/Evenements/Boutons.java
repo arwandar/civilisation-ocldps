@@ -3,7 +3,6 @@ package Evenements;
 import java.util.ArrayList;
 
 import joueur.Joueur;
-import Batiment.BatHotelDeVille;
 import Batiment.Batiment;
 import Unites.Personnage;
 import civ.Case;
@@ -84,13 +83,6 @@ public class Boutons {
 	}
 	
 	public static void attaque (Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
-		//tester ce qu'il y a sur la case visée
-		//tester que la case est à portée
-		//attaquer
-		//System.out.println(personnage.getJoueur());
-		//System.out.println("On attaque à partir de :" + personnage.getPositionHorizontale() + "" + personnage.getPositionVerticale());
-		//System.out.println("On attaque"+x+ " " +y);
-		
 		String str = new String ();
 		
 		if(isBatimentOnCase(x, y, lesJoueurs))
@@ -98,9 +90,7 @@ public class Boutons {
 		else if(isUniteOnCase(x, y, lesJoueurs))
 			str="unite";
 		else
-			str="rien";
-			
-		
+			str="rien";	
 		
 		switch(str){
 		
@@ -113,8 +103,7 @@ public class Boutons {
 					if (trouveBatiment( x,  y,  lesJoueurs).getPV()<=0){
 						trouveBatiment( x,  y,  lesJoueurs).destructionBatiment(cas, trouveBatiment( x,  y,  lesJoueurs).getJoueur());
 					}
-				}
-			
+				}			
 				break;
 				
 			case "unite" :
@@ -127,7 +116,7 @@ public class Boutons {
 						trouveUnite( x,  y,  lesJoueurs).destructionUnite(trouveUnite( x,  y,  lesJoueurs).getJoueur());
 					}
 						
-					}
+				}
 				break;
 				
 			default :
@@ -137,10 +126,6 @@ public class Boutons {
 	}
 	
 	public static void attaqueTourelle (Batiment batiment, int x, int y, Case cas, Joueur lesJoueurs[]){
-		//tester ce qu'il y a sur la case visée
-		//tester que la case est à portée
-		//attaquer
-		
 		
 		String str = new String ();
 		
@@ -150,8 +135,6 @@ public class Boutons {
 			str="unite";
 		else
 			str="rien";
-			
-		
 		
 		switch(str){
 		
