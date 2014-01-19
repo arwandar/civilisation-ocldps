@@ -2,6 +2,7 @@ package Evenements;
 
 import joueur.Joueur;
 import Batiment.BatHotelDeVille;
+import Batiment.BatTourelle;
 import Unites.Archer;
 import Unites.Catapulte;
 import Unites.Peon;
@@ -10,7 +11,9 @@ import civ.FntPrcpl;
 public class Initialisation {
 	public static void unitesDuDebut (Joueur J, int x, int y, FntPrcpl laFenetre){
 		int[] pos = {x,y};
+		int[] pos1 = {x+2,y};
 	    new BatHotelDeVille(pos, laFenetre.affichagejeu.getCarte(y,x), J);
+	    new BatTourelle(pos1, laFenetre.affichagejeu.getCarte(y,x+2), J);
 	    
 	    Peon hellopeon = new Peon(J);
 	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
@@ -37,7 +40,7 @@ public class Initialisation {
 	    hellopeon3.setPositionVerticale(y+1);
 	    hellopeon3.setUsed(false);
 	    
-	    Catapulte helloarcher = new Catapulte(J);
+	    Archer helloarcher = new Archer(J);
 	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
 	    helloarcher.setPositionHorizontale(x);
 	    helloarcher.setPositionVerticale(y+2);

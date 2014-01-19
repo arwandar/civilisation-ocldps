@@ -149,6 +149,9 @@ public class Boutons {
 				else{					
 					Evenements.Fonctions.Attaquer(batiment, trouveBatiment(x, y, lesJoueurs));
 					batiment.setIsUsed(true);
+					if (trouveBatiment( x,  y,  lesJoueurs).getPV()<=0){
+						trouveBatiment( x,  y,  lesJoueurs).destructionBatiment(cas, trouveBatiment( x,  y,  lesJoueurs).getJoueur());
+					}
 				}
 			
 				break;
@@ -159,6 +162,9 @@ public class Boutons {
 				else{
 					Evenements.Fonctions.Attaquer(batiment, trouveUnite( x,  y,  lesJoueurs));
 					batiment.setIsUsed(true);
+					if (trouveUnite( x,  y,  lesJoueurs).getPV()<=0){
+						trouveUnite( x,  y,  lesJoueurs).destructionUnite(trouveUnite( x,  y,  lesJoueurs).getJoueur());
+					}
 					}
 				break;
 				
