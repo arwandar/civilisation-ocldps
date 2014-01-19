@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Unites.Test;
@@ -95,7 +96,10 @@ public class PanelResrc extends JPanel implements ActionListener {
 		{
 			if(Test.isFini(this.lesJoueurs[i]))
 			{
-				System.out.println(this.lesJoueurs[i].getNom() + "a gagné!");
+				JOptionPane jpop = new JOptionPane();
+				JOptionPane.showMessageDialog(null, this.lesJoueurs[i].getNom() + " a gagné!",
+						"Fin de partie", JOptionPane.PLAIN_MESSAGE);
+				this.saFenetre.dispose();
 			}
 		}
 		

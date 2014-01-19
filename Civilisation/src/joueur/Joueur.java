@@ -39,9 +39,9 @@ public class Joueur {
 
 	//*******Constructeur
 
-	public Joueur(Color couleur, Joueur[] lesJoueur){
+	public Joueur(Color couleur, Joueur[] lesJoueur, String name){
 		this.lesJoueur = lesJoueur;
-		this.nom = "inconnu";
+		this.nom = name;
 		this.or = 300*2;
 		this.nourriture = 300*2;
 		this.bois = 400*2;
