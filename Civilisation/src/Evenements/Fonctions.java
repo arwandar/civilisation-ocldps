@@ -263,17 +263,10 @@ public class Fonctions {
 	}
 	
 	public static void Attaquer(Personnage attaquant, Personnage defenseur){ //attaque entre deux unités
-	//	System.out.println("Position déf :"+defenseur.getPositionHorizontale()+""+defenseur.getPositionVerticale());
-	//	System.out.println(defenseur.getPV());
 		if (defenseur.getT()==typeUnite.Magicien)
 			defenseur.setPV(defenseur.getPV() - attaquant.getAttaque()) ; // les magiciens ignorent l'armure
 		else
 			defenseur.setPV(defenseur.getPV() - (attaquant.getAttaque() -  Math.round(attaquant.getAttaque() * defenseur.getDefense())));
-		
-		/*if (defenseur.getPV()<=0){
-			//defenseur.
-		}*/
-		
 	}
 	public static void Attaquer(Personnage attaquant, Batiment defenseur){ //attaque entre une unité et un bâtiment
 		defenseur.setPV((int)(defenseur.getPV()- (attaquant.getAttaque() -  Math.round(attaquant.getAttaque() * defenseur.getDEF())) ));

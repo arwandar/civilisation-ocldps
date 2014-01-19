@@ -23,37 +23,28 @@ public class Boutons {
 	}
 	
 	public static Personnage trouveUnite(int x, int y, Joueur lesJoueurs[]){
-		System.out.println("on cherche l'unité ici :"+x+""+y);
-		Personnage celuiTROUVEOMG = new Personnage(){};
 		for(int i=0;i<lesJoueurs.length;i++){
 			Joueur J = lesJoueurs[i];
 			ArrayList<Personnage> perso = J.getPersonnages();
-			for (Personnage celuiCi : perso){ 
-				System.out.println("x et y :"+x+" "+y+ "hor"+celuiCi.getPositionHorizontale()+" ver"+celuiCi.getPositionVerticale());
-				if (celuiCi.getPositionHorizontale()==x && celuiCi.getPositionVerticale()==y)
-					System.out.println("x et y"+x+""+y);
-					System.out.println("pos hor:"+celuiCi.getPositionHorizontale());
-					System.out.println("pos ver:"+celuiCi.getPositionVerticale());
-					celuiTROUVEOMG=celuiCi;
+			for (Personnage celuiCi : perso){
+				if (celuiCi.getPositionHorizontale()==x && celuiCi.getPositionVerticale()==y){
 					return celuiCi;
+				}
 			}
 		}
-		System.out.println("pas cool");
-		return celuiTROUVEOMG;
+		return null;
 	}
 	
 	public static Batiment trouveBatiment(int x, int y, Joueur lesJoueurs[]){
-		Batiment celuiTROUVEOMG = new BatHotelDeVille(null, null, null){};
 		for(int i=0;i<lesJoueurs.length;i++){
 			Joueur J = lesJoueurs[i];
 			ArrayList<Batiment> bat = J.getBatiments();
 			for (Batiment celuiCi : bat){ 
 				if (celuiCi.getPOSITION(0)==x && celuiCi.getPOSITION(1)==y)
-					celuiTROUVEOMG=celuiCi;
 					return celuiCi;
 			}
 		}
-		return celuiTROUVEOMG;
+		return null;
 	}
 	
 	
@@ -107,6 +98,9 @@ public class Boutons {
 				else{					
 					Evenements.Fonctions.Attaquer(personnage, trouveBatiment(x, y, lesJoueurs));
 					personnage.setUsed(true);
+					if (trouveBatiment( x,  y,  lesJoueurs).getPV()<=0){
+						trouveBatiment( x,  y,  lesJoueurs).destructionBatiment(cas, trouveBatiment( x,  y,  lesJoueurs).getJoueur());
+					}
 				}
 			
 				break;
@@ -115,16 +109,10 @@ public class Boutons {
 				if(!Evenements.Fonctions.isRange(personnage,x,y))
 					System.out.println("trop loin !");
 				else{
-					System.out.println("on va attaquer :"+x+""+y);
-					System.out.println("et en brut"+trouveUnite( x,  y,  lesJoueurs).getPositionHorizontale()+""+trouveUnite( x,  y,  lesJoueurs).getPositionVerticale());
 					Evenements.Fonctions.Attaquer(personnage, trouveUnite( x,  y,  lesJoueurs));
-					System.out.println("on a attaqué :"+x+""+y);
 					personnage.setUsed(true);
 					if (trouveUnite( x,  y,  lesJoueurs).getPV()<=0){
-						//System.out.println(trouveUnite( x,  y,  lesJoueurs).getJoueur());
-					//	System.out.println("on va détruire :"+x+""+y);
 						trouveUnite( x,  y,  lesJoueurs).destructionUnite(trouveUnite( x,  y,  lesJoueurs).getJoueur());
-					//	System.out.println("on a détruit:"+x+""+y);
 					}
 						
 					}
