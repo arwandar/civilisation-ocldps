@@ -8,7 +8,6 @@ import Batiment.BatProdRes;
 import Batiment.Batiment;
 import Evenements.Fonctions;
 import civ.FntPrcpl;
-import civ.PanelResrc;
 
 public class Test {
 
