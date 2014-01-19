@@ -16,7 +16,7 @@ public class BatProdRes extends Batiment
 	
 	//*************** Variables *******************
 	private typeRessource typeres;
-	private int prodRessources[] = {20,30,40,50,100};
+	private int prodRessources[] = {30,35,40,50,100};
 	
 	//*************** Constructeur *******************
 	public BatProdRes(int V[], typeRessource t, Case M, Joueur J)
@@ -79,7 +79,7 @@ public class BatProdRes extends Batiment
 				break;
 			case fer: j.setFer(j.getFer() + this.prodRessources[1]);
 				break;
-			case pierre: j.setFer(j.getFer() + this.prodRessources[2]);
+			case pierre: j.setPierre(j.getPierre() + this.prodRessources[2]);
 				break;
 			case bois: j.setBois(j.getBois() + this.prodRessources[3]);
 				break;
