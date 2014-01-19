@@ -16,7 +16,7 @@ public class BatProdRes extends Batiment
 	
 	//*************** Variables *******************
 	private typeRessource typeres;
-	private int prodRessources[] = {10,15,20,25,40};
+	private int prodRessources[] = {20,30,40,50,100};
 	
 	//*************** Constructeur *******************
 	public BatProdRes(String name,int V[], typeRessource t, Case M, Joueur J)
