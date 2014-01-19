@@ -27,10 +27,15 @@ public class Archer extends Personnage {
 	}
 	
 	//*************** Méthodes *******************
-	@Override public void destructionUnite(Case M, Joueur J)
+	@Override public void destructionUnite(Joueur J)
 	{
+		if(this.getPV() > 0)
+		{
+			J.setOr(J.getOr() + this.coutOr/2);
+			J.setBois(J.getBois() + this.coutBois/2);
+		}
+		
 		J.getPersonnages().remove(this);
-		M.setUnitesurcase(false);// à remplacer par libérer case
 		J.setOs(30);
 	}
 }

@@ -235,11 +235,6 @@ public abstract class Personnage implements Caracteristiques{
 		this.isUsed = isUsed;
 	}
 
-	public void destructionUnite(Case M, Joueur J)
-	{
-		
-	} 
-	
 	public void destructionUnite(Joueur J)
 	{
 		

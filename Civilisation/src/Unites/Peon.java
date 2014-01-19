@@ -17,17 +17,21 @@ public class Peon extends Personnage {
 		this.PV=PVMax;
 		
 		this.tempsProduction=1;
-		this.coutNourriture=50;
+		this.coutNourriture=10;
 		J.setNourriture(J.getNourriture() - this.coutNourriture);
 		
 		this.setT(typeUnite.Peon);
 	}
 	
 	//*************** Méthodes *******************
-	@Override public void destructionUnite(Case M, Joueur J)
+	@Override public void destructionUnite(Joueur J)
 	{
+		if(this.getPV() > 0)
+		{
+			J.setNourriture(J.getNourriture() + this.coutNourriture/2);
+		}
+		
 		J.getPersonnages().remove(this);
-		M.setUnitesurcase(false);// à remplacer par libérer case
 		J.setOs(30);
 	}
 }
