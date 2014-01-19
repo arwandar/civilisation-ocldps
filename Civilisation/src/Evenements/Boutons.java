@@ -30,7 +30,7 @@ public class Boutons {
 			for (Personnage celuiCi : perso){ 
 				if (celuiCi.getPositionHorizontale()==x && celuiCi.getPositionVerticale()==y)
 					celuiTROUVEOMG=celuiCi;
-					break;
+					return celuiCi;
 			}
 		}
 		return celuiTROUVEOMG;
@@ -44,7 +44,7 @@ public class Boutons {
 			for (Batiment celuiCi : bat){ 
 				if (celuiCi.getPOSITION(0)==x && celuiCi.getPOSITION(1)==y)
 					celuiTROUVEOMG=celuiCi;
-					break;
+					return celuiCi;
 			}
 		}
 		return celuiTROUVEOMG;
@@ -78,7 +78,7 @@ public class Boutons {
 		//tester ce qu'il y a sur la case visée
 		//tester que la case est à portée
 		//attaquer
-		
+		System.out.println(personnage.getJoueur());
 		
 		String str = new String ();
 		
@@ -109,6 +109,11 @@ public class Boutons {
 				else{
 					Evenements.Fonctions.Attaquer(personnage, trouveUnite( x,  y,  lesJoueurs));
 					personnage.setUsed(true);
+					if (trouveUnite( x,  y,  lesJoueurs).getPV()<=0){
+						System.out.println(trouveUnite( x,  y,  lesJoueurs).getJoueur());
+						trouveUnite( x,  y,  lesJoueurs).destructionUnite(cas, trouveUnite( x,  y,  lesJoueurs).getJoueur());
+					}
+						
 					}
 				break;
 				

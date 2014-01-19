@@ -239,4 +239,9 @@ public abstract class Personnage implements Caracteristiques{
 	{
 		
 	} 
+	
+	public void destructionUnite(Joueur J)
+	{
+		
+	}
 }

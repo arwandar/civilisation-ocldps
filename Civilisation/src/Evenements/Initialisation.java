@@ -2,6 +2,8 @@ package Evenements;
 
 import joueur.Joueur;
 import Batiment.BatHotelDeVille;
+import Unites.Archer;
+import Unites.Catapulte;
 import Unites.Peon;
 import civ.FntPrcpl;
 
@@ -34,6 +36,12 @@ public class Initialisation {
 	    hellopeon3.setPositionHorizontale(x);
 	    hellopeon3.setPositionVerticale(y+1);
 	    hellopeon3.setUsed(false);
+	    
+	    Catapulte helloarcher = new Catapulte(J);
+	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
+	    helloarcher.setPositionHorizontale(x);
+	    helloarcher.setPositionVerticale(y+2);
+	    helloarcher.setUsed(false);
 	    
 	}
 }

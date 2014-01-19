@@ -273,12 +273,17 @@ public class PanelBas extends JPanel implements ActionListener {
 	public void executerActionComplexe(int positionHauteur, int positionLargeur) {
 		this.positionDeLaCaseActuellementSelectionnee[0] = positionHauteur;
 		this.positionDeLaCaseActuellementSelectionnee[1] = positionLargeur;
-		System.out.println(this.positionDeLaCaseActuellementSelectionnee[0] + "/" + this.positionDeLaCaseActuellementSelectionnee[1]);
+		//System.out.println(this.positionDeLaCaseActuellementSelectionnee[0] + "/" + this.positionDeLaCaseActuellementSelectionnee[1]);
 		switch (quelleActionEnCours) {
 			case "attaquer":
+				Evenements.Boutons.attaque((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
+						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
+								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
+						this.saFenetre.lesJoueurs);
+				
 				break;
 			case "déplacer":
-				System.out.println("hello");
+				//System.out.println("hello");
 				Evenements.Boutons.deplace((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
 						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
 								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
@@ -302,9 +307,6 @@ public class PanelBas extends JPanel implements ActionListener {
 				System.out.println("tu tentes de détruire");
 				break;
 			case "déplacer":
-				System.out.println("on clique là");
-				System.out.println(this.positionDeLaCaseActuellementSelectionnee[0]);
-				System.out.println(this.positionDeLaCaseActuellementSelectionnee[1]);
 				this.actionEnCours = true;
 				this.quelleActionEnCours = "déplacer";
 				updateActionPossible(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
@@ -314,6 +316,9 @@ public class PanelBas extends JPanel implements ActionListener {
 			case "attaquer":
 				this.actionEnCours = true;
 				this.quelleActionEnCours = "attaquer";
+				updateActionPossible(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
+						this.positionDeLaCaseActuellementSelectionnee[1]), this.positionDeLaCaseActuellementSelectionnee[0],
+						this.positionDeLaCaseActuellementSelectionnee[1]);
 				break;
 			case "cavalier archer":
 				if (this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCavalierArcherCreated(this.positionDeLaCaseActuellementSelectionnee)) {
