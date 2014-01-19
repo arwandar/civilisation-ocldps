@@ -207,12 +207,10 @@ public class Fonctions {
 		int decalageHorizontal = Math.abs(Attaquant.getPositionHorizontale() - x);
 		int decalageVertical = Math.abs(Attaquant.getPositionVerticale() - y);
 		
-		if (decalageHorizontal <= portee && decalageVertical <= portee){			
-			//System.out.println("True");
+		if (decalageHorizontal <= portee && decalageVertical <= portee){
 			return true;
 		}			
 		else{			
-			//System.out.println("False");
 			return false;
 		}		
 	}
@@ -222,45 +220,14 @@ public class Fonctions {
 		int decalageHorizontal = Math.abs(Attaquant.getPOSITION(0) - x);
 		int decalageVertical = Math.abs(Attaquant.getPOSITION(1) - y);
 		
-		if (decalageHorizontal <= portee && decalageVertical <= portee){			
-		//	System.out.println("True");
+		if (decalageHorizontal <= portee && decalageVertical <= portee){		
 			return true;
 		}			
 		else{			
-		//	System.out.println("False");
 			return false;
 		}		
 	}
 	
-	
-	public static boolean isRange(Personnage Attaquant, Personnage Defenseur){
-		int portee=Attaquant.getPortee();
-		int decalageHorizontal = Math.abs(Attaquant.getPositionHorizontale() - Defenseur.getPositionHorizontale());
-		int decalageVertical = Math.abs(Attaquant.getPositionVerticale() - Defenseur.getPositionVerticale());
-		
-		if (decalageHorizontal <= portee && decalageVertical <= portee){			
-			//System.out.println("True");
-			return true;
-		}			
-		else{			
-			//System.out.println("False");
-			return false;
-		}		
-	}
-	public static boolean isRange(Personnage Attaquant, Batiment Defenseur){
-		int portee=Attaquant.getPortee();
-		int decalageHorizontal = Math.abs(Attaquant.getPositionHorizontale() - Defenseur.getPOSITION(0));
-		int decalageVertical = Math.abs(Attaquant.getPositionVerticale() - Defenseur.getPOSITION(1));
-		
-		if (decalageHorizontal <= portee && decalageVertical <= portee){			
-			//System.out.println("True");
-			return true;
-		}			
-		else{			
-			//System.out.println("False");
-			return false;
-		}		
-	}
 	
 	public static void Attaquer(Personnage attaquant, Personnage defenseur){ //attaque entre deux unités
 		if (defenseur.getT()==typeUnite.Magicien)
