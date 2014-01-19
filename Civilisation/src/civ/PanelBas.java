@@ -192,7 +192,7 @@ public class PanelBas extends JPanel implements ActionListener {
 			trucActuellementSelectionne = batimentSurLaCase;
 			if (batimentSurLaCase != null){
 				this.unBatimentOuUneUnité = 0;
-				this.infoText.append("\n"+batimentSurLaCase.getNOM()+"\n"+batimentSurLaCase.getPV()+" PV");
+				this.infoText.append("\n"+batimentSurLaCase.getNOM()+"\n"+batimentSurLaCase.getPV()+" PV\nBatiment utlisé? "+batimentSurLaCase.getIsUsed());
 				if (trouverJoueur(hauteur, largeur, true)) {
 					initCl(batimentSurLaCase.getNOM(), true);
 				} else {
@@ -203,7 +203,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				Personnage personneSurLaCase = (Personnage) recuperer(hauteur, largeur, false);
 				if (personneSurLaCase != null) {
 					trucActuellementSelectionne = personneSurLaCase;
-					this.infoText.append("\n"+personneSurLaCase.getNOM()+"\n"+personneSurLaCase.getPV()+" PV");
+					this.infoText.append("\n"+personneSurLaCase.getNOM()+"\n"+personneSurLaCase.getPV()+" PV/"+ personneSurLaCase.PVMax+"\nUnité utilisée? "+personneSurLaCase.isUsed());
 					this.unBatimentOuUneUnité = 1;
 					if (trouverJoueur(hauteur, largeur, false)) {
 						initCl(personneSurLaCase.getNOM(), true);
