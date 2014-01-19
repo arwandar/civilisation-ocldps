@@ -281,8 +281,7 @@ public class PanelBas extends JPanel implements ActionListener {
 
 			} else {
 				Personnage bouh = (Personnage) this.trucActuellementSelectionne;
-				bouh.destructionUnite(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
-						this.positionDeLaCaseActuellementSelectionnee[1]), this.saFenetre.lesJoueurs[PanelResrc.joueurencours]);
+				bouh.destructionUnite(this.saFenetre.lesJoueurs[PanelResrc.joueurencours]);
 			}
 		}
 	}

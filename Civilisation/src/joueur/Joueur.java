@@ -169,7 +169,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -193,7 +193,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -217,7 +217,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -241,7 +241,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -265,7 +265,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -289,7 +289,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -313,7 +313,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -337,7 +337,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -361,7 +361,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -385,7 +385,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -409,7 +409,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -433,7 +433,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -457,7 +457,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
@@ -481,7 +481,7 @@ public class Joueur {
 				{
 					if (this.personnages.get(i).getPositionHorizontale() == V[0] && this.personnages.get(i).getPositionVerticale() == V[1])
 					{
-						this.personnages.get(i).destructionUnite(M, this);
+						this.personnages.get(i).destructionUnite(this);
 					}
 				}
 			}
