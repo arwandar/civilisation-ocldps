@@ -17,7 +17,8 @@ public class PanelResrc extends JPanel implements ActionListener {
 	 */
 
 	// **********VARIABLES
-	JLabel or, nourriture, bois, pierre, fer, os;
+	JLabel or, nourriture, bois, pierre, fer, os, joueur;
+	
 	JButton finDeTour;
 	int indice;
 	Joueur[] lesJoueurs;
@@ -34,6 +35,8 @@ public class PanelResrc extends JPanel implements ActionListener {
 
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
 
+		this.joueur = new JLabel();
+		this.add(this.joueur);
 		this.or = new JLabel();
 		this.add(this.or);
 		this.nourriture = new JLabel();
@@ -58,6 +61,9 @@ public class PanelResrc extends JPanel implements ActionListener {
 
 	// **********METHODES
 	public void updateAffichageRessource() {
+			this.joueur.setText("Joueur "+ (this.joueurencours+1));
+			this.joueur.setForeground(this.saFenetre.lesJoueurs[joueurencours].getSaCouleur());
+			
 			this.or.setText("or " + lesJoueurs[joueurencours].getOr());
 			this.nourriture.setText("nourriture " + lesJoueurs[joueurencours].getNourriture());
 			this.bois.setText("bois " + lesJoueurs[joueurencours].getBois());
