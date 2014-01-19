@@ -37,6 +37,6 @@ public class Magicien extends Personnage {
 		}
 		
 		J.getPersonnages().remove(this);
-		J.setOs(30);
+		J.setOs(J.getOs() + 30);
 	}
 }

@@ -39,6 +39,6 @@ public class CavalierArcher extends Personnage {
 		}
 		
 		J.getPersonnages().remove(this);
-		J.setOs(100);
+		J.setOs(J.getOs() + 100);
 	}
 }
