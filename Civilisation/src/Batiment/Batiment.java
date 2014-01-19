@@ -67,6 +67,11 @@ public abstract class Batiment
 		return this.nom;
 	}
 	
+	public Joueur getJoueur()
+	{
+		return this.joueur;
+	}
+	
 	public int getPV()
 	{
 		return this.pv;
