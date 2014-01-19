@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Unites.Test;
 import joueur.Joueur;
 
 public class PanelResrc extends JPanel implements ActionListener {
@@ -89,6 +90,14 @@ public class PanelResrc extends JPanel implements ActionListener {
 		}
 		this.saFenetre.updateAffichage();
 		this.findetour = true;
+		
+		for(int i=0; i<=1; i++)
+		{
+			if(Test.isFini(this.lesJoueurs[i]))
+			{
+				System.out.println(this.lesJoueurs[i].getNom() + "a gagné!");
+			}
+		}
 		
 		Unites.Test.debutDeTour(lesJoueurs[joueurencours]); //lance la raz du joueur suivant
 		
