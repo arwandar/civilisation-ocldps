@@ -342,7 +342,7 @@ public class Joueur {
 				}
 			}
 			
-			new BatProdRes("mine", V, typeRessource.or, M, this);
+			new BatProdRes(V, typeRessource.or, M, this);
 			return true;
 		}
 		else
@@ -366,7 +366,7 @@ public class Joueur {
 				}
 			}
 			
-			new BatProdRes("mine", V, typeRessource.fer, M, this);
+			new BatProdRes(V, typeRessource.fer, M, this);
 			return true;
 		}
 		else
@@ -390,7 +390,7 @@ public class Joueur {
 				}
 			}
 			
-			new BatProdRes("mine", V, typeRessource.pierre, M, this);
+			new BatProdRes(V, typeRessource.pierre, M, this);
 			return true;
 		}
 		else
@@ -414,7 +414,7 @@ public class Joueur {
 				}
 			}
 			
-			new BatProdRes("mine", V, typeRessource.bois, M, this);
+			new BatProdRes(V, typeRessource.bois, M, this);
 			return true;
 		}
 		else
@@ -438,7 +438,7 @@ public class Joueur {
 				}
 			}
 			
-			new BatProdRes("mine", V, typeRessource.nourriture, M, this);
+			new BatProdRes(V, typeRessource.nourriture, M, this);
 			return true;
 		}
 		else

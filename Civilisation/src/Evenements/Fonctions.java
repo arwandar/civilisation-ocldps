@@ -331,15 +331,15 @@ public class Fonctions {
 	{
 		switch(t)
 		{
-			case or: new BatProdRes("mine", V, t, M, J);
+			case or: new BatProdRes(V, BatProdRes.typeRessource.or, M, J);
 				break;
-			case fer: new BatProdRes("mine", V, t, M, J);
+			case fer: new BatProdRes(V, BatProdRes.typeRessource.fer, M, J);
 				break;
-			case pierre: new BatProdRes("mine", V, t, M, J);
+			case pierre: new BatProdRes(V, BatProdRes.typeRessource.pierre, M, J);
 				break;
-			case bois: new BatProdRes("mine", V, t, M, J);
+			case bois: new BatProdRes(V, BatProdRes.typeRessource.bois, M, J);
 				break;
-			case nourriture: new BatProdRes("mine", V, t, M, J);
+			case nourriture: new BatProdRes(V, BatProdRes.typeRessource.nourriture, M, J);
 				break;
 			default: System.out.println("\nCe type de bâtiment n'éxiste pas");
 		}
