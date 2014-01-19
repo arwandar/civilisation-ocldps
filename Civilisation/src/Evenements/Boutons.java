@@ -23,16 +23,22 @@ public class Boutons {
 	}
 	
 	public static Personnage trouveUnite(int x, int y, Joueur lesJoueurs[]){
+		System.out.println("on cherche l'unité ici :"+x+""+y);
 		Personnage celuiTROUVEOMG = new Personnage(){};
 		for(int i=0;i<lesJoueurs.length;i++){
 			Joueur J = lesJoueurs[i];
 			ArrayList<Personnage> perso = J.getPersonnages();
 			for (Personnage celuiCi : perso){ 
+				System.out.println("x et y :"+x+" "+y+ "hor"+celuiCi.getPositionHorizontale()+" ver"+celuiCi.getPositionVerticale());
 				if (celuiCi.getPositionHorizontale()==x && celuiCi.getPositionVerticale()==y)
+					System.out.println("x et y"+x+""+y);
+					System.out.println("pos hor:"+celuiCi.getPositionHorizontale());
+					System.out.println("pos ver:"+celuiCi.getPositionVerticale());
 					celuiTROUVEOMG=celuiCi;
 					return celuiCi;
 			}
 		}
+		System.out.println("pas cool");
 		return celuiTROUVEOMG;
 	}
 	
@@ -78,7 +84,9 @@ public class Boutons {
 		//tester ce qu'il y a sur la case visée
 		//tester que la case est à portée
 		//attaquer
-		System.out.println(personnage.getJoueur());
+		//System.out.println(personnage.getJoueur());
+		//System.out.println("On attaque à partir de :" + personnage.getPositionHorizontale() + "" + personnage.getPositionVerticale());
+		//System.out.println("On attaque"+x+ " " +y);
 		
 		String str = new String ();
 		
@@ -107,11 +115,16 @@ public class Boutons {
 				if(!Evenements.Fonctions.isRange(personnage,x,y))
 					System.out.println("trop loin !");
 				else{
+					System.out.println("on va attaquer :"+x+""+y);
+					System.out.println("et en brut"+trouveUnite( x,  y,  lesJoueurs).getPositionHorizontale()+""+trouveUnite( x,  y,  lesJoueurs).getPositionVerticale());
 					Evenements.Fonctions.Attaquer(personnage, trouveUnite( x,  y,  lesJoueurs));
+					System.out.println("on a attaqué :"+x+""+y);
 					personnage.setUsed(true);
 					if (trouveUnite( x,  y,  lesJoueurs).getPV()<=0){
-						System.out.println(trouveUnite( x,  y,  lesJoueurs).getJoueur());
-						trouveUnite( x,  y,  lesJoueurs).destructionUnite(cas, trouveUnite( x,  y,  lesJoueurs).getJoueur());
+						//System.out.println(trouveUnite( x,  y,  lesJoueurs).getJoueur());
+					//	System.out.println("on va détruire :"+x+""+y);
+						trouveUnite( x,  y,  lesJoueurs).destructionUnite(trouveUnite( x,  y,  lesJoueurs).getJoueur());
+					//	System.out.println("on a détruit:"+x+""+y);
 					}
 						
 					}
