@@ -16,7 +16,7 @@ public class Catapulte extends Personnage {
 		this.attitudeCombative= new CombatSiege();
 		this.deplacer = new Roue();
 		this.Attaque=80;
-		this.Defense=20;
+		this.Defense=0.2;
 		this.PVMax=50;
 		this.PV=PVMax;
 		

@@ -16,7 +16,7 @@ public class Chevalier extends Personnage {
 		this.attitudeCombative= new CombatEpee();
 		this.deplacer = new Cheval();
 		this.Attaque=14;
-		this.Defense=25;
+		this.Defense=0.25;
 		this.PVMax=60;
 		this.PV=PVMax;
 		

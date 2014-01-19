@@ -16,7 +16,7 @@ public class CavalierArcher extends Personnage {
 		this.attitudeCombative= new CombatArc();
 		this.deplacer = new Cheval();
 		this.Attaque=12;
-		this.Defense=20;
+		this.Defense=0.2;
 		this.PVMax=50;
 		this.PV=PVMax;
 		

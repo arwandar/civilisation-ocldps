@@ -16,7 +16,7 @@ public class Galere extends Personnage {
 		this.attitudeCombative= new CombatArc();
 		this.deplacer = new Bateau();
 		this.Attaque=12;
-		this.Defense=20;
+		this.Defense=0.20;
 		this.PVMax=120;
 		this.PV=PVMax;
 		
