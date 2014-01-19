@@ -39,6 +39,7 @@ public class PanelBas extends JPanel implements ActionListener {
 	String quelleActionEnCours;
 	Object trucActuellementSelectionne = null;
 	int[] positionDeLaCaseActuellementSelectionnee = new int[2];
+	int unBatimentOuUneUnité = -1, ancienBatiment = -1; // unité 1 batiment 0
 
 	// **********CONSTRUCTEURS
 	public PanelBas(int hauteur, int largeur, FntPrcpl bouh) {
@@ -187,7 +188,8 @@ public class PanelBas extends JPanel implements ActionListener {
 		if (!actionEnCours) {
 			if (bouh.isBatimentsurcase()) {
 				Batiment batimentSurLaCase = (Batiment) recuperer(hauteur, largeur, true);
-				// trucActuellementSelectionne = batimentSurLaCase;
+				trucActuellementSelectionne = batimentSurLaCase;
+				this.unBatimentOuUneUnité = 0;
 				if (trouverJoueur(hauteur, largeur, true)) {
 					initCl(batimentSurLaCase.getNOM(), true);
 				} else {
@@ -197,6 +199,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				Personnage personneSurLaCase = (Personnage) recuperer(hauteur, largeur, false);
 				if (personneSurLaCase != null) {
 					trucActuellementSelectionne = personneSurLaCase;
+					this.unBatimentOuUneUnité = 1;
 					if (trouverJoueur(hauteur, largeur, false)) {
 						initCl(personneSurLaCase.getNOM(), true);
 					} else {
@@ -275,9 +278,7 @@ public class PanelBas extends JPanel implements ActionListener {
 		int option = jpop.showConfirmDialog(null, "Voulez vous vraiment détruire ce qu'il y a sur cette case?", "confirmation",
 				JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 		if (option == JOptionPane.OK_OPTION) {
-			boolean isbatiment = this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
-					this.positionDeLaCaseActuellementSelectionnee[1]).isBatimentsurcase();
-			if (isbatiment) {
+			if (unBatimentOuUneUnité == 0) {
 
 			} else {
 				Personnage bouh = (Personnage) this.trucActuellementSelectionne;
@@ -293,10 +294,17 @@ public class PanelBas extends JPanel implements ActionListener {
 		// "/" + this.positionDeLaCaseActuellementSelectionnee[1]);
 		switch (quelleActionEnCours) {
 			case "attaquer":
-				Evenements.Boutons.attaque((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
-						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
-								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-						this.saFenetre.lesJoueurs);
+				if (this.ancienBatiment == 1) {
+					Evenements.Boutons.attaque((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
+									this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
+							this.saFenetre.lesJoueurs);
+				} else {
+					Evenements.Boutons.attaqueTourelle((Batiment) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
+									this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
+							this.saFenetre.lesJoueurs);
+				}
 
 				break;
 			case "déplacer":
@@ -317,6 +325,7 @@ public class PanelBas extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		this.ancienBatiment = this.unBatimentOuUneUnité;
 		JButton boutonAppuye = (JButton) e.getSource();
 		int actionEffectue = -1;
 		switch (boutonAppuye.getText()) {
