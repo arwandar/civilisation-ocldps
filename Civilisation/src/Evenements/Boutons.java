@@ -22,6 +22,18 @@ public class Boutons {
 		return false;
 	}
 	
+	public static boolean isBatimentOnCase(int x, int y, Joueur lesJoueurs[]){
+		for(int i=0;i<lesJoueurs.length;i++){
+			Joueur J = lesJoueurs[i];
+			ArrayList<Batiment> perso = J.getBatiments();
+			for (Batiment celuiCi : perso){ 
+				if (celuiCi.getPOSITION(0)==x && celuiCi.getPOSITION(1)==y)
+					return true;
+			}
+		}
+		return false;
+	}
+	
 	public static Personnage trouveUnite(int x, int y, Joueur lesJoueurs[]){
 		for(int i=0;i<lesJoueurs.length;i++){
 			Joueur J = lesJoueurs[i];
@@ -50,7 +62,7 @@ public class Boutons {
 	
 	public static boolean deplace(Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
 
-		if ( isUniteOnCase(x, y, lesJoueurs) || cas.isBatimentsurcase()){
+		if ( isUniteOnCase(x, y, lesJoueurs) ||isBatimentOnCase(x, y, lesJoueurs)){
 			//System.out.println("la case est pas vide");
 			return false;
 		}
@@ -81,7 +93,7 @@ public class Boutons {
 		
 		String str = new String ();
 		
-		if(cas.isBatimentsurcase())
+		if(isBatimentOnCase(x, y, lesJoueurs))
 			str="batiment";
 		else if(isUniteOnCase(x, y, lesJoueurs))
 			str="unite";
@@ -132,7 +144,7 @@ public class Boutons {
 		
 		String str = new String ();
 		
-		if(cas.isBatimentsurcase())
+		if(isBatimentOnCase(x, y, lesJoueurs))
 			str="batiment";
 		else if(isUniteOnCase(x, y, lesJoueurs))
 			str="unite";
