@@ -4,7 +4,7 @@ import joueur.Joueur;
 import Batiment.BatHotelDeVille;
 import Batiment.BatTourelle;
 import Unites.Archer;
-import Unites.Catapulte;
+import Unites.Healer;
 import Unites.Peon;
 import civ.FntPrcpl;
 
@@ -45,6 +45,12 @@ public class Initialisation {
 	    helloarcher.setPositionHorizontale(x);
 	    helloarcher.setPositionVerticale(y+2);
 	    helloarcher.setUsed(false);
+	    
+	    Healer hellohealer = new Healer(J);
+	    Fonctions.Creation(J.getPersonnages().get(J.getPersonnages().size()-1));
+	    hellohealer.setPositionHorizontale(x);
+	    hellohealer.setPositionVerticale(y-2);
+	    hellohealer.setUsed(false);
 	    
 	}
 }

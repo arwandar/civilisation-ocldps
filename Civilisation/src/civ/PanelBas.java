@@ -324,6 +324,10 @@ public class PanelBas extends JPanel implements ActionListener {
 								this.saFenetre.lesJoueurs);
 				break;
 			case "soigner":
+				Evenements.Boutons.soigne((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
+						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
+								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
+								this.saFenetre.lesJoueurs);
 				break;
 			default:
 				System.out.println("problème lors de la recuperation de l'action complexe à effectuer");
@@ -417,6 +421,9 @@ public class PanelBas extends JPanel implements ActionListener {
 			case "soigner":
 				this.actionEnCours = true;
 				this.quelleActionEnCours = "soigner";
+				updateActionPossible(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
+						this.positionDeLaCaseActuellementSelectionnee[1]), this.positionDeLaCaseActuellementSelectionnee[0],
+						this.positionDeLaCaseActuellementSelectionnee[1]);
 				break;
 			case "Archerie":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherieConstructed(this.positionDeLaCaseActuellementSelectionnee,
