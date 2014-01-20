@@ -2,7 +2,6 @@ package Unites;
 import joueur.Joueur;
 import Batiment.BatProdUnit.typeUnite;
 import Comportement.CombatArc;
-import civ.Case;
 
 public class Archer extends Personnage {
 	public Archer(Joueur J){

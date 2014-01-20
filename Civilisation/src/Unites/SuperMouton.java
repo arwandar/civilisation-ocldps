@@ -1,9 +1,6 @@
 package Unites;
-import civ.Case;
 import joueur.Joueur;
 import Batiment.BatProdUnit.typeUnite;
-import Comportement.Cheval;
-import Comportement.Constructeur;
 import Comportement.Voler;
 
 public class SuperMouton extends Personnage {
@@ -14,7 +11,6 @@ public class SuperMouton extends Personnage {
 		
 		this.setNOM("SuperMouton");
 		
-		this.construire = new Constructeur();
 		this.deplacer = new Voler();
 		this.PVMax=25;
 		this.PV=PVMax;

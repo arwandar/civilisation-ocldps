@@ -1,5 +1,4 @@
 package Unites;
-import civ.Case;
 import joueur.Joueur;
 import Batiment.BatProdUnit.typeUnite;
 import Comportement.CombatMagie;

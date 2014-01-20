@@ -19,6 +19,7 @@ public abstract class BatProdUnit extends Batiment
 	public enum typeUnite
 	{
 		Peon,
+		SuperMouton,
 		
 		Archer,
 		CavalierArcher,

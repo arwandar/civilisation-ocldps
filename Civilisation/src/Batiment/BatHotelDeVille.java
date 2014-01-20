@@ -13,6 +13,7 @@ public class BatHotelDeVille extends BatProdUnit
 		if(this.isConstructible == true)
 		{
 			this.typesUnits.add(typeUnite.Peon);
+			this.typesUnits.add(typeUnite.SuperMouton);
 		
 			this.coutOr = 200;
 			this.coutFer = 150;
