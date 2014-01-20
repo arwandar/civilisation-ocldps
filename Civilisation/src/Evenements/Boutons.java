@@ -82,7 +82,7 @@ public class Boutons {
 
 	}
 	
-	public static void attaque (Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
+	public static boolean attaque (Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
 		String str = new String ();
 		
 		if(isBatimentOnCase(x, y, lesJoueurs))
@@ -95,8 +95,10 @@ public class Boutons {
 		switch(str){
 		
 			case "batiment" :
-				if(!Evenements.Fonctions.isRange(personnage,x,y))
+				if(!Evenements.Fonctions.isRange(personnage,x,y)){
 					System.out.println("trop loin !");
+					return false;
+				}
 				else{					
 					Evenements.Fonctions.Attaquer(personnage, trouveBatiment(x, y, lesJoueurs));
 					personnage.setUsed(true);
@@ -107,8 +109,10 @@ public class Boutons {
 				break;
 				
 			case "unite" :
-				if(!Evenements.Fonctions.isRange(personnage,x,y))
+				if(!Evenements.Fonctions.isRange(personnage,x,y)){
 					System.out.println("trop loin !");
+					return false;
+				}
 				else{
 					Evenements.Fonctions.Attaquer(personnage, trouveUnite( x,  y,  lesJoueurs));
 					personnage.setUsed(true);
@@ -121,11 +125,13 @@ public class Boutons {
 				
 			default :
 				System.out.println("personne à attaquer !");
+				return false;
 		}
+		return true;
 			
 	}
 	
-	public static void attaqueTourelle (Batiment batiment, int x, int y, Case cas, Joueur lesJoueurs[]){
+	public static boolean attaqueTourelle (Batiment batiment, int x, int y, Case cas, Joueur lesJoueurs[]){
 		
 		String str = new String ();
 		
@@ -139,8 +145,10 @@ public class Boutons {
 		switch(str){
 		
 			case "batiment" :
-				if(!Evenements.Fonctions.isRangeBat(batiment,x,y))
+				if(!Evenements.Fonctions.isRangeBat(batiment,x,y)){
 					System.out.println("trop loin !");
+					return false;
+				}
 				else{					
 					Evenements.Fonctions.Attaquer(batiment, trouveBatiment(x, y, lesJoueurs));
 					batiment.setIsUsed(true);
@@ -152,8 +160,10 @@ public class Boutons {
 				break;
 				
 			case "unite" :
-				if(!Evenements.Fonctions.isRangeBat(batiment,x,y))
+				if(!Evenements.Fonctions.isRangeBat(batiment,x,y)){
 					System.out.println("trop loin !");
+					return false;
+				}
 				else{
 					Evenements.Fonctions.Attaquer(batiment, trouveUnite( x,  y,  lesJoueurs));
 					batiment.setIsUsed(true);
@@ -165,20 +175,27 @@ public class Boutons {
 				
 			default :
 				System.out.println("personne à attaquer !");
+				return false;
 		}
+		return true;
 			
 	}
 	
 	
-	public static void soigne(Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
-		if ( !isUniteOnCase(x, y, lesJoueurs))
+	public static boolean soigne(Personnage personnage, int x, int y, Case cas, Joueur lesJoueurs[]){
+		if ( !isUniteOnCase(x, y, lesJoueurs)){
 			System.out.println("la case est  vide");
-		else if(!Evenements.Fonctions.isRange(personnage,x,y))
+			return false;
+		}
+		else if(!Evenements.Fonctions.isRange(personnage,x,y)){
 					System.out.println("trop loin !");
+					return false;
+		}
 		else{
 			Evenements.Fonctions.Soigner(trouveUnite(x, y, lesJoueurs));
 			personnage.setUsed(true);
 			}
+		return true;
 		}
 	
 	public static void cherche (Personnage personnage){

@@ -125,7 +125,7 @@ public class PanelBas extends JPanel implements ActionListener {
 			for (int i = 0; i < boutonpossible.length; i++) {
 				this.actionPossible[i] = new JButton(boutonpossible[i]);
 				this.jcard[j].add(this.actionPossible[i]);
-				
+
 				if (!this.utilisable){
 					this.actionPossible[i].setEnabled(false);
 				}
@@ -322,34 +322,46 @@ public class PanelBas extends JPanel implements ActionListener {
 		// System.out.println(this.positionDeLaCaseActuellementSelectionnee[0] +
 		// "/" + this.positionDeLaCaseActuellementSelectionnee[1]);
 		switch (quelleActionEnCours) {
-			case "attaquer":
-				if (this.ancienBatiment == 1) {
-					Evenements.Boutons.attaque((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
-							this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
-									this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-									this.saFenetre.lesJoueurs);
-				} else {
-					Evenements.Boutons.attaqueTourelle((Batiment) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
-							this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
-									this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-									this.saFenetre.lesJoueurs);
-				}
+		case "attaquer":
+			if (this.ancienBatiment == 1) {
+				if(!Evenements.Boutons.attaque((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
+						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
+								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
+								this.saFenetre.lesJoueurs)){
+					JOptionPane.showMessageDialog(null, "Trop loin ou personne !",
+							"Problème", JOptionPane.ERROR_MESSAGE);
+				};
+			} else {
+				if(!Evenements.Boutons.attaqueTourelle((Batiment) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
+						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
+								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
+								this.saFenetre.lesJoueurs)){
+					JOptionPane.showMessageDialog(null, "Trop loin ou personne !",
+							"Problème", JOptionPane.ERROR_MESSAGE);
+				};
+			}
 
-				break;
-			case "déplacer":
-				Evenements.Boutons.deplace((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
-						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
-								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-								this.saFenetre.lesJoueurs);
-				break;
-			case "soigner":
-				Evenements.Boutons.soigne((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
-						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
-								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-								this.saFenetre.lesJoueurs);
-				break;
-			default:
-				System.out.println("problème lors de la recuperation de l'action complexe à effectuer");
+			break;
+		case "déplacer":
+			if(!	Evenements.Boutons.deplace((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
+					this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
+							this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
+							this.saFenetre.lesJoueurs)){
+				JOptionPane.showMessageDialog(null, "Trop loin ou occupé !",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			};
+			break;
+		case "soigner":
+			if(!Evenements.Boutons.soigne((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
+					this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
+							this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
+							this.saFenetre.lesJoueurs)){
+				JOptionPane.showMessageDialog(null, "Trop loin ou vide !",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			};
+			break;
+		default:
+			System.out.println("problème lors de la recuperation de l'action complexe à effectuer");
 		}
 		this.actionEnCours = false;
 		this.saFenetre.updateAffichage();
@@ -360,210 +372,210 @@ public class PanelBas extends JPanel implements ActionListener {
 		this.ancienBatiment = this.unBatimentOuUneUnité;
 		JButton boutonAppuye = (JButton) e.getSource();
 		switch (boutonAppuye.getText()) {
-			case "détruire":
-				this.detruireUnObjet();
-				break;
-			case "déplacer":
-				this.actionEnCours = true;
-				this.quelleActionEnCours = "déplacer";
-				updateActionPossible(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
-						this.positionDeLaCaseActuellementSelectionnee[1]), this.positionDeLaCaseActuellementSelectionnee[0],
-						this.positionDeLaCaseActuellementSelectionnee[1]);
-				break;
-			case "attaquer":
-				this.actionEnCours = true;
-				this.quelleActionEnCours = "attaquer";
-				updateActionPossible(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
-						this.positionDeLaCaseActuellementSelectionnee[1]), this.positionDeLaCaseActuellementSelectionnee[0],
-						this.positionDeLaCaseActuellementSelectionnee[1]);
-				break;
-			case "archer":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "cavalier archer":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCavalierArcherCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "catapultes":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCatapulteCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "milicien":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMilicienCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "chevalier":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isChevalierCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "peon":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPeonCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "galère":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isGalereCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "tranporteur":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTransporteurCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "magicien":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMagicirnrCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "healers":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHealerCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "soigner":
-				this.actionEnCours = true;
-				this.quelleActionEnCours = "soigner";
-				updateActionPossible(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
-						this.positionDeLaCaseActuellementSelectionnee[1]), this.positionDeLaCaseActuellementSelectionnee[0],
-						this.positionDeLaCaseActuellementSelectionnee[1]);
-				break;
-			case "Archerie":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherieConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "atelier de siège":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isAtelierDeSiegeConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "Caserne":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCaserneConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "Ecurie":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isEcurieConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "Hotel de ville":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHotelDeVilleConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "Mur":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMurConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "Port":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPortConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "mine or":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineOrConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "mine nourriture":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineNourritureConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "mine bois":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineBoisConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "mine fer":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineFerConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "mine pierre":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMinePierreConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-				
-				
-			case "rechercher":
-				Evenements.Boutons.cherche((Personnage) this.trucActuellementSelectionne);
-				break;
-				
-			case "Tour des mages":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourDesMagesConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			case "Tourelle":
-				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourelleConstructed(this.positionDeLaCaseActuellementSelectionnee,
-						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
-								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
-				}
-				break;
-			default:
-				System.out.println("problème lors de la recuperation de l'action à affectuer");
+		case "détruire":
+			this.detruireUnObjet();
+			break;
+		case "déplacer":
+			this.actionEnCours = true;
+			this.quelleActionEnCours = "déplacer";
+			updateActionPossible(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
+					this.positionDeLaCaseActuellementSelectionnee[1]), this.positionDeLaCaseActuellementSelectionnee[0],
+					this.positionDeLaCaseActuellementSelectionnee[1]);
+			break;
+		case "attaquer":
+			this.actionEnCours = true;
+			this.quelleActionEnCours = "attaquer";
+			updateActionPossible(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
+					this.positionDeLaCaseActuellementSelectionnee[1]), this.positionDeLaCaseActuellementSelectionnee[0],
+					this.positionDeLaCaseActuellementSelectionnee[1]);
+			break;
+		case "archer":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "cavalier archer":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCavalierArcherCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "catapultes":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCatapulteCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "milicien":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMilicienCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "chevalier":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isChevalierCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "peon":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPeonCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "galère":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isGalereCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "tranporteur":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTransporteurCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "magicien":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMagicirnrCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "healers":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHealerCreated(this.positionDeLaCaseActuellementSelectionnee)) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "soigner":
+			this.actionEnCours = true;
+			this.quelleActionEnCours = "soigner";
+			updateActionPossible(this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[0],
+					this.positionDeLaCaseActuellementSelectionnee[1]), this.positionDeLaCaseActuellementSelectionnee[0],
+					this.positionDeLaCaseActuellementSelectionnee[1]);
+			break;
+		case "Archerie":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherieConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "atelier de siège":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isAtelierDeSiegeConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "Caserne":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCaserneConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "Ecurie":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isEcurieConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "Hotel de ville":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHotelDeVilleConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "Mur":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMurConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "Port":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPortConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "mine or":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineOrConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "mine nourriture":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineNourritureConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "mine bois":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineBoisConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "mine fer":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineFerConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "mine pierre":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMinePierreConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+
+
+		case "rechercher":
+			Evenements.Boutons.cherche((Personnage) this.trucActuellementSelectionne);
+			break;
+
+		case "Tour des mages":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourDesMagesConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		case "Tourelle":
+			if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourelleConstructed(this.positionDeLaCaseActuellementSelectionnee,
+					this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
+							this.positionDeLaCaseActuellementSelectionnee[0]))) {
+				JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+						"Problème", JOptionPane.ERROR_MESSAGE);
+			}
+			break;
+		default:
+			System.out.println("problème lors de la recuperation de l'action à affectuer");
 		}
 		this.saFenetre.updateAffichage();
 	}

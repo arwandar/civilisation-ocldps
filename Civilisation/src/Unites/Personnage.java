@@ -222,7 +222,7 @@ public abstract class Personnage implements Caracteristiques{
 	}
 
 	public void setPV(long l) {
-		this.PV=(int) l;// TODO Auto-generated method stub
+		this.PV=(int) l;
 		
 	}
 
