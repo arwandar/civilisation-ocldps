@@ -399,67 +399,67 @@ public class PanelBas extends JPanel implements ActionListener {
 				break;
 			case "archer":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "cavalier archer":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCavalierArcherCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "SuperMouton":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].IsSuperMoutonCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "catapultes":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCatapulteCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "milicien":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMilicienCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "chevalier":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isChevalierCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "peon":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPeonCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "galère":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isGalereCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "tranporteur":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTransporteurCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "magicien":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMagicirnrCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "healers":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHealerCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -474,7 +474,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherieConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -482,7 +482,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isAtelierDeSiegeConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -490,7 +490,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCaserneConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -498,7 +498,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isEcurieConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -506,7 +506,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHotelDeVilleConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -514,7 +514,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMurConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -522,7 +522,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPortConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -530,7 +530,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineOrConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -538,7 +538,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineNourritureConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -546,7 +546,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineBoisConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -554,7 +554,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineFerConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -562,7 +562,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMinePierreConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -575,7 +575,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourDesMagesConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -583,7 +583,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourelleConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de ressource ou de place autour du batiment pour executer cette action",
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
 							"Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
