@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 
+import Unites.Peon;
 import Unites.Personnage;
 import joueur.Joueur;
 import Batiment.Batiment;
@@ -114,14 +115,15 @@ public class PanelBas extends JPanel implements ActionListener {
 		}
 		if (peutmodifier) {
 			String[] boutonpossible = { "déplacer", "détruire", "archer", "cavalier archer", "détruire", "catapultes", "détruire", "milicien",
-					"détruire", "chevalier", "détruire", "peon", "SuperMouton", "détruire", "détruire", "galère", "tranporteur", "détruire", "détruire", "magicien",
-					"healers", "détruire", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire",
-					"déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer",
-					"soigner", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "Archerie", "atelier de siège",
-					"Caserne", "Ecurie", "Hotel de ville", "Mur", "Port", "mine or", "mine nourriture", "mine bois", "mine fer", "mine pierre",
-					"Tour des mages", "Tourelle", "déplacer", "rechercher", "détruire", "déplacer", "attaquer", "détruire" };
+					"détruire", "chevalier", "détruire", "peon", "SuperMouton", "détruire", "détruire", "galère", "tranporteur", "détruire",
+					"détruire", "magicien", "healers", "détruire", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer",
+					"attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer",
+					"détruire", "déplacer", "soigner", "détruire", "déplacer", "attaquer", "détruire", "déplacer", "attaquer", "détruire",
+					"Archerie", "atelier de siège", "Caserne", "Ecurie", "Hotel de ville", "Mur", "Port", "mine or", "mine nourriture", "mine bois",
+					"mine fer", "mine pierre", "Tour des mages", "Tourelle", "déplacer", "rechercher", "détruire", "déplacer", "attaquer", "détruire" };
 			this.actionPossible = new JButton[boutonpossible.length];
 			int j = 0;
+			Joueur leJoueur = this.saFenetre.lesJoueurs[PanelResrc.joueurencours];
 
 			for (int i = 0; i < boutonpossible.length; i++) {
 				this.actionPossible[i] = new JButton(boutonpossible[i]);
@@ -137,6 +139,17 @@ public class PanelBas extends JPanel implements ActionListener {
 					if (j >= this.jcard.length) {
 						System.out.println("problème lors de l'initialisation du card layout du panel bas");
 					}
+				}
+
+				if (boutonpossible[i] == "archer" || boutonpossible[i] == "cavalier archer" || boutonpossible[i] == "catapultes"
+						|| boutonpossible[i] == "milicien" || boutonpossible[i] == "chevalier" || boutonpossible[i] == "peon"
+						|| boutonpossible[i] == "SuperMouton" || boutonpossible[i] == "galère" || boutonpossible[i] == "tranporteur"
+						|| boutonpossible[i] == "magicien" || boutonpossible[i] == "healers") {
+					Personnage.infobulle(this.actionPossible[i], leJoueur);
+				}
+				else if(boutonpossible[i] == "Archerie"|| boutonpossible[i] == "atelier de siège"|| boutonpossible[i] == "Caserne"|| boutonpossible[i] == "Ecurie"|| boutonpossible[i] == "Hotel de ville"|| boutonpossible[i] == "Mur"|| boutonpossible[i] == "Port"|| boutonpossible[i] == "mine or"|| boutonpossible[i] == "mine nourriture"|| boutonpossible[i] == "mine bois"|| boutonpossible[i] ==
+					"mine fer"|| boutonpossible[i] == "mine pierre"|| boutonpossible[i] == "Tour des mages"|| boutonpossible[i] == "Tourelle"){
+					Batiment.infobulle(this.actionPossible[i], leJoueur);
 				}
 			}
 			if (actionEnCours) {
@@ -194,7 +207,6 @@ public class PanelBas extends JPanel implements ActionListener {
 		this.panelActionsPossibles.removeAll();
 		this.infoText.setText("case " + bouh.getTexture().toString());
 		if (!actionEnCours) {
-
 			Batiment batimentSurLaCase = (Batiment) recuperer(hauteur, largeur, true);
 			trucActuellementSelectionne = batimentSurLaCase;
 			if (batimentSurLaCase != null) {
@@ -205,7 +217,7 @@ public class PanelBas extends JPanel implements ActionListener {
 					this.utilisable = true;
 				}
 				this.infoText.append("\n" + batimentSurLaCase.getNOM() + "\n" + batimentSurLaCase.getPV() + " PV\nBatiment utlisé? "
-						+ batimentSurLaCase.getIsUsed());
+						+ batimentSurLaCase.getIsUsed() + "\nAttaque : " + batimentSurLaCase.getATT() + "\nDéfense : " + batimentSurLaCase.getDEF());
 				if (trouverJoueur(hauteur, largeur, true)) {
 					initCl(batimentSurLaCase.getNOM(), true);
 				} else {
@@ -216,8 +228,9 @@ public class PanelBas extends JPanel implements ActionListener {
 				Personnage personneSurLaCase = (Personnage) recuperer(hauteur, largeur, false);
 				if (personneSurLaCase != null) {
 					trucActuellementSelectionne = personneSurLaCase;
-					this.infoText.append("\n" + personneSurLaCase.getNOM() + "\n" + personneSurLaCase.getPV() + " PV/" + personneSurLaCase.PVMax
-							+ "\nUnité utilisée? " + personneSurLaCase.isUsed());
+					this.infoText.append("\n" + personneSurLaCase.getNOM() + "\n" + personneSurLaCase.getPV() + "/" + personneSurLaCase.PVMax
+							+ "PV\nUnité utilisée? " + personneSurLaCase.isUsed() + "\nDéplacement : " + personneSurLaCase.getMouvement()
+							+ "\nAttaque : " + personneSurLaCase.getAttaque() + "\nDéfense : " + personneSurLaCase.getDefense());
 					this.unBatimentOuUneUnité = 1;
 					if (personneSurLaCase.isUsed()) {
 						this.utilisable = false;
@@ -327,7 +340,7 @@ public class PanelBas extends JPanel implements ActionListener {
 					if (!Evenements.Boutons.attaque((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
 							this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
 									this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-									this.saFenetre.lesJoueurs)) {
+							this.saFenetre.lesJoueurs)) {
 						JOptionPane.showMessageDialog(null, "Trop loin ou personne !", "Problème", JOptionPane.ERROR_MESSAGE);
 					}
 				} else {
@@ -343,7 +356,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!Evenements.Boutons.deplace((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
 						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
 								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-								this.saFenetre.lesJoueurs)) {
+						this.saFenetre.lesJoueurs)) {
 					JOptionPane.showMessageDialog(null, "Trop loin ou occupé !", "Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -351,7 +364,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!Evenements.Boutons.soigne((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
 						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
 								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-								this.saFenetre.lesJoueurs)) {
+						this.saFenetre.lesJoueurs)) {
 					JOptionPane.showMessageDialog(null, "Trop loin ou vide !", "Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;

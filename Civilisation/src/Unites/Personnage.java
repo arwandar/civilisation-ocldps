@@ -1,4 +1,8 @@
 package Unites;
+import java.io.ObjectInputStream.GetField;
+
+import javax.swing.JButton;
+
 import joueur.Joueur;
 import Batiment.BatProdUnit.typeUnite;
 import Comportement.AttitudeCombative;
@@ -22,7 +26,7 @@ public abstract class Personnage implements Caracteristiques{
 	  
 	  public int Attaque=Caracteristiques.Attaque; public double Defense=Caracteristiques.Defense; public int PVMax= Caracteristiques.PVMax; public int PV=PVMax;
 	  int tempsProduction=Caracteristiques.tempsProduction;
-	  int coutNourriture = Caracteristiques.coutNourriture; int coutOr = Caracteristiques.coutOr; int coutBois = Caracteristiques.coutBois; int coutFer = Caracteristiques.coutFer;
+	 static int coutNourriture = Caracteristiques.coutNourriture; static int coutOr = Caracteristiques.coutOr; static int coutBois = Caracteristiques.coutBois; static int coutFer = Caracteristiques.coutFer;
 	  int positionHorizontale = Caracteristiques.positionHorizontale;
 	  int positionVerticale = Caracteristiques.positionVerticale;
 	  int portee = Caracteristiques.portee;
@@ -237,5 +241,12 @@ public abstract class Personnage implements Caracteristiques{
 	public void destructionUnite(Joueur J)
 	{
 		
+	}
+	
+	static public void infobulle(JButton bouh, Joueur leJoueur){
+		if (leJoueur.getBois()<= coutBois || leJoueur.getOr()<=coutOr || leJoueur.getNourriture()<=coutNourriture || leJoueur.getFer()<=coutFer){
+			bouh.setEnabled(false);
+		}
+		bouh.setToolTipText("or : "+coutOr+" / fer : "+coutFer+" / nourriture : "+coutNourriture+" / bois : "+coutBois);
 	}
 }
