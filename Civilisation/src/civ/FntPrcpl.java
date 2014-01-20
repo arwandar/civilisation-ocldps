@@ -127,30 +127,30 @@ public class FntPrcpl extends JFrame implements ActionListener {
 
 	protected void initEditeurMap() {
 		this.editeurMap = new JPanel();
-		
+
 		MapEditeur mapEditeur = new MapEditeur(this);
 		this.editeurMap.add(mapEditeur);
 
-//		JButton bouh = new JButton("revenir au menu precedent");
-//		bouh.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				cl.show(fenetre, listContent[0]);
-//			}
-//		});
-//
-//		this.editeurMap.add(bouh);
+		// JButton bouh = new JButton("revenir au menu precedent");
+		// bouh.addActionListener(new ActionListener() {
+		// public void actionPerformed(ActionEvent e) {
+		// cl.show(fenetre, listContent[0]);
+		// }
+		// });
+		//
+		// this.editeurMap.add(bouh);
 		this.fenetre.add(this.editeurMap, listContent[3]);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == this.demarrerB){
+		if (e.getSource() == this.demarrerB) {
 			Evenements.Initialisation.unitesDuDebut(lesJoueurs[0], 5, 5, this);
 			Evenements.Initialisation.unitesDuDebut(lesJoueurs[1], 55, 25, this);
 			this.updateAffichage();
-	
+
 			cl.next(fenetre);
 		}
-		
+
 	}
 }

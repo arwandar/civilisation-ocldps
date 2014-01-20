@@ -16,10 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 
-import Unites.Peon;
-import Unites.Personnage;
 import joueur.Joueur;
 import Batiment.Batiment;
+import Unites.Personnage;
 
 public class PanelBas extends JPanel implements ActionListener {
 	/*
@@ -141,15 +140,83 @@ public class PanelBas extends JPanel implements ActionListener {
 					}
 				}
 
-				if (boutonpossible[i] == "archer" || boutonpossible[i] == "cavalier archer" || boutonpossible[i] == "catapultes"
-						|| boutonpossible[i] == "milicien" || boutonpossible[i] == "chevalier" || boutonpossible[i] == "peon"
-						|| boutonpossible[i] == "SuperMouton" || boutonpossible[i] == "galère" || boutonpossible[i] == "tranporteur"
-						|| boutonpossible[i] == "magicien" || boutonpossible[i] == "healers") {
-					Personnage.infobulle(this.actionPossible[i], leJoueur);
-				}
-				else if(boutonpossible[i] == "Archerie"|| boutonpossible[i] == "atelier de siège"|| boutonpossible[i] == "Caserne"|| boutonpossible[i] == "Ecurie"|| boutonpossible[i] == "Hotel de ville"|| boutonpossible[i] == "Mur"|| boutonpossible[i] == "Port"|| boutonpossible[i] == "mine or"|| boutonpossible[i] == "mine nourriture"|| boutonpossible[i] == "mine bois"|| boutonpossible[i] ==
-					"mine fer"|| boutonpossible[i] == "mine pierre"|| boutonpossible[i] == "Tour des mages"|| boutonpossible[i] == "Tourelle"){
-					Batiment.infobulle(this.actionPossible[i], leJoueur);
+				switch (boutonpossible[i]) {
+					case "archer":
+						infobulle(this.actionPossible[i], leJoueur, 45, 25, 0, 0, 0);
+						break;
+					case "cavalier archer":
+						infobulle(this.actionPossible[i], leJoueur, 70, 40, 0, 0, 0);
+						break;
+					case "catapultes":
+						infobulle(this.actionPossible[i], leJoueur, 0, 0, 0, 0, 0);
+						break;
+					case "milicien":
+						infobulle(this.actionPossible[i], leJoueur, 20, 0, 60, 0, 0);
+						break;
+					case "chevalier":
+						infobulle(this.actionPossible[i], leJoueur, 50, 0, 60, 0, 0);
+						break;
+					case "peon":
+						infobulle(this.actionPossible[i], leJoueur, 0, 0, 10, 0, 0);
+						break;
+					case "SuperMouton":
+						infobulle(this.actionPossible[i], leJoueur, 0, 0, 10, 0, 0);
+						break;
+					case "galère":
+						infobulle(this.actionPossible[i], leJoueur, 30, 90, 0, 0, 0);
+						break;
+					case "tranporteur":
+						infobulle(this.actionPossible[i], leJoueur, 0, 125, 0, 0, 0);
+						break;
+					case "magicien":
+						infobulle(this.actionPossible[i], leJoueur, 40, 0, 50, 0, 0);
+						break;
+					case "healers":
+						infobulle(this.actionPossible[i], leJoueur, 50, 0, 40, 0, 0);
+						break;
+
+					case "Archerie":
+						infobulle(this.actionPossible[i], leJoueur, 50, 100, 0, 50, 150);
+						break;
+					case "atelier de siège":
+						infobulle(this.actionPossible[i], leJoueur, 200, 300, 0, 150, 450);
+						break;
+					case "Caserne":
+						infobulle(this.actionPossible[i], leJoueur, 50, 75, 0, 35, 110);
+						break;
+					case "Ecurie":
+						infobulle(this.actionPossible[i], leJoueur, 150, 200, 0, 100, 300);
+						break;
+					case "Hotel de ville":
+						infobulle(this.actionPossible[i], leJoueur, 200, 300, 0, 150, 200);
+						break;
+					case "Mur":
+						infobulle(this.actionPossible[i], leJoueur, 10, 30, 0, 5, 50);
+						break;
+					case "Port":
+						infobulle(this.actionPossible[i], leJoueur, 75, 300, 0, 50, 100);
+						break;
+					case "mine or":
+						infobulle(this.actionPossible[i], leJoueur, 20, 10, 0, 5, 30);
+						break;
+					case "mine nourriture":
+						infobulle(this.actionPossible[i], leJoueur, 20, 10, 0, 5, 30);
+						break;
+					case "mine bois":
+						infobulle(this.actionPossible[i], leJoueur, 20, 10, 0, 5, 30);
+						break;
+					case "mine fer":
+						infobulle(this.actionPossible[i], leJoueur, 20, 10, 0, 5, 30);
+						break;
+					case "mine pierre":
+						infobulle(this.actionPossible[i], leJoueur, 20, 10, 0, 5, 30);
+						break;
+					case "Tour des mages":
+						infobulle(this.actionPossible[i], leJoueur, 75, 150, 0, 50, 150);
+						break;
+					case "Tourelle":
+						infobulle(this.actionPossible[i], leJoueur, 100, 300, 0, 50, 500);
+						break;
 				}
 			}
 			if (actionEnCours) {
@@ -159,6 +226,15 @@ public class PanelBas extends JPanel implements ActionListener {
 		}
 
 		this.cl.show(this.panelActionsPossibles, aAfficher);
+	}
+
+	private void infobulle(JButton bouh, Joueur leJoueur, int coutOr, int coutBois, int coutNourriture, int coutFer, int coutPierre) {
+		if (leJoueur.getBois() <= coutBois || leJoueur.getOr() <= coutOr || leJoueur.getNourriture() <= coutNourriture
+				|| leJoueur.getFer() <= coutFer || leJoueur.getPierre() <= coutPierre) {
+			bouh.setEnabled(false);
+		}
+		bouh.setToolTipText("or : " + coutOr + " / fer : " + coutFer + " / nourriture : " + coutNourriture + " / bois : " + coutBois + " / pierre : "
+				+ coutPierre);
 	}
 
 	protected void updateMap() {
@@ -217,7 +293,7 @@ public class PanelBas extends JPanel implements ActionListener {
 					this.utilisable = true;
 				}
 				this.infoText.append("\n" + batimentSurLaCase.getNOM() + "\n" + batimentSurLaCase.getPV() + " PV\nBatiment utlisé? "
-						+ batimentSurLaCase.getIsUsed() + "\nAttaque : " + batimentSurLaCase.getATT() + "\nDéfense : " + batimentSurLaCase.getDEF());
+						+ batimentSurLaCase.getIsUsed() + "\nAttaque : " + batimentSurLaCase.getATT() + "\nDéfense : " + batimentSurLaCase.getDEF()+"\nPortée : "+batimentSurLaCase.getPortee());
 				if (trouverJoueur(hauteur, largeur, true)) {
 					initCl(batimentSurLaCase.getNOM(), true);
 				} else {
@@ -230,7 +306,7 @@ public class PanelBas extends JPanel implements ActionListener {
 					trucActuellementSelectionne = personneSurLaCase;
 					this.infoText.append("\n" + personneSurLaCase.getNOM() + "\n" + personneSurLaCase.getPV() + "/" + personneSurLaCase.PVMax
 							+ "PV\nUnité utilisée? " + personneSurLaCase.isUsed() + "\nDéplacement : " + personneSurLaCase.getMouvement()
-							+ "\nAttaque : " + personneSurLaCase.getAttaque() + "\nDéfense : " + personneSurLaCase.getDefense());
+							+ "\nAttaque : " + personneSurLaCase.getAttaque() + "\nDéfense : " + personneSurLaCase.getDefense()+"\nPortée : "+personneSurLaCase.getPortee());
 					this.unBatimentOuUneUnité = 1;
 					if (personneSurLaCase.isUsed()) {
 						this.utilisable = false;
@@ -340,7 +416,7 @@ public class PanelBas extends JPanel implements ActionListener {
 					if (!Evenements.Boutons.attaque((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
 							this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
 									this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-							this.saFenetre.lesJoueurs)) {
+									this.saFenetre.lesJoueurs)) {
 						JOptionPane.showMessageDialog(null, "Trop loin ou personne !", "Problème", JOptionPane.ERROR_MESSAGE);
 					}
 				} else {
@@ -356,7 +432,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!Evenements.Boutons.deplace((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
 						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
 								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-						this.saFenetre.lesJoueurs)) {
+								this.saFenetre.lesJoueurs)) {
 					JOptionPane.showMessageDialog(null, "Trop loin ou occupé !", "Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -364,7 +440,7 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!Evenements.Boutons.soigne((Personnage) this.trucActuellementSelectionne, this.positionDeLaCaseActuellementSelectionnee[1],
 						this.positionDeLaCaseActuellementSelectionnee[0], this.saFenetre.affichagejeu.getCarte(
 								this.positionDeLaCaseActuellementSelectionnee[0], this.positionDeLaCaseActuellementSelectionnee[1]),
-						this.saFenetre.lesJoueurs)) {
+								this.saFenetre.lesJoueurs)) {
 					JOptionPane.showMessageDialog(null, "Trop loin ou vide !", "Problème", JOptionPane.ERROR_MESSAGE);
 				}
 				break;
@@ -399,68 +475,68 @@ public class PanelBas extends JPanel implements ActionListener {
 				break;
 			case "archer":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "cavalier archer":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCavalierArcherCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "SuperMouton":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].IsSuperMoutonCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "catapultes":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCatapulteCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "milicien":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMilicienCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "chevalier":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isChevalierCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "peon":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPeonCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "galère":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isGalereCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "tranporteur":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTransporteurCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "magicien":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMagicirnrCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "healers":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHealerCreated(this.positionDeLaCaseActuellementSelectionnee)) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "soigner":
@@ -474,96 +550,96 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isArcherieConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "atelier de siège":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isAtelierDeSiegeConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "Caserne":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isCaserneConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "Ecurie":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isEcurieConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "Hotel de ville":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isHotelDeVilleConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "Mur":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMurConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "Port":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isPortConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "mine or":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineOrConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "mine nourriture":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineNourritureConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "mine bois":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineBoisConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "mine fer":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMineFerConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "mine pierre":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isMinePierreConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 
@@ -575,16 +651,16 @@ public class PanelBas extends JPanel implements ActionListener {
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourDesMagesConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			case "Tourelle":
 				if (!this.saFenetre.lesJoueurs[PanelResrc.joueurencours].isTourelleConstructed(this.positionDeLaCaseActuellementSelectionnee,
 						this.saFenetre.affichagejeu.getCarte(this.positionDeLaCaseActuellementSelectionnee[1],
 								this.positionDeLaCaseActuellementSelectionnee[0]))) {
-					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action",
-							"Problème", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Pas assez de place autour du batiment pour executer cette action", "Problème",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				break;
 			default:

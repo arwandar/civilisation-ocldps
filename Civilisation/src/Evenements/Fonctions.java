@@ -39,9 +39,7 @@ public class Fonctions {
 	public static String[][] matriceDeJeu=new String[30][60]; /*= new String[getPlateau().getWidth()/50][getPlateau().getHeight()/50];*/
 	
 	public Fonctions(PanelPrcpl plateau){
-		Fonctions.setPlateau(plateau);
-		
-		
+		Fonctions.setPlateau(plateau);		
 	}
 
 	

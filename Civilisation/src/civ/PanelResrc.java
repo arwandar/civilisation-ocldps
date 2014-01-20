@@ -19,8 +19,8 @@ public class PanelResrc extends JPanel implements ActionListener {
 	 */
 
 	// **********VARIABLES
-	JLabel or, nourriture, bois, pierre, fer, os, joueur;
-	
+	JLabel joueur, label;
+
 	JButton finDeTour;
 	int indice;
 	Joueur[] lesJoueurs;
@@ -39,18 +39,9 @@ public class PanelResrc extends JPanel implements ActionListener {
 
 		this.joueur = new JLabel();
 		this.add(this.joueur);
-		this.or = new JLabel();
-		this.add(this.or);
-		this.nourriture = new JLabel();
-		this.add(this.nourriture);
-		this.bois = new JLabel();
-		this.add(this.bois);
-		this.pierre = new JLabel();
-		this.add(this.pierre);
-		this.fer = new JLabel();
-		this.add(this.fer);
-		this.os = new JLabel();
-		this.add(this.os);
+
+		this.label = new JLabel();
+		this.add(this.label);
 
 		this.finDeTour = new JButton("fin de tour");
 		this.finDeTour.addActionListener(this);
@@ -63,47 +54,40 @@ public class PanelResrc extends JPanel implements ActionListener {
 
 	// **********METHODES
 	public void updateAffichageRessource() {
-			this.joueur.setText("Joueur "+ (this.joueurencours+1));
-			this.joueur.setForeground(this.saFenetre.lesJoueurs[joueurencours].getSaCouleur());
-			
-			this.or.setText("or " + lesJoueurs[joueurencours].getOr());
-			this.nourriture.setText(" / nourriture " + lesJoueurs[joueurencours].getNourriture());
-			this.bois.setText(" / bois " + lesJoueurs[joueurencours].getBois());
-			this.pierre.setText(" / pierre " + lesJoueurs[joueurencours].getPierre());
-			this.fer.setText(" / fer " + lesJoueurs[joueurencours].getFer());
-			this.os.setText(" / os " + lesJoueurs[joueurencours].getOs());
-		
+		this.joueur.setText("Joueur " + (this.joueurencours + 1) + " : ");
+		this.joueur.setForeground(this.saFenetre.lesJoueurs[joueurencours].getSaCouleur());
+
+		this.label.setText("or : " + lesJoueurs[joueurencours].getOr() + " / fer : " + lesJoueurs[joueurencours].getFer() + " / nourriture : "
+				+ lesJoueurs[joueurencours].getNourriture() + " / bois : " + lesJoueurs[joueurencours].getBois() + " / pierre : "
+				+ lesJoueurs[joueurencours].getPierre() + " / os : " + lesJoueurs[joueurencours].getOs());
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
-		
-		for (int i=0; i < lesJoueurs.length;i++){ //test sur tous les joueurs pour voir si la partie est finie
-			if(Unites.Test.isFini(lesJoueurs[i]))
-				Unites.Test.partieEnCours=false;
+
+		for (int i = 0; i < lesJoueurs.length; i++) { // test sur tous les
+			// joueurs pour voir si
+			// la partie est finie
+			if (Unites.Test.isFini(lesJoueurs[i]))
+				Unites.Test.partieEnCours = false;
 		}
-		
-		
-		
+
 		this.joueurencours++;
 		if (this.joueurencours == this.lesJoueurs.length) {
 			this.joueurencours = 0;
 		}
 		this.saFenetre.updateAffichage();
 		this.findetour = true;
-		
-		for(int i=0; i<=1; i++)
-		{
-			if(Test.isFini(this.lesJoueurs[i]))
-			{
+
+		for (int i = 0; i <= 1; i++) {
+			if (Test.isFini(this.lesJoueurs[i])) {
 				JOptionPane jpop = new JOptionPane();
-				JOptionPane.showMessageDialog(null, this.lesJoueurs[i].getNom() + " a perdu!",
-						"Fin de partie", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, this.lesJoueurs[i].getNom() + " a perdu!", "Fin de partie", JOptionPane.PLAIN_MESSAGE);
 				this.saFenetre.dispose();
 			}
 		}
-		
-		Unites.Test.debutDeTour(lesJoueurs[joueurencours]); //lance la raz du joueur suivant
-		
+
+		Unites.Test.debutDeTour(lesJoueurs[joueurencours]); // lance la raz du
+		// joueur suivant
+
 	}
 }

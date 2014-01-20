@@ -1,7 +1,5 @@
 package Batiment;
 
-import javax.swing.JButton;
-
 import joueur.Joueur;
 import civ.Case;
 import civ.Texture;
@@ -17,10 +15,10 @@ public abstract class Batiment
 	protected int production;
 	protected boolean isOnEarth;
 	protected int[] position = {0,0};
-	static protected int coutOr;
-	static protected int coutFer;
-static	protected int coutPierre;
-static	protected int coutBois;
+ protected int coutOr;
+protected int coutFer;
+protected int coutPierre;
+	protected int coutBois;
 	protected Joueur joueur;
 	protected boolean isConstructible = true;
 	protected int portee;
@@ -192,12 +190,7 @@ static	protected int coutBois;
 		
 	}
 	
-	static public void infobulle(JButton bouh, Joueur leJoueur){
-		if (leJoueur.getBois()<= coutOr || leJoueur.getOr()<=coutOr || leJoueur.getPierre()<=coutPierre || leJoueur.getFer()<=coutFer){
-			bouh.setEnabled(false);
-		}
-		bouh.setToolTipText("or : "+coutOr+" / fer : "+coutFer+" / nourriture : "+coutPierre+" / bois : "+coutBois);
-	}
+
 }
 
 
