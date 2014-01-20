@@ -67,11 +67,11 @@ public class PanelResrc extends JPanel implements ActionListener {
 			this.joueur.setForeground(this.saFenetre.lesJoueurs[joueurencours].getSaCouleur());
 			
 			this.or.setText("or " + lesJoueurs[joueurencours].getOr());
-			this.nourriture.setText("nourriture " + lesJoueurs[joueurencours].getNourriture());
-			this.bois.setText("bois " + lesJoueurs[joueurencours].getBois());
-			this.pierre.setText("pierre " + lesJoueurs[joueurencours].getPierre());
-			this.fer.setText("fer " + lesJoueurs[joueurencours].getFer());
-			this.os.setText("os " + lesJoueurs[joueurencours].getOs());
+			this.nourriture.setText(" / nourriture " + lesJoueurs[joueurencours].getNourriture());
+			this.bois.setText(" / bois " + lesJoueurs[joueurencours].getBois());
+			this.pierre.setText(" / pierre " + lesJoueurs[joueurencours].getPierre());
+			this.fer.setText(" / fer " + lesJoueurs[joueurencours].getFer());
+			this.os.setText(" / os " + lesJoueurs[joueurencours].getOs());
 		
 	}
 
