@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import joueur.Joueur;
 import Batiment.Batiment;
+import Batiment.BatProdUnit.typeUnite;
 import Unites.Personnage;
 import civ.Case;
 
@@ -73,8 +74,14 @@ public class Boutons {
 				return false;
 			}
 			else{
-				Evenements.Fonctions.deplacementReel(personnage, x, y);
-				personnage.setUsed(true);
+				if (personnage.getT()==typeUnite.SuperMouton){
+					Evenements.Fonctions.deplacementReelMouton(personnage, x, y, lesJoueurs);
+					personnage.setUsed(true);
+				}
+				else{
+					Evenements.Fonctions.deplacementReel(personnage, x, y);
+					personnage.setUsed(true);
+				}
 				return true;
 			}
 		}

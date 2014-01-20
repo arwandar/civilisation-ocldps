@@ -201,6 +201,48 @@ public class Fonctions {
 		}
 	}
 	
+	public static void deplacementReelMouton (Personnage perso, int x0, int y0, Joueur lesJoueurs[]){
+		int mouvementRestant=perso.getMouvement();
+		
+		int[] x = {-1,0,1,0};
+		int[] y = {0,-1,0,1};
+		matriceDeJeu[ perso.getPositionVerticale() ][ perso.getPositionHorizontale() ]="O";
+		while (mouvementRestant>0 && (perso.getPositionHorizontale()!=x0 || perso.getPositionVerticale()!=y0)){
+			for (int i=0; i<4; i++){
+				int nvX = perso.getPositionVerticale() + x[i];
+				int nvY = perso.getPositionHorizontale() + y[i];
+				if(matriceDeJeu[ nvX ][ nvY ]=="X"){			
+					int coeff = TestTerrain(nvX,nvY);
+					if ((mouvementRestant - coeff) >= 0){
+						int ancienY=perso.getPositionHorizontale();
+						int ancienX=perso.getPositionVerticale();
+						int coeff2 = TestTerrain(ancienX,ancienY);
+						int[] pos = {ancienY,ancienX};
+
+						matriceDeJeu[ nvX ][ nvY ]="O";
+						perso.setPositionHorizontale(nvY);
+						perso.setPositionVerticale(nvX);
+						
+						if(coeff2==1 && !Evenements.Boutons.isUniteOnCase(ancienX, ancienY, lesJoueurs)){
+							perso.getJoueur().setOr(perso.getJoueur().getOr()+10);
+							perso.getJoueur().setFer(perso.getJoueur().getFer()+5);
+							perso.getJoueur().setBois(perso.getJoueur().getBois()+30);
+							perso.getJoueur().setPierre(perso.getJoueur().getPierre()+50);
+							new BatMur (pos, getPlateau().getCarte(ancienY,ancienX), perso.getJoueur());
+						}
+						
+						mouvementRestant -= coeff;
+					}
+					else{
+						mouvementRestant--;
+					}
+				}
+				else{
+				}
+			}	
+		}
+	}
+	
 	
 	public static boolean isRange(Personnage Attaquant, int x, int y){
 		int portee=Attaquant.getPortee();
