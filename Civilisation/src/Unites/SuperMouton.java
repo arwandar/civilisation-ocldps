@@ -19,7 +19,7 @@ public class SuperMouton extends Personnage {
 		this.coutNourriture=10;
 		J.setNourriture(J.getNourriture() - this.coutNourriture);
 		
-		this.setT(typeUnite.Peon);
+		this.setT(typeUnite.SuperMouton);
 	}
 	
 	//*************** Méthodes *******************
