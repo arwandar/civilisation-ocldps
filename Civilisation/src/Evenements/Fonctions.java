@@ -199,7 +199,7 @@ public class Fonctions {
 		}
 	}
 	
-	public static void deplacementReelMouton (Personnage perso, int x0, int y0, Joueur lesJoueurs[]){
+	public static void deplacementReelMouton (Personnage perso, int x0, int y0, Joueur lesJoueurs[], Case cas){
 		int mouvementRestant=perso.getMouvement();
 		
 		int[] x = {-1,0,1,0};
@@ -227,6 +227,7 @@ public class Fonctions {
 							perso.getJoueur().setBois(perso.getJoueur().getBois()+30);
 							perso.getJoueur().setPierre(perso.getJoueur().getPierre()+50);
 							new BatMur (pos, getPlateau().getCarte(ancienY,ancienX), perso.getJoueur());
+							//new BatMur (pos, cas, perso.getJoueur());
 						}
 						
 						mouvementRestant -= coeff;

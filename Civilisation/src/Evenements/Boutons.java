@@ -75,7 +75,7 @@ public class Boutons {
 			}
 			else{
 				if (personnage.getT()==typeUnite.SuperMouton){
-					Evenements.Fonctions.deplacementReelMouton(personnage, x, y, lesJoueurs);
+					Evenements.Fonctions.deplacementReelMouton(personnage, x, y, lesJoueurs, cas);
 					personnage.setUsed(true);
 				}
 				else{
